@@ -1,0 +1,14 @@
+# Ignore all files without extension by default
+*
+!*.*
+
+# Allow specific files with no extension
+!Makefile
+!*/
+
+# ignore specific files
+*.aux
+*.log
+*.o
+*.out
+vgcore.*
