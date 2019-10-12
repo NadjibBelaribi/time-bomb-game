@@ -33,11 +33,11 @@
 \newcommand{\la}{\leftarrow}
 
 \let\oldsection\section
-\renewcommand{\section}[1]{\textcolor{green}{\oldsection{#1}}}
+\renewcommand{\section}[1]{\textcolor{purple}{\oldsection{#1}}}
 \let\oldsubsection\subsection
-\renewcommand{\subsection}[1]{\textcolor{red}{\oldsubsection{#1}}}
+\renewcommand{\subsection}[1]{\textcolor{cyan}{\oldsubsection{#1}}}
 \let\oldsubsubsection\subsubsection
-\renewcommand{\subsubsection}[1]{\textcolor{purple}{\oldsubsubsection{#1}}}
+\renewcommand{\subsubsection}[1]{\textcolor{green}{\oldsubsubsection{#1}}}
 \let\oldtextbf\textbf
 \renewcommand{\textbf}[1]{\textcolor{cyan}{\oldtextbf{#1}}}
 \let\oldunderline\underline
@@ -78,8 +78,9 @@
     tabsize=2
 }
 
-\title{Time Bomb: 1\ier rapport}
-\author{les 6 noms}
+\title{Time Bomb: Premier rapport}
+\author{Ilias Deligiannis, Florent Weber, Nadjib Belaribi, Danyl El-Kabir,\\
+Leonardo Nassabain, François Grabenstaetter}
 
 \begin{document}
 \sffamily
@@ -87,5 +88,80 @@
 \setlength\parindent{0mm}
 \setlength{\parskip}{0.2cm}
 \maketitle
+
+\section{Menu et interfaces hors-partie}
+
+\subsection{Accueil}
+
+\begin{center}
+    \includegraphics[scale=2]{img/accueil.png}
+\end{center}
+
+Le menu d'accueil, très simplifié, met en avant le \textit{bouton play}. Ainsi, les joueurs (qui sont là pour ça) peuvent commencer au plus vite à jouer.
+
+Le choix de la langue a été placé de sorte qu'on ne puisse pas involontairement cliquer dessus.
+
+\newpage
+\subsection{Paramètres de partie}
+
+\begin{center}
+    \includegraphics[scale=2]{img/param_partie.png}
+\end{center}
+
+Cette fenêtre nous permettra de définir le nombre de joueurs et leurs pseudo. Il suffit que chaque joueur saisisse un pseudo dans une zone de texte puis d'utiliser le bouton en bas à droite pour lancer la partie.
+
+On aura donc autant de joueurs que de zones de texte remplies. Nous pensons qu'il s'agit d'un façon simple et facilement compréhensible pour les joueurs, de présenter les choses.
+
+\subsection{Le tutoriel interactif}
+
+On a voulu faire un tutoriel interactif qui ressemblera plus à une histoire racontée qu'à un simple tutoriel.
+
+Puisqu'il s'agit dun jeu de rôle avec deux camps bien définits, nous trouvons que transmettre les règle à travers un dialogue entre Moriarty et Sherlock pourrait être plutôt sympa.
+
+\subsection{La fin d'une partie}
+
+Lorsqu'une partie de jeu se termine, une fenêtre affiche quelle est l'équipe gagnante et propose les choix \textit{replay}, \textit{menu} et \textit{desktop} pour quitter.
+
+\begin{center}
+    \includegraphics[scale=2]{img/ecran_fin_partie.png}
+\end{center}
+
+\section{Interface de la partie de jeu}
+
+\subsection{État de jeu initial d'une manche}
+
+\begin{center}
+    \includegraphics[scale=2]{img/partie_avant_devoiler.png}
+\end{center}
+
+Il s'agit de la fenêtre principale de jeu. Cependant, vu que le jeu se déroule en local (sur une seule machine pour tous les joueurs, pour le moment) il nous faut un moyen pour que les joueurs puissent prendre connaissance de leur rôle et cartes: appuyer sur le bouton au milieu (\textit{Montrer role et carte}) pour chaque joueur (chacun son tour), lorsqu'il est prêt (et que les autres ne regardent pas !)
+
+Cette astuce nous permet de donner l'impression d'avoir ses propres cartes en partageant une seule machine. La prochaine wireframe affiche les cartes et le rôle du joueur en question:
+
+\begin{center}
+    \includegraphics[scale=2]{img/decouvert_role_et_carte.png}
+\end{center}
+
+\subsection{État de jeu normal}
+
+\begin{center}
+    \includegraphics[scale=2]{img/ecran_partie_quand_joueur_pas_choix.png}
+\end{center}
+
+On représente ici la fenêtre dans l'état de jeu normal: le tour du joueur actuel est indiqué par la pince, ainsi que quelques informations bien visibles au milieu de l'écran (nombre de cartes sûres et dangereuses restantes, et le nombre de tours restants)
+
+\subsection{Choix d'une carte à découper (action du joueur actuel)}
+
+\begin{center}
+    \includegraphics[scale=2]{img/choix_carte_a_defausser.png}
+\end{center}
+
+Cette fenêtre apparait lorsqu'un joueur doit découper une carte (à son tour). Il peut choisir une des cartes affichées pour un certain joueurs ou celles d'un autre joueur en cliquant sur le bouton \textit{choix autre joueur} puis valide avec le bouton \textit{valider choix}. Le nombre de cartes sûres restantes ainsi que celui des cartes dangereuses est affiché en haut afin que le joueur ne perde pas le fil de la partie.
+
+\begin{center}
+    \includegraphics[scale=2]{img/choix_joueur_carte_defausse.png}
+\end{center}
+
+Après que le joueur ait choisit une carte à découper, elle s'affiche sur l'écran pour que tout le monde puisse la voir.
 
 \end{document}
