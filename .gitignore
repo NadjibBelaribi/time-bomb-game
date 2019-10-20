@@ -4,6 +4,7 @@
 
 # Allow specific files with no extension
 !Makefile
+!makefile
 !*/
 
 # ignore specific files
@@ -12,3 +13,4 @@
 *.o
 *.out
 vgcore.*
+*.pro.user
