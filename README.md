@@ -1,6 +1,6 @@
 # Introduction
 
-Ce projet a été réalisé pour le cours d'IHM S5 de l'UFR Math Info à Strasbourg. L'objectif est de reproduire la jeu de cartes Time-Bomb, créé par Yusuke Sato.
+Ce projet a été réalisé pour le cours d'IHM S5 de l'UFR Math Info à Strasbourg. L'objectif est de reproduire le jeu de cartes Time-Bomb, créé par Yusuke Sato.
 
 * Pour en savoir plus sur les règle du jeu, cliquez [ici](time-bomb-rules.pdf).
 * L'énoncé complet de ce projet est disponible [ici](enonce.html).
@@ -9,7 +9,7 @@ Ce projet a été réalisé pour le cours d'IHM S5 de l'UFR Math Info à Strasbo
 
 # License
 
-Ce programme est distribuée sous licence GNU GPLv3.
+Ce programme est distribué sous licence GNU GPLv3.
 
 # Auteurs
 
