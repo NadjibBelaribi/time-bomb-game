@@ -1,14 +1,13 @@
 #include "../headers/Player.h"
 using namespace std;
 
-Player::rolePlayer showRole () {
-
-    return Player::sherlock;
+Player::rolePlayer Player::getRole () {
+    return this->role;
 }
 
-Card * Player::showCards () {
+Card * Player::getCards () {
 
-    return nullptr;
+    return this->cards;
 }
 
 void Player::mixCards () {

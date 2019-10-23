@@ -8,17 +8,17 @@ using namespace std;
 class Player {
 public :
     enum rolePlayer {
-        sherlock,
-        moriarty
+        Sherlock,
+        Moriarty
     };
 
-    rolePlayer showRole ();
-    Card * showCards ();
+    Player (rolePlayer role, Card &cards);
+    rolePlayer getRole ();
+    Card * getCards ();
     void mixCards ();
 
 private :
     Card cards[5];
-    string pseudo;
     rolePlayer role;
 };
 

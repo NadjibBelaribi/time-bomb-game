@@ -7,14 +7,16 @@ using namespace std;
 class Card {
 public :
     enum typeCard {
-        safe,
-        explose,
-        bomb
+        Safe,
+        Explose,
+        Bomb
     };
+    Card ();
+    Card (typeCard type);
+    typeCard getType () const;
 
 private :
     typeCard type;
-    string id;
 };
 
 #endif // CARD_H
