@@ -3,6 +3,11 @@
 
 #include <string>
 #include "Card.h"
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <random>
+
 using namespace std;
 
 class Player {
@@ -12,12 +17,14 @@ public :
         moriarty
     };
 
-    rolePlayer showRole ();
-    Card * showCards ();
+    Player(string pseud,rolePlayer r,vector<Card> cards) ;
+    void showCards ();
     void mixCards ();
+    rolePlayer getRole() ; 
+    void setRole(rolePlayer r) ; 
 
 private :
-    Card cards[5];
+    vector<Card> cards;
     string pseudo;
     rolePlayer role;
 };
