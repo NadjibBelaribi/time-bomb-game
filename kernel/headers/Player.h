@@ -2,12 +2,11 @@
 #define PLAYER_H
 
 #include <string>
-#include "Card.h"
 #include <vector>
 #include <iostream>
 #include <algorithm>
 #include <random>
-
+#include "Card.h"
 using namespace std;
 
 class Player {
@@ -17,17 +16,22 @@ public :
         Moriarty
     };
 
-    Player (string pseudo, rolePlayer role, Card cards[5]);
-    rolePlayer getRole ();
-    Card * getCards ();
-    void mixCards ();
-    rolePlayer getRole() ; 
-    void setRole (rolePlayer role); 
+    Player (const string pseudo, const rolePlayer role, vector <Card> cards) :
+        pseudo(pseudo), role(role), cards(cards) {};
+
+    void del_card (const unsigned ind);
+    bool hasCard (const Card &cd);
+    void delCard (Card &card);
+    void setCards (vector <Card> &cards);
+
+    rolePlayer getRole() const;
+    vector <Card> getCards () const;
 
 private :
-    Card cards[5];
-    string pseudo;
-    rolePlayer role;
+    const string pseudo;
+    const rolePlayer role;
+    vector <Card> cards;
+
 };
 
 #endif // PLAYER_H

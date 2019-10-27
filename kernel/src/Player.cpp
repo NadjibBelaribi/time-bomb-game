@@ -1,29 +1,41 @@
 #include "../headers/Player.h"
 
-using namespace std;
-
-
-Player::Player (string pseudo, Player::rolePlayer role, Card cards[5]) {
-        this->pseudo = pseudo;
-        this->role = role;
-        for (int i = 0; i < 5; i ++) 
-            this->cards[i] = cards[i];
-}
-    
-Card * Player::getCards () {
+vector<Card> Player::getCards () const
+{
     return this->cards;
 }
 
-Player::rolePlayer Player::getRole () {
-
+Player::rolePlayer Player::getRole () const
+{
     return Player::role;
 }
 
-void Player::mixCards () {
-    /* auto rng = default_random_engine {}; */
-    /* shuffle(begin(cards),end(cards), rng); */
+bool Player::hasCard (const Card &card)
+{
+    for (vector<Card>::iterator cd = this->cards.begin(); cd != this->cards.end(); cd ++) {
+        if (card == *cd)
+            return true;
+    }
+
+    return false;
 }
 
-void Player::setRole (rolePlayer role) {
-    this->role = role;
+void Player::delCard (Card &card)
+{
+    for (vector<Card>::iterator it = this->cards.begin(); it != this->cards.end(); it ++) {
+        if (card == *it) {
+            this->cards.erase(it);
+            break;
+        }
+    }
 }
+
+void Player::setCards (vector <Card> &cards)
+{
+    if (cards.empty()) {
+        cerr << "[Warning] setCards: cards is empty" << endl;
+        return;
+    }
+    this->cards = cards;
+}
+

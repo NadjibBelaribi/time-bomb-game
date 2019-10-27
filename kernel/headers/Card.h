@@ -8,11 +8,13 @@ class Card {
 public :
     enum typeCard {
         Safe,
-        Explose,
+        Defusing,
         Bomb
     };
-    Card ();
-    Card (typeCard type);
+
+    Card (const typeCard type) :
+        type(type) {};
+    bool operator== (const Card & other) const;
     typeCard getType () const;
 
 private :

@@ -1,42 +1,43 @@
 #include "../headers/Game.h"
-using namespace std;
 
-Game::Game (size_t nbPlayers)
+Game::Game (const size_t nbPlayers, const string *pseudos)
 {
     if (nbPlayers > 8) {
         cerr << "Players number should be < 8\n";
-        exit(1); 
+        exit(1);
     } else if (nbPlayers < 4) {
         cerr << "Players number should be > 4\n";
         exit(1);
     }
-    size_t nbMoriarty = this->nbMoriarty(nbPlayers);
-    Player::rolePlayer role;
 
-    size_t nbSafeCards = this->nbSafeCards(nbPlayers);
-    size_t nbExploseCards = nbPlayers;
-    size_t nbBombCard = 1;
-    Card cards[5];
-    Card::typeCard randCardType;
-    for (size_t i = 0; i < 5; i ++) {
-        randCardType = this->genRandCardType(nbSafeCards, nbExploseCards, nbBombCard);
-        cards[i] = Card(randCardType);
-    }
+    srand(time(NULL));
+    size_t nbMoriarty = this->initialNbMoriarty(nbPlayers);
+    size_t nbSherlock = nbPlayers - nbMoriarty;
+    size_t nbSafeCards = this->initialNbSafeCards(nbPlayers);
+    size_t nbDefusingCards = nbPlayers;
+    size_t nbBombCards = 1;
+    Player::rolePlayer role;
+        Card::typeCard randCardType;
 
     for (unsigned i = 0; i < nbPlayers; i ++) {
-        if (nbMoriarty > 0) {
-            role = Player::Moriarty;
-            nbMoriarty --;
+        vector<Card> cards;
+        for (unsigned i = 0; i < 5; i ++) {
+            randCardType = this->genRandCardType(nbSafeCards, nbDefusingCards, nbBombCards);
+            cards.push_back(Card(randCardType));
         }
-        else
-            role = Player::Sherlock;
 
-        Player *player = new Player(role, cards);
-        this->players.push_back(*player);
+        role = this->genRandPlayerRole(nbMoriarty, nbSherlock);
+        this->players.push_back(Player(pseudos[i], role, cards));
     }
+
+    this->currentPlayer = &this->players.at(rand() % this->players.size());
+    this->state = Game::Active;
+    this->round = 1;
+    this->nbRoundCardsRevealed = 0;
+    this->nbDefusingCardsRevealed = 0;
 }
 
-size_t Game::nbMoriarty (const size_t nbPlayers) const
+size_t Game::initialNbMoriarty (const size_t nbPlayers) const
 {
     if (nbPlayers >= 7)
         return 3;
@@ -44,24 +45,139 @@ size_t Game::nbMoriarty (const size_t nbPlayers) const
         return 2;
 }
 
-size_t Game::nbSafeCards (const size_t nbPlayers) const
+size_t Game::initialNbSafeCards (const size_t nbPlayers) const
 {
     return 15 + (nbPlayers - 4) * 4;
 }
 
-Card::typeCard Game::genRandCardType (size_t &nbSafeCards, size_t &nbExploseCards, size_t &nbBombCard) const
+Card::typeCard Game::genRandCardType (size_t &nbSafeCards, size_t &nbDefusingCards, size_t &nbBombCards) const
 {
-    const size_t sum = nbSafeCards + nbExploseCards + nbBombCard;
+    const size_t sum = nbSafeCards + nbDefusingCards + nbBombCards;
     const size_t random = rand() % sum + 1;
 
     if (random <= nbSafeCards) {
         nbSafeCards --;
         return Card::Safe;
-    } else if (random <= (nbSafeCards + nbExploseCards)) {
-        nbExploseCards --;
-        return Card::Explose;
+    } else if (random <= (nbSafeCards + nbDefusingCards)) {
+        nbDefusingCards --;
+        return Card::Defusing;
     } else {
-        nbBombCard --;
+        nbBombCards --;
         return Card::Bomb;
     }
+}
+
+Player::rolePlayer Game::genRandPlayerRole (size_t &nbMoriarty, size_t &nbSherlock) const
+{
+    const size_t sum = nbMoriarty + nbSherlock;
+    const size_t random = rand() % sum + 1;
+
+    if (random <= nbMoriarty) {
+        nbMoriarty --;
+        return Player::Moriarty;
+    } else {
+        nbSherlock --;
+        return Player::Sherlock;
+    }
+}
+
+Player * Game::getCurrentPlayer () const
+{
+    return this->currentPlayer;
+}
+
+unsigned Game::getRound () const
+{
+    return this->round;
+}
+
+Game::stateGame Game::getState () const
+{
+    return this->state;
+}
+
+Card::typeCard Game::next (Card &card)
+{
+    Player *cardOwner = this->getPlayerForCard(card);
+    if (cardOwner == nullptr) {
+        cerr << "[Error] next: cardOwner == nullptr" << endl;
+        exit(1);
+    }
+
+    switch (card.getType()) {
+        case Card::Bomb:
+            this->state = Game::MoriartyWin;
+            return Card::Bomb;
+        case Card::Defusing:
+            this->nbDefusingCardsRevealed ++;
+            if (this->nbDefusingCardsRevealed == this->players.size()) {
+                this->state = Game::SherlockWin;
+                return Card::Defusing;
+            }
+            break;
+        default:
+            break;
+    };
+
+    this->nbRoundCardsRevealed ++;
+    if (this->nbRoundCardsRevealed == this->players.size()) {
+        if (this->round == 4) {
+            this->state = Game::MoriartyWin;
+            return card.getType();
+        } else
+            this->nextRound();
+    }
+
+    cardOwner->delCard(card);
+    this->currentPlayer = cardOwner;
+    return card.getType();
+}
+
+void Game::nextRound ()
+{
+    this->round ++;
+    this->nbRoundCardsRevealed = 0;
+
+    // shuffle all cards
+    vector<Card> cards = this->getAllPlayerCards();
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    shuffle(cards.begin(), cards.end(), default_random_engine(seed));
+
+    // redistribution
+    const size_t cardsPerPlayer = cards.size() / this->players.size();
+    unsigned i = 0;
+    vector<Card>::iterator cardIt = cards.begin();
+    for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++, i ++) {
+        vector<Card> newPlayerCards;
+        for (unsigned j = 0; j < cardsPerPlayer; j ++) {
+            newPlayerCards.push_back(*cardIt);
+            cardIt ++;
+        }
+        (*it).setCards(newPlayerCards);
+    }
+}
+
+Player * Game::getPlayerForCard (Card &cd)
+{
+    for (unsigned i = 0, l = this->players.size(); i < l; i ++) {
+        if (this->players.at(i).hasCard(cd))
+            return &this->players.at(i);
+    }
+
+    return nullptr;
+}
+
+vector<Card> Game::getAllPlayerCards ()
+{
+    vector<Card> cards;
+    vector<Card> playerCards;
+
+    for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
+        playerCards = (*it).getCards();
+        for (vector<Card>::iterator it2 = playerCards.begin(); it2 != playerCards.end(); it2 ++)
+                cards.push_back(*it2);
+
+    }
+
+    return cards;
 }

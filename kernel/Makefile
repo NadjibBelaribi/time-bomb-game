@@ -6,7 +6,7 @@ HDS_DIR=headers/
 OBJ_DIR=obj/
 
 $(EXEC): $(OBJ_DIR)$(EXEC).o $(OBJ_DIR)Player.o $(OBJ_DIR)Game.o $(OBJ_DIR)Card.o
-	$(CC) $(CFLAGS) -o $(EXEC) $?
+	$(CC) $(CFLAGS) -o $(EXEC) $^
 
 $(OBJ_DIR)$(EXEC).o: $(SRC_DIR)$(EXEC).cpp
 	$(CC) $(CFLAGS) -c $<
