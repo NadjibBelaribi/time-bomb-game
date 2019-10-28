@@ -17,11 +17,12 @@ Game::Game (const size_t nbPlayers, const string *pseudos)
     size_t nbDefusingCards = nbPlayers;
     size_t nbBombCards = 1;
     Player::rolePlayer role;
-        Card::typeCard randCardType;
+    Card::typeCard randCardType;
+    vector<Card> cards;
 
     for (unsigned i = 0; i < nbPlayers; i ++) {
-        vector<Card> cards;
-        for (unsigned i = 0; i < 5; i ++) {
+        cards.clear();
+        for (unsigned j = 0; j < 5; j ++) {
             randCardType = this->genRandCardType(nbSafeCards, nbDefusingCards, nbBombCards);
             cards.push_back(Card(randCardType));
         }
@@ -81,9 +82,9 @@ Player::rolePlayer Game::genRandPlayerRole (size_t &nbMoriarty, size_t &nbSherlo
     }
 }
 
-Player * Game::getCurrentPlayer () const
+Player & Game::getCurrentPlayer () const
 {
-    return this->currentPlayer;
+    return *this->currentPlayer;
 }
 
 unsigned Game::getRound () const
@@ -96,23 +97,33 @@ Game::stateGame Game::getState () const
     return this->state;
 }
 
-Card::typeCard Game::next (Card &card)
+Card::typeCard Game::next (const Card &card)
 {
+    if (this->state != Game::Active) {
+        cerr << "[Error] next: this->state != Game::Active" << endl;
+        exit(1);
+    }
+
+    const Card::typeCard type = card.getType();
     Player *cardOwner = this->getPlayerForCard(card);
     if (cardOwner == nullptr) {
         cerr << "[Error] next: cardOwner == nullptr" << endl;
         exit(1);
     }
+    if (cardOwner == this->currentPlayer) {
+        cerr << "[Error] next: cardOwner == this->currentPlayer" << endl;
+        exit(1);
+    }
 
-    switch (card.getType()) {
+    switch (type) {
         case Card::Bomb:
             this->state = Game::MoriartyWin;
-            return Card::Bomb;
+            return type;
         case Card::Defusing:
             this->nbDefusingCardsRevealed ++;
             if (this->nbDefusingCardsRevealed == this->players.size()) {
                 this->state = Game::SherlockWin;
-                return Card::Defusing;
+                return type;
             }
             break;
         default:
@@ -123,14 +134,14 @@ Card::typeCard Game::next (Card &card)
     if (this->nbRoundCardsRevealed == this->players.size()) {
         if (this->round == 4) {
             this->state = Game::MoriartyWin;
-            return card.getType();
+            return type;
         } else
             this->nextRound();
     }
 
     cardOwner->delCard(card);
     this->currentPlayer = cardOwner;
-    return card.getType();
+    return type;
 }
 
 void Game::nextRound ()
@@ -139,45 +150,66 @@ void Game::nextRound ()
     this->nbRoundCardsRevealed = 0;
 
     // shuffle all cards
-    vector<Card> cards = this->getAllPlayerCards();
+    vector<Card *> cards = this->getAllPlayerCards();
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
     shuffle(cards.begin(), cards.end(), default_random_engine(seed));
 
     // redistribution
     const size_t cardsPerPlayer = cards.size() / this->players.size();
     unsigned i = 0;
-    vector<Card>::iterator cardIt = cards.begin();
+    vector<Card *>::iterator cardIt = cards.begin();
     for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++, i ++) {
         vector<Card> newPlayerCards;
         for (unsigned j = 0; j < cardsPerPlayer; j ++) {
-            newPlayerCards.push_back(*cardIt);
+            newPlayerCards.push_back(**cardIt);
             cardIt ++;
         }
         (*it).setCards(newPlayerCards);
     }
 }
 
-Player * Game::getPlayerForCard (Card &cd)
+Player * Game::getPlayerForCard (const Card &card)
 {
-    for (unsigned i = 0, l = this->players.size(); i < l; i ++) {
-        if (this->players.at(i).hasCard(cd))
-            return &this->players.at(i);
+    for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
+        if ((*it).hasCard(card))
+            return &(*it);
     }
 
     return nullptr;
 }
 
-vector<Card> Game::getAllPlayerCards ()
+vector<Card *> Game::getAllPlayerCards ()
 {
-    vector<Card> cards;
+    vector<Card *> cards;
     vector<Card> playerCards;
 
     for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
-        playerCards = (*it).getCards();
+        vector<Card> & playerCards = (*it).getCards();
         for (vector<Card>::iterator it2 = playerCards.begin(); it2 != playerCards.end(); it2 ++)
-                cards.push_back(*it2);
+            cards.push_back(&(*it2));
 
     }
 
     return cards;
+}
+
+vector<Player *> Game::getPlayersForRevealingCard ()
+{
+    vector<Player *> players;
+    for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
+        if ((&(*it) == this->currentPlayer) || ((*it).getCards().size() <= 0))
+            continue;
+        players.push_back(&(*it));
+    }
+    return players;
+}
+
+size_t Game::getNbDefusingCardsRevealed () const
+{
+    return this->nbDefusingCardsRevealed;
+}
+
+vector<Player> & Game::getPlayers ()
+{
+    return this->players;
 }

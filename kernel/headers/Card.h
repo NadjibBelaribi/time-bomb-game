@@ -1,7 +1,7 @@
 #ifndef CARD_H
 #define CARD_H
 
-#include <string>
+#include <iostream>
 using namespace std;
 
 class Card {
@@ -14,7 +14,6 @@ public :
 
     Card (const typeCard type) :
         type(type) {};
-    bool operator== (const Card & other) const;
     typeCard getType () const;
 
 private :

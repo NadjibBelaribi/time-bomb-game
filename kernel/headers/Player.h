@@ -20,12 +20,13 @@ public :
         pseudo(pseudo), role(role), cards(cards) {};
 
     void del_card (const unsigned ind);
-    bool hasCard (const Card &cd);
-    void delCard (Card &card);
+    bool hasCard (const Card &card);
+    void delCard (const Card &card);
     void setCards (vector <Card> &cards);
 
     rolePlayer getRole() const;
-    vector <Card> getCards () const;
+    vector <Card> & getCards ();
+    string getPseudo () const;
 
 private :
     const string pseudo;

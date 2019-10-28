@@ -9,7 +9,8 @@
 #include "Player.h"
 using namespace std;
 
-class Game {
+class Game
+{
 public :
     enum stateGame {
         Active,
@@ -18,16 +19,18 @@ public :
     };
 
     Game (const size_t nbPlayers, const string * const pseudos);
-    ~Game ();
-    Card::typeCard next (Card &cd);
+    Card::typeCard next (const Card & card);
 
-    Player * getCurrentPlayer () const;
+    Player & getCurrentPlayer () const;
     unsigned getRound () const;
     stateGame getState () const;
-    Player * getPlayerForCard (Card &cd);
+    Player * getPlayerForCard (const Card &card);
+    vector<Player *> getPlayersForRevealingCard ();
+    size_t getNbDefusingCardsRevealed () const;
+    vector<Player> & getPlayers ();
 
 private :
-    vector <Player> players;
+    vector<Player> players;
     Player * currentPlayer;
     size_t nbDefusingCardsRevealed;
     size_t nbRoundCardsRevealed;
@@ -39,7 +42,7 @@ private :
     size_t initialNbSafeCards (const size_t nbPlayers) const;
     Card::typeCard genRandCardType (size_t &nbSafeCards, size_t &nbExploseCards, size_t &nbBombCard) const;
     Player::rolePlayer genRandPlayerRole (size_t &nbMoriarty, size_t &nbSherlock) const;
-    vector<Card> getAllPlayerCards ();
+    vector<Card *> getAllPlayerCards ();
 
 };
 
