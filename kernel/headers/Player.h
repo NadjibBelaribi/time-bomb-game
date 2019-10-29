@@ -22,16 +22,16 @@ public :
     void del_card (const unsigned ind);
     bool hasCard (const Card &card);
     void delCard (const Card &card);
-    void setCards (vector <Card> &cards);
+    void setCards (vector<Card> &cards);
 
     rolePlayer getRole() const;
-    vector <Card> & getCards ();
+    vector<Card> & getCards ();
     string getPseudo () const;
 
 private :
     const string pseudo;
     const rolePlayer role;
-    vector <Card> cards;
+    vector<Card> cards;
 
 };
 

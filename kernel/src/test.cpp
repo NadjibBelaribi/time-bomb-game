@@ -10,7 +10,7 @@ using namespace std;
 #define COL_YELLOW "\x1B[33m"
 
 Card & askForCard (Game &game);
-void printBeginMess (const Game &game);
+void printBeginMess (const Game &game, const size_t nbPlayers);
 void printCardRevealed (const Card::typeCard &type);
 void printEndTeams (Game &game);
 
@@ -27,10 +27,10 @@ int main (int argc, char **argv) {
 
     Game game = Game(nbPlayers, pseudos);
     Game::stateGame state;
-    cout << COL_YELLOW " === DEBUT DU JEU === (" << nbPlayers << " joueurs)" COL_NORMAL << endl;
+    cout << COL_YELLOW " === TIME BOMB - DEBUT DU JEU === (" << nbPlayers << " joueurs)" COL_NORMAL << endl;
 
     do {
-        printBeginMess(game);
+        printBeginMess(game, nbPlayers);
         printCardRevealed(game.next(askForCard(game)));
     } while ((state = game.getState()) == Game::Active);
 
@@ -40,7 +40,7 @@ int main (int argc, char **argv) {
         cout << COL_CYAN "\nEND - Sherlock team wins !" COL_NORMAL << endl;
 
     printEndTeams(game);
-    cout << COL_YELLOW " === FIN DU JEU === " COL_NORMAL << endl;
+    cout << COL_YELLOW " !===! FIN DU JEU !===! " COL_NORMAL << endl;
     return 0;
 }
 
@@ -81,9 +81,9 @@ Card & askForCard (Game &game) // SANS LE JOUEUR DU TOUR ACTUEL
     return cards.at(i - 1);
 }
 
-void printBeginMess (const Game &game)
+void printBeginMess (const Game &game, const size_t nbPlayers)
 {
-    cout << "\nROUND " << COL_YELLOW << game.getRound() << COL_NORMAL << ", NB DEFUSING FOUND: " COL_CYAN << game.getNbDefusingCardsRevealed() << COL_NORMAL "\nTour de: " << COL_YELLOW << game.getCurrentPlayer().getPseudo() << COL_NORMAL << " !" << endl;
+    cout << "\nROUND " << COL_YELLOW << game.getRound() << "/" << nbPlayers << COL_NORMAL << ", NB DEFUSING FOUND: " COL_CYAN << game.getNbDefusingCardsRevealed() << "/" << nbPlayers << COL_NORMAL "\nTour de: " << COL_YELLOW << game.getCurrentPlayer().getPseudo() << COL_NORMAL << " !" << endl;
 }
 
 void printCardRevealed (const Card::typeCard &type)

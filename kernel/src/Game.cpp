@@ -184,7 +184,7 @@ vector<Card *> Game::getAllPlayerCards ()
     vector<Card> playerCards;
 
     for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
-        vector<Card> & playerCards = (*it).getCards();
+        vector<Card> &playerCards = (*it).getCards();
         for (vector<Card>::iterator it2 = playerCards.begin(); it2 != playerCards.end(); it2 ++)
             cards.push_back(&(*it2));
 

@@ -30,7 +30,7 @@ void Player::delCard (const Card &card)
     }
 }
 
-void Player::setCards (vector <Card> &cards)
+void Player::setCards (vector<Card> &cards)
 {
     if (cards.empty()) {
         cerr << "[Warning] setCards: cards is empty" << endl;
