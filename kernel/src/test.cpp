@@ -63,6 +63,10 @@ Card & askForCard (Game &game) // SANS LE JOUEUR DU TOUR ACTUEL
             cout << COL_RED "Numéro incorrect. Réessayez: " COL_NORMAL;
         first = false;
         cin >> i;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     } while ((i < 1) || (i > nbPlayers));
 
     Player *player = players.at(i - 1);
@@ -76,6 +80,10 @@ Card & askForCard (Game &game) // SANS LE JOUEUR DU TOUR ACTUEL
             cout << COL_RED "Numéro incorrect. Réessayez: " COL_NORMAL;
         first = false;
         cin >> i;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
     } while ((i < 1) || (i > nbCards));
 
     return cards.at(i - 1);
@@ -83,7 +91,7 @@ Card & askForCard (Game &game) // SANS LE JOUEUR DU TOUR ACTUEL
 
 void printBeginMess (const Game &game, const size_t nbPlayers)
 {
-    cout << "\nROUND " << COL_YELLOW << game.getRound() << "/" << nbPlayers << COL_NORMAL << ", NB DEFUSING FOUND: " COL_CYAN << game.getNbDefusingCardsRevealed() << "/" << nbPlayers << COL_NORMAL "\nTour de: " << COL_YELLOW << game.getCurrentPlayer().getPseudo() << COL_NORMAL << " !" << endl;
+    cout << "\nROUND " << COL_YELLOW << game.getRound() << "/4" << COL_NORMAL << ", NB DEFUSING FOUND: " COL_CYAN << game.getNbDefusingCardsRevealed() << "/" << nbPlayers << COL_NORMAL "\nTour de: " << COL_YELLOW << game.getCurrentPlayer().getPseudo() << COL_NORMAL << " !" << endl;
 }
 
 void printCardRevealed (const Card::typeCard &type)
