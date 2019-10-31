@@ -22,12 +22,12 @@ private slots:
 
     void on_letsPlay_clicked();
 
-    vector <QString> getPseudo();
+    std::vector <QString> getPseudo();
 
 private:
     Ui::options *ui;
-    vector <QLineEdit*> hello;
-    vector <QString> pseudos;
+    std::vector <QLineEdit*> hello;
+    std::vector <QString> pseudos;
 };
 
 #endif // OPTIONS_H

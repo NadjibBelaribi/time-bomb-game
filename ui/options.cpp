@@ -1,7 +1,7 @@
 #include "options.h"
 #include "ui_options.h"
 #include <QLineEdit>
-#include "board.h"
+#include "table.h"
 #include <QDebug>
 
 options::options(QWidget *parent) :
@@ -46,12 +46,12 @@ void options::on_letsPlay_clicked()
       pseudos.push_back(tmp);
       qDebug() << pseudos.at(i);
     }
-    board *b = new board;
-    b->show();
-    this->window()->close();
+     Table *b = new Table(NULL,this->pseudos);
+      b->show();
+      this->window()->close();
 }
 
-vector <QString>options::getPseudo()
+std::vector <QString>options::getPseudo()
 {
     return this->pseudos;
 }

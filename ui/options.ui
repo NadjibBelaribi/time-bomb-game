@@ -76,8 +76,8 @@ border-radius:10px;</string>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>140</y>
+     <x>70</x>
+     <y>110</y>
      <width>281</width>
      <height>271</height>
     </rect>

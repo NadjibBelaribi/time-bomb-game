@@ -9,7 +9,6 @@
 #include <QMessageBox>
 #include <string.h>
 #include <QDebug>
-#include "Game.h"
 #include <unistd.h>
 #include <QPixmap>
 #include <QVector>
