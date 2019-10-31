@@ -14,3 +14,5 @@
 *.out
 vgcore.*
 *.pro.user
+*.a
+*.so
