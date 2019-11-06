@@ -1,6 +1,9 @@
 #ifndef __GSOCKET_H__
 #define __GSOCKET_H__
 
+#define GSDATA_MAX 4096
+#define PSEUDO_MAX 32
+
 #include <iostream>
 #include <cstdlib>
 #include <unistd.h>
@@ -14,13 +17,18 @@
 #include "../../kernel/headers/Card.h"
 using namespace std;
 
-#define HREQ_INIT 1
-#define HREQ_TOUR 2
-#define CRES_TOUR 3
-
 class GSocket
 {
 public:
+    enum gsdataReq {
+        // host
+        HreqPlay = 0,
+        HreqEnd,
+        // client
+        CreqJoin,
+        CresPlay
+    };
+
     enum stateGS {
         Waiting,
         Playing,
@@ -28,31 +36,33 @@ public:
         Error
     };
 
-    GSocket (const string pseudo, const size_t nbPlayers, const in_port_t port); // HOST constructor
-    GSocket (const string pseudo, const unsigned char * const addr, const in_port_t port);
-    Card::typeCard next (); // ask game->currentPlayer to choose a card, and wait for his reply
+    typedef struct {
+        unsigned char addr[16];
+        in_port_t port;
+        gsdataReq req;
+        unsigned char data[GSDATA_MAX];
+        size_t dataLen;
+    } gsdata;
 
     stateGS getState () const;
     int getError () const;
 
-private:
+protected:
     stateGS state;
     string pseudo;
-    Game game; // only for HOST
-    size_t nbPlayers; // only for HOST
-    unsigned char addr[16]; // only for CLIENT
-    in_port_t port;
     int sck;
     int error;
 
+    GSocket ();
     void putError ();
     bool sckCreate ();
-    bool sckBind ();
     bool sckAccept ();
-    ssize_t sckSend (const void *data, const size_t len) const;
-    ssize_t sckRecv (void * const data, const size_t size) const;
+    ssize_t sckSend (const void *data, const size_t len, const struct sockaddr_in6 &saddr);
+    ssize_t sckRecv (void * const data, const size_t size, struct sockaddr_in6 &saddr);
 
-    void * parse (const void * const data) const;
+    gsdata * parse (const void * const data, const size_t len, const struct sockaddr_in6 &saddr) const;
+    gsdata * sckWait ();
+    bool sendReq (const gsdataReq req, const char *str, const unsigned char *addr, const in_port_t port);
     bool end ();
 };
 
