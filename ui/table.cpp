@@ -3,6 +3,7 @@
 #include "ui_table.h"
 #include "options.h"
 #include "cards.h"
+#include "../kernel/headers/Game.h"
 
 Table::Table(QWidget *parent,std::vector <QString> pseudos) :
     QWidget(parent),
@@ -20,7 +21,6 @@ Table::Table(QWidget *parent,std::vector <QString> pseudos) :
          ui->positions->addWidget(but, 0, i);
 
      }
-
 }
 
 void Table::showPCards() {

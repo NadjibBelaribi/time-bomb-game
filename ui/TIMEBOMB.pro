@@ -35,7 +35,8 @@ HEADERS += \
         mainwindow.h \
     options.h \
     table.h \
-    cards.h
+    cards.h \
+    ../kernel/obj/kernel.a
 
 FORMS += \
         mainwindow.ui \
