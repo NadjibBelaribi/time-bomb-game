@@ -1,6 +1,6 @@
 #include "../headers/Game.h"
 
-Game::Game (const size_t nbPlayers, const string *pseudos)
+Game::Game (const size_t nbPlayers, const string * const pseudos)
 {
     if (nbPlayers > 8) {
         cerr << "Players number should be < 8\n";
