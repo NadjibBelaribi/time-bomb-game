@@ -3,7 +3,6 @@
 #include "ui_table.h"
 #include "options.h"
 
-
 Table::Table(QWidget *parent,std::vector <QString> pseudos) :
     QWidget(parent),
     ui(new Ui::Table)
@@ -112,6 +111,3 @@ void Table::on_backOptions_clicked()
     o->show();
     this->window()->close();
 }
-
-
-
