@@ -29,13 +29,21 @@ SOURCES += \
         mainwindow.cpp \
     options.cpp \
     table.cpp \
-    cards.cpp
+    kernel/Card.cpp \
+    kernel/Player.cpp \
+    kernel/Game.cpp
+
+
 
 HEADERS += \
         mainwindow.h \
     options.h \
     table.h \
-    cards.h
+    ../kernel/Card.h \
+    ../kernel/Player.h \
+    ../kernel/Game.h
+
+
 
 FORMS += \
         mainwindow.ui \

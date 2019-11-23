@@ -1,4 +1,4 @@
-#include "../headers/Player.h"
+#include "Player.h"
 
 vector<Card> & Player::getCards ()
 {

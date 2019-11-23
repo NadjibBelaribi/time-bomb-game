@@ -18,7 +18,7 @@ public :
         SherlockWin
     };
 
-    Game (const size_t nbPlayers, const string * const pseudos);
+    Game (const size_t nbPlayers, const string * pseudos);
     Card::typeCard next (const Card &card);
 
     Player & getCurrentPlayer () const;

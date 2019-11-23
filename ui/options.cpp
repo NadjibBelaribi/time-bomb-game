@@ -44,8 +44,7 @@ void options::on_letsPlay_clicked()
     {
       QString tmp = hello.at(i)->text();
       pseudos.push_back(tmp);
-      qDebug() << pseudos.at(i);
-    }
+     }
      Table *b = new Table(NULL,this->pseudos);
       b->show();
       this->window()->close();

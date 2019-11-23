@@ -1,4 +1,4 @@
-#include "../headers/Game.h"
+#include "Game.h"
 
 Game::Game (const size_t nbPlayers, const string *pseudos)
 {
@@ -213,3 +213,4 @@ vector<Player> & Game::getPlayers ()
 {
     return this->players;
 }
+
