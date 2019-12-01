@@ -2,17 +2,13 @@
 #define __HOST_H__
 
 #include "GSocket.h"
-#include "../../kernel/headers/Game.h"
-#include "../../kernel/headers/Card.h"
-#include "../../kernel/headers/Player.h"
 
 class Host : public GSocket
 {
 public:
-    Host (const string pseudo, const size_t nbClients, const in_port_t port, void (*gameCallback) (const gstate &gst), void (*tchatCallback) (const vector<gmess> &tchat);
+    Host (const string pseudo, const size_t nbClients, const in_port_t port, void (*gameCallback) (gstate &gst), void (*tchatCallback) (const gmess &mess));
     ~Host ();
-
-    Card::typeCard next (ssize_t cardN);
+    void gameNext (const string &cardPlayer, const uint8_t &cardNum);
 
 private:
     typedef struct {
@@ -28,15 +24,15 @@ private:
     size_t nbClients;
     in_port_t port;
 
-    bool sckBind ();
-    bool sckListen ();
-    bool sckAccept ();
+    void sckBind ();
+    void sckListen ();
+    void sckAccept ();
 
     client &findClient (int sck) const;
     void thread_wait (const int sck);
     void addTchatMess (const gmess &mess);
-    void gameNext (const string &cardPlayer, const uint8_t &cardNum);
-    bool sync ();
+    void sync ();
+    void startGame ();
 };
 
 #endif

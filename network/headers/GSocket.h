@@ -4,6 +4,7 @@
 #define GSDATA_MAX 4096
 #define PSEUDO_MAX 32
 
+#include <sstream>
 #include <iostream>
 #include <cstdlib>
 #include <unistd.h>
@@ -17,6 +18,7 @@
 #include <semaphore.h>
 #include <thread>
 #include "../../kernel/headers/Game.h"
+#include "../../kernel/headers/Player.h"
 #include "../../kernel/headers/Card.h"
 using namespace std;
 
@@ -29,6 +31,7 @@ public:
         HreqEnd, // fin de partie
         HresJoin, // si client la recoit: il est dans le jeu, sinon NON
         HreqSync, // actualiser l'état du jeu aux clients
+        HreqTchat, // envoie un mess de tchat au client
         // client
         CreqJoin, // envoyer apres acceptation du connect TCP pour jouer
         CresPlay, // données de tour de client
@@ -38,8 +41,7 @@ public:
     enum stateGS {
         Waiting,
         Playing,
-        End,
-        Error
+        End
     };
 
     typedef struct {
@@ -60,10 +62,14 @@ public:
         string currentPlayer;
         Game::stateGame gameState;
         Card::typeCard lastCardRevealed;
+        uint8_t round;
+        vector<uint8_t> playersNbCards;
+        uint8_t nbDefusingFound;
     } gstate;
 
     stateGS getState () const;
     int getError () const;
+    string & getPseudo ();
 
 protected:
     stateGS state;
@@ -71,22 +77,22 @@ protected:
     int sck;
     int error;
     vector<gmess> tchat;
-    void (*gameCallback) (const gstate &gst);
-    void (*tchatCallback) (const vector<gmess> &tchat);
+    void (*gameCallback) (gstate &gst);
+    void (*tchatCallback) (const gmess &mess);
     gstate gst;
     sem_t sem;
 
     GSocket ();
-    void putError ();
-    bool sckCreate ();
-    bool sckAccept ();
+    void sckCreate ();
+    void sckAccept ();
     ssize_t sckSend (const int sck, const void *data, const size_t len);
     ssize_t sckRecv (const int sck, void * const data, const size_t size);
 
     gsdata * parse (const void * const data, const size_t len) const;
     gsdata * sckWait (const int sck);
-    bool sendReq (const gsdataReq req, const char *str, const int sck);
-    bool end ();
+    void sendReq (const gsdataReq req, const char *str, const int sck);
+    void end ();
+    vector<string> split (const string &s, char del);
 };
 
 #endif
