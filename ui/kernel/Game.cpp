@@ -214,3 +214,14 @@ vector<Player> & Game::getPlayers ()
     return this->players;
 }
 
+Player *Game::getPlayer(size_t i)
+{
+    size_t j;
+    for (j = 0; j < this->getPlayers().size(); j++)
+    {
+        if (i == j)
+            return &this->getPlayers().at(i);
+    }
+    return nullptr;
+}
+

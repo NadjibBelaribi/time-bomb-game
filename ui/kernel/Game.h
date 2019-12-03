@@ -28,6 +28,7 @@ public :
     vector<Player *> getPlayersForRevealingCard ();
     size_t getNbDefusingCardsRevealed () const;
     vector<Player> & getPlayers ();
+    Player *getPlayer(size_t i);
 
 private :
     vector<Player> players;

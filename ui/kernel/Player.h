@@ -27,6 +27,7 @@ public :
     rolePlayer getRole() const;
     vector<Card> & getCards ();
     string getPseudo () const;
+    Card *getCard(size_t i);
 
 private :
     const string pseudo;
