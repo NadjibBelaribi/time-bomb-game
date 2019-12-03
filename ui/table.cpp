@@ -72,7 +72,7 @@ void Table::showPCards() {
     }
 
     size_t i ;
-    char * mm;
+    string mm;
     for (i = 0; i < p->getCards().size(); i++)
     {
        QPushButton *but = new QPushButton();
@@ -89,20 +89,17 @@ void Table::showPCards() {
                     mm = "Bomb";
                     break;
             }
-         but->setText(QString(mm)) ;
+         but->setText(QString::fromStdString(mm)) ;
         ui->cards_positions->addWidget(but, 0, i);
 
     }
 }
 
 
-
 Table::~Table()
 {
     delete ui;
 }
-
-
 
 
 void Table::on_backOptions_clicked()

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>imgs/wall_accueil.jpg</file>
+        <file>imgs/button.jpg</file>
+    </qresource>
+</RCC>
