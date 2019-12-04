@@ -201,13 +201,55 @@ void MainWindow::hideCards()
     ui->role->hide();
 }
 
+void MainWindow::hideWithoutI(size_t i)
+{
+    switch (i)
+    {
+        case 1:
+            ui->card2->hide();
+            ui->card3->hide();
+            ui->card4->hide();
+            ui->card5->hide();
+        break;
+
+        case 2:
+            ui->card1->hide();
+            ui->card3->hide();
+            ui->card4->hide();
+            ui->card5->hide();
+        break;
+
+        case 3:
+            ui->card1->hide();
+            ui->card2->hide();
+            ui->card4->hide();
+            ui->card5->hide();
+        break;
+
+        case 4:
+            ui->card1->hide();
+            ui->card2->hide();
+            ui->card3->hide();
+            ui->card5->hide();
+        break;
+
+        case 5:
+            ui->card1->hide();
+            ui->card2->hide();
+            ui->card3->hide();
+            ui->card4->hide();
+        break;
+    }
+    ui->role->hide();
+}
+
 
 void MainWindow::keep ()
 {
     if((indc != -1) && (indp !=-1))
     {
         printCardRevealed(game->next(indp,indc));
-        hideCards();
+        hideWithoutI(static_cast<size_t>(indc));
         blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
         indc = -1 ;
