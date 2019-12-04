@@ -3,10 +3,10 @@
 Game::Game (const size_t nbPlayers, const string * const pseudos)
 {
     if (nbPlayers > 8) {
-        cerr << "Players number should be < 8\n";
+        cerr << "Players number should be <= 8\n";
         exit(1);
     } else if (nbPlayers < 4) {
-        cerr << "Players number should be > 4\n";
+        cerr << "Players number should be >= 4\n";
         exit(1);
     }
 
@@ -130,7 +130,10 @@ Card::typeCard Game::next (const Card &card)
             break;
     };
 
+    cardOwner->delCard(card);
+    this->currentPlayer = cardOwner;
     this->nbRoundCardsRevealed ++;
+
     if (this->nbRoundCardsRevealed == this->players.size()) {
         if (this->round == 4) {
             this->state = Game::MoriartyWin;
@@ -139,8 +142,6 @@ Card::typeCard Game::next (const Card &card)
             this->nextRound();
     }
 
-    cardOwner->delCard(card);
-    this->currentPlayer = cardOwner;
     return type;
 }
 

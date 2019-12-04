@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-#include "../headers/Game.h"
+#include "../../kernel/headers/Game.h"
 using namespace std;
 
 #define COL_NORMAL "\x1B[0m"
