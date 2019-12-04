@@ -9,12 +9,35 @@ Host::Host (const string pseudo, const size_t nbClients, const in_port_t port, v
     this->gameCallback = gameCallback;
     this->tchatCallback = tchatCallback;
 
+    if (sem_init(&this->sem, 0, 1) == -1) {
+        perror("sem_init");
+        exit(1);
+    }
+
     this->sckCreate();
     this->sckBind();
     this->sckListen();
 
-    for (size_t i = 0; i < nbClients; i ++)
+    if (fcntl(this->sck, F_SETFL, O_NONBLOCK) == -1) {
+        perror("fcntl");
+        exit(1);
+    }
+
+    while (this->clients.size() < this->nbClients) {
+        sleep(0.1);
         this->sckAccept();
+    }
+
+
+    if (sem_wait(&this->sem) == -1) {
+        perror("sem_wait");
+        exit(1);
+    }
+    this->startGame();
+    if (sem_post(&this->sem) == -1) {
+        perror("sem_post");
+        exit(1);
+    }
 }
 
 void Host::sckBind ()
@@ -45,6 +68,8 @@ void Host::sckAccept ()
     socklen_t saddrLen = sizeof(saddr);
     int newSck = accept(this->sck, (struct sockaddr *) &saddr, &saddrLen);
     if (newSck == -1) {
+        if ((errno == EAGAIN) || (errno == EWOULDBLOCK))
+            return;
         perror("newSck");
         exit(1);
     }
@@ -57,38 +82,44 @@ void Host::sckAccept ()
 
 void Host::thread_wait (const int sck)
 {
+    gsdata *gsd = nullptr;
     string *pseudo = nullptr;
     while (1) {
-        gsdata *gsd = this->sckWait(sck);
-        if (!gsd)
-            return;
+        while ((gsd = this->sckWait(sck)) == nullptr);
         if ((pseudo == nullptr) && (this->clients.size() >= this->nbClients)) {
             close(sck);
             return;
         }
 
+        if (sem_wait(&this->sem) == -1) {
+            perror("sem_wait");
+            exit(1);
+        }
         if ((pseudo == nullptr) && (gsd->req == CreqJoin)) {
-            cout << "CREQ JOIN" << endl;
             // data <= pseudo
             pseudo = new string((const char *) gsd->data, gsd->dataLen);
+            if (this->pseudoExists(*pseudo)) {
+                cerr << "Pseudo already exists: " << *pseudo << ", skipping it" << endl;
+                if (sem_post(&this->sem) == -1) {
+                    perror("sem_post");
+                    exit(1);
+                }
+                close(sck);
+                return;
+            }
             client cl;
             cl.pseudo = *pseudo;
             cl.sck = sck;
-            cout << "pseudo = " << *pseudo << endl;
             this->clients.push_back(cl);
-            if (this->clients.size() >= nbClients)
-                this->startGame();
+            this->gst.oPlayers.push_back(*pseudo);
         } else if (gsd->req == CreqTchat) {
-            cout << "CREQ  TCHAT" << endl;
             // data <= message
             gmess mess;
             mess.player = *pseudo;
             mess.mess = string((const char *) gsd->data, gsd->dataLen);
             mess.time = time(nullptr);
-
             this->addTchatMess(mess);
         } else if (gsd->req == CresPlay) {
-            cout << "CRES  PLAY" << endl;
             // data <= <playerPseudo>:<cardNum>
             const string data((const char *) gsd->data, gsd->dataLen);
             vector<string> vec = this->split(data, ':');
@@ -96,34 +127,32 @@ void Host::thread_wait (const int sck)
             uint8_t cardNum = stoi(vec.at(1));
             this->gameNext(target, cardNum);
         }
+
+        if (sem_post(&this->sem) == -1) {
+            perror("sem_post");
+            exit(1);
+        }
     }
 }
 
 void Host::addTchatMess (const Host::gmess &mess)
 {
-    if (sem_wait(&this->sem) == -1) {
-        perror("sem_wait");
-        exit(1);
-    }
-
     this->tchat.push_back(mess);
     this->tchatCallback(mess);
+    // send mess: <pseudo>:<message>
+    string data (mess.player);
+    data.push_back(':');
+    data.append(mess.mess);
 
-    if (sem_post(&this->sem) == -1) {
-        perror("sem_post");
-        exit(1);
-    }
+    for (vector<client>::iterator it = this->clients.begin(); it != this->clients.end(); it ++)
+        this->sendReq(HreqTchat, data.c_str(), (*it).sck);
 }
 
 void Host::gameNext (const string &cardPlayer, const uint8_t &cardNum)
 {
-    if (sem_wait(&this->sem) == -1) {
-        perror("sem_wait");
-        exit(1);
-    }
-
     Player *player = nullptr;
-    for (vector<Player>::iterator it = this->game->getPlayers().begin(); it != this->game->getPlayers().end(); it ++) {
+    vector<Player> &players = this->game->getPlayers();
+    for (vector<Player>::iterator it = players.begin(); it != players.end(); it ++) {
         if ((*it).getPseudo() == cardPlayer) {
             player = &(*it);
             break;
@@ -141,41 +170,34 @@ void Host::gameNext (const string &cardPlayer, const uint8_t &cardNum)
     }
 
     Card &card = player->getCards().at(cardNum);
-    this->game->next(card);
+    this->gst.lastCardRevealed = this->game->next(card);
     this->gst.currentPlayer = this->game->getCurrentPlayer().getPseudo();
     this->gst.gameState = this->game->getState();
-    this->gst.lastCardRevealed = card.getType();
+    this->gst.round = this->game->getRound();
+    this->gst.nbDefusingFound = this->game->getNbDefusingCardsRevealed();
 
-    if (this->gst.lastCardRevealed == Card::Defusing)
-        this->gst.nbDefusingFound ++;
-
-    if (this->gst.round < this->game->getRound()) {
-        this->gst.round = this->game->getRound();
-        for (vector<uint8_t>::iterator it = this->gst.playersNbCards.begin(); it != this->gst.playersNbCards.end(); it ++)
-            (*it) = 6 - this->gst.round;
-    } else {
-        unsigned i = 0;
-        for (vector<string>::iterator it = this->gst.players.begin(); it != this->gst.players.end(); it ++, i ++) {
-            if ((*it) == this->gst.currentPlayer) {
-                this->gst.playersNbCards.at(i) --;
-                break;
+    unsigned i;
+    for (vector<Player>::iterator it = players.begin(); it != players.end(); it ++) {
+        if ((*it).getPseudo() == this->gst.pseudo)
+            this->gst.nbCards = (*it).getCards().size();
+        else {
+            i = 0;
+            for (vector<string>::iterator it2 = this->gst.oPlayers.begin(); it2 != this->gst.oPlayers.end(); it2 ++, i ++) {
+                if ((*it).getPseudo() == *it2)
+                    this->gst.oNbCards.at(i) = (*it).getCards().size();
             }
         }
     }
 
+    this->gst.cards = this->playerTypeCardsRandOrder(this->gst.pseudo);
     // call callback
     sync();
     this->gameCallback(this->gst);
-
-    if (sem_post(&this->sem) == -1) {
-        perror("sem_post");
-        exit(1);
-    }
 }
 
 void Host::sync ()
 {
-    // message: <gameState>:<currentPlayer>:<lastCardRevealed>:<round>
+    // message: <gameState>:<currentPlayer>:<lastCardRevealed>:<round>:<card1Player>:...
     string str = "";
     str.append(to_string(this->gst.gameState));
     str.push_back(':');
@@ -184,39 +206,114 @@ void Host::sync ()
     str.append(to_string(this->gst.lastCardRevealed));
     str.push_back(':');
     str.append(to_string(this->gst.round));
-    const char *cStr = str.c_str();
 
-    for (vector<client>::iterator it = this->clients.begin(); it != this->clients.end(); it ++)
-        this->sendReq(HreqSync, cStr, (*it).sck);
+    for (vector<client>::iterator it = this->clients.begin(); it != this->clients.end(); it ++) {
+        // rajouter les cartes du joueur
+        string clientStr (str);
+        vector<Card::typeCard> cards = this->playerTypeCardsRandOrder((*it).pseudo);
+        for (vector<Card::typeCard>::iterator it2 = cards.begin(); it2 != cards.end(); it2 ++) {
+            clientStr.push_back(':');
+            clientStr.append(to_string(*it2));
+        }
+
+        this->sendReq(HreqSync, clientStr.c_str(), (*it).sck);
+    }
 }
 
 void Host::startGame ()
 {
-    cout << "STARRTGAME" << endl;
-    string *pseudosArr = new string[this->clients.size() + 1];
+    string *pseudosArr = new string[this->gst.oPlayers.size() + 1];
     string pseudos = ""; // <pseudo1>:<pseudo2>:...:<pseudoN>
-    bool first = true;
     size_t i = 0;
-    for (vector<client>::iterator it = this->clients.begin(); it != this->clients.end(); it ++, i ++) {
-        if (!first)
-            pseudos.push_back(':');
-        first = false;
-        pseudos.append((*it).pseudo);
-        pseudosArr[i] = (*it).pseudo;
+    for (vector<string>::iterator it = this->gst.oPlayers.begin(); it != this->gst.oPlayers.end(); it ++, i ++) {
+        pseudos.append(*it);
+        pseudos.push_back(':');
+        pseudosArr[i] = (*it);
     }
 
     // ajouter mon pseudo
     pseudos.append(this->pseudo);
     pseudosArr[i ++] = this->pseudo;
+    // i => index de MOI
 
-    // send pseudos to clients
-    for (vector<client>::iterator it = this->clients.begin(); it != this->clients.end(); it ++)
-        this->sendReq(HreqStart, pseudos.c_str(), (*it).sck);
-
-    // start this->game
+    // start this->game and init gst
     this->game = new Game(i, pseudosArr);
     this->state = Playing;
     this->gst.currentPlayer = this->game->getCurrentPlayer().getPseudo();
+    this->gst.round = this->game->getRound();
+    this->gst.gameState = this->game->getState();
+    this->gst.nbDefusingFound = this->game->getNbDefusingCardsRevealed();
+    this->gst.lastCardRevealed = Card::Safe; // juste pour ne pas faire geuler valgrind mdr
+
+    // prepare mess for network and continue init gst
+    this->gst.pseudo = this->pseudo;
+    this->gst.nbCards = 5;
+    this->gst.cards = this->playerTypeCardsRandOrder(this->gst.pseudo);
+    vector<Player> &players = this->game->getPlayers();
+    unsigned j = 0;
+    string startMess (to_string(i));
+    startMess.push_back(':');
+    startMess.append(pseudos);
+
+    for (vector<string>::iterator it = this->gst.oPlayers.begin(); it != this->gst.oPlayers.end(); it ++, j ++) {
+        this->gst.oNbCards.push_back(5);
+        for (vector<Player>::iterator it2 = players.begin(); it2 != players.end(); it2 ++) {
+            if ((j == 0) && ((*it2).getPseudo() == this->pseudo))
+                this->gst.role = (*it2).getRole();
+
+            if (*it != (*it2).getPseudo())
+                continue;
+            startMess.push_back(':');
+            startMess.append(to_string((*it2).getRole()));
+            this->gst.oRoles.push_back((*it2).getRole());
+        }
+    }
+
+    startMess.push_back(':');
+    startMess.append(to_string(this->gst.role));
+
+    // send start infos to clients
+    // startMess = <nb_players>:<pseudo1>:...:<role1>:...
+    for (vector<client>::iterator it = this->clients.begin(); it != this->clients.end(); it ++)
+        this->sendReq(HreqStart, startMess.c_str(), (*it).sck);
+
+    // sync + callback
     sync();
+    new thread(&Host::gcWorkaround, this);
+}
+
+void Host::gcWorkaround ()
+{
     this->gameCallback(this->gst);
+}
+
+bool Host::pseudoExists (const string &pseudo)
+{
+    if (pseudo == this->pseudo)
+        return true;
+    for (vector<string>::iterator it = this->gst.oPlayers.begin(); it != this->gst.oPlayers.end(); it ++) {
+        if (pseudo == *it)
+            return true;
+    }
+
+    return false;
+}
+
+vector<Card::typeCard> Host::playerTypeCardsRandOrder (const string &pseudo)
+{
+    vector<Card::typeCard> cards;
+    vector<Player> &players = this->game->getPlayers();
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+
+    for (vector<Player>::iterator it = players.begin(); it != players.end(); it ++) {
+        if ((*it).getPseudo() != pseudo)
+            continue;
+        vector<Card> cardsCopy = (*it).getCards();
+        shuffle(cardsCopy.begin(), cardsCopy.end(), default_random_engine(seed));
+        for (vector<Card>::iterator it2 = cardsCopy.begin(); it2 != cardsCopy.end(); it2 ++)
+            cards.push_back((*it2).getType());
+        break;
+    }
+
+    return cards;
 }

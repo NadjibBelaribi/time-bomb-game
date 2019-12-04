@@ -33,6 +33,9 @@ private:
     void addTchatMess (const gmess &mess);
     void sync ();
     void startGame ();
+    bool pseudoExists (const string &pseudo);
+    vector<Card::typeCard> playerTypeCardsRandOrder (const string &pseudo);
+    void gcWorkaround ();
 };
 
 #endif

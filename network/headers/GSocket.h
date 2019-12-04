@@ -17,6 +17,7 @@
 #include <time.h>
 #include <semaphore.h>
 #include <thread>
+#include <fcntl.h>
 #include "../../kernel/headers/Game.h"
 #include "../../kernel/headers/Player.h"
 #include "../../kernel/headers/Card.h"
@@ -58,13 +59,22 @@ public:
     } gmess;
 
     typedef struct {
-        vector<string> players;
+        // transitent sur le reseau
         string currentPlayer;
         Game::stateGame gameState;
         Card::typeCard lastCardRevealed;
         uint8_t round;
-        vector<uint8_t> playersNbCards;
+        // ne transitent pas à chaque fois sur le reseau
         uint8_t nbDefusingFound;
+        // pour MOI
+        string pseudo;
+        Player::rolePlayer role;
+        uint8_t nbCards;
+        vector<Card::typeCard> cards;
+        // autres joueurs
+        vector<string> oPlayers;
+        vector<Player::rolePlayer> oRoles;
+        vector<uint8_t> oNbCards;
     } gstate;
 
     stateGS getState () const;

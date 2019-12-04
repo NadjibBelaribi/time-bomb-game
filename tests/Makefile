@@ -1,4 +1,4 @@
-CC=g++
+CC=g++ -g
 CFLAGS=-Wall -Wextra -Werror -pthread
 EXEC_LOCAL=local
 EXEC_NETWORK=network

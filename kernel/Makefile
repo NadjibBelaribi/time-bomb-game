@@ -1,4 +1,4 @@
-CC=g++
+CC=g++ -g
 CFLAGS=-Wall -Wextra -Werror
 SRC_DIR=src/
 HDS_DIR=headers/
