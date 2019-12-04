@@ -42,6 +42,8 @@ public:
 
     string type2str(Player p);
 
+    void hideWithoutI(size_t i);
+
     size_t getCpt();
 
     std::vector <QString> getPseudo();
