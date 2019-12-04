@@ -175,13 +175,13 @@ public:
         player5->setGeometry(QRect(440, 270, 89, 151));
         player6 = new QPushButton(board);
         player6->setObjectName(QStringLiteral("player6"));
-        player6->setGeometry(QRect(550, 270, 89, 151));
+        player6->setGeometry(QRect(540, 270, 89, 151));
         player7 = new QPushButton(board);
         player7->setObjectName(QStringLiteral("player7"));
-        player7->setGeometry(QRect(660, 270, 89, 151));
+        player7->setGeometry(QRect(640, 270, 89, 151));
         player8 = new QPushButton(board);
         player8->setObjectName(QStringLiteral("player8"));
-        player8->setGeometry(QRect(760, 270, 89, 151));
+        player8->setGeometry(QRect(740, 270, 89, 151));
         card1 = new QPushButton(board);
         card1->setObjectName(QStringLiteral("card1"));
         card1->setGeometry(QRect(360, 80, 89, 151));
@@ -231,6 +231,9 @@ public:
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
+
+        menu->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi

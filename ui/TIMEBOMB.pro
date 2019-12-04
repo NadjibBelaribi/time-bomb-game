@@ -29,8 +29,7 @@ SOURCES += \
         mainwindow.cpp \
     kernel/Card.cpp \
     kernel/Player.cpp \
-    kernel/Game.cpp \
-    board.cpp
+    kernel/Game.cpp
 
 
 
@@ -38,8 +37,7 @@ HEADERS += \
         mainwindow.h \
     kernel/Card.h \
     kernel/Player.h \
-    kernel/Game.h \
-    board.h
+    kernel/Game.h
 
 
 

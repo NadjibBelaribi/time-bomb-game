@@ -58,6 +58,8 @@ public:
 
     void printCardRevealed (const Card::typeCard &type);
 
+    void blockPlayerCourant (Player p);
+
 private slots:
     void on_pushButton_clicked();
 

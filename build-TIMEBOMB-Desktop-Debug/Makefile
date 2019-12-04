@@ -54,19 +54,15 @@ SOURCES       = ../ui/main.cpp \
 		../ui/mainwindow.cpp \
 		../ui/kernel/Card.cpp \
 		../ui/kernel/Player.cpp \
-		../ui/kernel/Game.cpp \
-		../ui/board.cpp qrc_ressources.cpp \
-		moc_mainwindow.cpp \
-		moc_board.cpp
+		../ui/kernel/Game.cpp qrc_ressources.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		Card.o \
 		Player.o \
 		Game.o \
-		board.o \
 		qrc_ressources.o \
-		moc_mainwindow.o \
-		moc_board.o
+		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -144,13 +140,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../ui/TIMEBOMB.pro ../ui/mainwindow.h \
 		../ui/kernel/Card.h \
 		../ui/kernel/Player.h \
-		../ui/kernel/Game.h \
-		../ui/board.h ../ui/main.cpp \
+		../ui/kernel/Game.h ../ui/main.cpp \
 		../ui/mainwindow.cpp \
 		../ui/kernel/Card.cpp \
 		../ui/kernel/Player.cpp \
-		../ui/kernel/Game.cpp \
-		../ui/board.cpp
+		../ui/kernel/Game.cpp
 QMAKE_TARGET  = TIMEBOMB
 DESTDIR       = 
 TARGET        = TIMEBOMB
@@ -337,8 +331,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../ui/ressources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ui/mainwindow.h ../ui/kernel/Card.h ../ui/kernel/Player.h ../ui/kernel/Game.h ../ui/board.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ui/main.cpp ../ui/mainwindow.cpp ../ui/kernel/Card.cpp ../ui/kernel/Player.cpp ../ui/kernel/Game.cpp ../ui/board.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ui/mainwindow.h ../ui/kernel/Card.h ../ui/kernel/Player.h ../ui/kernel/Game.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ui/main.cpp ../ui/mainwindow.cpp ../ui/kernel/Card.cpp ../ui/kernel/Player.cpp ../ui/kernel/Game.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ui/mainwindow.ui $(DISTDIR)/
 
 
@@ -378,9 +372,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_board.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_board.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../ui/kernel/Game.h \
 		../ui/kernel/Card.h \
 		../ui/kernel/Player.h \
@@ -388,14 +382,6 @@ moc_mainwindow.cpp: ../ui/kernel/Game.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/d/de/delkabir/Documents/IHM/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
-
-moc_board.cpp: ../ui/kernel/Game.h \
-		../ui/kernel/Card.h \
-		../ui/kernel/Player.h \
-		../ui/board.h \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/d/de/delkabir/Documents/IHM/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/board.h -o moc_board.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -443,23 +429,11 @@ Game.o: ../ui/kernel/Game.cpp ../ui/kernel/Game.h \
 		../ui/kernel/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o ../ui/kernel/Game.cpp
 
-board.o: ../ui/board.cpp ../ui/board.h \
-		../ui/kernel/Game.h \
-		../ui/kernel/Card.h \
-		../ui/kernel/Player.h \
-		../ui/options.h \
-		../ui/mainwindow.h \
-		ui_board.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o board.o ../ui/board.cpp
-
 qrc_ressources.o: qrc_ressources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_ressources.o qrc_ressources.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_board.o: moc_board.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_board.o moc_board.cpp
 
 ####### Install
 

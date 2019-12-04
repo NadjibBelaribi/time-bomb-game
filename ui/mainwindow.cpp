@@ -207,6 +207,8 @@ void MainWindow::keep ()
     if((indc != -1) && (indp !=-1))
     {
         printCardRevealed(game->next(indp,indc));
+        hideCards();
+        blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
         indc = -1 ;
     }
@@ -357,6 +359,7 @@ void MainWindow::on_backOptions_clicked()
     hideCards();
     if (this->getCpt() >= game->getPlayers().size())
         printBeginMess();
+    blockPlayerCourant(game->getCurrentPlayer());
 }
 
 
@@ -581,4 +584,54 @@ void MainWindow::on_card1_clicked()
 {
     indc = 1 ;
      keep() ;
+}
+
+void MainWindow::blockPlayerCourant (Player p)
+{
+
+        ui->player1->setEnabled(true);
+        ui->player2->setEnabled(true);
+         ui->player3->setEnabled(true);
+         ui->player4->setEnabled(true);
+         ui->player5->setEnabled(true);
+         ui->player6->setEnabled(true);
+         ui->player7->setEnabled(true);
+         ui->player8->setEnabled(true);
+         int cour = -1 ;
+         for(int i = 0 ; i<game->getPlayers().size() && cour == -1;i++)
+         {
+             if(p.getPseudo() == game->getPlayers().at(i).getPseudo())
+             {
+                cour = i ;
+             }
+         }
+         switch (cour+1) {
+         case 1 :
+                ui->player1->setEnabled(false);
+          break;
+         case 2 :
+                ui->player2->setEnabled(false);
+          break;
+         case 3 :
+             ui->player3->setEnabled(false);
+       break;
+         case 4 :
+             ui->player4->setEnabled(false);
+       break;
+         case 5 :
+             ui->player5->setEnabled(false);
+       break;
+         case 6 :
+             ui->player6->setEnabled(false);
+       break;
+         case 7 :
+             ui->player7->setEnabled(false);
+       break;
+         case 8 :
+             ui->player8->setEnabled(false);
+       break;
+
+         }
+
+
 }
