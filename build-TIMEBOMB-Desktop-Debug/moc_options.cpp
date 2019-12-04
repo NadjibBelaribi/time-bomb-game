@@ -80,9 +80,6 @@ void options::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         options *_t = static_cast<options *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_backToMenu_clicked(); break;
-        case 1: _t->on_validPlayer_clicked(); break;
-        case 2: _t->on_letsPlay_clicked(); break;
         case 3: { std::vector<QString> _r = _t->getPseudo();
             if (_a[0]) *reinterpret_cast< std::vector<QString>*>(_a[0]) = std::move(_r); }  break;
         default: ;

@@ -27,7 +27,6 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    options.cpp \
     kernel/Card.cpp \
     kernel/Player.cpp \
     kernel/Game.cpp \
@@ -37,7 +36,6 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    options.h \
     kernel/Card.h \
     kernel/Player.h \
     kernel/Game.h \
@@ -46,10 +44,7 @@ HEADERS += \
 
 
 FORMS += \
-        mainwindow.ui \
-    options.ui \
-    cards.ui \
-    board.ui
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

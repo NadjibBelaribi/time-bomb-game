@@ -121,6 +121,7 @@ void Board::keep ()
     }
 
 }
+
 void Board::printCardRevealed (const Card::typeCard &type)
 {
     cout << "La carte révélée est: ";
@@ -160,6 +161,7 @@ string Board::type2str(Player p)
          }
          return ms ;
 }
+
 string Board::typec2str(Card c)
 {
 string mm;
@@ -180,6 +182,7 @@ string mm;
     }
     return mm ;
 }
+
 void Board::on_player1_clicked()
 {
     Player p = game->getPlayers().at(0) ;
