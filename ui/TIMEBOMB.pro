@@ -28,28 +28,28 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     options.cpp \
-    table.cpp \
     kernel/Card.cpp \
     kernel/Player.cpp \
-    kernel/Game.cpp
+    kernel/Game.cpp \
+    board.cpp
 
 
 
 HEADERS += \
         mainwindow.h \
     options.h \
-    table.h \
-    ../kernel/Card.h \
-    ../kernel/Player.h \
-    ../kernel/Game.h
+    kernel/Card.h \
+    kernel/Player.h \
+    kernel/Game.h \
+    board.h
 
 
 
 FORMS += \
         mainwindow.ui \
     options.ui \
-    table.ui \
-    cards.ui
+    cards.ui \
+    board.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

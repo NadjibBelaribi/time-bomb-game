@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+     ui->setupUi(this);
 }
 
 MainWindow::~MainWindow()
@@ -17,8 +17,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     options *o = new options;
-    o->show();
-    this->window()->close();
+    o->showNormal();
+     this->window()->close();
 }
 
 void MainWindow::on_leaveButton_clicked()

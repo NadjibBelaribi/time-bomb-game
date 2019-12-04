@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = TIMEBOMB1.0.0
-DISTDIR = /home/nadjib/Desktop/time-bomb/build-TIMEBOMB-Desktop-Debug/.tmp/TIMEBOMB1.0.0
+DISTDIR = /adhome/n/nb/nbelaribi/Bureau/time-bomb/build-TIMEBOMB-Desktop-Debug/.tmp/TIMEBOMB1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -53,22 +53,24 @@ OBJECTS_DIR   = ./
 SOURCES       = ../ui/main.cpp \
 		../ui/mainwindow.cpp \
 		../ui/options.cpp \
-		../ui/table.cpp \
 		../ui/kernel/Card.cpp \
 		../ui/kernel/Player.cpp \
-		../ui/kernel/Game.cpp moc_mainwindow.cpp \
+		../ui/kernel/Game.cpp \
+		../ui/board.cpp qrc_ressources.cpp \
+		moc_mainwindow.cpp \
 		moc_options.cpp \
-		moc_table.cpp
+		moc_board.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		options.o \
-		table.o \
 		Card.o \
 		Player.o \
 		Game.o \
+		board.o \
+		qrc_ressources.o \
 		moc_mainwindow.o \
 		moc_options.o \
-		moc_table.o
+		moc_board.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -99,29 +101,15 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimedia.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri \
@@ -159,16 +147,16 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../ui/TIMEBOMB.pro ../ui/mainwindow.h \
 		../ui/options.h \
-		../ui/table.h \
-		../kernel/Card.h \
-		../kernel/Player.h \
-		../kernel/Game.h ../ui/main.cpp \
+		../ui/kernel/Card.h \
+		../ui/kernel/Player.h \
+		../ui/kernel/Game.h \
+		../ui/board.h ../ui/main.cpp \
 		../ui/mainwindow.cpp \
 		../ui/options.cpp \
-		../ui/table.cpp \
 		../ui/kernel/Card.cpp \
 		../ui/kernel/Player.cpp \
-		../ui/kernel/Game.cpp
+		../ui/kernel/Game.cpp \
+		../ui/board.cpp
 QMAKE_TARGET  = TIMEBOMB
 DESTDIR       = 
 TARGET        = TIMEBOMB
@@ -177,7 +165,7 @@ TARGET        = TIMEBOMB
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_options.h ui_table.h ui_cards.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_options.h ui_cards.h ui_board.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../ui/TIMEBOMB.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -210,29 +198,15 @@ Makefile: ../ui/TIMEBOMB.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qma
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimedia.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri \
@@ -269,6 +243,7 @@ Makefile: ../ui/TIMEBOMB.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qma
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../ui/TIMEBOMB.pro \
+		../ui/ressources.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
@@ -303,29 +278,15 @@ Makefile: ../ui/TIMEBOMB.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qma
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimedia.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_openglextensions_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_packetprotocol_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_platformcompositor_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_printsupport_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qml_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmldebug_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmldevtools_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_qmltest_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quick_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickparticles_private.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets.pri:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_quickwidgets_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_service_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_sql_private.pri:
@@ -362,6 +323,7 @@ Makefile: ../ui/TIMEBOMB.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/qma
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../ui/TIMEBOMB.pro:
+../ui/ressources.qrc:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
@@ -379,10 +341,11 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../ui/ressources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ui/mainwindow.h ../ui/options.h ../ui/table.h ../kernel/Card.h ../kernel/Player.h ../kernel/Game.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../ui/main.cpp ../ui/mainwindow.cpp ../ui/options.cpp ../ui/table.cpp ../ui/kernel/Card.cpp ../ui/kernel/Player.cpp ../ui/kernel/Game.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../ui/mainwindow.ui ../ui/options.ui ../ui/table.ui ../ui/cards.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../ui/mainwindow.h ../ui/options.h ../ui/kernel/Card.h ../ui/kernel/Player.h ../ui/kernel/Game.h ../ui/board.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ui/main.cpp ../ui/mainwindow.cpp ../ui/options.cpp ../ui/kernel/Card.cpp ../ui/kernel/Player.cpp ../ui/kernel/Game.cpp ../ui/board.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../ui/mainwindow.ui ../ui/options.ui ../ui/cards.ui ../ui/board.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -406,42 +369,48 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_ressources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_ressources.cpp
+qrc_ressources.cpp: ../ui/ressources.qrc \
+		/usr/lib/qt5/bin/rcc \
+		../ui/imgs/button.jpg \
+		../ui/imgs/wall_accueil.jpg
+	/usr/lib/qt5/bin/rcc -name ressources ../ui/ressources.qrc -o qrc_ressources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_options.cpp moc_table.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_options.cpp moc_board.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_options.cpp moc_table.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_options.cpp moc_board.cpp
 moc_mainwindow.cpp: ../ui/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nadjib/Desktop/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/n/nb/nbelaribi/Bureau/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
 
 moc_options.cpp: ../ui/mainwindow.h \
 		../ui/options.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nadjib/Desktop/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/options.h -o moc_options.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/n/nb/nbelaribi/Bureau/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/options.h -o moc_options.cpp
 
-moc_table.cpp: ../ui/mainwindow.h \
-		../kernel/headers/Game.h \
-		../kernel/headers/Card.h \
-		../kernel/headers/Player.h \
-		../ui/table.h \
+moc_board.cpp: ../ui/kernel/Game.h \
+		../ui/kernel/Card.h \
+		../ui/kernel/Player.h \
+		../ui/board.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/nadjib/Desktop/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/table.h -o moc_table.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/n/nb/nbelaribi/Bureau/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/board.h -o moc_board.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_options.h ui_table.h ui_cards.h
+compiler_uic_make_all: ui_mainwindow.h ui_options.h ui_cards.h ui_board.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_options.h ui_table.h ui_cards.h
+	-$(DEL_FILE) ui_mainwindow.h ui_options.h ui_cards.h ui_board.h
 ui_mainwindow.h: ../ui/mainwindow.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../ui/mainwindow.ui -o ui_mainwindow.h
@@ -450,13 +419,13 @@ ui_options.h: ../ui/options.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../ui/options.ui -o ui_options.h
 
-ui_table.h: ../ui/table.ui \
-		/usr/lib/qt5/bin/uic
-	/usr/lib/qt5/bin/uic ../ui/table.ui -o ui_table.h
-
 ui_cards.h: ../ui/cards.ui \
 		/usr/lib/qt5/bin/uic
 	/usr/lib/qt5/bin/uic ../ui/cards.ui -o ui_cards.h
+
+ui_board.h: ../ui/board.ui \
+		/usr/lib/qt5/bin/uic
+	/usr/lib/qt5/bin/uic ../ui/board.ui -o ui_board.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -464,7 +433,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -480,20 +449,11 @@ mainwindow.o: ../ui/mainwindow.cpp ../ui/mainwindow.h \
 options.o: ../ui/options.cpp ../ui/options.h \
 		../ui/mainwindow.h \
 		ui_options.h \
-		../ui/table.h \
-		../kernel/headers/Game.h \
-		../kernel/headers/Card.h \
-		../kernel/headers/Player.h
+		../ui/board.h \
+		../ui/kernel/Game.h \
+		../ui/kernel/Card.h \
+		../ui/kernel/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o options.o ../ui/options.cpp
-
-table.o: ../ui/table.cpp ../ui/table.h \
-		../ui/mainwindow.h \
-		../kernel/headers/Game.h \
-		../kernel/headers/Card.h \
-		../kernel/headers/Player.h \
-		ui_table.h \
-		../ui/options.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o table.o ../ui/table.cpp
 
 Card.o: ../ui/kernel/Card.cpp ../ui/kernel/Card.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Card.o ../ui/kernel/Card.cpp
@@ -507,14 +467,26 @@ Game.o: ../ui/kernel/Game.cpp ../ui/kernel/Game.h \
 		../ui/kernel/Player.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Game.o ../ui/kernel/Game.cpp
 
+board.o: ../ui/board.cpp ../ui/board.h \
+		../ui/kernel/Game.h \
+		../ui/kernel/Card.h \
+		../ui/kernel/Player.h \
+		../ui/options.h \
+		../ui/mainwindow.h \
+		ui_board.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o board.o ../ui/board.cpp
+
+qrc_ressources.o: qrc_ressources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_ressources.o qrc_ressources.cpp
+
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
 moc_options.o: moc_options.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_options.o moc_options.cpp
 
-moc_table.o: moc_table.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_table.o moc_table.cpp
+moc_board.o: moc_board.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_board.o moc_board.cpp
 
 ####### Install
 

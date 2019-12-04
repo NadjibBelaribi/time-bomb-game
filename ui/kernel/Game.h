@@ -26,6 +26,7 @@ public :
     stateGame getState () const;
     Player * getPlayerForCard (const Card &card);
     vector<Player *> getPlayersForRevealingCard ();
+    Card::typeCard next (int indp ,int indc) ;
     size_t getNbDefusingCardsRevealed () const;
     vector<Player> & getPlayers ();
     Player *getPlayer(size_t i);

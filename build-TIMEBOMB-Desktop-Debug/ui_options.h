@@ -24,10 +24,10 @@ QT_BEGIN_NAMESPACE
 class Ui_options
 {
 public:
+    QGridLayout *gridLayout;
     QPushButton *backToMenu;
     QSpinBox *spinBox;
     QPushButton *validPlayer;
-    QWidget *gridLayoutWidget;
     QGridLayout *gridPseudo;
     QPushButton *letsPlay;
 
@@ -36,40 +36,55 @@ public:
         if (options->objectName().isEmpty())
             options->setObjectName(QStringLiteral("options"));
         options->resize(640, 480);
-        options->setStyleSheet(QStringLiteral("background-color:rgb(186, 189, 182)"));
+        options->setStyleSheet(QLatin1String("\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"	background-image:none;\n"
+"}\n"
+""));
+        gridLayout = new QGridLayout(options);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         backToMenu = new QPushButton(options);
         backToMenu->setObjectName(QStringLiteral("backToMenu"));
-        backToMenu->setGeometry(QRect(20, 20, 161, 61));
         backToMenu->setStyleSheet(QLatin1String("font-size:30px;\n"
 "color:black;\n"
 "background-color:rgb(92, 53, 102);\n"
 "border-radius:10px;"));
+
+        gridLayout->addWidget(backToMenu, 0, 0, 1, 1);
+
         spinBox = new QSpinBox(options);
         spinBox->setObjectName(QStringLiteral("spinBox"));
-        spinBox->setGeometry(QRect(270, 20, 91, 61));
         spinBox->setStyleSheet(QStringLiteral("font-size:40px;"));
         spinBox->setMinimum(4);
         spinBox->setMaximum(8);
+
+        gridLayout->addWidget(spinBox, 0, 1, 1, 1);
+
         validPlayer = new QPushButton(options);
         validPlayer->setObjectName(QStringLiteral("validPlayer"));
-        validPlayer->setGeometry(QRect(400, 20, 141, 61));
         validPlayer->setStyleSheet(QLatin1String("font-size:30px;\n"
 "color:black;\n"
 "background-color:rgb(115, 210, 22);\n"
 "border-radius:10px;"));
-        gridLayoutWidget = new QWidget(options);
-        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(70, 110, 281, 271));
-        gridPseudo = new QGridLayout(gridLayoutWidget);
+
+        gridLayout->addWidget(validPlayer, 0, 2, 1, 1);
+
+        gridPseudo = new QGridLayout();
         gridPseudo->setObjectName(QStringLiteral("gridPseudo"));
-        gridPseudo->setContentsMargins(0, 0, 0, 0);
+
+        gridLayout->addLayout(gridPseudo, 1, 0, 1, 2);
+
         letsPlay = new QPushButton(options);
         letsPlay->setObjectName(QStringLiteral("letsPlay"));
-        letsPlay->setGeometry(QRect(430, 330, 151, 81));
         letsPlay->setStyleSheet(QLatin1String("font-size:30px;\n"
 "color:black;\n"
 "border-radius: 10px;\n"
 "background-color:rgb(244, 160, 160)"));
+
+        gridLayout->addWidget(letsPlay, 1, 2, 1, 1);
+
 
         retranslateUi(options);
 

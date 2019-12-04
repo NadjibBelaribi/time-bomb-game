@@ -1,7 +1,7 @@
 #include "options.h"
 #include "ui_options.h"
 #include <QLineEdit>
-#include "table.h"
+#include "board.h"
 #include <QDebug>
 
 options::options(QWidget *parent) :
@@ -19,7 +19,7 @@ options::~options()
 void options::on_backToMenu_clicked()
 {
    MainWindow *m = new MainWindow;
-   m->show();
+   m->showNormal();
    this->window()->close();
 }
 
@@ -45,8 +45,8 @@ void options::on_letsPlay_clicked()
       QString tmp = hello.at(i)->text();
       pseudos.push_back(tmp);
      }
-     Table *b = new Table(NULL,this->pseudos);
-      b->show();
+     Board *b = new Board(NULL,pseudos);
+      b->showNormal();
       this->window()->close();
 }
 

@@ -16,7 +16,7 @@ void Table::startGame( std::vector <QString> psds ) {
 
     const size_t nbPlayers= psds.size() ;
      string * pseudos = new string[nbPlayers];
-    size_t i ;
+    size_t i,j ;
 
     for (i = 0; i < nbPlayers ; i++)
     {
@@ -31,6 +31,23 @@ void Table::startGame( std::vector <QString> psds ) {
         but->setFixedSize(100,140);
         but->setText(QString::fromStdString(pseudos[i]));
         this->p = game.getPlayer(i);
+        string mm;
+        for (j = 0; j < p->getCards().size(); j)
+        {
+             Card* c = p->getCard(j);
+            switch(c->getType()){
+                     case Card::Safe:
+                        mm = "Safe";
+                        break;
+                    case Card::Defusing:
+                        mm = "Defusing";
+                        break;
+                    case Card::Bomb:
+                        mm = "Bomb";
+                        break;
+                }
+            cout << mm << endl  ;
+     }
         this->r = game.getRound();
         QObject::connect(but,SIGNAL(clicked()),this,SLOT(showPCards())) ;
         ui->players_positions->addWidget(but, 0, i);

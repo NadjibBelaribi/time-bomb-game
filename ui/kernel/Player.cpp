@@ -25,6 +25,7 @@ void Player::delCard (const Card &card)
     for (vector<Card>::iterator it = this->cards.begin(); it != this->cards.end(); it ++) {
         if (&card == &(*it)) {
             this->cards.erase(it);
+            cout << this->cards.size();
             break;
         }
     }
