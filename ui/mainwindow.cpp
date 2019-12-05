@@ -264,8 +264,7 @@ void MainWindow::keep ()
     if((indc != -1) && (indp !=-1))
     {
         printCardRevealed(game->next(indp,indc));
-        //hideWithoutI(static_cast<size_t>(indc));
-        hideCards();
+        hideWithoutI(static_cast<size_t>(indc));
         blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
         indc = -1 ;
@@ -616,30 +615,40 @@ void MainWindow::on_player2_clicked()
 
 void MainWindow::on_card5_clicked()
 {
+    if (this->getCpt() < game->getPlayers().size())
+       return;
     indc = 5;
      keep() ;
 }
 
 void MainWindow::on_card4_clicked()
 {
+    if (this->getCpt() < game->getPlayers().size())
+       return;
     indc = 4;
      keep() ;
 }
 
 void MainWindow::on_card3_clicked()
 {
+    if (this->getCpt() < game->getPlayers().size())
+       return;
     indc = 3;
      keep() ;
 }
 
 void MainWindow::on_card2_clicked()
 {
+    if (this->getCpt() < game->getPlayers().size())
+       return;
     indc = 2;
      keep() ;
 }
 
 void MainWindow::on_card1_clicked()
 {
+    if (this->getCpt() < game->getPlayers().size())
+       return;
     indc = 1;
      keep() ;
 }

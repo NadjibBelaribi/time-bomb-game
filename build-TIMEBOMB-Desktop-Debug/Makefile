@@ -362,8 +362,22 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_ressources.cpp
 qrc_ressources.cpp: ../ui/ressources.qrc \
 		/usr/lib/qt5/bin/rcc \
+		../ui/imgs/tb3.png \
+		../ui/imgs/tb13.png \
+		../ui/imgs/tb7.png \
+		../ui/imgs/tb2.png \
+		../ui/imgs/tb12.png \
+		../ui/imgs/tb6.png \
 		../ui/imgs/button.jpg \
-		../ui/imgs/wall_accueil.jpg
+		../ui/imgs/tb1.png \
+		../ui/imgs/tb11.png \
+		../ui/imgs/tb5.png \
+		../ui/imgs/tb9.png \
+		../ui/imgs/tb10.png \
+		../ui/imgs/wall_accueil.jpg \
+		../ui/imgs/tb4.png \
+		../ui/imgs/tb14.png \
+		../ui/imgs/tb8.png
 	/usr/lib/qt5/bin/rcc -name ressources ../ui/ressources.qrc -o qrc_ressources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -417,10 +431,11 @@ mainwindow.o: ../ui/mainwindow.cpp ../ui/mainwindow.h \
 		../ui/options.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ui/mainwindow.cpp
 
-Card.o: ../ui/kernel/Card.cpp 
+Card.o: ../ui/kernel/Card.cpp ../ui/kernel/Card.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Card.o ../ui/kernel/Card.cpp
 
-Player.o: ../ui/kernel/Player.cpp 
+Player.o: ../ui/kernel/Player.cpp ../ui/kernel/Player.h \
+		../ui/kernel/Card.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Player.o ../ui/kernel/Player.cpp
 
 Game.o: ../ui/kernel/Game.cpp ../ui/kernel/Game.h \

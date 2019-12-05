@@ -65,9 +65,6 @@ public:
     void blockPlayerCourant (Player p);
 
 private slots:
-    void on_pushButton_clicked();
-
-    void on_leaveButton_clicked();
 
     void on_playB_clicked();
 
