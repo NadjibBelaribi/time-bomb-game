@@ -203,7 +203,7 @@ public:
         textBrowser_3->setGeometry(QRect(680, 0, 121, 31));
         horizontalLayoutWidget = new QWidget(board);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(50, 360, 801, 161));
+        horizontalLayoutWidget->setGeometry(QRect(10, 360, 844, 202));
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -211,11 +211,12 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         player1 = new QPushButton(horizontalLayoutWidget);
         player1->setObjectName(QStringLiteral("player1"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
         player1->setSizePolicy(sizePolicy);
+        player1->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player1);
 
@@ -223,6 +224,7 @@ public:
         player2->setObjectName(QStringLiteral("player2"));
         sizePolicy.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
         player2->setSizePolicy(sizePolicy);
+        player2->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player2);
 
@@ -230,6 +232,7 @@ public:
         player3->setObjectName(QStringLiteral("player3"));
         sizePolicy.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
         player3->setSizePolicy(sizePolicy);
+        player3->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player3);
 
@@ -237,6 +240,7 @@ public:
         player4->setObjectName(QStringLiteral("player4"));
         sizePolicy.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
         player4->setSizePolicy(sizePolicy);
+        player4->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player4);
 
@@ -244,6 +248,7 @@ public:
         player5->setObjectName(QStringLiteral("player5"));
         sizePolicy.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
         player5->setSizePolicy(sizePolicy);
+        player5->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player5);
 
@@ -251,6 +256,7 @@ public:
         player6->setObjectName(QStringLiteral("player6"));
         sizePolicy.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
         player6->setSizePolicy(sizePolicy);
+        player6->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player6);
 
@@ -258,6 +264,7 @@ public:
         player7->setObjectName(QStringLiteral("player7"));
         sizePolicy.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
         player7->setSizePolicy(sizePolicy);
+        player7->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player7);
 
@@ -265,6 +272,7 @@ public:
         player8->setObjectName(QStringLiteral("player8"));
         sizePolicy.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
         player8->setSizePolicy(sizePolicy);
+        player8->setMinimumSize(QSize(100, 170));
 
         horizontalLayout->addWidget(player8);
 
@@ -279,7 +287,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(3);
+        menu->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

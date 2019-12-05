@@ -39,7 +39,7 @@ QPushButton
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="start">
        <widget class="QWidget" name="verticalLayoutWidget">
@@ -357,20 +357,26 @@ p, li { white-space: pre-wrap; }
        <widget class="QWidget" name="horizontalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>10</x>
           <y>360</y>
-          <width>801</width>
-          <height>161</height>
+          <width>844</width>
+          <height>202</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="QPushButton" name="player1">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -380,10 +386,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player2">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -393,10 +405,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player3">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -406,10 +424,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player4">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -419,10 +443,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player5">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -432,10 +462,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player6">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -445,10 +481,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player7">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
@@ -458,10 +500,16 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QPushButton" name="player8">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>170</height>
+            </size>
            </property>
            <property name="text">
             <string/>
