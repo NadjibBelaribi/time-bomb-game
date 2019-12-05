@@ -131,6 +131,7 @@ Card::typeCard Game::next (const Card &card)
     };
 
     cardOwner->delCard(card);
+    cout << card.getType();
     this->currentPlayer = cardOwner;
     this->nbRoundCardsRevealed ++;
 
@@ -151,21 +152,20 @@ void Game::nextRound ()
     this->nbRoundCardsRevealed = 0;
 
     // shuffle all cards
-    vector<Card *> cards = this->getAllPlayerCards();
+    vector<Card> cards = this->getAllPlayerCards();
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
     shuffle(cards.begin(), cards.end(), default_random_engine(seed));
-
-    // redistribution
     const size_t cardsPerPlayer = cards.size() / this->players.size();
-    unsigned i = 0;
-    vector<Card *>::iterator cardIt = cards.begin();
-    for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++, i ++) {
-        vector<Card> newPlayerCards;
+
+    unsigned indCard = 0;
+    vector<Card> newPlayerCards;
+    for (unsigned i = 0; i < this->players.size(); i ++) {
+        newPlayerCards.clear();
         for (unsigned j = 0; j < cardsPerPlayer; j ++) {
-            newPlayerCards.push_back(**cardIt);
-            cardIt ++;
+            newPlayerCards.push_back(cards.at(indCard));
+            indCard ++;
         }
-        (*it).setCards(newPlayerCards);
+        this->players.at(i).setCards(newPlayerCards);
     }
 }
 
@@ -179,15 +179,15 @@ Player * Game::getPlayerForCard (const Card &card)
     return nullptr;
 }
 
-vector<Card *> Game::getAllPlayerCards ()
+vector<Card> Game::getAllPlayerCards ()
 {
-    vector<Card *> cards;
+    vector<Card> cards;
     vector<Card> playerCards;
 
     for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
         vector<Card> &playerCards = (*it).getCards();
         for (vector<Card>::iterator it2 = playerCards.begin(); it2 != playerCards.end(); it2 ++)
-            cards.push_back(&(*it2));
+            cards.push_back(*it2);
 
     }
 

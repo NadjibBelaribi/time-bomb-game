@@ -43,7 +43,7 @@ private :
     size_t initialNbSafeCards (const size_t nbPlayers) const;
     Card::typeCard genRandCardType (size_t &nbSafeCards, size_t &nbExploseCards, size_t &nbBombCard) const;
     Player::rolePlayer genRandPlayerRole (size_t &nbMoriarty, size_t &nbSherlock) const;
-    vector<Card *> getAllPlayerCards ();
+    vector<Card> getAllPlayerCards ();
 
 };
 
