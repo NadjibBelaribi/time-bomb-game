@@ -1,13 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "options.h"
-#include "kernel/Game.h"
+#include "../kernel/headers/Game.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
      ui->setupUi(this);
+     this->on_back_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -202,6 +202,10 @@ void MainWindow::setTable( std::vector <QString> psds ) {
 
        game = new Game(nbPlayers,pseudos) ;
        Game::stateGame state;
+       typedef unsigned singe;
+
+       for (singe i = 0; i < nbPlayers; i ++)
+           this->reveals.push_back(false);
 
 }
 
@@ -263,7 +267,9 @@ void MainWindow::keep ()
 {
     if((indc != -1) && (indp !=-1))
     {
-        printCardRevealed(game->next(indp,indc));
+        Player &pepe = game->getPlayers().at(indp);
+        Card &card = pepe.getCards().at(indc);
+        printCardRevealed(game->next(card));
         hideWithoutI(static_cast<size_t>(indc));
         blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
@@ -461,10 +467,10 @@ void MainWindow::on_player1_clicked()
     indp = 1;
     Player p = game->getPlayers().at(0) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(0) && this->getCpt() < game->getPlayers().size())
      {indp = -1; return;}
 
-    game->getPlayers().at(0).reveal = true;
+    this->reveals.at(0) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -480,10 +486,10 @@ void MainWindow::on_player8_clicked()
     indp = 8;
     Player p = game->getPlayers().at(7) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(7) && this->getCpt() < game->getPlayers().size())
     {indp = -1; return;}
 
-    game->getPlayers().at(7).reveal = true;
+    this->reveals.at(7) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -499,10 +505,10 @@ void MainWindow::on_player7_clicked()
     indp = 7;
     Player p = game->getPlayers().at(6) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(6) && this->getCpt() < game->getPlayers().size())
     {indp = -1; return;}
 
-    game->getPlayers().at(6).reveal = true;
+    this->reveals.at(6) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -518,10 +524,10 @@ void MainWindow::on_player6_clicked()
     indp = 6;
     Player p = game->getPlayers().at(5) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(5) && this->getCpt() < game->getPlayers().size())
     {indp = -1; return;}
 
-    game->getPlayers().at(5).reveal = true;
+    this->reveals.at(5) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -537,10 +543,10 @@ void MainWindow::on_player5_clicked()
     indp = 5;
     Player p = game->getPlayers().at(4) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(4) && this->getCpt() < game->getPlayers().size())
     {indp = -1; return;}
 
-    game->getPlayers().at(4).reveal = true;
+    this->reveals.at(4) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -556,10 +562,10 @@ void MainWindow::on_player4_clicked()
     indp = 4;
     Player p = game->getPlayers().at(3) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(3) && this->getCpt() < game->getPlayers().size())
     {indp = -1; return;}
 
-    game->getPlayers().at(3).reveal = true;
+    this->reveals.at(3) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -575,10 +581,10 @@ void MainWindow::on_player3_clicked()
     indp = 3 ;
     Player p = game->getPlayers().at(2) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(2) && this->getCpt() < game->getPlayers().size())
     {indp = -1; return;}
 
-    game->getPlayers().at(2).reveal = true;
+    this->reveals.at(2) = true;
 
     size_t tmp = this->getCpt();
     tmp++;
@@ -595,10 +601,10 @@ void MainWindow::on_player2_clicked()
     indp = 2 ;
     Player p = game->getPlayers().at(1) ;
 
-    if (p.reveal && this->getCpt() < game->getPlayers().size())
+    if (this->reveals.at(1) && this->getCpt() < game->getPlayers().size())
     { indp = 1; return;}
 
-    game->getPlayers().at(1).reveal = true;
+    this->reveals.at(1) = true;
 
     size_t tmp = this->getCpt();
     tmp++;

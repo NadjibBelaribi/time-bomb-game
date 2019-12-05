@@ -17,7 +17,7 @@
 #include <QLineEdit>
 #include <QString>
 #include <string>
-#include "kernel/Game.h"
+#include "../kernel/headers/Game.h"
 
 namespace Ui {
 class MainWindow;
@@ -111,6 +111,7 @@ private:
     size_t cpt;
     std::vector <QLineEdit*> hello;
     std::vector <QString> pseudos;
+    std::vector <bool> reveals;
 };
 
 #endif // MAINWINDOW_H
