@@ -372,8 +372,21 @@ void MainWindow::showCards(size_t i)
 
       }
 
-    if(this->getCpt() < game->getPlayers().size())
+    if(this->getCpt() <= game->getPlayers().size())
+    {
+        switch(game->getPlayers().at(indp - 1).getRole())
+        {
+            case Player::Moriarty:
+            ui->role->setStyleSheet("background-image: url(:/imgs/imgs/tb6.png); border-image: url(:/imgs/imgs/tb6.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
+
+        case Player::Sherlock:
+            ui->role->setStyleSheet("background-image: url(:/imgs/imgs/tb1.png); border-image: url(:/imgs/imgs/tb1.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
+        }
         ui->role->show();
+    }
+
 
 
 }
@@ -445,10 +458,11 @@ void MainWindow::printBeginMess () {
 
 void MainWindow::on_player1_clicked()
 {
+    indp = 1;
     Player p = game->getPlayers().at(0) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+     {indp = -1; return;}
 
     game->getPlayers().at(0).reveal = true;
 
@@ -458,18 +472,16 @@ void MainWindow::on_player1_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(1);
-    indp = 1 ;
 }
 
 void MainWindow::on_player8_clicked()
 {
+    indp = 8;
     Player p = game->getPlayers().at(7) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    {indp = -1; return;}
 
     game->getPlayers().at(7).reveal = true;
 
@@ -479,18 +491,16 @@ void MainWindow::on_player8_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(8);
-    indp = 8 ;
 }
 
 void MainWindow::on_player7_clicked()
 {
+    indp = 7;
     Player p = game->getPlayers().at(6) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    {indp = -1; return;}
 
     game->getPlayers().at(6).reveal = true;
 
@@ -500,18 +510,16 @@ void MainWindow::on_player7_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(7);
-    indp = 7 ;
 }
 
 void MainWindow::on_player6_clicked()
 {
+    indp = 6;
     Player p = game->getPlayers().at(5) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    {indp = -1; return;}
 
     game->getPlayers().at(5).reveal = true;
 
@@ -521,18 +529,16 @@ void MainWindow::on_player6_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(6);
-    indp = 6 ;
 }
 
 void MainWindow::on_player5_clicked()
 {
+    indp = 5;
     Player p = game->getPlayers().at(4) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    {indp = -1; return;}
 
     game->getPlayers().at(4).reveal = true;
 
@@ -542,18 +548,16 @@ void MainWindow::on_player5_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(5);
-    indp = 5 ;
 }
 
 void MainWindow::on_player4_clicked()
 {
+    indp = 4;
     Player p = game->getPlayers().at(3) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    {indp = -1; return;}
 
     game->getPlayers().at(3).reveal = true;
 
@@ -563,18 +567,16 @@ void MainWindow::on_player4_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(4);
-    indp = 4 ;
 }
 
 void MainWindow::on_player3_clicked()
 {
+    indp = 3 ;
     Player p = game->getPlayers().at(2) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    {indp = -1; return;}
 
     game->getPlayers().at(2).reveal = true;
 
@@ -584,18 +586,17 @@ void MainWindow::on_player3_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     afficheCard(3);
-    indp = 3 ;
+
 }
 
 void MainWindow::on_player2_clicked()
 {
+    indp = 2 ;
     Player p = game->getPlayers().at(1) ;
 
     if (p.reveal && this->getCpt() < game->getPlayers().size())
-       return;
+    { indp = 1; return;}
 
     game->getPlayers().at(1).reveal = true;
 
@@ -605,12 +606,8 @@ void MainWindow::on_player2_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    string mm = type2str(p);
-    ui->role->setText(QString::fromStdString(mm)) ;
     size_t i;
     afficheCard(2);
-    indp = 2 ;
-
 }
 
 void MainWindow::on_card5_clicked()

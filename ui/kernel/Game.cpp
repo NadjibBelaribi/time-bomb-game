@@ -105,8 +105,18 @@ Card::typeCard Game::next (int indp ,int indc)
     }
 
     Player *cardOwner = &this->getPlayers().at(indp-1) ;
-    const Card card = cardOwner->getCards().at(indc-1) ;
-
+    const Card *card = &cardOwner->getCards().at(indc-1) ;
+    cout << "befoooore ";
+    switch (card->getType()) {
+        case Card::Safe:
+            cout <<  "Inutile, carte SAFE."  << endl;
+            break;
+        case Card::Defusing:
+            cout <<  "Utile, carte DEFUSING !"  << endl;
+            break;
+        case Card::Bomb:
+            cout <<  "Mortelle, carte BOOOMB !!!" << endl;
+    }
     if (cardOwner == nullptr) {
         cerr << "[Error] next: cardOwner == nullptr" << endl;
         exit(1);
@@ -116,20 +126,31 @@ Card::typeCard Game::next (int indp ,int indc)
         exit(1);
     }
 
-    switch (card.getType()) {
+    switch (card->getType()) {
         case Card::Bomb:
             this->state = Game::MoriartyWin;
-            return card.getType();
+              return card->getType() ;
         case Card::Defusing:
             this->nbDefusingCardsRevealed ++;
             if (this->nbDefusingCardsRevealed == this->players.size()) {
                 this->state = Game::SherlockWin;
-                return card.getType();
+                  return card->getType() ;
             }
             break;
         default:
             break;
     };
+    cout << "La carte révélée est: ";
+    switch (card->getType()) {
+        case Card::Safe:
+            cout <<  "Inutile, carte SAFE."  << endl;
+            break;
+        case Card::Defusing:
+            cout <<  "Utile, carte DEFUSING !"  << endl;
+            break;
+        case Card::Bomb:
+            cout <<  "Mortelle, carte BOOOMB !!!" << endl;
+    }
     cardOwner->getCards().erase(cardOwner->getCards().begin() + (indc - 1 ));
    // cout <<  cardOwner->getCards().size() << endl;
     this->currentPlayer = cardOwner;
@@ -137,11 +158,11 @@ Card::typeCard Game::next (int indp ,int indc)
     if (this->nbRoundCardsRevealed == this->players.size()) {
         if (this->round == 4) {
             this->state = Game::MoriartyWin;
-            return card.getType();
+                return card->getType() ;
         } else
         {
             this->nextRound();
-            return card.getType();
+            return card->getType() ;
         }
     }
 }

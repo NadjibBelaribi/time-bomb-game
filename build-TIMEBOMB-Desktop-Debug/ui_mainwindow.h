@@ -133,19 +133,19 @@ public:
         nb4->setGeometry(QRect(260, 80, 71, 25));
         nb5 = new QPushButton(options);
         nb5->setObjectName(QStringLiteral("nb5"));
-        nb5->setGeometry(QRect(340, 80, 61, 25));
+        nb5->setGeometry(QRect(340, 80, 51, 25));
         nb6 = new QPushButton(options);
         nb6->setObjectName(QStringLiteral("nb6"));
         nb6->setGeometry(QRect(410, 80, 61, 25));
         nb7 = new QPushButton(options);
         nb7->setObjectName(QStringLiteral("nb7"));
-        nb7->setGeometry(QRect(480, 80, 71, 25));
+        nb7->setGeometry(QRect(480, 80, 51, 25));
         nb8 = new QPushButton(options);
         nb8->setObjectName(QStringLiteral("nb8"));
-        nb8->setGeometry(QRect(560, 80, 61, 25));
+        nb8->setGeometry(QRect(540, 80, 51, 25));
         gridLayoutWidget = new QWidget(options);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(170, 260, 351, 261));
+        gridLayoutWidget->setGeometry(QRect(80, 210, 351, 261));
         gridPseudo = new QGridLayout(gridLayoutWidget);
         gridPseudo->setSpacing(6);
         gridPseudo->setContentsMargins(11, 11, 11, 11);
@@ -291,7 +291,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(1);
+        menu->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
