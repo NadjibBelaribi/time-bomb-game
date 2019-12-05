@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "../headers/Player.h"
 
 vector<Card> & Player::getCards ()
 {
@@ -25,13 +25,12 @@ void Player::delCard (const Card &card)
     for (vector<Card>::iterator it = this->cards.begin(); it != this->cards.end(); it ++) {
         if (&card == &(*it)) {
             this->cards.erase(it);
-            cout << this->cards.size();
             break;
         }
     }
 }
 
-void Player::setCards (vector<Card> &cards)
+void Player::setCards (vector<Card> cards)
 {
     if (cards.empty()) {
         cerr << "[Warning] setCards: cards is empty" << endl;
@@ -45,13 +44,9 @@ string Player::getPseudo () const
     return this->pseudo;
 }
 
-Card *Player::getCard(size_t i)
+Card * Player::getCard (const size_t i)
 {
-    size_t j;
-    for (j = 0; j < this->getCards().size(); j++)
-    {
-        if (i == j)
-            return &this->getCards().at(i);
-    }
-    return nullptr;
+    if (i >= this->cards.size())
+        return nullptr;
+    return &this->cards.at(i);
 }

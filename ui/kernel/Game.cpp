@@ -1,12 +1,12 @@
-#include "Game.h"
+#include "../headers/Game.h"
 
-Game::Game (const size_t nbPlayers, const string *pseudos)
+Game::Game (const size_t nbPlayers, const string * const pseudos)
 {
     if (nbPlayers > 8) {
-        cerr << "Players number should be < 8\n";
+        cerr << "Players number should be <= 8\n";
         exit(1);
     } else if (nbPlayers < 4) {
-        cerr << "Players number should be > 4\n";
+        cerr << "Players number should be >= 4\n";
         exit(1);
     }
 
@@ -24,11 +24,11 @@ Game::Game (const size_t nbPlayers, const string *pseudos)
         cards.clear();
         for (unsigned j = 0; j < 5; j ++) {
             randCardType = this->genRandCardType(nbSafeCards, nbDefusingCards, nbBombCards);
-            cards.push_back(Card(randCardType,false));
+            cards.push_back(Card(randCardType));
         }
 
         role = this->genRandPlayerRole(nbMoriarty, nbSherlock);
-        this->players.push_back(Player(pseudos[i], role, cards, false));
+        this->players.push_back(Player(pseudos[i], role, cards));
     }
 
     this->currentPlayer = &this->players.at(rand() % this->players.size());
@@ -97,16 +97,15 @@ Game::stateGame Game::getState () const
     return this->state;
 }
 
-Card::typeCard Game::next (int indp ,int indc)
+Card::typeCard Game::next (const Card &card)
 {
     if (this->state != Game::Active) {
         cerr << "[Error] next: this->state != Game::Active" << endl;
         exit(1);
     }
 
-    Player *cardOwner = &this->getPlayers().at(indp-1) ;
-    const Card card = cardOwner->getCards().at(indc-1) ;
-
+    const Card::typeCard type = card.getType();
+    Player *cardOwner = this->getPlayerForCard(card);
     if (cardOwner == nullptr) {
         cerr << "[Error] next: cardOwner == nullptr" << endl;
         exit(1);
@@ -116,61 +115,35 @@ Card::typeCard Game::next (int indp ,int indc)
         exit(1);
     }
 
-    switch (card.getType()) {
+    switch (type) {
         case Card::Bomb:
             this->state = Game::MoriartyWin;
-            return card.getType();
+            return type;
         case Card::Defusing:
             this->nbDefusingCardsRevealed ++;
             if (this->nbDefusingCardsRevealed == this->players.size()) {
                 this->state = Game::SherlockWin;
-                return card.getType();
+                return type;
             }
             break;
         default:
             break;
     };
 
+    cardOwner->delCard(card);
+    cout << card.getType();
+    this->currentPlayer = cardOwner;
     this->nbRoundCardsRevealed ++;
+
     if (this->nbRoundCardsRevealed == this->players.size()) {
         if (this->round == 4) {
             this->state = Game::MoriartyWin;
-            return card.getType();
+            return type;
         } else
-        {
-            cardOwner->getCards().erase(cardOwner->getCards().begin() + (indc - 1 ));
-            cout << "Bonjour" ;
-            cout <<  cardOwner->getCards().size() << endl;
-            this->currentPlayer = cardOwner;
             this->nextRound();
-            for(int i = 0 ; i < this->getPlayers().size() ; i++) {
-                            for(int j = 0 ; j < this->getPlayers().size() ; j++)
-                            {string mm;
-
-                                    switch(this->getPlayers().at(i).getCards().at(j).getType()){
-                                             case Card::Safe:
-                                                mm = "Safe";
-                                                break;
-                                            case Card::Defusing:
-                                                mm = "Defusing";
-                                                break;
-                                            case Card::Bomb:
-                                                mm = "Bomb";
-                                                break;
-                                    default :
-                                        mm= "none" ;
-                                        break ;
-                                    }
-                                    cout << mm << " " ;
-
-                        }
-                            cout << endl ;
-            }
-            return card.getType();
-        }
     }
-    this->currentPlayer = cardOwner;
-    return card.getType();
+
+    return type;
 }
 
 void Game::nextRound ()
@@ -179,21 +152,20 @@ void Game::nextRound ()
     this->nbRoundCardsRevealed = 0;
 
     // shuffle all cards
-    vector<Card *> cards = this->getAllPlayerCards();
+    vector<Card> cards = this->getAllPlayerCards();
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
     shuffle(cards.begin(), cards.end(), default_random_engine(seed));
-
-    // redistribution
     const size_t cardsPerPlayer = cards.size() / this->players.size();
-    unsigned i = 0;
-    vector<Card *>::iterator cardIt = cards.begin();
-    for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++, i ++) {
-        vector<Card> newPlayerCards;
+
+    unsigned indCard = 0;
+    vector<Card> newPlayerCards;
+    for (unsigned i = 0; i < this->players.size(); i ++) {
+        newPlayerCards.clear();
         for (unsigned j = 0; j < cardsPerPlayer; j ++) {
-            newPlayerCards.push_back(**cardIt);
-            cardIt ++;
+            newPlayerCards.push_back(cards.at(indCard));
+            indCard ++;
         }
-        (*it).setCards(newPlayerCards);
+        this->players.at(i).setCards(newPlayerCards);
     }
 }
 
@@ -207,15 +179,15 @@ Player * Game::getPlayerForCard (const Card &card)
     return nullptr;
 }
 
-vector<Card *> Game::getAllPlayerCards ()
+vector<Card> Game::getAllPlayerCards ()
 {
-    vector<Card *> cards;
+    vector<Card> cards;
     vector<Card> playerCards;
 
     for (vector<Player>::iterator it = this->players.begin(); it != this->players.end(); it ++) {
         vector<Card> &playerCards = (*it).getCards();
         for (vector<Card>::iterator it2 = playerCards.begin(); it2 != playerCards.end(); it2 ++)
-            cards.push_back(&(*it2));
+            cards.push_back(*it2);
 
     }
 
@@ -243,14 +215,9 @@ vector<Player> & Game::getPlayers ()
     return this->players;
 }
 
-Player *Game::getPlayer(size_t i)
+Player * Game::getPlayer (const size_t i)
 {
-    size_t j;
-    for (j = 0; j < this->getPlayers().size(); j++)
-    {
-        if (i == j)
-            return &this->getPlayers().at(i);
-    }
-    return nullptr;
+    if (i >= this->players.size())
+        return nullptr;
+    return &this->players.at(i);
 }
-

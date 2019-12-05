@@ -214,3 +214,10 @@ vector<Player> & Game::getPlayers ()
 {
     return this->players;
 }
+
+Player * Game::getPlayer (const size_t i)
+{
+    if (i >= this->players.size())
+        return nullptr;
+    return &this->players.at(i);
+}

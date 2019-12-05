@@ -43,3 +43,10 @@ string Player::getPseudo () const
 {
     return this->pseudo;
 }
+
+Card * Player::getCard (const size_t i)
+{
+    if (i >= this->cards.size())
+        return nullptr;
+    return &this->cards.at(i);
+}

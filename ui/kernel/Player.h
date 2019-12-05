@@ -16,19 +16,18 @@ public :
         Moriarty
     };
 
-    Player (const string pseudo, const rolePlayer role, vector <Card> cards, bool reveal) :
-        pseudo(pseudo), role(role), cards(cards), reveal(reveal) {};
+    Player (const string pseudo, const rolePlayer role, vector <Card> cards) :
+        pseudo(pseudo), role(role), cards(cards) {};
 
     void del_card (const unsigned ind);
     bool hasCard (const Card &card);
     void delCard (const Card &card);
-    void setCards (vector<Card> &cards);
+    void setCards (vector<Card> cards);
 
     rolePlayer getRole() const;
     vector<Card> & getCards ();
     string getPseudo () const;
-    Card *getCard(size_t i);
-    bool reveal;
+    Card * getCard (const size_t i);
 
 private :
     const string pseudo;

@@ -12,10 +12,9 @@ public :
         Bomb
     };
 
-    Card (const typeCard type , bool chosen) :
-        type(type),chosen(chosen) {};
+    Card (const typeCard type) :
+        type(type) {};
     typeCard getType () const;
-	bool chosen ;
 
 private :
     typeCard type;
