@@ -112,8 +112,6 @@ public:
 
         verticalLayout_3->addWidget(playB);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
 
         verticalLayout_3->addWidget(help);
 
@@ -316,8 +314,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         playB->setText(QCoreApplication::translate("MainWindow", "Jouer", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Aide", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
+
         back->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
         nb4->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
         nb5->setText(QCoreApplication::translate("MainWindow", "5", nullptr));

@@ -19,7 +19,7 @@ public :
     };
 
     Game (const size_t nbPlayers, const string * pseudos);
-    Card::typeCard next (const Card &card);
+    Card::typeCard next (int indp ,int indc) ;
 
     Player & getCurrentPlayer () const;
     unsigned getRound () const;

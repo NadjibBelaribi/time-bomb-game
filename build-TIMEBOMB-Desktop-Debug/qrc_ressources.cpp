@@ -7,11 +7,7 @@
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-<<<<<<< HEAD
   // /home/francois/Documents/Etudes/S5/IHM/Projet/time-bomb/ui/imgs/button.jpg
-=======
-  // /adhome/d/de/delkabir/Documents/IHM_v2/time-bomb/ui/imgs/button.jpg
->>>>>>> aad4c582ebfd5fb615ee74c7059f556ef73c1b5f
   0x0,0x2,0x80,0xd8,
   0xff,
   0xd8,0xff,0xe0,0x0,0x10,0x4a,0x46,0x49,0x46,0x0,0x1,0x1,0x0,0x0,0x1,0x0,
