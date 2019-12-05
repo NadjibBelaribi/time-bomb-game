@@ -37,7 +37,11 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = TIMEBOMB1.0.0
+<<<<<<< HEAD
 DISTDIR = /home/francois/Documents/Etudes/S5/IHM/Projet/time-bomb/build-TIMEBOMB-Desktop-Debug/.tmp/TIMEBOMB1.0.0
+=======
+DISTDIR = /adhome/d/de/delkabir/Documents/IHM_v2/time-bomb/build-TIMEBOMB-Desktop-Debug/.tmp/TIMEBOMB1.0.0
+>>>>>>> aad4c582ebfd5fb615ee74c7059f556ef73c1b5f
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) /usr/lib/libQt5Widgets.so /usr/lib/libQt5Gui.so /usr/lib/libQt5Core.so /usr/lib/libGL.so -lpthread   
@@ -742,8 +746,13 @@ moc_mainwindow.cpp: ../ui/mainwindow.h \
 		../ui/kernel/Card.h \
 		../ui/kernel/Player.h \
 		moc_predefs.h \
+<<<<<<< HEAD
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/francois/Documents/Etudes/S5/IHM/Projet/time-bomb/build-TIMEBOMB-Desktop-Debug/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/francois/Documents/Etudes/S5/IHM/Projet/time-bomb/ui -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
+=======
+		/usr/lib/qt5/bin/moc
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/d/de/delkabir/Documents/IHM_v2/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
+>>>>>>> aad4c582ebfd5fb615ee74c7059f556ef73c1b5f
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:

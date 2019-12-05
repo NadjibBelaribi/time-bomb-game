@@ -44,6 +44,8 @@ public:
 
     void hideWithoutI(size_t i);
 
+   void RemoveLayout (QGridLayout* widget);
+
     size_t getCpt();
 
     std::vector <QString> getPseudo();
@@ -103,6 +105,8 @@ private slots:
     void on_player6_clicked();
     void on_player7_clicked();
     void on_player8_clicked();
+
+    void on_help_clicked();
 
 private:
     Ui::MainWindow *ui;

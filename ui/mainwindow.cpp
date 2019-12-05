@@ -14,7 +14,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+void MainWindow::RemoveLayout (QGridLayout* widget)
+{
+    int i;
+    for (i = 0; i < widget->count(); i++)
+    {
+        widget->itemAt(i)->widget()->deleteLater();
+        hello.pop_back();
+    }
+}
 
 void MainWindow::on_playB_clicked()
 {
@@ -28,6 +36,7 @@ void MainWindow::on_back_clicked()
 
 void MainWindow::on_nb4_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 4;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -41,6 +50,7 @@ void MainWindow::on_nb4_clicked()
 
 void MainWindow::on_nb5_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 5;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -54,6 +64,7 @@ void MainWindow::on_nb5_clicked()
 
 void MainWindow::on_nb6_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 6;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -67,6 +78,7 @@ void MainWindow::on_nb6_clicked()
 
 void MainWindow::on_nb7_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 7;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -80,6 +92,7 @@ void MainWindow::on_nb7_clicked()
 
 void MainWindow::on_nb8_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 8;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -94,6 +107,7 @@ void MainWindow::on_nb8_clicked()
 void MainWindow::on_go_clicked()
 {
     size_t nb_players = hello.size();
+    cout << nb_players << endl;
     size_t i;
     for (i = 0; i < nb_players; i++)
     {
@@ -101,7 +115,7 @@ void MainWindow::on_go_clicked()
       pseudos.push_back(tmp);
      }
      ui->menu->setCurrentWidget(ui->board);
-     this->setTable(pseudos);
+    this->setTable(pseudos);
      this->cpt = 0;
 }
 
@@ -169,6 +183,7 @@ void MainWindow::setTable( std::vector <QString> psds ) {
         ui->player5->setText(QString::fromStdString(pseudos[4]));
         ui->player6->setText(QString::fromStdString(pseudos[5]));
         ui->player7->setText(QString::fromStdString(pseudos[6]));
+              break;
 
      case 8:
         ui->player1->setText(QString::fromStdString(pseudos[0]));
@@ -676,4 +691,9 @@ void MainWindow::blockPlayerCourant (Player p)
          }
 
 
+}
+
+void MainWindow::on_help_clicked()
+{
+    ui->menu->setCurrentWidget(ui->aide);
 }
