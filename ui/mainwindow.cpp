@@ -264,7 +264,8 @@ void MainWindow::keep ()
     if((indc != -1) && (indp !=-1))
     {
         printCardRevealed(game->next(indp,indc));
-        hideWithoutI(static_cast<size_t>(indc));
+        //hideWithoutI(static_cast<size_t>(indc));
+        hideCards();
         blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
         indc = -1 ;
@@ -389,23 +390,23 @@ void MainWindow::afficheCard(size_t j)
        switch (i)
        {
             case 1:
-                ui->card1->setText(QString::fromStdString(typec2str(p.getCards().at(i - 1))));
+                ui->card1->setText(QString::fromStdString(typec2str(p.getCards().at(0))));
                 break;
 
            case 2:
-               ui->card2->setText(QString::fromStdString(typec2str(p.getCards().at(i - 1))));
+               ui->card2->setText(QString::fromStdString(typec2str(p.getCards().at(1))));
                break;
 
            case 3:
-               ui->card3->setText(QString::fromStdString(typec2str(p.getCards().at(i - 1))));
+               ui->card3->setText(QString::fromStdString(typec2str(p.getCards().at(2))));
                break;
 
            case 4:
-               ui->card4->setText(QString::fromStdString(typec2str(p.getCards().at(i - 1))));
+               ui->card4->setText(QString::fromStdString(typec2str(p.getCards().at(3))));
                break;
 
            case 5:
-               ui->card5->setText(QString::fromStdString(typec2str(p.getCards().at(i - 1))));
+               ui->card5->setText(QString::fromStdString(typec2str(p.getCards().at(4))));
                break;
        }
     }
@@ -615,31 +616,31 @@ void MainWindow::on_player2_clicked()
 
 void MainWindow::on_card5_clicked()
 {
-    indc = 5 ;
+    indc = 5;
      keep() ;
 }
 
 void MainWindow::on_card4_clicked()
 {
-    indc = 4 ;
+    indc = 4;
      keep() ;
 }
 
 void MainWindow::on_card3_clicked()
 {
-    indc = 3 ;
+    indc = 3;
      keep() ;
 }
 
 void MainWindow::on_card2_clicked()
 {
-    indc = 2 ;
+    indc = 2;
      keep() ;
 }
 
 void MainWindow::on_card1_clicked()
 {
-    indc = 1 ;
+    indc = 1;
      keep() ;
 }
 

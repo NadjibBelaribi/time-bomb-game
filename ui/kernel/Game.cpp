@@ -1,12 +1,12 @@
-#include "../headers/Game.h"
+#include "Game.h"
 
 Game::Game (const size_t nbPlayers, const string * const pseudos)
 {
     if (nbPlayers > 8) {
-        cerr << "Players number should be <= 8\n";
+        cerr << "Players number should be < 8\n";
         exit(1);
     } else if (nbPlayers < 4) {
-        cerr << "Players number should be >= 4\n";
+        cerr << "Players number should be > 4\n";
         exit(1);
     }
 
@@ -24,11 +24,11 @@ Game::Game (const size_t nbPlayers, const string * const pseudos)
         cards.clear();
         for (unsigned j = 0; j < 5; j ++) {
             randCardType = this->genRandCardType(nbSafeCards, nbDefusingCards, nbBombCards);
-            cards.push_back(Card(randCardType));
+            cards.push_back(Card(randCardType,false));
         }
 
         role = this->genRandPlayerRole(nbMoriarty, nbSherlock);
-        this->players.push_back(Player(pseudos[i], role, cards));
+        this->players.push_back(Player(pseudos[i], role, cards, false));
     }
 
     this->currentPlayer = &this->players.at(rand() % this->players.size());
@@ -97,15 +97,16 @@ Game::stateGame Game::getState () const
     return this->state;
 }
 
-Card::typeCard Game::next (const Card &card)
+Card::typeCard Game::next (int indp ,int indc)
 {
     if (this->state != Game::Active) {
         cerr << "[Error] next: this->state != Game::Active" << endl;
         exit(1);
     }
 
-    const Card::typeCard type = card.getType();
-    Player *cardOwner = this->getPlayerForCard(card);
+    Player *cardOwner = &this->getPlayers().at(indp-1) ;
+    const Card card = cardOwner->getCards().at(indc-1) ;
+
     if (cardOwner == nullptr) {
         cerr << "[Error] next: cardOwner == nullptr" << endl;
         exit(1);
@@ -115,35 +116,34 @@ Card::typeCard Game::next (const Card &card)
         exit(1);
     }
 
-    switch (type) {
+    switch (card.getType()) {
         case Card::Bomb:
             this->state = Game::MoriartyWin;
-            return type;
+            return card.getType();
         case Card::Defusing:
             this->nbDefusingCardsRevealed ++;
             if (this->nbDefusingCardsRevealed == this->players.size()) {
                 this->state = Game::SherlockWin;
-                return type;
+                return card.getType();
             }
             break;
         default:
             break;
     };
-
-    cardOwner->delCard(card);
-    cout << card.getType();
+    cardOwner->getCards().erase(cardOwner->getCards().begin() + (indc - 1 ));
+   // cout <<  cardOwner->getCards().size() << endl;
     this->currentPlayer = cardOwner;
     this->nbRoundCardsRevealed ++;
-
     if (this->nbRoundCardsRevealed == this->players.size()) {
         if (this->round == 4) {
             this->state = Game::MoriartyWin;
-            return type;
+            return card.getType();
         } else
+        {
             this->nextRound();
+            return card.getType();
+        }
     }
-
-    return type;
 }
 
 void Game::nextRound ()
@@ -155,15 +155,18 @@ void Game::nextRound ()
     vector<Card> cards = this->getAllPlayerCards();
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
     shuffle(cards.begin(), cards.end(), default_random_engine(seed));
-    const size_t cardsPerPlayer = cards.size() / this->players.size();
 
-    unsigned indCard = 0;
+    // redistribution
+    const size_t cardsPerPlayer = cards.size() / this->players.size();
+    unsigned indCard = 0, i;
     vector<Card> newPlayerCards;
-    for (unsigned i = 0; i < this->players.size(); i ++) {
+    for (i = 0; i < this->players.size(); i++)
+    {
         newPlayerCards.clear();
-        for (unsigned j = 0; j < cardsPerPlayer; j ++) {
+        for (unsigned j = 0; j < cardsPerPlayer; j++)
+        {
             newPlayerCards.push_back(cards.at(indCard));
-            indCard ++;
+            indCard++;
         }
         this->players.at(i).setCards(newPlayerCards);
     }
@@ -215,9 +218,11 @@ vector<Player> & Game::getPlayers ()
     return this->players;
 }
 
-Player * Game::getPlayer (const size_t i)
+Player *Game::getPlayer(size_t i)
 {
     if (i >= this->players.size())
         return nullptr;
     return &this->players.at(i);
+
 }
+
