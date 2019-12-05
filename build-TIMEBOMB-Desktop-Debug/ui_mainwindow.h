@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -35,7 +36,7 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout_3;
     QPushButton *playB;
-    QPushButton *pushButton_2;
+    QPushButton *help;
     QPushButton *pushButton_3;
     QWidget *options;
     QPushButton *back;
@@ -48,14 +49,6 @@ public:
     QGridLayout *gridPseudo;
     QPushButton *go;
     QWidget *board;
-    QPushButton *player1;
-    QPushButton *player2;
-    QPushButton *player3;
-    QPushButton *player4;
-    QPushButton *player5;
-    QPushButton *player6;
-    QPushButton *player7;
-    QPushButton *player8;
     QPushButton *card1;
     QPushButton *card2;
     QPushButton *card3;
@@ -69,6 +62,16 @@ public:
     QTextBrowser *textBrowser;
     QTextBrowser *textBrowser_2;
     QTextBrowser *textBrowser_3;
+    QWidget *horizontalLayoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QPushButton *player1;
+    QPushButton *player2;
+    QPushButton *player3;
+    QPushButton *player4;
+    QPushButton *player5;
+    QPushButton *player6;
+    QPushButton *player7;
+    QPushButton *player8;
     QWidget *aide;
 
     void setupUi(QMainWindow *MainWindow)
@@ -98,6 +101,7 @@ public:
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         menu = new QStackedWidget(centralWidget);
         menu->setObjectName(QStringLiteral("menu"));
+        menu->setStyleSheet(QStringLiteral(""));
         start = new QWidget();
         start->setObjectName(QStringLiteral("start"));
         verticalLayoutWidget = new QWidget(start);
@@ -113,10 +117,10 @@ public:
 
         verticalLayout_3->addWidget(playB);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        help = new QPushButton(verticalLayoutWidget);
+        help->setObjectName(QStringLiteral("help"));
 
-        verticalLayout_3->addWidget(pushButton_2);
+        verticalLayout_3->addWidget(help);
 
         pushButton_3 = new QPushButton(verticalLayoutWidget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
@@ -146,7 +150,7 @@ public:
         nb8->setGeometry(QRect(560, 80, 61, 25));
         gridLayoutWidget = new QWidget(options);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(259, 159, 351, 261));
+        gridLayoutWidget->setGeometry(QRect(220, 200, 351, 261));
         gridPseudo = new QGridLayout(gridLayoutWidget);
         gridPseudo->setSpacing(6);
         gridPseudo->setContentsMargins(11, 11, 11, 11);
@@ -158,30 +162,6 @@ public:
         menu->addWidget(options);
         board = new QWidget();
         board->setObjectName(QStringLiteral("board"));
-        player1 = new QPushButton(board);
-        player1->setObjectName(QStringLiteral("player1"));
-        player1->setGeometry(QRect(40, 270, 89, 151));
-        player2 = new QPushButton(board);
-        player2->setObjectName(QStringLiteral("player2"));
-        player2->setGeometry(QRect(140, 270, 89, 151));
-        player3 = new QPushButton(board);
-        player3->setObjectName(QStringLiteral("player3"));
-        player3->setGeometry(QRect(240, 270, 89, 151));
-        player4 = new QPushButton(board);
-        player4->setObjectName(QStringLiteral("player4"));
-        player4->setGeometry(QRect(340, 270, 89, 151));
-        player5 = new QPushButton(board);
-        player5->setObjectName(QStringLiteral("player5"));
-        player5->setGeometry(QRect(440, 270, 89, 151));
-        player6 = new QPushButton(board);
-        player6->setObjectName(QStringLiteral("player6"));
-        player6->setGeometry(QRect(540, 270, 89, 151));
-        player7 = new QPushButton(board);
-        player7->setObjectName(QStringLiteral("player7"));
-        player7->setGeometry(QRect(640, 270, 89, 151));
-        player8 = new QPushButton(board);
-        player8->setObjectName(QStringLiteral("player8"));
-        player8->setGeometry(QRect(740, 270, 89, 151));
         card1 = new QPushButton(board);
         card1->setObjectName(QStringLiteral("card1"));
         card1->setGeometry(QRect(360, 80, 89, 151));
@@ -221,6 +201,73 @@ public:
         textBrowser_3 = new QTextBrowser(board);
         textBrowser_3->setObjectName(QStringLiteral("textBrowser_3"));
         textBrowser_3->setGeometry(QRect(680, 0, 121, 31));
+        horizontalLayoutWidget = new QWidget(board);
+        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
+        horizontalLayoutWidget->setGeometry(QRect(50, 360, 801, 161));
+        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        player1 = new QPushButton(horizontalLayoutWidget);
+        player1->setObjectName(QStringLiteral("player1"));
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
+        player1->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player1);
+
+        player2 = new QPushButton(horizontalLayoutWidget);
+        player2->setObjectName(QStringLiteral("player2"));
+        sizePolicy.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
+        player2->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player2);
+
+        player3 = new QPushButton(horizontalLayoutWidget);
+        player3->setObjectName(QStringLiteral("player3"));
+        sizePolicy.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
+        player3->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player3);
+
+        player4 = new QPushButton(horizontalLayoutWidget);
+        player4->setObjectName(QStringLiteral("player4"));
+        sizePolicy.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
+        player4->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player4);
+
+        player5 = new QPushButton(horizontalLayoutWidget);
+        player5->setObjectName(QStringLiteral("player5"));
+        sizePolicy.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
+        player5->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player5);
+
+        player6 = new QPushButton(horizontalLayoutWidget);
+        player6->setObjectName(QStringLiteral("player6"));
+        sizePolicy.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
+        player6->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player6);
+
+        player7 = new QPushButton(horizontalLayoutWidget);
+        player7->setObjectName(QStringLiteral("player7"));
+        sizePolicy.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
+        player7->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player7);
+
+        player8 = new QPushButton(horizontalLayoutWidget);
+        player8->setObjectName(QStringLiteral("player8"));
+        sizePolicy.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
+        player8->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(player8);
+
         menu->addWidget(board);
         aide = new QWidget();
         aide->setObjectName(QStringLiteral("aide"));
@@ -232,7 +279,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(0);
+        menu->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -242,7 +289,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         playB->setText(QApplication::translate("MainWindow", "Jouer", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Aide", Q_NULLPTR));
+        help->setText(QApplication::translate("MainWindow", "Aide", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
         back->setText(QApplication::translate("MainWindow", "Retour", Q_NULLPTR));
         nb4->setText(QApplication::translate("MainWindow", "4", Q_NULLPTR));
@@ -251,14 +298,6 @@ public:
         nb7->setText(QApplication::translate("MainWindow", "7", Q_NULLPTR));
         nb8->setText(QApplication::translate("MainWindow", "8", Q_NULLPTR));
         go->setText(QApplication::translate("MainWindow", "Go!", Q_NULLPTR));
-        player1->setText(QString());
-        player2->setText(QString());
-        player3->setText(QString());
-        player4->setText(QString());
-        player5->setText(QString());
-        player6->setText(QString());
-        player7->setText(QString());
-        player8->setText(QString());
         card1->setText(QString());
         card2->setText(QString());
         card3->setText(QString());
@@ -282,6 +321,14 @@ public:
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">        Tour</p></body></html>", Q_NULLPTR));
+        player1->setText(QString());
+        player2->setText(QString());
+        player3->setText(QString());
+        player4->setText(QString());
+        player5->setText(QString());
+        player6->setText(QString());
+        player7->setText(QString());
+        player8->setText(QString());
     } // retranslateUi
 
 };

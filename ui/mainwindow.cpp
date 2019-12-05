@@ -14,7 +14,15 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+void MainWindow::RemoveLayout (QGridLayout* widget)
+{
+    int i;
+    for (i = 0; i < widget->count(); i++)
+    {
+        widget->itemAt(i)->widget()->deleteLater();
+        hello.pop_back();
+    }
+}
 
 void MainWindow::on_playB_clicked()
 {
@@ -28,6 +36,7 @@ void MainWindow::on_back_clicked()
 
 void MainWindow::on_nb4_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 4;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -41,6 +50,7 @@ void MainWindow::on_nb4_clicked()
 
 void MainWindow::on_nb5_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 5;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -54,6 +64,7 @@ void MainWindow::on_nb5_clicked()
 
 void MainWindow::on_nb6_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 6;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -67,6 +78,7 @@ void MainWindow::on_nb6_clicked()
 
 void MainWindow::on_nb7_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 7;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -80,6 +92,7 @@ void MainWindow::on_nb7_clicked()
 
 void MainWindow::on_nb8_clicked()
 {
+    RemoveLayout(ui->gridPseudo);
     size_t nb_players = 8;
     size_t i;
     for (i = 0; i < nb_players; i++)
@@ -676,4 +689,9 @@ void MainWindow::blockPlayerCourant (Player p)
          }
 
 
+}
+
+void MainWindow::on_help_clicked()
+{
+    ui->menu->setCurrentWidget(ui->aide);
 }

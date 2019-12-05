@@ -137,12 +137,38 @@ Card::typeCard Game::next (int indp ,int indc)
             this->state = Game::MoriartyWin;
             return card.getType();
         } else
+        {
+            cardOwner->getCards().erase(cardOwner->getCards().begin() + (indc - 1 ));
+            cout << "Bonjour" ;
+            cout <<  cardOwner->getCards().size() << endl;
+            this->currentPlayer = cardOwner;
             this->nextRound();
-    }
+            for(int i = 0 ; i < this->getPlayers().size() ; i++) {
+                            for(int j = 0 ; j < this->getPlayers().size() ; j++)
+                            {string mm;
 
-    cardOwner->getCards().erase(cardOwner->getCards().begin() + (indc - 1 ));
-    cout << "Bonjour" ;
-    cout <<  cardOwner->getCards().size() << endl;
+                                    switch(this->getPlayers().at(i).getCards().at(j).getType()){
+                                             case Card::Safe:
+                                                mm = "Safe";
+                                                break;
+                                            case Card::Defusing:
+                                                mm = "Defusing";
+                                                break;
+                                            case Card::Bomb:
+                                                mm = "Bomb";
+                                                break;
+                                    default :
+                                        mm= "none" ;
+                                        break ;
+                                    }
+                                    cout << mm << " " ;
+
+                        }
+                            cout << endl ;
+            }
+            return card.getType();
+        }
+    }
     this->currentPlayer = cardOwner;
     return card.getType();
 }
