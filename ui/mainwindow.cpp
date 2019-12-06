@@ -824,3 +824,8 @@ void MainWindow::on_next_clicked()
     int h = ui->labelPic->height();
     ui->labelPic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 }
+
+void MainWindow::on_backfromhelp_clicked()
+{
+    ui->menu->setCurrentWidget(ui->start);
+}

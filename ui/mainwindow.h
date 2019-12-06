@@ -136,6 +136,8 @@ private slots:
 
     void on_next_clicked();
 
+    void on_backfromhelp_clicked();
+
 private:
     Ui::MainWindow *ui;
     Game *game ;

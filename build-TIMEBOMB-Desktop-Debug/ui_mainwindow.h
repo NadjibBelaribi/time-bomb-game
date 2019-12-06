@@ -138,12 +138,19 @@ public:
     QSpacerItem *horizontalSpacer_26;
     QWidget *aide;
     QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_28;
     QVBoxLayout *verticalLayout_11;
+    QSpacerItem *verticalSpacer_18;
     QPushButton *Previous;
+    QSpacerItem *verticalSpacer_21;
     QVBoxLayout *verticalLayout_10;
     QLabel *labelPic;
+    QPushButton *backfromhelp;
     QVBoxLayout *verticalLayout_12;
+    QSpacerItem *verticalSpacer_19;
     QPushButton *next;
+    QSpacerItem *verticalSpacer_20;
+    QSpacerItem *horizontalSpacer_31;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -776,13 +783,32 @@ public:
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        horizontalSpacer_28 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_28);
+
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setSpacing(6);
         verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        verticalSpacer_18 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_18);
+
         Previous = new QPushButton(aide);
         Previous->setObjectName(QStringLiteral("Previous"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Maximum);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(Previous->sizePolicy().hasHeightForWidth());
+        Previous->setSizePolicy(sizePolicy1);
+        Previous->setMinimumSize(QSize(50, 0));
+        Previous->setStyleSheet(QStringLiteral("border-radius:3px;"));
 
         verticalLayout_11->addWidget(Previous);
+
+        verticalSpacer_21 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_11->addItem(verticalSpacer_21);
 
 
         horizontalLayout_4->addLayout(verticalLayout_11);
@@ -795,19 +821,37 @@ public:
 
         verticalLayout_10->addWidget(labelPic);
 
+        backfromhelp = new QPushButton(aide);
+        backfromhelp->setObjectName(QStringLiteral("backfromhelp"));
+
+        verticalLayout_10->addWidget(backfromhelp);
+
 
         horizontalLayout_4->addLayout(verticalLayout_10);
 
         verticalLayout_12 = new QVBoxLayout();
         verticalLayout_12->setSpacing(6);
         verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+        verticalSpacer_19 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_12->addItem(verticalSpacer_19);
+
         next = new QPushButton(aide);
         next->setObjectName(QStringLiteral("next"));
+        next->setStyleSheet(QStringLiteral("border-radius: 3px;"));
 
         verticalLayout_12->addWidget(next);
 
+        verticalSpacer_20 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_12->addItem(verticalSpacer_20);
+
 
         horizontalLayout_4->addLayout(verticalLayout_12);
+
+        horizontalSpacer_31 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_31);
 
         menu->addWidget(aide);
 
@@ -860,6 +904,7 @@ public:
         leave_mory->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
         Previous->setText(QApplication::translate("MainWindow", "Previous", Q_NULLPTR));
         labelPic->setText(QString());
+        backfromhelp->setText(QApplication::translate("MainWindow", "retour", Q_NULLPTR));
         next->setText(QApplication::translate("MainWindow", "Next", Q_NULLPTR));
     } // retranslateUi
 
