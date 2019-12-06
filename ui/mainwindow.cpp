@@ -712,6 +712,11 @@ void MainWindow::blockPlayerCourant (Player p)
 void MainWindow::on_help_clicked()
 {
     ui->menu->setCurrentWidget(ui->aide);
+
+    QPixmap pix(file[i]);
+    int w = ui->labelPic->width();
+    int h = ui->labelPic->height();
+    ui->labelPic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 }
 
 
@@ -728,4 +733,23 @@ void MainWindow::on_leave_mory_clicked()
 void MainWindow::on_leave_menu_clicked()
 {
     this->close();
+}
+
+void MainWindow::on_Previous_clicked()
+{
+    if(i>0) i--;
+    QPixmap pix(file[i]);
+    int w = ui->labelPic->width();
+    int h = ui->labelPic->height();
+    ui->labelPic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
+
+}
+
+void MainWindow::on_next_clicked()
+{
+    if(i<12) i++;
+    QPixmap pix(file[i]);
+    int w = ui->labelPic->width();
+    int h = ui->labelPic->height();
+    ui->labelPic->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 }
