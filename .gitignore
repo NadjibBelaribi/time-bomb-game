@@ -16,3 +16,5 @@ vgcore.*
 *.pro.user
 *.a
 *.so
+*.pro.user
+*-Debug

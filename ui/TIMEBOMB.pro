@@ -24,25 +24,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += c++11
 
-SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
+SOURCES += src/main.cpp src/mainwindow.cpp
 
+HEADERS += headers/mainwindow.h
 
+LIBS += -L ../kernel/obj -lkernel
 
-HEADERS += \
-        mainwindow.h \
+FORMS += ui/mainwindow.ui
 
-LIBS += \
-        -L ../kernel/obj -lkernel
+RESOURCES += img/ressources.qrc
 
-FORMS += \
-        mainwindow.ui
+OBJECTS_DIR = obj
+
+MOC_DIR = compiled
+
+UI_DIR = compiled
+
+RCC_DIR = compiled
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    ressources.qrc

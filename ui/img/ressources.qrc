@@ -1,0 +1,32 @@
+<RCC>
+    <qresource>
+        <file>button.jpg</file>
+        <file>tb1.png</file>
+        <file>tb2.png</file>
+        <file>tb3.png</file>
+        <file>tb4.png</file>
+        <file>tb5.png</file>
+        <file>tb6.png</file>
+        <file>tb7.png</file>
+        <file>tb8.png</file>
+        <file>tb9.png</file>
+        <file>tb10.png</file>
+        <file>tb11.png</file>
+        <file>tb12.png</file>
+        <file>tb13.png</file>
+        <file>tb14.png</file>
+        <file>london.jpg</file>
+        <file>timeBomb1.svg</file>
+        <file>timeBomb2.svg</file>
+        <file>timeBomb3.svg</file>
+        <file>timeBomb4.svg</file>
+        <file>timeBomb5.svg</file>
+        <file>timeBomb6.svg</file>
+        <file>timeBomb7.svg</file>
+        <file>timeBomb8.svg</file>
+        <file>timeBomb9.svg</file>
+        <file>timeBomb10.svg</file>
+        <file>timeBomb11.svg</file>
+        <file>timeBomb12.svg</file>
+    </qresource>
+</RCC>
