@@ -138,7 +138,7 @@ void MainWindow::setTable( std::vector <QString> psds ) {
     hideCards();
     switch(nbPlayers) {
     case 4 :
-        ui->player5->hide();
+        ui->player5->hide() ;
         ui->player6->hide();
         ui->player7->hide();
         ui->player8->hide();
@@ -297,6 +297,23 @@ void MainWindow::keep ()
 
 }
 
+void MainWindow::enableCards()
+{
+    ui->card1->setEnabled(true);
+    ui->card2->setEnabled(true);
+     ui->card3->setEnabled(true);
+     ui->card4->setEnabled(true);
+      ui->card5->setEnabled(true);
+}
+void MainWindow::disableCards()
+{
+     ui->card1->setEnabled(false);
+     ui->card2->setEnabled(false);
+      ui->card3->setEnabled(false);
+      ui->card4->setEnabled(false);
+       ui->card5->setEnabled(false);
+}
+
 size_t MainWindow::getCpt()
 {
     return this->cpt;
@@ -411,25 +428,48 @@ void MainWindow::afficheCard(size_t j)
        switch (i)
        {
             case 1:
-                ui->card1->setText(QString::fromStdString(typec2str(p.getCards().at(0))));
+                setCardImg(ui->card1,p.getCards().at(0).getType(),true);
                 break;
 
            case 2:
-               ui->card2->setText(QString::fromStdString(typec2str(p.getCards().at(1))));
+               setCardImg(ui->card2,p.getCards().at(1).getType(),true);
                break;
 
            case 3:
-               ui->card3->setText(QString::fromStdString(typec2str(p.getCards().at(2))));
+              setCardImg(ui->card3,p.getCards().at(2).getType(),true);
                break;
 
            case 4:
-               ui->card4->setText(QString::fromStdString(typec2str(p.getCards().at(3))));
+               setCardImg(ui->card4,p.getCards().at(3).getType(),true);
                break;
 
            case 5:
-               ui->card5->setText(QString::fromStdString(typec2str(p.getCards().at(4))));
+           setCardImg(ui->card5,p.getCards().at(4).getType(),true);
                break;
        }
+    }
+}
+
+
+void MainWindow::setCardImg(QPushButton *but , Card::typeCard type ,bool cache)
+{
+    bool firstpart = (this->getCpt() <= game->getPlayers().size()) ;
+    switch(type)
+    {
+        case Card::Safe:
+        if (!firstpart && cache) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+
+        else but->setStyleSheet("background-image: url(:/imgs/imgs/tb11.png); border-image: url(:/imgs/imgs/tb11.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        break;
+
+    case Card::Defusing:
+        if (!firstpart) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        else but->setStyleSheet("background-image: url(:/imgs/imgs/tb12.png); border-image: url(:/imgs/imgs/tb12.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        break;
+    case Card::Bomb:
+        if (!firstpart) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        else but->setStyleSheet("background-image: url(:/imgs/imgs/tb10.png); border-image: url(:/imgs/imgs/tb10.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        break;
     }
 }
 
@@ -480,6 +520,7 @@ void MainWindow::on_player1_clicked()
     this->setCpt(tmp);
 
     size_t bjr = p.getCards().size();
+    enableCards();
     showCards(bjr) ;
     afficheCard(1);
 }
@@ -500,6 +541,7 @@ void MainWindow::on_player8_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
     afficheCard(8);
 }
 
@@ -519,6 +561,7 @@ void MainWindow::on_player7_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
     afficheCard(7);
 }
 
@@ -538,6 +581,8 @@ void MainWindow::on_player6_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
+
     afficheCard(6);
 }
 
@@ -576,6 +621,8 @@ void MainWindow::on_player4_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
+
     afficheCard(4);
 }
 
@@ -595,6 +642,8 @@ void MainWindow::on_player3_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
+
     afficheCard(3);
 
 }
@@ -615,47 +664,69 @@ void MainWindow::on_player2_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
+
     size_t i;
     afficheCard(2);
 }
 
 void MainWindow::on_card5_clicked()
 {
+
     if (this->getCpt() < game->getPlayers().size())
        return;
     indc = 5;
+    disableCards();
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
+    setCardImg(ui->card5,type,false);
      keep() ;
 }
 
 void MainWindow::on_card4_clicked()
 {
+
     if (this->getCpt() < game->getPlayers().size())
        return;
     indc = 4;
+    disableCards();
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
+    setCardImg(ui->card4,type,false);
      keep() ;
 }
 
 void MainWindow::on_card3_clicked()
 {
+
     if (this->getCpt() < game->getPlayers().size())
        return;
     indc = 3;
+    disableCards();
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
+    setCardImg(ui->card3,type,false);
      keep() ;
 }
 
 void MainWindow::on_card2_clicked()
 {
+
     if (this->getCpt() < game->getPlayers().size())
        return;
     indc = 2;
+    disableCards();
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
+    setCardImg(ui->card2,type,false);
      keep() ;
 }
 
 void MainWindow::on_card1_clicked()
 {
+
     if (this->getCpt() < game->getPlayers().size())
        return;
     indc = 1;
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
+    setCardImg(ui->card1,type,false);
+    disableCards();
      keep() ;
 }
 

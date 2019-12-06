@@ -36,6 +36,8 @@ public:
 
     void keep ();
 
+    void setCardImg(QPushButton *but , Card::typeCard type ,bool cache) ;
+
     void setCpt(size_t cpt);
 
     string typec2str(Card c);
@@ -45,6 +47,9 @@ public:
     void hideWithoutI(size_t i);
 
    void RemoveLayout (QGridLayout* widget);
+   void enableCards() ;
+   void disableCards() ;
+
 
     size_t getCpt();
 
