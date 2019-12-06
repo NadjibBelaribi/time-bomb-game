@@ -51,7 +51,7 @@ QPushButton
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="start">
        <property name="styleSheet">
@@ -517,7 +517,7 @@ QPushButton:hover
 }</string>
               </property>
               <property name="text">
-               <string>back</string>
+               <string>PROCHAIN</string>
               </property>
              </widget>
             </item>
@@ -727,13 +727,24 @@ QPushButton:hover
                 <height>0</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="nbDefusing"/>
+             <widget class="QLineEdit" name="nbDefusing">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+             </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="tour"/>
+             <widget class="QLineEdit" name="tour">
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="horizontalSpacer_14">
@@ -919,7 +930,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -941,7 +956,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -963,7 +982,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -985,7 +1008,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -1007,7 +1034,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -1029,7 +1060,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -1051,7 +1086,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -1073,7 +1112,11 @@ QPushButton:hover
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">font: 75 italic 22pt &quot;UnPilgia&quot;;
+color: rgb(238, 238, 236);
+background-image: url(:tb9.png); 
+border-image: url(:tb9.png) 0 0 0 0 stretch; 
+background-image:no-repeat;</string>
             </property>
             <property name="text">
              <string/>
@@ -1204,110 +1247,7 @@ QPushButton:hover
        </layout>
       </widget>
       <widget class="QWidget" name="fin_mory">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <item>
-         <spacer name="horizontalSpacer_25">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>300</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_8">
-          <item>
-           <spacer name="verticalSpacer_16">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="replay_mory">
-            <property name="text">
-             <string>Rejouer</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_27">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_9">
-          <item>
-           <spacer name="verticalSpacer_17">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="leave_mory">
-            <property name="text">
-             <string>Quitter</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer_26">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>300</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+       <layout class="QHBoxLayout" name="horizontalLayout_3"/>
       </widget>
       <widget class="QWidget" name="aide">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
