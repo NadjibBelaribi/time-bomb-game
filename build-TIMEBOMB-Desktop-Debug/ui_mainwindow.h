@@ -43,7 +43,7 @@ public:
     QSpacerItem *verticalSpacer_3;
     QPushButton *help;
     QSpacerItem *verticalSpacer_4;
-    QPushButton *pushButton_3;
+    QPushButton *leave_menu;
     QSpacerItem *verticalSpacer_2;
     QWidget *options;
     QVBoxLayout *verticalLayout_3;
@@ -114,6 +114,28 @@ public:
     QPushButton *player7;
     QPushButton *player8;
     QSpacerItem *verticalSpacer_12;
+    QWidget *fin_sherlock;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_22;
+    QVBoxLayout *verticalLayout_6;
+    QSpacerItem *verticalSpacer_14;
+    QPushButton *replay_sherlock;
+    QSpacerItem *horizontalSpacer_23;
+    QVBoxLayout *verticalLayout_7;
+    QSpacerItem *verticalSpacer_15;
+    QPushButton *leave_sherlock;
+    QSpacerItem *horizontalSpacer_24;
+    QWidget *fin_mory;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer_25;
+    QVBoxLayout *verticalLayout_8;
+    QSpacerItem *verticalSpacer_16;
+    QPushButton *replay_mory;
+    QSpacerItem *horizontalSpacer_27;
+    QVBoxLayout *verticalLayout_9;
+    QSpacerItem *verticalSpacer_17;
+    QPushButton *leave_mory;
+    QSpacerItem *horizontalSpacer_26;
     QWidget *aide;
 
     void setupUi(QMainWindow *MainWindow)
@@ -207,12 +229,12 @@ public:
 
         verticalLayout->addItem(verticalSpacer_4);
 
-        pushButton_3 = new QPushButton(start);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setMinimumSize(QSize(60, 45));
-        pushButton_3->setStyleSheet(QStringLiteral(" font: 75 33pt \"Purisa\";"));
+        leave_menu = new QPushButton(start);
+        leave_menu->setObjectName(QStringLiteral("leave_menu"));
+        leave_menu->setMinimumSize(QSize(60, 45));
+        leave_menu->setStyleSheet(QStringLiteral(" font: 75 33pt \"Purisa\";"));
 
-        verticalLayout->addWidget(pushButton_3);
+        verticalLayout->addWidget(leave_menu);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -643,6 +665,104 @@ public:
         verticalLayout_5->addItem(verticalSpacer_12);
 
         menu->addWidget(board);
+        fin_sherlock = new QWidget();
+        fin_sherlock->setObjectName(QStringLiteral("fin_sherlock"));
+        horizontalLayout_2 = new QHBoxLayout(fin_sherlock);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalSpacer_22 = new QSpacerItem(300, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_22);
+
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_6->addItem(verticalSpacer_14);
+
+        replay_sherlock = new QPushButton(fin_sherlock);
+        replay_sherlock->setObjectName(QStringLiteral("replay_sherlock"));
+
+        verticalLayout_6->addWidget(replay_sherlock);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_6);
+
+        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_23);
+
+        verticalLayout_7 = new QVBoxLayout();
+        verticalLayout_7->setSpacing(6);
+        verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
+        verticalSpacer_15 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_7->addItem(verticalSpacer_15);
+
+        leave_sherlock = new QPushButton(fin_sherlock);
+        leave_sherlock->setObjectName(QStringLiteral("leave_sherlock"));
+
+        verticalLayout_7->addWidget(leave_sherlock);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_7);
+
+        horizontalSpacer_24 = new QSpacerItem(300, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_24);
+
+        menu->addWidget(fin_sherlock);
+        fin_mory = new QWidget();
+        fin_mory->setObjectName(QStringLiteral("fin_mory"));
+        horizontalLayout_3 = new QHBoxLayout(fin_mory);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalSpacer_25 = new QSpacerItem(300, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_25);
+
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setSpacing(6);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        verticalSpacer_16 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_8->addItem(verticalSpacer_16);
+
+        replay_mory = new QPushButton(fin_mory);
+        replay_mory->setObjectName(QStringLiteral("replay_mory"));
+
+        verticalLayout_8->addWidget(replay_mory);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_8);
+
+        horizontalSpacer_27 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_27);
+
+        verticalLayout_9 = new QVBoxLayout();
+        verticalLayout_9->setSpacing(6);
+        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        verticalSpacer_17 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+
+        verticalLayout_9->addItem(verticalSpacer_17);
+
+        leave_mory = new QPushButton(fin_mory);
+        leave_mory->setObjectName(QStringLiteral("leave_mory"));
+
+        verticalLayout_9->addWidget(leave_mory);
+
+
+        horizontalLayout_3->addLayout(verticalLayout_9);
+
+        horizontalSpacer_26 = new QSpacerItem(300, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_26);
+
+        menu->addWidget(fin_mory);
         aide = new QWidget();
         aide->setObjectName(QStringLiteral("aide"));
         menu->addWidget(aide);
@@ -664,7 +784,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         playB->setText(QApplication::translate("MainWindow", "Jouer", Q_NULLPTR));
         help->setText(QApplication::translate("MainWindow", "Aide", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
+        leave_menu->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
         back->setText(QApplication::translate("MainWindow", "Retour", Q_NULLPTR));
         nb4->setText(QApplication::translate("MainWindow", "4", Q_NULLPTR));
         nb5->setText(QApplication::translate("MainWindow", "5", Q_NULLPTR));
@@ -690,6 +810,10 @@ public:
         player6->setText(QString());
         player7->setText(QString());
         player8->setText(QString());
+        replay_sherlock->setText(QApplication::translate("MainWindow", "Rejouer", Q_NULLPTR));
+        leave_sherlock->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
+        replay_mory->setText(QApplication::translate("MainWindow", "Rejouer", Q_NULLPTR));
+        leave_mory->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -105,6 +105,13 @@ private slots:
 
     void on_help_clicked();
 
+
+    void on_leave_sherlock_clicked();
+
+    void on_leave_mory_clicked();
+
+    void on_leave_menu_clicked();
+
 private:
     Ui::MainWindow *ui;
     Game *game ;

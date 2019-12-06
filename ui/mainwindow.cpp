@@ -268,9 +268,9 @@ void MainWindow::keep ()
     if((indc != -1) && (indp !=-1))
     {
         Player &pepe = game->getPlayers().at(indp-1);
+        //hideWithoutI(static_cast<size_t>(indc));
         Card &card = pepe.getCards().at(indc-1);
         printCardRevealed(game->next(card));
-        hideWithoutI(static_cast<size_t>(indc));
         blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
         indc = -1 ;
@@ -281,17 +281,18 @@ void MainWindow::keep ()
     {
        // ui->menu->setCurrentWidget(ui->options);
 
-        QMessageBox msg ;
+        //QMessageBox msg ;
 
         switch (game->getState()) {
         case  Game::MoriartyWin:
-            msg.setText("Moriarty is the boss");
+            ui->menu->setCurrentWidget(ui->fin_mory);
             break;
         case  Game::SherlockWin:
-            msg.setText("Sherlock is the boss");
+            //msg.setText("Sherlock is the boss");
+            ui->menu->setCurrentWidget(ui->fin_sherlock);
             break;
         }
-        msg.exec() ;
+        //msg.exec() ;
     }
 
 }
@@ -711,4 +712,20 @@ void MainWindow::blockPlayerCourant (Player p)
 void MainWindow::on_help_clicked()
 {
     ui->menu->setCurrentWidget(ui->aide);
+}
+
+
+void MainWindow::on_leave_sherlock_clicked()
+{
+    this->close();
+}
+
+void MainWindow::on_leave_mory_clicked()
+{
+    this->close();
+}
+
+void MainWindow::on_leave_menu_clicked()
+{
+    this->close();
 }

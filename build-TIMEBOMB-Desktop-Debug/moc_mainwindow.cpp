@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[25];
-    char stringdata0[410];
+    QByteArrayData data[28];
+    char stringdata0[480];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -55,7 +55,10 @@ QT_MOC_LITERAL(20, 318, 18), // "on_player5_clicked"
 QT_MOC_LITERAL(21, 337, 18), // "on_player6_clicked"
 QT_MOC_LITERAL(22, 356, 18), // "on_player7_clicked"
 QT_MOC_LITERAL(23, 375, 18), // "on_player8_clicked"
-QT_MOC_LITERAL(24, 394, 15) // "on_help_clicked"
+QT_MOC_LITERAL(24, 394, 15), // "on_help_clicked"
+QT_MOC_LITERAL(25, 410, 25), // "on_leave_sherlock_clicked"
+QT_MOC_LITERAL(26, 436, 21), // "on_leave_mory_clicked"
+QT_MOC_LITERAL(27, 458, 21) // "on_leave_menu_clicked"
 
     },
     "MainWindow\0on_playB_clicked\0\0"
@@ -69,7 +72,9 @@ QT_MOC_LITERAL(24, 394, 15) // "on_help_clicked"
     "on_player2_clicked\0on_player3_clicked\0"
     "on_player4_clicked\0on_player5_clicked\0"
     "on_player6_clicked\0on_player7_clicked\0"
-    "on_player8_clicked\0on_help_clicked"
+    "on_player8_clicked\0on_help_clicked\0"
+    "on_leave_sherlock_clicked\0"
+    "on_leave_mory_clicked\0on_leave_menu_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -79,7 +84,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      23,   14, // methods
+      26,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -87,31 +92,37 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  129,    2, 0x08 /* Private */,
-       3,    0,  130,    2, 0x08 /* Private */,
-       4,    0,  131,    2, 0x08 /* Private */,
-       5,    0,  132,    2, 0x08 /* Private */,
-       6,    0,  133,    2, 0x08 /* Private */,
-       7,    0,  134,    2, 0x08 /* Private */,
-       8,    0,  135,    2, 0x08 /* Private */,
-       9,    0,  136,    2, 0x08 /* Private */,
-      10,    0,  137,    2, 0x08 /* Private */,
-      11,    0,  138,    2, 0x08 /* Private */,
-      12,    0,  139,    2, 0x08 /* Private */,
-      13,    0,  140,    2, 0x08 /* Private */,
-      14,    0,  141,    2, 0x08 /* Private */,
-      15,    0,  142,    2, 0x08 /* Private */,
-      16,    0,  143,    2, 0x08 /* Private */,
-      17,    0,  144,    2, 0x08 /* Private */,
-      18,    0,  145,    2, 0x08 /* Private */,
-      19,    0,  146,    2, 0x08 /* Private */,
-      20,    0,  147,    2, 0x08 /* Private */,
-      21,    0,  148,    2, 0x08 /* Private */,
-      22,    0,  149,    2, 0x08 /* Private */,
-      23,    0,  150,    2, 0x08 /* Private */,
-      24,    0,  151,    2, 0x08 /* Private */,
+       1,    0,  144,    2, 0x08 /* Private */,
+       3,    0,  145,    2, 0x08 /* Private */,
+       4,    0,  146,    2, 0x08 /* Private */,
+       5,    0,  147,    2, 0x08 /* Private */,
+       6,    0,  148,    2, 0x08 /* Private */,
+       7,    0,  149,    2, 0x08 /* Private */,
+       8,    0,  150,    2, 0x08 /* Private */,
+       9,    0,  151,    2, 0x08 /* Private */,
+      10,    0,  152,    2, 0x08 /* Private */,
+      11,    0,  153,    2, 0x08 /* Private */,
+      12,    0,  154,    2, 0x08 /* Private */,
+      13,    0,  155,    2, 0x08 /* Private */,
+      14,    0,  156,    2, 0x08 /* Private */,
+      15,    0,  157,    2, 0x08 /* Private */,
+      16,    0,  158,    2, 0x08 /* Private */,
+      17,    0,  159,    2, 0x08 /* Private */,
+      18,    0,  160,    2, 0x08 /* Private */,
+      19,    0,  161,    2, 0x08 /* Private */,
+      20,    0,  162,    2, 0x08 /* Private */,
+      21,    0,  163,    2, 0x08 /* Private */,
+      22,    0,  164,    2, 0x08 /* Private */,
+      23,    0,  165,    2, 0x08 /* Private */,
+      24,    0,  166,    2, 0x08 /* Private */,
+      25,    0,  167,    2, 0x08 /* Private */,
+      26,    0,  168,    2, 0x08 /* Private */,
+      27,    0,  169,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -168,6 +179,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 20: _t->on_player7_clicked(); break;
         case 21: _t->on_player8_clicked(); break;
         case 22: _t->on_help_clicked(); break;
+        case 23: _t->on_leave_sherlock_clicked(); break;
+        case 24: _t->on_leave_mory_clicked(); break;
+        case 25: _t->on_leave_menu_clicked(); break;
         default: ;
         }
     }
@@ -199,13 +213,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 26;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 26)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 23;
+        _id -= 26;
     }
     return _id;
 }
