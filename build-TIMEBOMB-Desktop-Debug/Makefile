@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = TIMEBOMB1.0.0
-DISTDIR = /adhome/d/de/delkabir/Documents/TIME_BOMB/time-bomb/build-TIMEBOMB-Desktop-Debug/.tmp/TIMEBOMB1.0.0
+DISTDIR = /adhome/d/de/deligiannis/time-bomb/build-TIMEBOMB-Desktop-Debug/.tmp/TIMEBOMB1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) -L ../kernel/obj -lkernel -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -350,22 +350,34 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_ressources.cpp
 qrc_ressources.cpp: ../ui/ressources.qrc \
 		/usr/lib/qt5/bin/rcc \
-		../ui/imgs/tb3.png \
-		../ui/imgs/tb13.png \
-		../ui/imgs/tb7.png \
-		../ui/imgs/tb2.png \
-		../ui/imgs/tb12.png \
-		../ui/imgs/tb6.png \
-		../ui/imgs/button.jpg \
 		../ui/imgs/tb1.png \
-		../ui/imgs/tb11.png \
-		../ui/imgs/tb5.png \
-		../ui/imgs/tb9.png \
-		../ui/imgs/tb10.png \
-		../ui/imgs/london.jpg \
+		../ui/imgs/tb2.png \
+		../ui/imgs/tb3.png \
 		../ui/imgs/tb4.png \
+		../ui/imgs/tb5.png \
+		../ui/imgs/london.jpg \
+		../ui/imgs/tb6.png \
+		../ui/imgs/tb7.png \
+		../ui/imgs/tb8.png \
+		../ui/imgs/tb9.png \
+		../ui/imgs/timeBomb1.svg \
+		../ui/imgs/timeBomb2.svg \
+		../ui/imgs/tb10.png \
+		../ui/imgs/timeBomb3.svg \
+		../ui/imgs/tb11.png \
+		../ui/imgs/timeBomb4.svg \
+		../ui/imgs/tb12.png \
+		../ui/imgs/button.jpg \
+		../ui/imgs/timeBomb5.svg \
+		../ui/imgs/tb13.png \
+		../ui/imgs/timeBomb6.svg \
 		../ui/imgs/tb14.png \
-		../ui/imgs/tb8.png
+		../ui/imgs/timeBomb7.svg \
+		../ui/imgs/timeBomb8.svg \
+		../ui/imgs/timeBomb9.svg \
+		../ui/imgs/timeBomb10.svg \
+		../ui/imgs/timeBomb11.svg \
+		../ui/imgs/timeBomb12.svg
 	/usr/lib/qt5/bin/rcc -name ressources ../ui/ressources.qrc -o qrc_ressources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -383,7 +395,7 @@ moc_mainwindow.cpp: ../kernel/headers/Game.h \
 		../ui/mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/d/de/delkabir/Documents/TIME_BOMB/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/adhome/d/de/deligiannis/time-bomb/ui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../ui/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

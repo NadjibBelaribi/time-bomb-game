@@ -16,5 +16,17 @@
         <file>imgs/tb13.png</file>
         <file>imgs/tb14.png</file>
         <file>imgs/london.jpg</file>
+        <file>imgs/timeBomb1.svg</file>
+        <file>imgs/timeBomb2.svg</file>
+        <file>imgs/timeBomb3.svg</file>
+        <file>imgs/timeBomb4.svg</file>
+        <file>imgs/timeBomb5.svg</file>
+        <file>imgs/timeBomb6.svg</file>
+        <file>imgs/timeBomb7.svg</file>
+        <file>imgs/timeBomb8.svg</file>
+        <file>imgs/timeBomb9.svg</file>
+        <file>imgs/timeBomb10.svg</file>
+        <file>imgs/timeBomb11.svg</file>
+        <file>imgs/timeBomb12.svg</file>
     </qresource>
 </RCC>

@@ -69,6 +69,21 @@ public:
 
     void blockPlayerCourant (Player p);
 
+    char file[12][75]={":/imgs/imgs/timeBomb1.svg"
+                       ,":/imgs/imgs/timeBomb2.svg"
+                       ,":/imgs/imgs/timeBomb3.svg"
+                       ,":/imgs/imgs/timeBomb4.svg"
+                       ,":/imgs/imgs/timeBomb5.svg"
+                       ,":/imgs/imgs/timeBomb6.svg"
+                       ,":/imgs/imgs/timeBomb7.svg"
+                       ,":/imgs/imgs/timeBomb8.svg"
+                       ,":/imgs/imgs/timeBomb9.svg"
+                       ,":/imgs/imgs/timeBomb10.svg"
+                       ,":/imgs/imgs/timeBomb11.svg"
+                       ,":/imgs/imgs/timeBomb12.svg"};
+
+    int i=0;
+
 private slots:
 
     void on_playB_clicked();
@@ -116,6 +131,10 @@ private slots:
     void on_leave_mory_clicked();
 
     void on_leave_menu_clicked();
+
+    void on_Previous_clicked();
+
+    void on_next_clicked();
 
 private:
     Ui::MainWindow *ui;

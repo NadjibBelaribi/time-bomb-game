@@ -137,6 +137,13 @@ public:
     QPushButton *leave_mory;
     QSpacerItem *horizontalSpacer_26;
     QWidget *aide;
+    QHBoxLayout *horizontalLayout_4;
+    QVBoxLayout *verticalLayout_11;
+    QPushButton *Previous;
+    QVBoxLayout *verticalLayout_10;
+    QLabel *labelPic;
+    QVBoxLayout *verticalLayout_12;
+    QPushButton *next;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -765,6 +772,43 @@ public:
         menu->addWidget(fin_mory);
         aide = new QWidget();
         aide->setObjectName(QStringLiteral("aide"));
+        horizontalLayout_4 = new QHBoxLayout(aide);
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        verticalLayout_11 = new QVBoxLayout();
+        verticalLayout_11->setSpacing(6);
+        verticalLayout_11->setObjectName(QStringLiteral("verticalLayout_11"));
+        Previous = new QPushButton(aide);
+        Previous->setObjectName(QStringLiteral("Previous"));
+
+        verticalLayout_11->addWidget(Previous);
+
+
+        horizontalLayout_4->addLayout(verticalLayout_11);
+
+        verticalLayout_10 = new QVBoxLayout();
+        verticalLayout_10->setSpacing(6);
+        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        labelPic = new QLabel(aide);
+        labelPic->setObjectName(QStringLiteral("labelPic"));
+
+        verticalLayout_10->addWidget(labelPic);
+
+
+        horizontalLayout_4->addLayout(verticalLayout_10);
+
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setSpacing(6);
+        verticalLayout_12->setObjectName(QStringLiteral("verticalLayout_12"));
+        next = new QPushButton(aide);
+        next->setObjectName(QStringLiteral("next"));
+
+        verticalLayout_12->addWidget(next);
+
+
+        horizontalLayout_4->addLayout(verticalLayout_12);
+
         menu->addWidget(aide);
 
         verticalLayout_2->addWidget(menu);
@@ -773,7 +817,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(0);
+        menu->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -814,6 +858,9 @@ public:
         leave_sherlock->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
         replay_mory->setText(QApplication::translate("MainWindow", "Rejouer", Q_NULLPTR));
         leave_mory->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
+        Previous->setText(QApplication::translate("MainWindow", "Previous", Q_NULLPTR));
+        labelPic->setText(QString());
+        next->setText(QApplication::translate("MainWindow", "Next", Q_NULLPTR));
     } // retranslateUi
 
 };
