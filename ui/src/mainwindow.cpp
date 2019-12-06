@@ -278,8 +278,22 @@ void MainWindow::keep ()
         printBeginMess();
     if(game->getState() != Game::Active)
     {
+       // ui->menu->setCurrentWidget(ui->options);
 
+        //QMessageBox msg ;
+
+        switch (game->getState()) {
+        case  Game::MoriartyWin:
+            ui->menu->setCurrentWidget(ui->fin_mory);
+            break;
+        case  Game::SherlockWin:
+            //msg.setText("Sherlock is the boss");
             ui->menu->setCurrentWidget(ui->fin_sherlock);
+            break;
+        default:
+            break; // sinon warning
+        }
+        //msg.exec() ;
     }
 
 }
@@ -458,8 +472,6 @@ void MainWindow::setCardImg(QPushButton *but , Card::typeCard type ,bool cache)
 
 void MainWindow::on_backOptions_clicked()
 {
-    if (this->getCpt() < game->getPlayers().size())
-       return;
     hideCards();
     if (this->getCpt() >= game->getPlayers().size())
         printBeginMess();
@@ -587,7 +599,6 @@ void MainWindow::on_player5_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
-    enableCards();
     afficheCard(5);
 }
 
@@ -813,10 +824,4 @@ void MainWindow::on_next_clicked()
 void MainWindow::on_backfromhelp_clicked()
 {
     ui->menu->setCurrentWidget(ui->start);
-}
-
-void MainWindow::on_replay_sherlock_clicked()
-{
-    ui->menu->setCurrentWidget(ui->start);
-
 }

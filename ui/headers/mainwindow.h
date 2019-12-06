@@ -90,7 +90,6 @@ private slots:
     void on_playB_clicked();
 
     void on_back_clicked();
-    void on_player1_clicked() ;
 
     void on_nb4_clicked();
 
@@ -116,7 +115,7 @@ private slots:
 
     void on_card5_clicked();
 
-    void on_player1_clPSEUDO1icked();
+    void on_player1_clicked();
     void on_player2_clicked();
     void on_player3_clicked();
     void on_player4_clicked();
@@ -139,8 +138,6 @@ private slots:
     void on_next_clicked();
 
     void on_backfromhelp_clicked();
-
-    void on_replay_sherlock_clicked();
 
 private:
     Ui::MainWindow *ui;
