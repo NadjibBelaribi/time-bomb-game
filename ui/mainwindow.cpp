@@ -463,11 +463,11 @@ void MainWindow::setCardImg(QPushButton *but , Card::typeCard type ,bool cache)
         break;
 
     case Card::Defusing:
-        if (!firstpart) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        if (!firstpart && cache) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
         else but->setStyleSheet("background-image: url(:/imgs/imgs/tb12.png); border-image: url(:/imgs/imgs/tb12.png) 0 0 0 0 stretch; background-image:no-repeat;");
         break;
     case Card::Bomb:
-        if (!firstpart) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        if (!firstpart && cache) but->setStyleSheet("background-image: url(:/imgs/imgs/tb14.png); border-image: url(:/imgs/imgs/tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
         else but->setStyleSheet("background-image: url(:/imgs/imgs/tb10.png); border-image: url(:/imgs/imgs/tb10.png) 0 0 0 0 stretch; background-image:no-repeat;");
         break;
     }
