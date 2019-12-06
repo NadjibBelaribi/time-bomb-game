@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/imgs">
         <file>imgs/button.jpg</file>
-        <file>imgs/wall_accueil.jpg</file>
         <file>imgs/tb1.png</file>
         <file>imgs/tb2.png</file>
         <file>imgs/tb3.png</file>
@@ -16,5 +15,6 @@
         <file>imgs/tb12.png</file>
         <file>imgs/tb13.png</file>
         <file>imgs/tb14.png</file>
+        <file>imgs/london.jpg</file>
     </qresource>
 </RCC>

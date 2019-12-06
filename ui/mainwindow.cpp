@@ -267,8 +267,8 @@ void MainWindow::keep ()
 {
     if((indc != -1) && (indp !=-1))
     {
-        Player &pepe = game->getPlayers().at(indp);
-        Card &card = pepe.getCards().at(indc);
+        Player &pepe = game->getPlayers().at(indp-1);
+        Card &card = pepe.getCards().at(indc-1);
         printCardRevealed(game->next(card));
         hideWithoutI(static_cast<size_t>(indc));
         blockPlayerCourant(game->getCurrentPlayer());
@@ -279,6 +279,8 @@ void MainWindow::keep ()
         printBeginMess();
     if(game->getState() != Game::Active)
     {
+       // ui->menu->setCurrentWidget(ui->options);
+
         QMessageBox msg ;
 
         switch (game->getState()) {
