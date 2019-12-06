@@ -1,6 +1,6 @@
 #include "../headers/mainwindow.h"
 #include "../compiled/ui_mainwindow.h"
-#include "../kernel/headers/Game.h"
+#include "../../kernel/headers/Game.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -43,7 +43,7 @@ void MainWindow::on_nb4_clicked()
     {
        QLineEdit *le = new QLineEdit();
        le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, static_cast<int> (i), 0);
+       ui->gridPseudo->addWidget(le, i, 0);
        hello.push_back(le);
     }
 }
@@ -57,7 +57,7 @@ void MainWindow::on_nb5_clicked()
     {
        QLineEdit *le = new QLineEdit();
        le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, static_cast<int> (i), 0);
+       ui->gridPseudo->addWidget(le, i, 0);
        hello.push_back(le);
     }
 }
@@ -71,7 +71,7 @@ void MainWindow::on_nb6_clicked()
     {
        QLineEdit *le = new QLineEdit();
        le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, static_cast<int> (i), 0);
+       ui->gridPseudo->addWidget(le, i, 0);
        hello.push_back(le);
     }
 }
@@ -85,7 +85,7 @@ void MainWindow::on_nb7_clicked()
     {
        QLineEdit *le = new QLineEdit();
        le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, static_cast<int> (i), 0);
+       ui->gridPseudo->addWidget(le, i, 0);
        hello.push_back(le);
     }
 }
@@ -99,24 +99,70 @@ void MainWindow::on_nb8_clicked()
     {
        QLineEdit *le = new QLineEdit();
        le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, static_cast<int> (i), 0);
+       ui->gridPseudo->addWidget(le, i, 0);
        hello.push_back(le);
     }
+}
+
+bool MainWindow::same(vector <QString> psd)
+{
+    size_t i, j;
+    for (i = 0; i < psd.size(); i++)
+    {
+        for (j = 0; j < psd.size(); j++)
+        {
+            string s1 = psd.at(i).toStdString();
+            string s2 = psd.at(j).toStdString();
+            int x = s2.compare(s1);
+            if (i != j && (x == 0))
+                return true;
+        }
+    }
+    return false;
 }
 
 void MainWindow::on_go_clicked()
 {
     size_t nb_players = hello.size();
-    cout << nb_players << endl;
-    size_t i;
+    size_t i, compteur = 0;
     for (i = 0; i < nb_players; i++)
     {
       QString tmp = hello.at(i)->text();
-      pseudos.push_back(tmp);
+      if (!hello.at(i)->text().isEmpty())
+      {
+           compteur++;
+           pseudos.push_back(tmp);
+      }
      }
-     ui->menu->setCurrentWidget(ui->board);
-    this->setTable(pseudos);
-     this->cpt = 0;
+    if (compteur == nb_players && (!same(pseudos)))
+    {
+        ui->player1->setEnabled(true);
+        ui->player2->setEnabled(true);
+         ui->player3->setEnabled(true);
+         ui->player4->setEnabled(true);
+         ui->player5->setEnabled(true);
+         ui->player6->setEnabled(true);
+         ui->player7->setEnabled(true);
+         ui->player8->setEnabled(true);
+        ui->menu->setCurrentWidget(ui->board);
+        this->setTable(pseudos);
+        this->cpt = 0;
+        RemoveLayout(ui->gridPseudo);
+        for (i = 0; i < compteur; i++)
+        {
+
+            pseudos.pop_back();
+        }
+    }
+
+    else
+    {
+        for (i = 0; i < compteur; i++)
+        {
+            pseudos.pop_back();
+        }
+        return;
+    }
 }
 
 std::vector <QString> MainWindow::getPseudo()
@@ -201,9 +247,9 @@ void MainWindow::setTable( std::vector <QString> psds ) {
     }
 
        game = new Game(nbPlayers,pseudos) ;
-       /* Game::stateGame state; */
+       typedef unsigned singe;
 
-       for (size_t i = 0; i < nbPlayers; i ++)
+       for (singe i = 0; i < nbPlayers; i ++)
            this->reveals.push_back(false);
 
 }
@@ -266,9 +312,9 @@ void MainWindow::keep ()
 {
     if((indc != -1) && (indp !=-1))
     {
-        Player &pepe = game->getPlayers().at(static_cast<unsigned> (indp - 1));
+        Player &pepe = game->getPlayers().at(indp-1);
         //hideWithoutI(static_cast<size_t>(indc));
-        Card &card = pepe.getCards().at(static_cast<unsigned> (indc - 1));
+        Card &card = pepe.getCards().at(indc-1);
         printCardRevealed(game->next(card));
         blockPlayerCourant(game->getCurrentPlayer());
         indp = -1 ;
@@ -285,13 +331,20 @@ void MainWindow::keep ()
         switch (game->getState()) {
         case  Game::MoriartyWin:
             ui->menu->setCurrentWidget(ui->fin_mory);
+            game->~Game();
+            indp = -1;
+            indc = -1;
+            this->setCpt(0);
+            size_t i;
+            for (i = 0; i < this->reveals.size(); i++)
+                this->reveals.at(i) = false;
             break;
         case  Game::SherlockWin:
             //msg.setText("Sherlock is the boss");
             ui->menu->setCurrentWidget(ui->fin_sherlock);
             break;
         default:
-            break; // sinon warning
+            break;
         }
         //msg.exec() ;
     }
@@ -352,6 +405,10 @@ string mm;
                 break;
             case Card::Bomb:
                 mm = "Bomb";
+                break;
+    default :
+        mm= "none" ;
+        break ;
     }
     return mm ;
 }
@@ -397,7 +454,7 @@ void MainWindow::showCards(size_t i)
 
     if(this->getCpt() <= game->getPlayers().size())
     {
-        switch(game->getPlayers().at(static_cast<unsigned> (indp - 1)).getRole())
+        switch(game->getPlayers().at(indp - 1).getRole())
         {
             case Player::Moriarty:
             ui->role->setStyleSheet("background-image: url(:tb6.png); border-image: url(:tb6.png) 0 0 0 0 stretch; background-image:no-repeat;");
@@ -517,8 +574,8 @@ void MainWindow::on_player1_clicked()
     this->setCpt(tmp);
 
     size_t bjr = p.getCards().size();
-    enableCards();
     showCards(bjr) ;
+    enableCards();
     afficheCard(1);
 }
 
@@ -599,6 +656,7 @@ void MainWindow::on_player5_clicked()
 
     size_t bjr = p.getCards().size();
     showCards(bjr) ;
+    enableCards();
     afficheCard(5);
 }
 
@@ -673,7 +731,7 @@ void MainWindow::on_card5_clicked()
        return;
     indc = 5;
     disableCards();
-    Card::typeCard type = game->getPlayers().at(static_cast<unsigned> (indp-1)).getCards().at(static_cast<unsigned> (indc-1)).getType() ;
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card5,type,false);
      keep() ;
 }
@@ -685,7 +743,7 @@ void MainWindow::on_card4_clicked()
        return;
     indc = 4;
     disableCards();
-    Card::typeCard type = game->getPlayers().at(static_cast<unsigned> (indp-1)).getCards().at(static_cast<unsigned> (indc-1)).getType() ;
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card4,type,false);
      keep() ;
 }
@@ -697,7 +755,7 @@ void MainWindow::on_card3_clicked()
        return;
     indc = 3;
     disableCards();
-    Card::typeCard type = game->getPlayers().at(static_cast<unsigned> (indp-1)).getCards().at(static_cast<unsigned> (indc-1)).getType() ;
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card3,type,false);
      keep() ;
 }
@@ -709,7 +767,7 @@ void MainWindow::on_card2_clicked()
        return;
     indc = 2;
     disableCards();
-    Card::typeCard type = game->getPlayers().at(static_cast<unsigned> (indp-1)).getCards().at(static_cast<unsigned> (indc-1)).getType() ;
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card2,type,false);
      keep() ;
 }
@@ -720,7 +778,7 @@ void MainWindow::on_card1_clicked()
     if (this->getCpt() < game->getPlayers().size())
        return;
     indc = 1;
-    Card::typeCard type = game->getPlayers().at(static_cast<unsigned> (indp-1)).getCards().at(static_cast<unsigned> (indc-1)).getType() ;
+    Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card1,type,false);
     disableCards();
      keep() ;
@@ -742,7 +800,7 @@ void MainWindow::blockPlayerCourant (Player p)
          {
              if(p.getPseudo() == game->getPlayers().at(i).getPseudo())
              {
-                cour = static_cast<int> (i) ;
+                cour = i ;
              }
          }
          switch (cour+1) {
@@ -824,4 +882,9 @@ void MainWindow::on_next_clicked()
 void MainWindow::on_backfromhelp_clicked()
 {
     ui->menu->setCurrentWidget(ui->start);
+}
+
+void MainWindow::on_replay_mory_clicked()
+{
+    ui->menu->setCurrentWidget(ui->options);
 }

@@ -601,7 +601,11 @@ public:
         sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
         player1->setSizePolicy(sizePolicy);
         player1->setMinimumSize(QSize(100, 170));
-        player1->setStyleSheet(QString::fromUtf8(""));
+        player1->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player1);
 
@@ -610,7 +614,11 @@ public:
         sizePolicy.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
         player2->setSizePolicy(sizePolicy);
         player2->setMinimumSize(QSize(100, 170));
-        player2->setStyleSheet(QString::fromUtf8(""));
+        player2->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player2);
 
@@ -619,7 +627,11 @@ public:
         sizePolicy.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
         player3->setSizePolicy(sizePolicy);
         player3->setMinimumSize(QSize(100, 170));
-        player3->setStyleSheet(QString::fromUtf8(""));
+        player3->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player3);
 
@@ -628,7 +640,11 @@ public:
         sizePolicy.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
         player4->setSizePolicy(sizePolicy);
         player4->setMinimumSize(QSize(100, 170));
-        player4->setStyleSheet(QString::fromUtf8(""));
+        player4->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player4);
 
@@ -637,7 +653,11 @@ public:
         sizePolicy.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
         player5->setSizePolicy(sizePolicy);
         player5->setMinimumSize(QSize(100, 170));
-        player5->setStyleSheet(QString::fromUtf8(""));
+        player5->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player5);
 
@@ -646,7 +666,11 @@ public:
         sizePolicy.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
         player6->setSizePolicy(sizePolicy);
         player6->setMinimumSize(QSize(100, 170));
-        player6->setStyleSheet(QString::fromUtf8(""));
+        player6->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player6);
 
@@ -655,7 +679,11 @@ public:
         sizePolicy.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
         player7->setSizePolicy(sizePolicy);
         player7->setMinimumSize(QSize(100, 170));
-        player7->setStyleSheet(QString::fromUtf8(""));
+        player7->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player7);
 
@@ -664,7 +692,11 @@ public:
         sizePolicy.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
         player8->setSizePolicy(sizePolicy);
         player8->setMinimumSize(QSize(100, 170));
-        player8->setStyleSheet(QString::fromUtf8(""));
+        player8->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+"font: 75 italic 15pt \"Utopia\";\n"
+"padding-top :120px ;\n"
+" text-transform: uppercase;\n"
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
 
         horizontalLayout->addWidget(player8);
 
@@ -858,7 +890,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(5);
+        menu->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -877,7 +909,7 @@ public:
         nb7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
         nb8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
         go->setText(QCoreApplication::translate("MainWindow", "COMMENCER !", nullptr));
-        backOptions->setText(QCoreApplication::translate("MainWindow", "back", nullptr));
+        backOptions->setText(QCoreApplication::translate("MainWindow", "PROCHAIN", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Round", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Defusings", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Tour", nullptr));

@@ -39,6 +39,8 @@ public:
 
     void setCardImg(QPushButton *but , Card::typeCard type ,bool cache) ;
 
+    bool same(vector <QString> psd);
+
     void setCpt(size_t cpt);
 
     string typec2str(Card c);
@@ -138,6 +140,8 @@ private slots:
     void on_next_clicked();
 
     void on_backfromhelp_clicked();
+
+    void on_replay_mory_clicked();
 
 private:
     Ui::MainWindow *ui;
