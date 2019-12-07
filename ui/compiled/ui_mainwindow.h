@@ -968,6 +968,8 @@ public:
 
         status = new QLabel(board);
         status->setObjectName(QString::fromUtf8("status"));
+        status->setMinimumSize(QSize(0, 50));
+        status->setMaximumSize(QSize(16777215, 50));
         QFont font8;
         font8.setFamily(QString::fromUtf8("Noto Sans Lao"));
         font8.setPointSize(14);

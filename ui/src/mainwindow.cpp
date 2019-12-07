@@ -212,12 +212,14 @@ void MainWindow::keep ()
         Player &pepe = game->getPlayers().at(indp);
         //hideWithoutI(static_cast<size_t>(indc));
         Card &card = pepe.getCards().at(indc);
-        string txt (typec2str(card));
+        string typ (typec2str(card));
+        QString txt (QString::fromStdString(typ));
         txt.append(" ! Au tour de ");
-        txt.append(pepe.getPseudo());
-        ui->status->setText(QString::fromStdString(txt));
+        txt.append(QString::fromStdString(pepe.getPseudo()).toUpper());
+        ui->status->setText(txt);
         const size_t oldRound = game->getRound();
         printCardRevealed(game->next(card));
+        ui->name->setText(QString::fromStdString(game->getCurrentPlayer().getPseudo()).toUpper());
 
         if (oldRound < game->getRound()) {
             // nouv round
@@ -440,24 +442,17 @@ void MainWindow::on_roundNext_clicked ()
     for (size_t i = 0; i < reveals.size(); i ++)
         reveals.at(i) = false;
     setCpt(getCpt() + 1);
-    string s ("C'est parti ! Au tour de ");
-    s.append(game->getCurrentPlayer().getPseudo());
-    ui->status->setText(QString::fromStdString(s));
+    QString s ("C'est parti ! Au tour de ");
+    s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
+    ui->status->setText(s);
     showPlayers();
     blockPlayerCourant(game->getCurrentPlayer());
     ui->roundNext->hide();
 
-    size_t ind = -1;
-    for (size_t i = 0; i < game->getPlayers().size(); i ++) {
-        if (game->getCurrentPlayer().getPseudo() == game->getPlayers().at(i).getPseudo()) {
-            ind = i;
-            break;
-        }
-    }
-
     showCards(game->getCurrentPlayer().getCards().size());
-    enableCards();
-    afficheCard(ind);
+    hideCards();
+    ui->role->show();
+    ui->name->show();
     waitNextRound = false;
 }
 
