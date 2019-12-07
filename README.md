@@ -17,9 +17,25 @@ Nous avons réalisés ce projet à 6: Ilias Deligiannis, Florent Weber, Nadjib B
 
 # Utilisation
 
-Ce projet est divisé en deux modules: le noyau (kernel) et la partie graphique (ui). Chaque module est à compiler à part dans le répertoire dédié:
+Ce projet est divisé en trois modules: le noyau (kernel), le module réseau (network) et la partie graphique (ui). Chaque module est à compiler à part dans le répertoire dédié:
+
+Le répertoire tests/ permet de tester le noyau et le module réseau dans une interface console (très pratique !).
 
 ```bash
+# Noyau, réseau et tests
+make
+
+# Interface graphique
+qmake TIMEBOMB.pro
 make
 ```
 
+**Programmes de tests**
+
+```bash
+# Test en local
+./local <pseudo1> <pseudo2> ...
+
+# Test en réseau (héberger puis rejoindre)
+./host <port> <nb_players> <pseudo>
+./join <ipv6> <port> <pseudo>
