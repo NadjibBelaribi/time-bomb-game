@@ -51,7 +51,7 @@ QPushButton
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="start">
        <property name="styleSheet">
@@ -70,6 +70,116 @@ QPushButton:hover
 }</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="0">
+         <spacer name="horizontalSpacer_32">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="1">
+         <spacer name="verticalSpacer_26">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="eng_trad">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-radius:20px;
+background-image: url(:/drapeau-anglais.png);
+background-image:no-repeat;
+border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <spacer name="horizontalSpacer_27">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="3">
+         <widget class="QPushButton" name="fr_trad">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-image: url(:/drapeau_fr.webp);
+background-image:no-repeat;
+border-image: url(:/drapeau_fr.webp) 0 0 0 0 stretch;
+border-radius:20px;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
         <item row="2" column="2">
          <layout class="QVBoxLayout" name="verticalLayout">
           <property name="spacing">
@@ -252,95 +362,6 @@ QPushButton:hover
            </size>
           </property>
          </spacer>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer_26">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="4">
-         <spacer name="horizontalSpacer_27">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <spacer name="horizontalSpacer_32">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="1">
-         <widget class="QPushButton" name="eng_trad">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>100</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border-radius:20px;
-background-image: url(:/drapeau-anglais.png);
-background-image:no-repeat;
-border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QPushButton" name="fr_trad">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>50</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-image: url(:/drapeau_fr.webp);
-background-image:no-repeat;
-border-image: url(:/drapeau_fr.webp) 0 0 0 0 stretch;
-border-radius:20px;</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
         </item>
         <item row="3" column="2">
          <spacer name="verticalSpacer_28">
@@ -1298,7 +1319,7 @@ background-color: #DDDDDD;
              <widget class="QLabel" name="label">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>140</width>
                 <height>0</height>
                </size>
               </property>
@@ -1332,7 +1353,8 @@ background-color: #DDDDDD;
                <bool>false</bool>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgba(200,200,200,0.6);</string>
+               <string notr="true">background-color: rgba(200,200,200,0.6);
+border-radius: 8px</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -1377,7 +1399,7 @@ background-color: #DDDDDD;
              <widget class="QLabel" name="label_2">
               <property name="minimumSize">
                <size>
-                <width>120</width>
+                <width>140</width>
                 <height>0</height>
                </size>
               </property>
@@ -1408,7 +1430,8 @@ background-color: #DDDDDD;
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgba(200,200,200,0.6);</string>
+               <string notr="true">background-color: rgba(200,200,200,0.6);
+border-radius: 8px</string>
               </property>
               <property name="lineWidth">
                <number>0</number>

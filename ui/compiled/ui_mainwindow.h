@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.4
+** Created by: Qt User Interface Compiler version 5.13.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -34,6 +34,11 @@ public:
     QStackedWidget *menu;
     QWidget *start;
     QGridLayout *gridLayout;
+    QSpacerItem *horizontalSpacer_32;
+    QSpacerItem *verticalSpacer_26;
+    QPushButton *eng_trad;
+    QSpacerItem *horizontalSpacer_27;
+    QPushButton *fr_trad;
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer_14;
     QPushButton *playNetwork;
@@ -45,11 +50,6 @@ public:
     QPushButton *leave_menu;
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *verticalSpacer_27;
-    QSpacerItem *verticalSpacer_26;
-    QSpacerItem *horizontalSpacer_27;
-    QSpacerItem *horizontalSpacer_32;
-    QPushButton *eng_trad;
-    QPushButton *fr_trad;
     QSpacerItem *verticalSpacer_28;
     QWidget *options;
     QVBoxLayout *verticalLayout_3;
@@ -237,6 +237,49 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        horizontalSpacer_32 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_32, 1, 0, 1, 1);
+
+        verticalSpacer_26 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_26, 0, 1, 1, 1);
+
+        eng_trad = new QPushButton(start);
+        eng_trad->setObjectName(QString::fromUtf8("eng_trad"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(eng_trad->sizePolicy().hasHeightForWidth());
+        eng_trad->setSizePolicy(sizePolicy);
+        eng_trad->setMinimumSize(QSize(80, 50));
+        eng_trad->setMaximumSize(QSize(80, 50));
+        eng_trad->setCursor(QCursor(Qt::PointingHandCursor));
+        eng_trad->setStyleSheet(QString::fromUtf8("border-radius:20px;\n"
+"background-image: url(:/drapeau-anglais.png);\n"
+"background-image:no-repeat;\n"
+"border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;"));
+
+        gridLayout->addWidget(eng_trad, 1, 1, 1, 1);
+
+        horizontalSpacer_27 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_27, 1, 4, 1, 1);
+
+        fr_trad = new QPushButton(start);
+        fr_trad->setObjectName(QString::fromUtf8("fr_trad"));
+        sizePolicy.setHeightForWidth(fr_trad->sizePolicy().hasHeightForWidth());
+        fr_trad->setSizePolicy(sizePolicy);
+        fr_trad->setMinimumSize(QSize(80, 50));
+        fr_trad->setMaximumSize(QSize(80, 50));
+        fr_trad->setCursor(QCursor(Qt::PointingHandCursor));
+        fr_trad->setStyleSheet(QString::fromUtf8("background-image: url(:/drapeau_fr.webp);\n"
+"background-image:no-repeat;\n"
+"border-image: url(:/drapeau_fr.webp) 0 0 0 0 stretch;\n"
+"border-radius:20px;"));
+
+        gridLayout->addWidget(fr_trad, 1, 3, 1, 1);
+
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -264,11 +307,11 @@ public:
 
         playB = new QPushButton(start);
         playB->setObjectName(QString::fromUtf8("playB"));
-        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(playB->sizePolicy().hasHeightForWidth());
-        playB->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(playB->sizePolicy().hasHeightForWidth());
+        playB->setSizePolicy(sizePolicy1);
         playB->setMinimumSize(QSize(220, 60));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Purisa"));
@@ -314,45 +357,6 @@ public:
         verticalSpacer_27 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_27, 0, 3, 1, 1);
-
-        verticalSpacer_26 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_26, 0, 1, 1, 1);
-
-        horizontalSpacer_27 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_27, 1, 4, 1, 1);
-
-        horizontalSpacer_32 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_32, 1, 0, 1, 1);
-
-        eng_trad = new QPushButton(start);
-        eng_trad->setObjectName(QString::fromUtf8("eng_trad"));
-        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(eng_trad->sizePolicy().hasHeightForWidth());
-        eng_trad->setSizePolicy(sizePolicy1);
-        eng_trad->setMinimumSize(QSize(100, 50));
-        eng_trad->setStyleSheet(QString::fromUtf8("border-radius:20px;\n"
-"background-image: url(:/drapeau-anglais.png);\n"
-"background-image:no-repeat;\n"
-"border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;"));
-
-        gridLayout->addWidget(eng_trad, 1, 1, 1, 1);
-
-        fr_trad = new QPushButton(start);
-        fr_trad->setObjectName(QString::fromUtf8("fr_trad"));
-        sizePolicy1.setHeightForWidth(fr_trad->sizePolicy().hasHeightForWidth());
-        fr_trad->setSizePolicy(sizePolicy1);
-        fr_trad->setMinimumSize(QSize(0, 50));
-        fr_trad->setStyleSheet(QString::fromUtf8("background-image: url(:/drapeau_fr.webp);\n"
-"background-image:no-repeat;\n"
-"border-image: url(:/drapeau_fr.webp) 0 0 0 0 stretch;\n"
-"border-radius:20px;"));
-
-        gridLayout->addWidget(fr_trad, 1, 3, 1, 1);
 
         verticalSpacer_28 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -573,8 +577,8 @@ public:
         verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
         networkMenuBack = new QPushButton(networkMenu);
         networkMenuBack->setObjectName(QString::fromUtf8("networkMenuBack"));
-        sizePolicy1.setHeightForWidth(networkMenuBack->sizePolicy().hasHeightForWidth());
-        networkMenuBack->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(networkMenuBack->sizePolicy().hasHeightForWidth());
+        networkMenuBack->setSizePolicy(sizePolicy);
         networkMenuBack->setMinimumSize(QSize(150, 40));
         QFont font4;
         font4.setBold(false);
@@ -808,7 +812,7 @@ public:
 
         label = new QLabel(board);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(100, 0));
+        label->setMinimumSize(QSize(140, 0));
         label->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "	border: 1px solid snow;\n"
@@ -825,7 +829,8 @@ public:
         round->setObjectName(QString::fromUtf8("round"));
         round->setMinimumSize(QSize(40, 40));
         round->setAutoFillBackground(false);
-        round->setStyleSheet(QString::fromUtf8("background-color: rgba(200,200,200,0.6);"));
+        round->setStyleSheet(QString::fromUtf8("background-color: rgba(200,200,200,0.6);\n"
+"border-radius: 8px"));
         round->setFrameShape(QFrame::Box);
         round->setFrameShadow(QFrame::Raised);
         round->setLineWidth(0);
@@ -842,7 +847,7 @@ public:
 
         label_2 = new QLabel(board);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setMinimumSize(QSize(120, 0));
+        label_2->setMinimumSize(QSize(140, 0));
         label_2->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "	border: 1px solid snow;\n"
@@ -858,7 +863,8 @@ public:
         defusing = new QLCDNumber(board);
         defusing->setObjectName(QString::fromUtf8("defusing"));
         defusing->setMinimumSize(QSize(40, 40));
-        defusing->setStyleSheet(QString::fromUtf8("background-color: rgba(200,200,200,0.6);"));
+        defusing->setStyleSheet(QString::fromUtf8("background-color: rgba(200,200,200,0.6);\n"
+"border-radius: 8px"));
         defusing->setLineWidth(0);
         defusing->setSmallDecimalPoint(false);
         defusing->setDigitCount(1);
@@ -1051,8 +1057,8 @@ public:
 
         player1 = new QPushButton(board);
         player1->setObjectName(QString::fromUtf8("player1"));
-        sizePolicy1.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
-        player1->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
+        player1->setSizePolicy(sizePolicy);
         player1->setMinimumSize(QSize(100, 170));
         player1->setCursor(QCursor(Qt::ArrowCursor));
         player1->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -1072,8 +1078,8 @@ public:
 
         player2 = new QPushButton(board);
         player2->setObjectName(QString::fromUtf8("player2"));
-        sizePolicy1.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
-        player2->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
+        player2->setSizePolicy(sizePolicy);
         player2->setMinimumSize(QSize(100, 170));
         player2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1092,8 +1098,8 @@ public:
 
         player3 = new QPushButton(board);
         player3->setObjectName(QString::fromUtf8("player3"));
-        sizePolicy1.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
-        player3->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
+        player3->setSizePolicy(sizePolicy);
         player3->setMinimumSize(QSize(100, 170));
         player3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1112,8 +1118,8 @@ public:
 
         player4 = new QPushButton(board);
         player4->setObjectName(QString::fromUtf8("player4"));
-        sizePolicy1.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
-        player4->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
+        player4->setSizePolicy(sizePolicy);
         player4->setMinimumSize(QSize(100, 170));
         player4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1132,8 +1138,8 @@ public:
 
         player5 = new QPushButton(board);
         player5->setObjectName(QString::fromUtf8("player5"));
-        sizePolicy1.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
-        player5->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
+        player5->setSizePolicy(sizePolicy);
         player5->setMinimumSize(QSize(100, 170));
         player5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1152,8 +1158,8 @@ public:
 
         player6 = new QPushButton(board);
         player6->setObjectName(QString::fromUtf8("player6"));
-        sizePolicy1.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
-        player6->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
+        player6->setSizePolicy(sizePolicy);
         player6->setMinimumSize(QSize(100, 170));
         player6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1172,8 +1178,8 @@ public:
 
         player7 = new QPushButton(board);
         player7->setObjectName(QString::fromUtf8("player7"));
-        sizePolicy1.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
-        player7->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
+        player7->setSizePolicy(sizePolicy);
         player7->setMinimumSize(QSize(100, 170));
         player7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1192,8 +1198,8 @@ public:
 
         player8 = new QPushButton(board);
         player8->setObjectName(QString::fromUtf8("player8"));
-        sizePolicy1.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
-        player8->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
+        player8->setSizePolicy(sizePolicy);
         player8->setMinimumSize(QSize(100, 170));
         player8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -1474,7 +1480,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(0);
+        menu->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1482,36 +1488,36 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        playNetwork->setText(QApplication::translate("MainWindow", "R\303\251seau", nullptr));
-        playB->setText(QApplication::translate("MainWindow", "Local", nullptr));
-        help->setText(QApplication::translate("MainWindow", "Aide", nullptr));
-        leave_menu->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         eng_trad->setText(QString());
         fr_trad->setText(QString());
-        back->setText(QApplication::translate("MainWindow", "Retour", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
-        nb4->setText(QApplication::translate("MainWindow", "4", nullptr));
-        nb5->setText(QApplication::translate("MainWindow", "5", nullptr));
-        nb6->setText(QApplication::translate("MainWindow", "6", nullptr));
-        nb7->setText(QApplication::translate("MainWindow", "7", nullptr));
-        nb8->setText(QApplication::translate("MainWindow", "8", nullptr));
-        go->setText(QApplication::translate("MainWindow", "COMMENCER !", nullptr));
-        networkMenuBack->setText(QApplication::translate("MainWindow", "Retour", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        lineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
-        lineEdit_4->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
-        label_6->setText(QApplication::translate("MainWindow", "Nb Joueurs", nullptr));
-        networkHostGo->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        label_5->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
-        lineEdit_2->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
-        lineEdit_3->setPlaceholderText(QApplication::translate("MainWindow", "Adresse IP", nullptr));
-        lineEdit_5->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
-        networkJoinGo->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Round", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "Defusings", nullptr));
+        playNetwork->setText(QCoreApplication::translate("MainWindow", "R\303\251seau", nullptr));
+        playB->setText(QCoreApplication::translate("MainWindow", "Local", nullptr));
+        help->setText(QCoreApplication::translate("MainWindow", "Aide", nullptr));
+        leave_menu->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
+        back->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
+        nb4->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
+        nb5->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
+        nb6->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
+        nb7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
+        nb8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
+        go->setText(QCoreApplication::translate("MainWindow", "COMMENCER !", nullptr));
+        networkMenuBack->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
+        lineEdit_4->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "Nb Joueurs", nullptr));
+        networkHostGo->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
+        lineEdit_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
+        lineEdit_3->setPlaceholderText(QCoreApplication::translate("MainWindow", "Adresse IP", nullptr));
+        lineEdit_5->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
+        networkJoinGo->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Round", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Defusings", nullptr));
         role->setText(QString());
-        name->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        name->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         card3->setText(QString());
         card1->setText(QString());
         card4->setText(QString());
@@ -1526,12 +1532,12 @@ public:
         player6->setText(QString());
         player7->setText(QString());
         player8->setText(QString());
-        roundNext->setText(QApplication::translate("MainWindow", "Continuer", nullptr));
+        roundNext->setText(QCoreApplication::translate("MainWindow", "Continuer", nullptr));
         fin_img->setText(QString());
         winner->setText(QString());
-        replay->setText(QApplication::translate("MainWindow", "Rejouer", nullptr));
-        leave->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
-        backfromhelp->setText(QApplication::translate("MainWindow", "Retour", nullptr));
+        replay->setText(QCoreApplication::translate("MainWindow", "Rejouer", nullptr));
+        leave->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
+        backfromhelp->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
         Previous->setText(QString());
         labelPic->setText(QString());
         next->setText(QString());
