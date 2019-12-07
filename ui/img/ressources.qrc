@@ -1,5 +1,5 @@
 <RCC>
-    <qresource>
+    <qresource prefix="/">
         <file>button.jpg</file>
         <file>tb1.png</file>
         <file>tb2.png</file>
@@ -32,5 +32,7 @@
         <file>next.png</file>
         <file>fin_mori.png</file>
         <file>fin_sherlock.png</file>
+        <file>drapeau_fr.webp</file>
+        <file>drapeau-anglais.png</file>
     </qresource>
 </RCC>

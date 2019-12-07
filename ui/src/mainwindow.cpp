@@ -688,8 +688,6 @@ void MainWindow::english()
     ui->label_6->setText("Nb players");
     ui->replay->setText("Replay");
     ui->backfromhelp->setText("Back");
-    ui->eng_trad->setText("English");
-    ui->fr_trad->setText("French");
     ui->roundNext->setText("Continue");
     ui->label_2->setText("Defuse Wires");
     ui->leave->setText("Leave");
@@ -712,8 +710,6 @@ void MainWindow::french()
     ui->label_6->setText("Nb joueurs");
     ui->replay->setText("Rejouer");
     ui->backfromhelp->setText("Retour");
-    ui->eng_trad->setText("Anglais");
-    ui->fr_trad->setText("Français");
     ui->roundNext->setText("Continuer");
     ui->label_2->setText("Fils diffuseurs");
     ui->leave->setText("Quitter");

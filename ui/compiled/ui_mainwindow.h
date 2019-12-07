@@ -34,9 +34,7 @@ public:
     QStackedWidget *menu;
     QWidget *start;
     QGridLayout *gridLayout;
-    QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
-    QPushButton *eng_trad;
     QSpacerItem *verticalSpacer_14;
     QPushButton *playNetwork;
     QSpacerItem *verticalSpacer;
@@ -46,8 +44,10 @@ public:
     QSpacerItem *verticalSpacer_4;
     QPushButton *leave_menu;
     QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer;
     QPushButton *fr_trad;
     QSpacerItem *horizontalSpacer_2;
+    QPushButton *eng_trad;
     QWidget *options;
     QVBoxLayout *verticalLayout_3;
     QSpacerItem *verticalSpacer_8;
@@ -234,18 +234,9 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 0, 0, 1, 1);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        eng_trad = new QPushButton(start);
-        eng_trad->setObjectName(QString::fromUtf8("eng_trad"));
-
-        verticalLayout->addWidget(eng_trad);
-
         verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_14);
@@ -314,17 +305,36 @@ public:
 
         verticalLayout->addItem(verticalSpacer_2);
 
+
+        gridLayout->addLayout(verticalLayout, 1, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 1, 0, 1, 1);
+
         fr_trad = new QPushButton(start);
         fr_trad->setObjectName(QString::fromUtf8("fr_trad"));
+        fr_trad->setMinimumSize(QSize(0, 50));
+        fr_trad->setStyleSheet(QString::fromUtf8("background-image: url(:/drapeau_fr.webp);\n"
+"background-image:no-repeat;\n"
+"border-image: url(:/drapeau_fr.webp) 0 0 0 0 stretch;\n"
+"border-radius:20px;"));
 
-        verticalLayout->addWidget(fr_trad);
-
-
-        gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
+        gridLayout->addWidget(fr_trad, 0, 2, 1, 1);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
+        gridLayout->addItem(horizontalSpacer_2, 1, 2, 1, 1);
+
+        eng_trad = new QPushButton(start);
+        eng_trad->setObjectName(QString::fromUtf8("eng_trad"));
+        eng_trad->setMinimumSize(QSize(110, 50));
+        eng_trad->setStyleSheet(QString::fromUtf8("border-radius:20px;\n"
+"background-image: url(:/drapeau-anglais.png);\n"
+"background-image:no-repeat;\n"
+"border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;"));
+
+        gridLayout->addWidget(eng_trad, 0, 0, 1, 1);
 
         menu->addWidget(start);
         options = new QWidget();
@@ -1445,7 +1455,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(1);
+        menu->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1454,12 +1464,12 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        eng_trad->setText(QApplication::translate("MainWindow", "Anglais", nullptr));
         playNetwork->setText(QApplication::translate("MainWindow", "R\303\251seau", nullptr));
         playB->setText(QApplication::translate("MainWindow", "Local", nullptr));
         help->setText(QApplication::translate("MainWindow", "Aide", nullptr));
         leave_menu->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
-        fr_trad->setText(QApplication::translate("MainWindow", "Fran\303\247ais", nullptr));
+        fr_trad->setText(QString());
+        eng_trad->setText(QString());
         back->setText(QApplication::translate("MainWindow", "Retour", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
         nb4->setText(QApplication::translate("MainWindow", "4", nullptr));
