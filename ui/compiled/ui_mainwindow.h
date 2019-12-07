@@ -75,19 +75,19 @@ public:
     QPushButton *backOptions;
     QSpacerItem *horizontalSpacer_11;
     QLabel *label;
+    QLineEdit *round;
     QSpacerItem *horizontalSpacer_16;
     QLabel *label_2;
+    QLineEdit *nbDefusing;
     QSpacerItem *horizontalSpacer_17;
     QLabel *label_3;
+    QLineEdit *tour;
     QSpacerItem *horizontalSpacer_12;
     QSpacerItem *verticalSpacer_9;
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_13;
     QSpacerItem *horizontalSpacer_20;
     QSpacerItem *horizontalSpacer_21;
-    QLineEdit *round;
-    QLineEdit *nbDefusing;
-    QLineEdit *tour;
     QSpacerItem *horizontalSpacer_14;
     QSpacerItem *verticalSpacer_10;
     QHBoxLayout *horizontalLayout_8;
@@ -102,6 +102,7 @@ public:
     QSpacerItem *horizontalSpacer_18;
     QSpacerItem *verticalSpacer_13;
     QHBoxLayout *horizontalLayout;
+    QHBoxLayout *horizontalLayout_13;
     QPushButton *player1;
     QPushButton *player2;
     QPushButton *player3;
@@ -110,6 +111,7 @@ public:
     QPushButton *player6;
     QPushButton *player7;
     QPushButton *player8;
+    QHBoxLayout *horizontalLayout_14;
     QSpacerItem *verticalSpacer_12;
     QWidget *fin_sherlock;
     QHBoxLayout *horizontalLayout_2;
@@ -137,15 +139,18 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer_28;
     QVBoxLayout *verticalLayout_11;
-    QSpacerItem *verticalSpacer_18;
+    QPushButton *backfromhelp;
+    QHBoxLayout *horizontalLayout_9;
+    QSpacerItem *horizontalSpacer_29;
     QPushButton *Previous;
     QSpacerItem *verticalSpacer_21;
     QVBoxLayout *verticalLayout_10;
     QLabel *labelPic;
-    QPushButton *backfromhelp;
     QVBoxLayout *verticalLayout_12;
     QSpacerItem *verticalSpacer_19;
+    QHBoxLayout *horizontalLayout_12;
     QPushButton *next;
+    QSpacerItem *horizontalSpacer_30;
     QSpacerItem *verticalSpacer_20;
     QSpacerItem *horizontalSpacer_31;
 
@@ -153,7 +158,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1095, 614);
+        MainWindow->resize(1047, 614);
         MainWindow->setMinimumSize(QSize(20, 30));
         MainWindow->setMaximumSize(QSize(1292, 614));
         MainWindow->setStyleSheet(QString::fromUtf8("QMainWindow\n"
@@ -259,7 +264,8 @@ public:
         options->setObjectName(QString::fromUtf8("options"));
         options->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"	width: 200px;\n"
+"	min-width: 120px;\n"
+"	height: 30px;\n"
 "	border: 1px solid snow;\n"
 "	border-radius: 10px 10px 10px 10px;\n"
 "	background-color:DodgerBlue ;\n"
@@ -269,6 +275,14 @@ public:
 "QPushButton:hover\n"
 "{\n"
 "	background-color:DarkSlateBlue ;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"height: 30px;\n"
+"padding: 6px 10px;\n"
+"background-color: rgba(80,80,80,0.9);\n"
+"border-radius: 6px;\n"
+"color: snow;\n"
 "}"));
         verticalLayout_3 = new QVBoxLayout(options);
         verticalLayout_3->setSpacing(6);
@@ -287,12 +301,21 @@ public:
 
         back = new QPushButton(options);
         back->setObjectName(QString::fromUtf8("back"));
+        back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"margin-right: 2em;\n"
+"background-color: snow;\n"
+"color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: #EEEEEE;\n"
+"}"));
 
         horizontalLayout_5->addWidget(back);
 
         nb4 = new QPushButton(options);
         nb4->setObjectName(QString::fromUtf8("nb4"));
-        nb4->setMinimumSize(QSize(169, 25));
+        nb4->setMinimumSize(QSize(122, 25));
 
         horizontalLayout_5->addWidget(nb4);
 
@@ -365,7 +388,12 @@ public:
 
         go = new QPushButton(options);
         go->setObjectName(QString::fromUtf8("go"));
-        go->setMinimumSize(QSize(20, 40));
+        go->setMinimumSize(QSize(202, 40));
+        QFont font;
+        font.setBold(true);
+        font.setWeight(75);
+        go->setFont(font);
+        go->setStyleSheet(QString::fromUtf8("min-width: 200px;"));
 
         horizontalLayout_6->addWidget(go);
 
@@ -404,6 +432,7 @@ public:
 
         backOptions = new QPushButton(board);
         backOptions->setObjectName(QString::fromUtf8("backOptions"));
+        backOptions->setMaximumSize(QSize(180, 16777215));
         backOptions->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "	width: 200px;\n"
@@ -439,13 +468,29 @@ public:
 
         horizontalLayout_10->addWidget(label);
 
+        round = new QLineEdit(board);
+        round->setObjectName(QString::fromUtf8("round"));
+        round->setMinimumSize(QSize(0, 0));
+        round->setMaximumSize(QSize(40, 16777215));
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        round->setFont(font1);
+        round->setStyleSheet(QString::fromUtf8("background: rgba(20,20,20, 0.5);\n"
+"color: snow;"));
+        round->setAlignment(Qt::AlignCenter);
+        round->setReadOnly(true);
+
+        horizontalLayout_10->addWidget(round);
+
         horizontalSpacer_16 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         horizontalLayout_10->addItem(horizontalSpacer_16);
 
         label_2 = new QLabel(board);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setMinimumSize(QSize(100, 0));
+        label_2->setMinimumSize(QSize(120, 0));
         label_2->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "	border: 1px solid snow;\n"
@@ -457,6 +502,17 @@ public:
         label_2->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_10->addWidget(label_2);
+
+        nbDefusing = new QLineEdit(board);
+        nbDefusing->setObjectName(QString::fromUtf8("nbDefusing"));
+        nbDefusing->setMaximumSize(QSize(40, 16777215));
+        nbDefusing->setFont(font1);
+        nbDefusing->setStyleSheet(QString::fromUtf8("background: rgba(20,20,20, 0.5);\n"
+"color: snow;"));
+        nbDefusing->setAlignment(Qt::AlignCenter);
+        nbDefusing->setReadOnly(true);
+
+        horizontalLayout_10->addWidget(nbDefusing);
 
         horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -477,6 +533,21 @@ public:
         label_3->setAlignment(Qt::AlignCenter);
 
         horizontalLayout_10->addWidget(label_3);
+
+        tour = new QLineEdit(board);
+        tour->setObjectName(QString::fromUtf8("tour"));
+        tour->setMaximumSize(QSize(120, 16777215));
+        QFont font2;
+        font2.setPointSize(13);
+        font2.setBold(true);
+        font2.setWeight(75);
+        tour->setFont(font2);
+        tour->setStyleSheet(QString::fromUtf8("background: rgba(20,20,20, 0.5);\n"
+"color: snow;"));
+        tour->setAlignment(Qt::AlignCenter);
+        tour->setReadOnly(true);
+
+        horizontalLayout_10->addWidget(tour);
 
         horizontalSpacer_12 = new QSpacerItem(20, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -503,22 +574,6 @@ public:
         horizontalSpacer_21 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_11->addItem(horizontalSpacer_21);
-
-        round = new QLineEdit(board);
-        round->setObjectName(QString::fromUtf8("round"));
-        round->setMinimumSize(QSize(0, 0));
-
-        horizontalLayout_11->addWidget(round);
-
-        nbDefusing = new QLineEdit(board);
-        nbDefusing->setObjectName(QString::fromUtf8("nbDefusing"));
-
-        horizontalLayout_11->addWidget(nbDefusing);
-
-        tour = new QLineEdit(board);
-        tour->setObjectName(QString::fromUtf8("tour"));
-
-        horizontalLayout_11->addWidget(tour);
 
         horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -596,6 +651,12 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout_13 = new QHBoxLayout();
+        horizontalLayout_13->setSpacing(6);
+        horizontalLayout_13->setObjectName(QString::fromUtf8("horizontalLayout_13"));
+
+        horizontalLayout->addLayout(horizontalLayout_13);
+
         player1 = new QPushButton(board);
         player1->setObjectName(QString::fromUtf8("player1"));
         sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
@@ -700,6 +761,13 @@ public:
 
         horizontalLayout->addWidget(player8);
 
+        horizontalLayout_14 = new QHBoxLayout();
+        horizontalLayout_14->setSpacing(6);
+        horizontalLayout_14->setObjectName(QString::fromUtf8("horizontalLayout_14"));
+        horizontalLayout_14->setSizeConstraint(QLayout::SetDefaultConstraint);
+
+        horizontalLayout->addLayout(horizontalLayout_14);
+
 
         verticalLayout_5->addLayout(horizontalLayout);
 
@@ -710,6 +778,14 @@ public:
         menu->addWidget(board);
         fin_sherlock = new QWidget();
         fin_sherlock->setObjectName(QString::fromUtf8("fin_sherlock"));
+        fin_sherlock->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"border-radius: 6px;\n"
+"background-color: rgba(240,240,240,0.8);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(240,240,240,1);\n"
+"}"));
         horizontalLayout_2 = new QHBoxLayout(fin_sherlock);
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -759,6 +835,14 @@ public:
         menu->addWidget(fin_sherlock);
         fin_mory = new QWidget();
         fin_mory->setObjectName(QString::fromUtf8("fin_mory"));
+        fin_mory->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"border-radius: 6px;\n"
+"background-color: rgba(240,240,240,0.8);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(240,240,240,1);\n"
+"}"));
         horizontalLayout_3 = new QHBoxLayout(fin_mory);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -776,6 +860,8 @@ public:
 
         replay_mory = new QPushButton(fin_mory);
         replay_mory->setObjectName(QString::fromUtf8("replay_mory"));
+        replay_mory->setMinimumSize(QSize(80, 30));
+        replay_mory->setFont(font);
 
         verticalLayout_8->addWidget(replay_mory);
 
@@ -795,6 +881,8 @@ public:
 
         leave_mory = new QPushButton(fin_mory);
         leave_mory->setObjectName(QString::fromUtf8("leave_mory"));
+        leave_mory->setMinimumSize(QSize(80, 30));
+        leave_mory->setFont(font);
 
         verticalLayout_9->addWidget(leave_mory);
 
@@ -812,28 +900,62 @@ public:
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalSpacer_28 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_28 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_28);
 
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setSpacing(6);
         verticalLayout_11->setObjectName(QString::fromUtf8("verticalLayout_11"));
-        verticalSpacer_18 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
+        backfromhelp = new QPushButton(aide);
+        backfromhelp->setObjectName(QString::fromUtf8("backfromhelp"));
+        backfromhelp->setMinimumSize(QSize(100, 40));
+        backfromhelp->setMaximumSize(QSize(80, 40));
+        backfromhelp->setFont(font1);
+        backfromhelp->setStyleSheet(QString::fromUtf8("QPushButton  {\n"
+"border-radius: 6px;\n"
+"background-color: rgba(240,240,240,0.8);\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(240,240,240,1);\n"
+"\n"
+"}"));
 
-        verticalLayout_11->addItem(verticalSpacer_18);
+        verticalLayout_11->addWidget(backfromhelp);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setSpacing(6);
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        horizontalSpacer_29 = new QSpacerItem(0, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout_9->addItem(horizontalSpacer_29);
 
         Previous = new QPushButton(aide);
         Previous->setObjectName(QString::fromUtf8("Previous"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Maximum);
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(Previous->sizePolicy().hasHeightForWidth());
         Previous->setSizePolicy(sizePolicy1);
-        Previous->setMinimumSize(QSize(50, 0));
-        Previous->setStyleSheet(QString::fromUtf8("border-radius:3px;"));
+        Previous->setMinimumSize(QSize(80, 0));
+        Previous->setMaximumSize(QSize(80, 16777215));
+        Previous->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"border-radius:3px; \n"
+"background-color: rgba(20,20,20,0.8); \n"
+"background-image: url(:previous.png); \n"
+"background-repeat: no-repeat; \n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(20,20,20,1);\n"
+"}"));
 
-        verticalLayout_11->addWidget(Previous);
+        horizontalLayout_9->addWidget(Previous);
+
+
+        verticalLayout_11->addLayout(horizontalLayout_9);
 
         verticalSpacer_21 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -847,13 +969,13 @@ public:
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         labelPic = new QLabel(aide);
         labelPic->setObjectName(QString::fromUtf8("labelPic"));
+        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(labelPic->sizePolicy().hasHeightForWidth());
+        labelPic->setSizePolicy(sizePolicy2);
 
         verticalLayout_10->addWidget(labelPic);
-
-        backfromhelp = new QPushButton(aide);
-        backfromhelp->setObjectName(QString::fromUtf8("backfromhelp"));
-
-        verticalLayout_10->addWidget(backfromhelp);
 
 
         horizontalLayout_4->addLayout(verticalLayout_10);
@@ -865,11 +987,35 @@ public:
 
         verticalLayout_12->addItem(verticalSpacer_19);
 
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setSpacing(6);
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
         next = new QPushButton(aide);
         next->setObjectName(QString::fromUtf8("next"));
-        next->setStyleSheet(QString::fromUtf8("border-radius: 3px;"));
+        sizePolicy1.setHeightForWidth(next->sizePolicy().hasHeightForWidth());
+        next->setSizePolicy(sizePolicy1);
+        next->setMinimumSize(QSize(80, 0));
+        next->setMaximumSize(QSize(80, 16777215));
+        next->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"border-radius:3px; \n"
+"background-color: rgba(20,20,20,0.8); \n"
+"background-image: url(:next.png); \n"
+"background-repeat: no-repeat; \n"
+"background-position: center;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(20,20,20,1);\n"
+"}"));
 
-        verticalLayout_12->addWidget(next);
+        horizontalLayout_12->addWidget(next);
+
+        horizontalSpacer_30 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        horizontalLayout_12->addItem(horizontalSpacer_30);
+
+
+        verticalLayout_12->addLayout(horizontalLayout_12);
 
         verticalSpacer_20 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Fixed);
 
@@ -878,7 +1024,7 @@ public:
 
         horizontalLayout_4->addLayout(verticalLayout_12);
 
-        horizontalSpacer_31 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_31 = new QSpacerItem(40, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_31);
 
@@ -931,10 +1077,10 @@ public:
         leave_sherlock->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
         replay_mory->setText(QCoreApplication::translate("MainWindow", "Rejouer", nullptr));
         leave_mory->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
-        Previous->setText(QCoreApplication::translate("MainWindow", "Previous", nullptr));
+        backfromhelp->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        Previous->setText(QString());
         labelPic->setText(QString());
-        backfromhelp->setText(QCoreApplication::translate("MainWindow", "retour", nullptr));
-        next->setText(QCoreApplication::translate("MainWindow", "Next", nullptr));
+        next->setText(QString());
     } // retranslateUi
 
 };

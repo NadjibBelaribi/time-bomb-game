@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1095</width>
+    <width>1047</width>
     <height>614</height>
    </rect>
   </property>
@@ -224,7 +224,8 @@ QPushButton:hover
        <property name="styleSheet">
         <string notr="true">QPushButton
 {
-	width: 200px;
+	min-width: 120px;
+	height: 30px;
 	border: 1px solid snow;
 	border-radius: 10px 10px 10px 10px;
 	background-color:DodgerBlue ;
@@ -234,6 +235,14 @@ QPushButton:hover
 QPushButton:hover
 {
 	background-color:DarkSlateBlue ;
+}
+
+QLineEdit {
+height: 30px;
+padding: 6px 10px;
+background-color: rgba(80,80,80,0.9);
+border-radius: 6px;
+color: snow;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -267,6 +276,17 @@ QPushButton:hover
           </item>
           <item>
            <widget class="QPushButton" name="back">
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+margin-right: 2em;
+background-color: snow;
+color: black;
+}
+
+QPushButton:hover {
+background-color: #EEEEEE;
+}</string>
+            </property>
             <property name="text">
              <string>Retour</string>
             </property>
@@ -276,7 +296,7 @@ QPushButton:hover
            <widget class="QPushButton" name="nb4">
             <property name="minimumSize">
              <size>
-              <width>169</width>
+              <width>122</width>
               <height>25</height>
              </size>
             </property>
@@ -425,9 +445,19 @@ QPushButton:hover
            <widget class="QPushButton" name="go">
             <property name="minimumSize">
              <size>
-              <width>20</width>
+              <width>202</width>
               <height>40</height>
              </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">min-width: 200px;</string>
             </property>
             <property name="text">
              <string>COMMENCER !</string>
@@ -501,6 +531,12 @@ QPushButton:hover
             </item>
             <item>
              <widget class="QPushButton" name="backOptions">
+              <property name="maximumSize">
+               <size>
+                <width>180</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton
 {
@@ -561,6 +597,39 @@ QPushButton:hover
              </widget>
             </item>
             <item>
+             <widget class="QLineEdit" name="round">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>40</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background: rgba(20,20,20, 0.5);
+color: snow;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="horizontalSpacer_16">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -580,7 +649,7 @@ QPushButton:hover
              <widget class="QLabel" name="label_2">
               <property name="minimumSize">
                <size>
-                <width>100</width>
+                <width>120</width>
                 <height>0</height>
                </size>
               </property>
@@ -599,6 +668,33 @@ QPushButton:hover
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="nbDefusing">
+              <property name="maximumSize">
+               <size>
+                <width>40</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background: rgba(20,20,20, 0.5);
+color: snow;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -647,6 +743,33 @@ QPushButton:hover
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="tour">
+              <property name="maximumSize">
+               <size>
+                <width>120</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>13</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background: rgba(20,20,20, 0.5);
+color: snow;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -718,22 +841,6 @@ QPushButton:hover
                </size>
               </property>
              </spacer>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="round">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="nbDefusing"/>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="tour"/>
             </item>
             <item>
              <spacer name="horizontalSpacer_14">
@@ -904,6 +1011,9 @@ QPushButton:hover
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_13"/>
+          </item>
           <item>
            <widget class="QPushButton" name="player1">
             <property name="sizePolicy">
@@ -1112,6 +1222,13 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
             </property>
            </widget>
           </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+           </layout>
+          </item>
          </layout>
         </item>
         <item>
@@ -1130,6 +1247,16 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
        </layout>
       </widget>
       <widget class="QWidget" name="fin_sherlock">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+border-radius: 6px;
+background-color: rgba(240,240,240,0.8);
+}
+
+QPushButton:hover {
+background-color: rgba(240,240,240,1);
+}</string>
+       </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <spacer name="horizontalSpacer_22">
@@ -1236,6 +1363,16 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
        </layout>
       </widget>
       <widget class="QWidget" name="fin_mory">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+border-radius: 6px;
+background-color: rgba(240,240,240,0.8);
+}
+
+QPushButton:hover {
+background-color: rgba(240,240,240,1);
+}</string>
+       </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <spacer name="horizontalSpacer_25">
@@ -1273,6 +1410,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
           </item>
           <item>
            <widget class="QPushButton" name="replay_mory">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Rejouer</string>
             </property>
@@ -1316,6 +1465,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
           </item>
           <item>
            <widget class="QPushButton" name="leave_mory">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
              <string>Quitter</string>
             </property>
@@ -1349,7 +1510,7 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -1362,42 +1523,99 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
-           <spacer name="verticalSpacer_18">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
+           <widget class="QPushButton" name="backfromhelp">
+            <property name="minimumSize">
              <size>
-              <width>20</width>
+              <width>100</width>
               <height>40</height>
              </size>
             </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="Previous">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
+            <property name="maximumSize">
              <size>
-              <width>50</width>
-              <height>0</height>
+              <width>80</width>
+              <height>40</height>
              </size>
             </property>
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="styleSheet">
-             <string notr="true">border-radius:3px;</string>
+             <string notr="true">QPushButton  {
+border-radius: 6px;
+background-color: rgba(240,240,240,0.8);
+}
+
+QPushButton:hover {
+background-color: rgba(240,240,240,1);
+
+}</string>
             </property>
             <property name="text">
-             <string>Previous</string>
+             <string>Retour</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <spacer name="horizontalSpacer_29">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="Previous">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+border-radius:3px; 
+background-color: rgba(20,20,20,0.8); 
+background-image: url(:previous.png); 
+background-repeat: no-repeat; 
+background-position: center;
+}
+
+QPushButton:hover {
+background-color: rgba(20,20,20,1);
+}</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_21">
@@ -1421,15 +1639,14 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
          <layout class="QVBoxLayout" name="verticalLayout_10">
           <item>
            <widget class="QLabel" name="labelPic">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string/>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="backfromhelp">
-            <property name="text">
-             <string>retour</string>
             </property>
            </widget>
           </item>
@@ -1454,14 +1671,62 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="next">
-            <property name="styleSheet">
-             <string notr="true">border-radius: 3px;</string>
-            </property>
-            <property name="text">
-             <string>Next</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <widget class="QPushButton" name="next">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+border-radius:3px; 
+background-color: rgba(20,20,20,0.8); 
+background-image: url(:next.png); 
+background-repeat: no-repeat; 
+background-position: center;
+}
+
+QPushButton:hover {
+background-color: rgba(20,20,20,1);
+}</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_30">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Preferred</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_20">
@@ -1487,7 +1752,7 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::Fixed</enum>
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>

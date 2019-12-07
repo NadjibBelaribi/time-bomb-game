@@ -732,11 +732,13 @@ compiled/qrc_ressources.cpp: img/ressources.qrc \
 		img/timeBomb6.svg \
 		img/tb14.png \
 		img/timeBomb7.svg \
+		img/previous.png \
 		img/timeBomb8.svg \
 		img/timeBomb9.svg \
 		img/timeBomb10.svg \
 		img/timeBomb11.svg \
-		img/timeBomb12.svg
+		img/timeBomb12.svg \
+		img/next.png
 	/usr/bin/rcc -name ressources img/ressources.qrc -o compiled/qrc_ressources.cpp
 
 compiler_moc_predefs_make_all: compiled/moc_predefs.h

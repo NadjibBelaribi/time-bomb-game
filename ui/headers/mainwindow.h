@@ -21,135 +21,135 @@
 #include "../../kernel/headers/Game.h"
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    public:
+        explicit MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
 
-    int indp = -1 ;
-    int indc = -1 ;
+        int indp = -1 ;
+        int indc = -1 ;
 
-    void keep ();
+        void keep ();
 
-    void setCardImg(QPushButton *but , Card::typeCard type ,bool cache) ;
+        void setCardImg(QPushButton *but , Card::typeCard type ,bool cache) ;
 
-    bool same(vector <QString> psd);
+        bool same(vector <QString> psd);
 
-    void setCpt(size_t cpt);
+        void setCpt(size_t cpt);
 
-    string typec2str(Card c);
+        string typec2str(Card c);
 
-    string type2str(Player p);
+        string type2str(Player p);
 
-    void hideWithoutI(size_t i);
+        void hideWithoutI(size_t i);
 
-   void RemoveLayout (QGridLayout* widget);
-   void enableCards() ;
-   void disableCards() ;
-
-
-    size_t getCpt();
-
-    std::vector <QString> getPseudo();
-
-    void hideCards();
-    void setTable( std::vector <QString> psds );
-
-    void afficheCard(size_t j);
+        void RemoveLayout (QGridLayout* widget);
+        void enableCards() ;
+        void disableCards() ;
 
 
-    void showCards(size_t i);
+        size_t getCpt();
 
-    void printBeginMess ();
+        std::vector <QString> getPseudo();
 
-    void printCardRevealed (const Card::typeCard &type);
+        void hideCards();
+        void setTable( std::vector <QString> psds );
 
-    void blockPlayerCourant (Player p);
-
-    char file[12][75]={":timeBomb1.svg"
-                       ,":timeBomb2.svg"
-                       ,":timeBomb3.svg"
-                       ,":timeBomb4.svg"
-                       ,":timeBomb5.svg"
-                       ,":timeBomb6.svg"
-                       ,":timeBomb7.svg"
-                       ,":timeBomb8.svg"
-                       ,":timeBomb9.svg"
-                       ,":timeBomb10.svg"
-                       ,":timeBomb11.svg"
-                       ,":timeBomb12.svg"};
-
-    int i=0;
-
-private slots:
-
-    void on_playB_clicked();
-
-    void on_back_clicked();
-
-    void on_nb4_clicked();
-
-    void on_nb5_clicked();
-
-    void on_nb6_clicked();
-
-    void on_nb7_clicked();
-
-    void on_nb8_clicked();
-
-    void on_go_clicked();
-
-    void on_backOptions_clicked();
-
-    void on_card1_clicked();
-
-    void on_card2_clicked();
-
-    void on_card3_clicked();
-
-    void on_card4_clicked();
-
-    void on_card5_clicked();
-
-    void on_player1_clicked();
-    void on_player2_clicked();
-    void on_player3_clicked();
-    void on_player4_clicked();
-    void on_player5_clicked();
-    void on_player6_clicked();
-    void on_player7_clicked();
-    void on_player8_clicked();
-
-    void on_help_clicked();
+        void afficheCard(size_t j);
 
 
-    void on_leave_sherlock_clicked();
+        void showCards(size_t i);
 
-    void on_leave_mory_clicked();
+        void printBeginMess ();
 
-    void on_leave_menu_clicked();
+        void printCardRevealed (const Card::typeCard &type);
 
-    void on_Previous_clicked();
+        void blockPlayerCourant (Player p);
 
-    void on_next_clicked();
+        char file[12][75]={":timeBomb1.svg"
+            ,":timeBomb2.svg"
+                ,":timeBomb3.svg"
+                ,":timeBomb4.svg"
+                ,":timeBomb5.svg"
+                ,":timeBomb6.svg"
+                ,":timeBomb7.svg"
+                ,":timeBomb8.svg"
+                ,":timeBomb9.svg"
+                ,":timeBomb10.svg"
+                ,":timeBomb11.svg"
+                ,":timeBomb12.svg"};
 
-    void on_backfromhelp_clicked();
+        int i=0;
 
-    void on_replay_mory_clicked();
+        private slots:
 
-private:
-    Ui::MainWindow *ui;
-    Game *game ;
-    size_t cpt;
-    std::vector <QLineEdit*> hello;
-    std::vector <QString> pseudos;
-    std::vector <bool> reveals;
+            void on_playB_clicked();
+
+        void on_back_clicked();
+
+        void on_nb4_clicked();
+
+        void on_nb5_clicked();
+
+        void on_nb6_clicked();
+
+        void on_nb7_clicked();
+
+        void on_nb8_clicked();
+
+        void on_go_clicked();
+
+        void on_backOptions_clicked();
+
+        void on_card1_clicked();
+
+        void on_card2_clicked();
+
+        void on_card3_clicked();
+
+        void on_card4_clicked();
+
+        void on_card5_clicked();
+
+        void on_player1_clicked();
+        void on_player2_clicked();
+        void on_player3_clicked();
+        void on_player4_clicked();
+        void on_player5_clicked();
+        void on_player6_clicked();
+        void on_player7_clicked();
+        void on_player8_clicked();
+
+        void on_help_clicked();
+
+
+        void on_leave_sherlock_clicked();
+
+        void on_leave_mory_clicked();
+
+        void on_leave_menu_clicked();
+
+        void on_Previous_clicked();
+
+        void on_next_clicked();
+
+        void on_backfromhelp_clicked();
+
+        void on_replay_mory_clicked();
+
+    private:
+        Ui::MainWindow *ui;
+        Game *game ;
+        size_t cpt;
+        std::vector <QLineEdit*> hello;
+        std::vector <QString> pseudos;
+        std::vector <bool> reveals;
 };
 
 #endif // MAINWINDOW_H

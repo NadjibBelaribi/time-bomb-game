@@ -28,5 +28,7 @@
         <file>timeBomb10.svg</file>
         <file>timeBomb11.svg</file>
         <file>timeBomb12.svg</file>
+        <file>previous.png</file>
+        <file>next.png</file>
     </qresource>
 </RCC>

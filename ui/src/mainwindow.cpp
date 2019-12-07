@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-     ui->setupUi(this);
-     this->on_back_clicked();
+    ui->setupUi(this);
+    this->on_back_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -41,10 +41,10 @@ void MainWindow::on_nb4_clicked()
     size_t i;
     for (i = 0; i < nb_players; i++)
     {
-       QLineEdit *le = new QLineEdit();
-       le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, i, 0);
-       hello.push_back(le);
+        QLineEdit *le = new QLineEdit();
+        le->setPlaceholderText(QString("Player %1").arg(i));
+        ui->gridPseudo->addWidget(le, i, 0);
+        hello.push_back(le);
     }
 }
 
@@ -55,10 +55,10 @@ void MainWindow::on_nb5_clicked()
     size_t i;
     for (i = 0; i < nb_players; i++)
     {
-       QLineEdit *le = new QLineEdit();
-       le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, i, 0);
-       hello.push_back(le);
+        QLineEdit *le = new QLineEdit();
+        le->setPlaceholderText(QString("Player %1").arg(i));
+        ui->gridPseudo->addWidget(le, i, 0);
+        hello.push_back(le);
     }
 }
 
@@ -69,10 +69,10 @@ void MainWindow::on_nb6_clicked()
     size_t i;
     for (i = 0; i < nb_players; i++)
     {
-       QLineEdit *le = new QLineEdit();
-       le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, i, 0);
-       hello.push_back(le);
+        QLineEdit *le = new QLineEdit();
+        le->setPlaceholderText(QString("Player %1").arg(i));
+        ui->gridPseudo->addWidget(le, i, 0);
+        hello.push_back(le);
     }
 }
 
@@ -83,10 +83,10 @@ void MainWindow::on_nb7_clicked()
     size_t i;
     for (i = 0; i < nb_players; i++)
     {
-       QLineEdit *le = new QLineEdit();
-       le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, i, 0);
-       hello.push_back(le);
+        QLineEdit *le = new QLineEdit();
+        le->setPlaceholderText(QString("Player %1").arg(i));
+        ui->gridPseudo->addWidget(le, i, 0);
+        hello.push_back(le);
     }
 }
 
@@ -97,10 +97,10 @@ void MainWindow::on_nb8_clicked()
     size_t i;
     for (i = 0; i < nb_players; i++)
     {
-       QLineEdit *le = new QLineEdit();
-       le->setPlaceholderText(QString("Player %1").arg(i));
-       ui->gridPseudo->addWidget(le, i, 0);
-       hello.push_back(le);
+        QLineEdit *le = new QLineEdit();
+        le->setPlaceholderText(QString("Player %1").arg(i));
+        ui->gridPseudo->addWidget(le, i, 0);
+        hello.push_back(le);
     }
 }
 
@@ -127,23 +127,23 @@ void MainWindow::on_go_clicked()
     size_t i, compteur = 0;
     for (i = 0; i < nb_players; i++)
     {
-      QString tmp = hello.at(i)->text();
-      if (!hello.at(i)->text().isEmpty())
-      {
-           compteur++;
-           pseudos.push_back(tmp);
-      }
-     }
+        QString tmp = hello.at(i)->text();
+        if (!hello.at(i)->text().isEmpty())
+        {
+            compteur++;
+            pseudos.push_back(tmp);
+        }
+    }
     if (compteur == nb_players && (!same(pseudos)))
     {
         ui->player1->setEnabled(true);
         ui->player2->setEnabled(true);
-         ui->player3->setEnabled(true);
-         ui->player4->setEnabled(true);
-         ui->player5->setEnabled(true);
-         ui->player6->setEnabled(true);
-         ui->player7->setEnabled(true);
-         ui->player8->setEnabled(true);
+        ui->player3->setEnabled(true);
+        ui->player4->setEnabled(true);
+        ui->player5->setEnabled(true);
+        ui->player6->setEnabled(true);
+        ui->player7->setEnabled(true);
+        ui->player8->setEnabled(true);
         ui->menu->setCurrentWidget(ui->board);
         this->setTable(pseudos);
         this->cpt = 0;
@@ -183,74 +183,74 @@ void MainWindow::setTable( std::vector <QString> psds ) {
     }
     hideCards();
     switch(nbPlayers) {
-    case 4 :
-        ui->player5->hide() ;
-        ui->player6->hide();
-        ui->player7->hide();
-        ui->player8->hide();
-        ui->player1->setText(QString::fromStdString(pseudos[0]));
-        ui->player2->setText(QString::fromStdString(pseudos[1]));
-        ui->player3->setText(QString::fromStdString(pseudos[2]));
-        ui->player4->setText(QString::fromStdString(pseudos[3]));
+        case 4 :
+            ui->player5->hide();
+            ui->player6->hide();
+            ui->player7->hide();
+            ui->player8->hide();
+            ui->player1->setText(QString::fromStdString(pseudos[0]));
+            ui->player2->setText(QString::fromStdString(pseudos[1]));
+            ui->player3->setText(QString::fromStdString(pseudos[2]));
+            ui->player4->setText(QString::fromStdString(pseudos[3]));
 
-        break ;
+            break ;
 
-    case 5 :
-        ui->player6->hide();
-        ui->player7->hide();
-        ui->player8->hide();
-        ui->player1->setText(QString::fromStdString(pseudos[0]));
-        ui->player2->setText(QString::fromStdString(pseudos[1]));
-        ui->player3->setText(QString::fromStdString(pseudos[2]));
-        ui->player4->setText(QString::fromStdString(pseudos[3]));
-        ui->player5->setText(QString::fromStdString(pseudos[4]));
-
-
-
-        break ;
-    case 6 :
-        ui->player7->hide();
-        ui->player8->hide();
-        ui->player1->setText(QString::fromStdString(pseudos[0]));
-         ui->player2->setText(QString::fromStdString(pseudos[1]));
-         ui->player3->setText(QString::fromStdString(pseudos[2]));
-         ui->player4->setText(QString::fromStdString(pseudos[3]));
-         ui->player5->setText(QString::fromStdString(pseudos[4]));
-        ui->player6->setText(QString::fromStdString(pseudos[5]));
+        case 5 :
+            ui->player6->hide();
+            ui->player7->hide();
+            ui->player8->hide();
+            ui->player1->setText(QString::fromStdString(pseudos[0]));
+            ui->player2->setText(QString::fromStdString(pseudos[1]));
+            ui->player3->setText(QString::fromStdString(pseudos[2]));
+            ui->player4->setText(QString::fromStdString(pseudos[3]));
+            ui->player5->setText(QString::fromStdString(pseudos[4]));
 
 
-        break ;
-    case 7 :
-        ui->player8->hide();
-        ui->player1->setText(QString::fromStdString(pseudos[0]));
-        ui->player2->setText(QString::fromStdString(pseudos[1]));
-        ui->player3->setText(QString::fromStdString(pseudos[2]));
-        ui->player4->setText(QString::fromStdString(pseudos[3]));
-        ui->player5->setText(QString::fromStdString(pseudos[4]));
-        ui->player6->setText(QString::fromStdString(pseudos[5]));
-        ui->player7->setText(QString::fromStdString(pseudos[6]));
-              break;
 
-     case 8:
-        ui->player1->setText(QString::fromStdString(pseudos[0]));
-        ui->player2->setText(QString::fromStdString(pseudos[1]));
-        ui->player3->setText(QString::fromStdString(pseudos[2]));
-        ui->player4->setText(QString::fromStdString(pseudos[3]));
-        ui->player5->setText(QString::fromStdString(pseudos[4]));
-        ui->player6->setText(QString::fromStdString(pseudos[5]));
-        ui->player7->setText(QString::fromStdString(pseudos[6]));
-        ui->player8->setText(QString::fromStdString(pseudos[7]));
+            break ;
+        case 6 :
+            ui->player7->hide();
+            ui->player8->hide();
+            ui->player1->setText(QString::fromStdString(pseudos[0]));
+            ui->player2->setText(QString::fromStdString(pseudos[1]));
+            ui->player3->setText(QString::fromStdString(pseudos[2]));
+            ui->player4->setText(QString::fromStdString(pseudos[3]));
+            ui->player5->setText(QString::fromStdString(pseudos[4]));
+            ui->player6->setText(QString::fromStdString(pseudos[5]));
 
-        break ;
-    default:
-        cout << "err nombre joueurs " << endl ;
+
+            break ;
+        case 7 :
+            ui->player8->hide();
+            ui->player1->setText(QString::fromStdString(pseudos[0]));
+            ui->player2->setText(QString::fromStdString(pseudos[1]));
+            ui->player3->setText(QString::fromStdString(pseudos[2]));
+            ui->player4->setText(QString::fromStdString(pseudos[3]));
+            ui->player5->setText(QString::fromStdString(pseudos[4]));
+            ui->player6->setText(QString::fromStdString(pseudos[5]));
+            ui->player7->setText(QString::fromStdString(pseudos[6]));
+            break;
+
+        case 8:
+            ui->player1->setText(QString::fromStdString(pseudos[0]));
+            ui->player2->setText(QString::fromStdString(pseudos[1]));
+            ui->player3->setText(QString::fromStdString(pseudos[2]));
+            ui->player4->setText(QString::fromStdString(pseudos[3]));
+            ui->player5->setText(QString::fromStdString(pseudos[4]));
+            ui->player6->setText(QString::fromStdString(pseudos[5]));
+            ui->player7->setText(QString::fromStdString(pseudos[6]));
+            ui->player8->setText(QString::fromStdString(pseudos[7]));
+
+            break ;
+        default:
+            cout << "err nombre joueurs " << endl ;
     }
 
-       game = new Game(nbPlayers,pseudos) ;
-       typedef unsigned singe;
+    game = new Game(nbPlayers,pseudos) ;
+    typedef unsigned singe;
 
-       for (singe i = 0; i < nbPlayers; i ++)
-           this->reveals.push_back(false);
+    for (singe i = 0; i < nbPlayers; i ++)
+        this->reveals.push_back(false);
 
 }
 
@@ -274,35 +274,35 @@ void MainWindow::hideWithoutI(size_t i)
             ui->card3->hide();
             ui->card4->hide();
             ui->card5->hide();
-        break;
+            break;
 
         case 2:
             ui->card1->hide();
             ui->card3->hide();
             ui->card4->hide();
             ui->card5->hide();
-        break;
+            break;
 
         case 3:
             ui->card1->hide();
             ui->card2->hide();
             ui->card4->hide();
             ui->card5->hide();
-        break;
+            break;
 
         case 4:
             ui->card1->hide();
             ui->card2->hide();
             ui->card3->hide();
             ui->card5->hide();
-        break;
+            break;
 
         case 5:
             ui->card1->hide();
             ui->card2->hide();
             ui->card3->hide();
             ui->card4->hide();
-        break;
+            break;
     }
     ui->role->hide();
 }
@@ -324,27 +324,27 @@ void MainWindow::keep ()
         printBeginMess();
     if(game->getState() != Game::Active)
     {
-       // ui->menu->setCurrentWidget(ui->options);
+        // ui->menu->setCurrentWidget(ui->options);
 
         //QMessageBox msg ;
 
         switch (game->getState()) {
-        case  Game::MoriartyWin:
-            ui->menu->setCurrentWidget(ui->fin_mory);
-            game->~Game();
-            indp = -1;
-            indc = -1;
-            this->setCpt(0);
-            size_t i;
-            for (i = 0; i < this->reveals.size(); i++)
-                this->reveals.at(i) = false;
-            break;
-        case  Game::SherlockWin:
-            //msg.setText("Sherlock is the boss");
-            ui->menu->setCurrentWidget(ui->fin_sherlock);
-            break;
-        default:
-            break;
+            case  Game::MoriartyWin:
+                ui->menu->setCurrentWidget(ui->fin_mory);
+                game->~Game();
+                indp = -1;
+                indc = -1;
+                this->setCpt(0);
+                size_t i;
+                for (i = 0; i < this->reveals.size(); i++)
+                    this->reveals.at(i) = false;
+                break;
+            case  Game::SherlockWin:
+                //msg.setText("Sherlock is the boss");
+                ui->menu->setCurrentWidget(ui->fin_sherlock);
+                break;
+            default:
+                break;
         }
         //msg.exec() ;
     }
@@ -355,17 +355,17 @@ void MainWindow::enableCards()
 {
     ui->card1->setEnabled(true);
     ui->card2->setEnabled(true);
-     ui->card3->setEnabled(true);
-     ui->card4->setEnabled(true);
-      ui->card5->setEnabled(true);
+    ui->card3->setEnabled(true);
+    ui->card4->setEnabled(true);
+    ui->card5->setEnabled(true);
 }
 void MainWindow::disableCards()
 {
-     ui->card1->setEnabled(false);
-     ui->card2->setEnabled(false);
-      ui->card3->setEnabled(false);
-      ui->card4->setEnabled(false);
-       ui->card5->setEnabled(false);
+    ui->card1->setEnabled(false);
+    ui->card2->setEnabled(false);
+    ui->card3->setEnabled(false);
+    ui->card4->setEnabled(false);
+    ui->card5->setEnabled(false);
 }
 
 size_t MainWindow::getCpt()
@@ -380,35 +380,35 @@ void MainWindow::setCpt(size_t cpt)
 
 string MainWindow::type2str(Player p)
 {
-         string ms;
-         switch(p.getRole()){
-                  case Player::Sherlock :
-                     ms = "Sherlock";
-                     break;
-                 case  Player::Moriarty :
-                     ms = "Moriarty";
-                     break;
-         }
-         return ms ;
+    string ms;
+    switch(p.getRole()){
+        case Player::Sherlock :
+            ms = "Sherlock";
+            break;
+        case  Player::Moriarty :
+            ms = "Moriarty";
+            break;
+    }
+    return ms ;
 }
 
 string MainWindow::typec2str(Card c)
 {
-string mm;
+    string mm;
 
     switch(c.getType()){
-             case Card::Safe:
-                mm = "Safe";
-                break;
-            case Card::Defusing:
-                mm = "Defusing";
-                break;
-            case Card::Bomb:
-                mm = "Bomb";
-                break;
-    default :
-        mm= "none" ;
-        break ;
+        case Card::Safe:
+            mm = "Safe";
+            break;
+        case Card::Defusing:
+            mm = "Defusing";
+            break;
+        case Card::Bomb:
+            mm = "Bomb";
+            break;
+        default :
+            mm= "none" ;
+            break ;
     }
     return mm ;
 }
@@ -418,51 +418,51 @@ void MainWindow::showCards(size_t i)
 {
     switch (i)
     {
-         case 5:
-               ui->card1->show();
-               ui->card2->show();
-               ui->card3->show();
-               ui->card4->show();
-               ui->card5->show();
-                break;
+        case 5:
+            ui->card1->show();
+            ui->card2->show();
+            ui->card3->show();
+            ui->card4->show();
+            ui->card5->show();
+            break;
 
         case 4:
-        ui->card1->show();
-        ui->card2->show();
-        ui->card3->show();
-        ui->card4->show();
-        break;
+            ui->card1->show();
+            ui->card2->show();
+            ui->card3->show();
+            ui->card4->show();
+            break;
 
 
         case 3:
-        ui->card1->show();
-        ui->card2->show();
-        ui->card3->show();
-        break;
+            ui->card1->show();
+            ui->card2->show();
+            ui->card3->show();
+            break;
 
         case 2:
-        ui->card1->show();
-        ui->card2->show();
-        break;
+            ui->card1->show();
+            ui->card2->show();
+            break;
 
         case 1:
-        ui->card1->show();
-        break;
+            ui->card1->show();
+            break;
 
 
-      }
+    }
 
     if(this->getCpt() <= game->getPlayers().size())
     {
         switch(game->getPlayers().at(indp - 1).getRole())
         {
             case Player::Moriarty:
-            ui->role->setStyleSheet("background-image: url(:tb6.png); border-image: url(:tb6.png) 0 0 0 0 stretch; background-image:no-repeat;");
-            break;
+                ui->role->setStyleSheet("background-image: url(:tb6.png); border-image: url(:tb6.png) 0 0 0 0 stretch; background-image:no-repeat;");
+                break;
 
-        case Player::Sherlock:
-            ui->role->setStyleSheet("background-image: url(:tb1.png); border-image: url(:tb1.png) 0 0 0 0 stretch; background-image:no-repeat;");
-            break;
+            case Player::Sherlock:
+                ui->role->setStyleSheet("background-image: url(:tb1.png); border-image: url(:tb1.png) 0 0 0 0 stretch; background-image:no-repeat;");
+                break;
         }
         ui->role->show();
     }
@@ -479,28 +479,28 @@ void MainWindow::afficheCard(size_t j)
     showCards(nbc);
     for (i = 1; i <= p.getCards().size(); i++)
     {
-       switch (i)
-       {
+        switch (i)
+        {
             case 1:
                 setCardImg(ui->card1,p.getCards().at(0).getType(),true);
                 break;
 
-           case 2:
-               setCardImg(ui->card2,p.getCards().at(1).getType(),true);
-               break;
+            case 2:
+                setCardImg(ui->card2,p.getCards().at(1).getType(),true);
+                break;
 
-           case 3:
-              setCardImg(ui->card3,p.getCards().at(2).getType(),true);
-               break;
+            case 3:
+                setCardImg(ui->card3,p.getCards().at(2).getType(),true);
+                break;
 
-           case 4:
-               setCardImg(ui->card4,p.getCards().at(3).getType(),true);
-               break;
+            case 4:
+                setCardImg(ui->card4,p.getCards().at(3).getType(),true);
+                break;
 
-           case 5:
-           setCardImg(ui->card5,p.getCards().at(4).getType(),true);
-               break;
-       }
+            case 5:
+                setCardImg(ui->card5,p.getCards().at(4).getType(),true);
+                break;
+        }
     }
 }
 
@@ -511,19 +511,19 @@ void MainWindow::setCardImg(QPushButton *but , Card::typeCard type ,bool cache)
     switch(type)
     {
         case Card::Safe:
-        if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
 
-        else but->setStyleSheet("background-image: url(:tb11.png); border-image: url(:tb11.png) 0 0 0 0 stretch; background-image:no-repeat;");
-        break;
+            else but->setStyleSheet("background-image: url(:tb11.png); border-image: url(:tb11.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
 
-    case Card::Defusing:
-        if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
-        else but->setStyleSheet("background-image: url(:tb12.png); border-image: url(:tb12.png) 0 0 0 0 stretch; background-image:no-repeat;");
-        break;
-    case Card::Bomb:
-        if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
-        else but->setStyleSheet("background-image: url(:tb10.png); border-image: url(:tb10.png) 0 0 0 0 stretch; background-image:no-repeat;");
-        break;
+        case Card::Defusing:
+            if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            else but->setStyleSheet("background-image: url(:tb12.png); border-image: url(:tb12.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
+        case Card::Bomb:
+            if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            else but->setStyleSheet("background-image: url(:tb10.png); border-image: url(:tb10.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
     }
 }
 
@@ -554,7 +554,7 @@ void MainWindow::printCardRevealed (const Card::typeCard &type)
 }
 
 void MainWindow::printBeginMess () {
-   ui->round->setText(QString::number(game->getRound()));
+    ui->round->setText(QString::number(game->getRound()));
     ui->nbDefusing->setText(QString::number(game->getNbDefusingCardsRevealed()));
     ui->tour->setText(QString::fromStdString(game->getCurrentPlayer().getPseudo()));
 }
@@ -565,7 +565,7 @@ void MainWindow::on_player1_clicked()
     Player p = game->getPlayers().at(0) ;
 
     if (this->reveals.at(0) && this->getCpt() < game->getPlayers().size())
-     {indp = -1; return;}
+    {indp = -1; return;}
 
     this->reveals.at(0) = true;
 
@@ -728,108 +728,129 @@ void MainWindow::on_card5_clicked()
 {
 
     if (this->getCpt() < game->getPlayers().size())
-       return;
+        return;
     indc = 5;
     disableCards();
     Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card5,type,false);
-     keep() ;
+    keep() ;
 }
 
 void MainWindow::on_card4_clicked()
 {
 
     if (this->getCpt() < game->getPlayers().size())
-       return;
+        return;
     indc = 4;
     disableCards();
     Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card4,type,false);
-     keep() ;
+    keep() ;
 }
 
 void MainWindow::on_card3_clicked()
 {
 
     if (this->getCpt() < game->getPlayers().size())
-       return;
+        return;
     indc = 3;
     disableCards();
     Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card3,type,false);
-     keep() ;
+    keep() ;
 }
 
 void MainWindow::on_card2_clicked()
 {
 
     if (this->getCpt() < game->getPlayers().size())
-       return;
+        return;
     indc = 2;
     disableCards();
     Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card2,type,false);
-     keep() ;
+    keep() ;
 }
 
 void MainWindow::on_card1_clicked()
 {
 
     if (this->getCpt() < game->getPlayers().size())
-       return;
+        return;
     indc = 1;
     Card::typeCard type = game->getPlayers().at(indp-1).getCards().at(indc-1).getType() ;
     setCardImg(ui->card1,type,false);
     disableCards();
-     keep() ;
+    keep() ;
 }
 
 void MainWindow::blockPlayerCourant (Player p)
 {
+    size_t nbp = game->getPlayers().size();
 
-        ui->player1->setEnabled(true);
-        ui->player2->setEnabled(true);
-         ui->player3->setEnabled(true);
-         ui->player4->setEnabled(true);
-         ui->player5->setEnabled(true);
-         ui->player6->setEnabled(true);
-         ui->player7->setEnabled(true);
-         ui->player8->setEnabled(true);
-         int cour = -1 ;
-         for(size_t i = 0 ; i<game->getPlayers().size() && cour == -1;i++)
-         {
-             if(p.getPseudo() == game->getPlayers().at(i).getPseudo())
-             {
-                cour = i ;
-             }
-         }
-         switch (cour+1) {
-         case 1 :
-                ui->player1->setEnabled(false);
-          break;
-         case 2 :
-                ui->player2->setEnabled(false);
-          break;
-         case 3 :
-             ui->player3->setEnabled(false);
-       break;
-         case 4 :
-             ui->player4->setEnabled(false);
-       break;
-         case 5 :
-             ui->player5->setEnabled(false);
-       break;
-         case 6 :
-             ui->player6->setEnabled(false);
-       break;
-         case 7 :
-             ui->player7->setEnabled(false);
-       break;
-         case 8 :
-             ui->player8->setEnabled(false);
-       break;
+    ui->player1->setEnabled(true);
+    ui->player2->setEnabled(true);
+    ui->player3->setEnabled(true);
+    ui->player4->setEnabled(true);
+    ui->player5->setEnabled(true);
+    ui->player6->setEnabled(true);
+    ui->player7->setEnabled(true);
+    ui->player8->setEnabled(true);
+    ui->player1->show();
+    ui->player2->show();
+    ui->player3->show();
+    ui->player4->show();
+    if (nbp > 4)
+        ui->player5->show();
+    if (nbp > 5)
+        ui->player6->show();
+    if (nbp > 6)
+        ui->player7->show();
+    if (nbp > 7)
+        ui->player8->show();
+    int cour = -1 ;
+    for(size_t i = 0 ; i<nbp && cour == -1;i++)
+    {
+        if(p.getPseudo() == game->getPlayers().at(i).getPseudo())
+        {
+            cour = i ;
+        }
+    }
+    switch (cour+1) {
+        case 1 :
+            ui->player1->setEnabled(false);
+            ui->player1->hide();
+            break;
+        case 2 :
+            ui->player2->setEnabled(false);
+            ui->player2->hide();
+            break;
+        case 3 :
+            ui->player3->setEnabled(false);
+            ui->player3->hide();
+            break;
+        case 4 :
+            ui->player4->setEnabled(false);
+            ui->player4->hide();
+            break;
+        case 5 :
+            ui->player5->setEnabled(false);
+            ui->player5->hide();
+            break;
+        case 6 :
+            ui->player6->setEnabled(false);
+            ui->player6->hide();
+            break;
+        case 7 :
+            ui->player7->setEnabled(false);
+            ui->player7->hide();
+            break;
+        case 8 :
+            ui->player8->setEnabled(false);
+            ui->player8->hide();
+            break;
 
-         }
+    }
 
 
 }
@@ -872,7 +893,7 @@ void MainWindow::on_Previous_clicked()
 
 void MainWindow::on_next_clicked()
 {
-    if(i<12) i++;
+    if(i<11) i++;
     QPixmap pix(file[i]);
     int w = ui->labelPic->width();
     int h = ui->labelPic->height();
