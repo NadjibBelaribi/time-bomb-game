@@ -263,7 +263,7 @@ color: snow;
          <widget class="QPushButton" name="back">
           <property name="minimumSize">
            <size>
-            <width>160</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -906,6 +906,9 @@ background-color: #DDDDDD;
            <layout class="QVBoxLayout" name="verticalLayout_13">
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMaximumSize</enum>
+              </property>
               <item>
                <widget class="QPushButton" name="card3">
                 <property name="minimumSize">
@@ -919,6 +922,12 @@ background-color: #DDDDDD;
                   <width>100</width>
                   <height>200</height>
                  </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string/>
@@ -939,6 +948,12 @@ background-color: #DDDDDD;
                   <height>200</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -957,6 +972,12 @@ background-color: #DDDDDD;
                   <width>100</width>
                   <height>200</height>
                  </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string/>
@@ -977,6 +998,12 @@ background-color: #DDDDDD;
                   <height>200</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
@@ -995,6 +1022,12 @@ background-color: #DDDDDD;
                   <width>100</width>
                   <height>200</height>
                  </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string/>
@@ -1016,7 +1049,9 @@ background-color: #DDDDDD;
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgba(20,20,20,0.6); color:orange;</string>
+               <string notr="true">background-color: rgba(20,20,20,0.6); color:orange;
+padding-left: 6px;
+</string>
               </property>
               <property name="text">
                <string/>
@@ -1075,12 +1110,22 @@ background-color: #DDDDDD;
               <height>170</height>
              </size>
             </property>
+            <property name="cursor">
+             <cursorShape>ArrowCursor</cursorShape>
+            </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1102,11 +1147,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1128,11 +1180,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1154,11 +1213,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1180,11 +1246,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1206,11 +1279,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1232,11 +1312,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>
@@ -1258,11 +1345,18 @@ background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; ba
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: rgb(238, 238, 236);
+             <string notr="true">QPushButton {
+color: rgb(238, 238, 236);
 font: 75 italic 15pt &quot;Utopia&quot;;
 padding-top :120px ;
  text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;</string>
+background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+}
+
+QPushButton:hover {
+border-width: 2px;
+border-color:  snow;
+}</string>
             </property>
             <property name="text">
              <string/>

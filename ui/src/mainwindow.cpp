@@ -141,7 +141,7 @@ void MainWindow::on_go_clicked()
         reveals.clear();
         setTable(pseudos);
         setCpt(0);
-        ui->status->setText("Découvrez vos cartes");
+        ui->status->setText("Découvrez votre rôle et cartes !");
         ui->role->hide();
         showPlayers();
         RemoveLayout(ui->gridPseudo);
@@ -209,16 +209,32 @@ void MainWindow::keep ()
         Player &pepe = game->getPlayers().at(indp);
         //hideWithoutI(static_cast<size_t>(indc));
         Card &card = pepe.getCards().at(indc);
-        printCardRevealed(game->next(card));
-        blockPlayerCourant(game->getCurrentPlayer());
-        ui->round->display(QString::number(game->getRound()));
-        ui->defusing->display(QString::number(game->getNbDefusingCardsRevealed()));
-        indp = -1 ;
-        indc = -1 ;
         string txt (typec2str(card));
         txt.append(" ! Au tour de ");
         txt.append(pepe.getPseudo());
         ui->status->setText(QString::fromStdString(txt));
+        const size_t oldRound = game->getRound();
+        printCardRevealed(game->next(card));
+
+        if (oldRound < game->getRound()) {
+            // on refait pphase reveals
+            setCpt(0);
+            for (size_t i = 0; i < reveals.size(); i ++)
+                reveals.at(i) = false;
+            QString s ("ROUND ");
+            s.append(QString::number(game->getRound()));
+            s.append(" ! Découvrez vos cartes");
+            ui->status->setText(s);
+            ui->role->hide();
+            showPlayers();
+
+        } else {
+            blockPlayerCourant(game->getCurrentPlayer());
+            ui->round->display(QString::number(game->getRound()));
+            ui->defusing->display(QString::number(game->getNbDefusingCardsRevealed()));
+        }
+        indp = -1 ;
+        indc = -1 ;
     }
 
     if(game->getState() != Game::Active)
@@ -279,21 +295,7 @@ void MainWindow::setCpt(size_t cpt)
     this->cpt = cpt;
 }
 
-string MainWindow::type2str(Player p)
-{
-    string ms;
-    switch(p.getRole()){
-        case Player::Sherlock :
-            ms = "Sherlock";
-            break;
-        case  Player::Moriarty :
-            ms = "Moriarty";
-            break;
-    }
-    return ms ;
-}
-
-string MainWindow::typec2str(Card c)
+string MainWindow::typec2str(const Card &c)
 {
     string mm;
 
@@ -319,6 +321,7 @@ void MainWindow::showCards(size_t nb)
 
     if(getCpt() <= game->getPlayers().size())
     {
+        // reveals
         switch(game->getPlayers().at(indp).getRole())
         {
             case Player::Moriarty:
@@ -330,9 +333,15 @@ void MainWindow::showCards(size_t nb)
                 break;
         }
         ui->name->setText(QString::fromStdString(game->getPlayers().at(indp).getPseudo()).toUpper());
-        ui->role->show();
-        ui->name->show();
+
+    } else {
+        // jeu normal
+        ui->role->setStyleSheet("background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        ui->name->setText(QString::fromStdString(game->getCurrentPlayer().getPseudo()).toUpper());
     }
+
+    ui->role->show();
+    ui->name->show();
 }
 
 void MainWindow::afficheCard(size_t j)
@@ -409,12 +418,18 @@ void MainWindow::playerClicked (size_t i)
     enableCards();
     afficheCard(i);
 
+
+
     if (tmp == game->getPlayers().size()) {
         // phase reveals terminée
         string s ("C'est parti ! Au tour de ");
         s.append(game->getCurrentPlayer().getPseudo());
         ui->status->setText(QString::fromStdString(s));
+        showPlayers();
         blockPlayerCourant(game->getCurrentPlayer());
+    } else if (tmp < game->getPlayers().size()) {
+        // reveal en cours
+        hidePlayer(i);
     }
 }
 
@@ -503,6 +518,12 @@ void MainWindow::showPlayers ()
         players[i]->setEnabled(true);
         players[i]->show();
     }
+}
+
+void MainWindow::hidePlayer (const size_t i)
+{
+    players[i]->setEnabled(false);
+    players[i]->hide();
 }
 
 void MainWindow::blockPlayerCourant (Player p)

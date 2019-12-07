@@ -288,7 +288,7 @@ public:
 
         back = new QPushButton(options);
         back->setObjectName(QString::fromUtf8("back"));
-        back->setMinimumSize(QSize(160, 40));
+        back->setMinimumSize(QSize(150, 40));
         back->setMaximumSize(QSize(160, 40));
         back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "margin-right: 2em;\n"
@@ -602,10 +602,13 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setSizeConstraint(QLayout::SetMaximumSize);
         card3 = new QPushButton(board);
         card3->setObjectName(QString::fromUtf8("card3"));
         card3->setMinimumSize(QSize(100, 200));
         card3->setMaximumSize(QSize(100, 200));
+        card3->setCursor(QCursor(Qt::PointingHandCursor));
+        card3->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(card3);
 
@@ -613,6 +616,8 @@ public:
         card1->setObjectName(QString::fromUtf8("card1"));
         card1->setMinimumSize(QSize(100, 200));
         card1->setMaximumSize(QSize(100, 200));
+        card1->setCursor(QCursor(Qt::PointingHandCursor));
+        card1->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(card1);
 
@@ -620,6 +625,8 @@ public:
         card4->setObjectName(QString::fromUtf8("card4"));
         card4->setMinimumSize(QSize(100, 200));
         card4->setMaximumSize(QSize(100, 200));
+        card4->setCursor(QCursor(Qt::PointingHandCursor));
+        card4->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(card4);
 
@@ -627,6 +634,8 @@ public:
         card2->setObjectName(QString::fromUtf8("card2"));
         card2->setMinimumSize(QSize(100, 200));
         card2->setMaximumSize(QSize(100, 200));
+        card2->setCursor(QCursor(Qt::PointingHandCursor));
+        card2->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(card2);
 
@@ -634,6 +643,8 @@ public:
         card5->setObjectName(QString::fromUtf8("card5"));
         card5->setMinimumSize(QSize(100, 200));
         card5->setMaximumSize(QSize(100, 200));
+        card5->setCursor(QCursor(Qt::PointingHandCursor));
+        card5->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(card5);
 
@@ -650,7 +661,9 @@ public:
         font3.setWeight(75);
         font3.setKerning(true);
         status->setFont(font3);
-        status->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color:orange;"));
+        status->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color:orange;\n"
+"padding-left: 6px;\n"
+""));
         status->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         verticalLayout_13->addWidget(status);
@@ -683,11 +696,19 @@ public:
         sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
         player1->setSizePolicy(sizePolicy);
         player1->setMinimumSize(QSize(100, 170));
-        player1->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player1->setCursor(QCursor(Qt::ArrowCursor));
+        player1->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player1);
 
@@ -696,11 +717,18 @@ public:
         sizePolicy.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
         player2->setSizePolicy(sizePolicy);
         player2->setMinimumSize(QSize(100, 170));
-        player2->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player2);
 
@@ -709,11 +737,18 @@ public:
         sizePolicy.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
         player3->setSizePolicy(sizePolicy);
         player3->setMinimumSize(QSize(100, 170));
-        player3->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player3);
 
@@ -722,11 +757,18 @@ public:
         sizePolicy.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
         player4->setSizePolicy(sizePolicy);
         player4->setMinimumSize(QSize(100, 170));
-        player4->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player4);
 
@@ -735,11 +777,18 @@ public:
         sizePolicy.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
         player5->setSizePolicy(sizePolicy);
         player5->setMinimumSize(QSize(100, 170));
-        player5->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player5);
 
@@ -748,11 +797,18 @@ public:
         sizePolicy.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
         player6->setSizePolicy(sizePolicy);
         player6->setMinimumSize(QSize(100, 170));
-        player6->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player6);
 
@@ -761,11 +817,18 @@ public:
         sizePolicy.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
         player7->setSizePolicy(sizePolicy);
         player7->setMinimumSize(QSize(100, 170));
-        player7->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player7);
 
@@ -774,11 +837,18 @@ public:
         sizePolicy.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
         player8->setSizePolicy(sizePolicy);
         player8->setMinimumSize(QSize(100, 170));
-        player8->setStyleSheet(QString::fromUtf8("color: rgb(238, 238, 236);\n"
+        player8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"color: rgb(238, 238, 236);\n"
 "font: 75 italic 15pt \"Utopia\";\n"
 "padding-top :120px ;\n"
 " text-transform: uppercase;\n"
-"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;"));
+"background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"border-width: 2px;\n"
+"border-color:  snow;\n"
+"}"));
 
         game_players->addWidget(player8);
 

@@ -43,9 +43,7 @@ class MainWindow : public QMainWindow
 
         void setCpt(size_t cpt);
 
-        string typec2str(Card c);
-
-        string type2str(Player p);
+        string typec2str(const Card &c);
 
         void hideWithoutI(size_t i);
 
@@ -64,6 +62,7 @@ class MainWindow : public QMainWindow
 
         void afficheCard(size_t j);
 
+        void hidePlayer (const size_t i);
 
         void showCards(size_t i);
 
