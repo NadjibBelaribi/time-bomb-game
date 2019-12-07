@@ -96,7 +96,10 @@ void MainWindow::initPseudoFields (const size_t n)
     for (i = 1; i <= n; i++)
     {
         QLineEdit *le = new QLineEdit();
-        le->setPlaceholderText(QString("Player %1").arg(i));
+        if (fr)
+            le->setPlaceholderText(QString("Joueur %1").arg(i));
+        else
+            le->setPlaceholderText(QString("Player %1").arg(i));
         ui->gridPseudo->addWidget(le, i, 0);
         hello.push_back(le);
     }
@@ -142,7 +145,10 @@ void MainWindow::on_go_clicked()
         reveals.clear();
         setTable(pseudos);
         setCpt(0);
-        ui->status->setText("Découvrez votre rôle et cartes !");
+        if (fr)
+            ui->status->setText("Découvrez votre rôle et cartes !");
+        else
+            ui->status->setText("Discover your role and your cards");
         ui->role->hide();
         ui->defusing->display(0);
         ui->round->display(1);
@@ -214,7 +220,10 @@ void MainWindow::keep ()
         Card &card = pepe.getCards().at(indc);
         string typ (typec2str(card));
         QString txt (QString::fromStdString(typ));
-        txt.append(" ! Au tour de ");
+        if (fr)
+            txt.append(" ! Au tour de ");
+        else
+            txt.append(" ! Turn of ");
         txt.append(QString::fromStdString(pepe.getPseudo()).toUpper());
         ui->status->setText(txt);
         const size_t oldRound = game->getRound();
@@ -229,7 +238,10 @@ void MainWindow::keep ()
                 reveals.at(i) = false;
             QString s ("ROUND ");
             s.append(QString::number(game->getRound()));
-            s.append(" ! Découvrez vos cartes");
+            if (fr)
+                s.append(" ! Découvrez vos cartes");
+            else
+                s.append(" ! Discover your cards!");
             ui->status->setText(s);
             ui->role->hide();
             ui->name->hide();
@@ -258,7 +270,10 @@ void MainWindow::keep ()
             case  Game::MoriartyWin:
                 ui->menu->setCurrentWidget(ui->fin);
                 ui->fin_img->setPixmap(pixm.scaled(w,h,Qt::KeepAspectRatio));
-                ui->winner->setText("BOOOOOM !! Moriarty has won !");
+                if (fr)
+                    ui->winner->setText("BOOOOOM !! Moriarty a gagné !");
+                else
+                    ui->winner->setText("BOOOOOM !! Moriarty has won !");
                 game->~Game();
                 indp = -1;
                 indc = -1;
@@ -270,7 +285,10 @@ void MainWindow::keep ()
             case  Game::SherlockWin:
                 //msg.setText("Sherlock is the boss");
                 ui->menu->setCurrentWidget(ui->fin);
-                ui->winner->setText("Yeaah !! Sherlock has won !");
+                if (fr)
+                    ui->winner->setText("Oui !! Sherlock a gagné !");
+                else
+                    ui->winner->setText("Yeaah !! Sherlock has won !");
                 ui->fin_img->setPixmap(pixs.scaled(w,h,Qt::KeepAspectRatio));
                 break;
             case Game::Active:
@@ -442,9 +460,19 @@ void MainWindow::on_roundNext_clicked ()
     for (size_t i = 0; i < reveals.size(); i ++)
         reveals.at(i) = false;
     setCpt(getCpt() + 1);
-    QString s ("C'est parti ! Au tour de ");
-    s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
-    ui->status->setText(s);
+    if (fr)
+    {
+         QString s ("C'est parti ! Au tour de ");
+         s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
+         ui->status->setText(s);
+    }
+    else
+    {
+        QString s ("Let's go ! it's turn of ");
+        s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
+        ui->status->setText(s);
+    }
+
     showPlayers();
     blockPlayerCourant(game->getCurrentPlayer());
     ui->roundNext->hide();
@@ -641,4 +669,62 @@ void MainWindow::on_networkJoinGo_clicked ()
 {
     ui->menu->setCurrentWidget(ui->board);
     // GO JOIN
+}
+
+void MainWindow::english()
+{
+    fr = false;
+    ui->help->setText("Help");
+    ui->playNetwork->setText("Network");
+    ui->leave_menu->setText("Leave");
+    ui->back->setText("Back");
+    ui->label_3->setText("Number of players");
+    ui->go->setText("Start!");
+    ui->networkMenuBack->setText("Back");
+    ui->label_4->setText("Host");
+    ui->label_5->setText("Join");
+    ui->networkHostGo->setText("Host");
+    ui->networkJoinGo->setText("Join");
+    ui->label_6->setText("Nb players");
+    ui->replay->setText("Replay");
+    ui->backfromhelp->setText("Back");
+    ui->eng_trad->setText("English");
+    ui->fr_trad->setText("French");
+    ui->roundNext->setText("Continue");
+    ui->label_2->setText("Defuse Wires");
+    ui->leave->setText("Leave");
+}
+
+void MainWindow::french()
+{
+    fr = true;
+    ui->help->setText("Aide");
+    ui->playNetwork->setText("Réseau");
+    ui->leave_menu->setText("Quitter");
+    ui->back->setText("Retour");
+    ui->label_3->setText("Nombre de joueurs");
+    ui->go->setText("Commencer!");
+    ui->networkMenuBack->setText("Retour");
+    ui->label_4->setText("Héberger");
+    ui->label_5->setText("Rejoindre");
+    ui->networkHostGo->setText("Héberger");
+    ui->networkJoinGo->setText("Rejoindre");
+    ui->label_6->setText("Nb joueurs");
+    ui->replay->setText("Rejouer");
+    ui->backfromhelp->setText("Retour");
+    ui->eng_trad->setText("Anglais");
+    ui->fr_trad->setText("Français");
+    ui->roundNext->setText("Continuer");
+    ui->label_2->setText("Fils diffuseurs");
+    ui->leave->setText("Quitter");
+}
+
+void MainWindow::on_eng_trad_clicked()
+{
+   english();
+}
+
+void MainWindow::on_fr_trad_clicked()
+{
+    french();
 }

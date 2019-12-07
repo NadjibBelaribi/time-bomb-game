@@ -55,6 +55,10 @@ class MainWindow : public QMainWindow
 
         size_t getCpt();
 
+        void english();
+
+        void french();
+
         std::vector <QString> getPseudo();
 
         void hideCards();
@@ -90,6 +94,8 @@ class MainWindow : public QMainWindow
         void playerClicked (const size_t i);
 
         void cardClicked (const size_t i);
+
+        bool fr = true;
 
         private slots:
 
@@ -155,7 +161,11 @@ class MainWindow : public QMainWindow
 
         void on_networkJoinGo_clicked ();
 
-    private:
+        void on_eng_trad_clicked();
+
+        void on_fr_trad_clicked();
+
+private:
         Ui::MainWindow *ui;
         Game *game ;
         size_t cpt;

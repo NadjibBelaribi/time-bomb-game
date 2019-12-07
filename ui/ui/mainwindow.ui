@@ -89,6 +89,13 @@ QPushButton:hover
            <number>0</number>
           </property>
           <item>
+           <widget class="QPushButton" name="eng_trad">
+            <property name="text">
+             <string>Anglais</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer_14">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -250,6 +257,13 @@ QPushButton:hover
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="fr_trad">
+            <property name="text">
+             <string>Français</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.2
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -36,6 +36,7 @@ public:
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
+    QPushButton *eng_trad;
     QSpacerItem *verticalSpacer_14;
     QPushButton *playNetwork;
     QSpacerItem *verticalSpacer;
@@ -45,6 +46,7 @@ public:
     QSpacerItem *verticalSpacer_4;
     QPushButton *leave_menu;
     QSpacerItem *verticalSpacer_2;
+    QPushButton *fr_trad;
     QSpacerItem *horizontalSpacer_2;
     QWidget *options;
     QVBoxLayout *verticalLayout_3;
@@ -239,6 +241,11 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        eng_trad = new QPushButton(start);
+        eng_trad->setObjectName(QString::fromUtf8("eng_trad"));
+
+        verticalLayout->addWidget(eng_trad);
+
         verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_14);
@@ -306,6 +313,11 @@ public:
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_2);
+
+        fr_trad = new QPushButton(start);
+        fr_trad->setObjectName(QString::fromUtf8("fr_trad"));
+
+        verticalLayout->addWidget(fr_trad);
 
 
         gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
@@ -1433,7 +1445,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(3);
+        menu->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1441,34 +1453,36 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        playNetwork->setText(QCoreApplication::translate("MainWindow", "R\303\251seau", nullptr));
-        playB->setText(QCoreApplication::translate("MainWindow", "Local", nullptr));
-        help->setText(QCoreApplication::translate("MainWindow", "Aide", nullptr));
-        leave_menu->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
-        back->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
-        nb4->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
-        nb5->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
-        nb6->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
-        nb7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
-        nb8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
-        go->setText(QCoreApplication::translate("MainWindow", "COMMENCER !", nullptr));
-        networkMenuBack->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
-        lineEdit_4->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "Nb Joueurs", nullptr));
-        networkHostGo->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
-        lineEdit_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
-        lineEdit_3->setPlaceholderText(QCoreApplication::translate("MainWindow", "Adresse IP", nullptr));
-        lineEdit_5->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
-        networkJoinGo->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Round", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Defusings", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        eng_trad->setText(QApplication::translate("MainWindow", "Anglais", nullptr));
+        playNetwork->setText(QApplication::translate("MainWindow", "R\303\251seau", nullptr));
+        playB->setText(QApplication::translate("MainWindow", "Local", nullptr));
+        help->setText(QApplication::translate("MainWindow", "Aide", nullptr));
+        leave_menu->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
+        fr_trad->setText(QApplication::translate("MainWindow", "Fran\303\247ais", nullptr));
+        back->setText(QApplication::translate("MainWindow", "Retour", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
+        nb4->setText(QApplication::translate("MainWindow", "4", nullptr));
+        nb5->setText(QApplication::translate("MainWindow", "5", nullptr));
+        nb6->setText(QApplication::translate("MainWindow", "6", nullptr));
+        nb7->setText(QApplication::translate("MainWindow", "7", nullptr));
+        nb8->setText(QApplication::translate("MainWindow", "8", nullptr));
+        go->setText(QApplication::translate("MainWindow", "COMMENCER !", nullptr));
+        networkMenuBack->setText(QApplication::translate("MainWindow", "Retour", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        lineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
+        lineEdit_4->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "Nb Joueurs", nullptr));
+        networkHostGo->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
+        lineEdit_2->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
+        lineEdit_3->setPlaceholderText(QApplication::translate("MainWindow", "Adresse IP", nullptr));
+        lineEdit_5->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
+        networkJoinGo->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Round", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Defusings", nullptr));
         role->setText(QString());
-        name->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        name->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         card3->setText(QString());
         card1->setText(QString());
         card4->setText(QString());
@@ -1483,12 +1497,12 @@ public:
         player6->setText(QString());
         player7->setText(QString());
         player8->setText(QString());
-        roundNext->setText(QCoreApplication::translate("MainWindow", "Continuer", nullptr));
+        roundNext->setText(QApplication::translate("MainWindow", "Continuer", nullptr));
         fin_img->setText(QString());
         winner->setText(QString());
-        replay->setText(QCoreApplication::translate("MainWindow", "Rejouer", nullptr));
-        leave->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
-        backfromhelp->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        replay->setText(QApplication::translate("MainWindow", "Rejouer", nullptr));
+        leave->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
+        backfromhelp->setText(QApplication::translate("MainWindow", "Retour", nullptr));
         Previous->setText(QString());
         labelPic->setText(QString());
         next->setText(QString());
