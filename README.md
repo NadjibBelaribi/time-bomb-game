@@ -37,5 +37,5 @@ make
 ./local <pseudo1> <pseudo2> ...
 
 # Test en réseau (héberger puis rejoindre)
-./host <port> <nb_players> <pseudo>
-./join <ipv6> <port> <pseudo>
+./network host <port> <nb_players> <pseudo>
+./network join <ipv6> <port> <pseudo>
