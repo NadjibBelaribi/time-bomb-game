@@ -15,9 +15,11 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -32,9 +34,10 @@ public:
     QStackedWidget *menu;
     QWidget *start;
     QGridLayout *gridLayout;
-    QSpacerItem *horizontalSpacer_2;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_14;
+    QPushButton *playNetwork;
     QSpacerItem *verticalSpacer;
     QPushButton *playB;
     QSpacerItem *verticalSpacer_3;
@@ -42,10 +45,12 @@ public:
     QSpacerItem *verticalSpacer_4;
     QPushButton *leave_menu;
     QSpacerItem *verticalSpacer_2;
+    QSpacerItem *horizontalSpacer_2;
     QWidget *options;
     QVBoxLayout *verticalLayout_3;
     QSpacerItem *verticalSpacer_8;
     QPushButton *back;
+    QSpacerItem *verticalSpacer_15;
     QVBoxLayout *verticalLayout_15;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_4;
@@ -68,6 +73,35 @@ public:
     QPushButton *go;
     QSpacerItem *horizontalSpacer_8;
     QSpacerItem *verticalSpacer_7;
+    QWidget *networkMenu;
+    QVBoxLayout *verticalLayout_18;
+    QVBoxLayout *verticalLayout_14;
+    QPushButton *networkMenuBack;
+    QSpacerItem *verticalSpacer_16;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer_23;
+    QVBoxLayout *verticalLayout_16;
+    QLabel *label_4;
+    QSpacerItem *verticalSpacer_24;
+    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_4;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *label_6;
+    QSpinBox *spinBox;
+    QSpacerItem *horizontalSpacer_17;
+    QSpacerItem *verticalSpacer_22;
+    QPushButton *networkHostGo;
+    QSpacerItem *horizontalSpacer_22;
+    QVBoxLayout *verticalLayout_17;
+    QLabel *label_5;
+    QSpacerItem *verticalSpacer_25;
+    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_5;
+    QSpacerItem *verticalSpacer_23;
+    QPushButton *networkJoinGo;
+    QSpacerItem *horizontalSpacer_24;
+    QSpacerItem *verticalSpacer_18;
     QWidget *board;
     QVBoxLayout *verticalLayout_5;
     QSpacerItem *verticalSpacer_11;
@@ -114,6 +148,7 @@ public:
     QPushButton *player6;
     QPushButton *player7;
     QPushButton *player8;
+    QPushButton *roundNext;
     QHBoxLayout *horizontalLayout_14;
     QSpacerItem *verticalSpacer_12;
     QWidget *fin;
@@ -197,10 +232,6 @@ public:
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
-
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer, 0, 0, 1, 1);
@@ -208,18 +239,44 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_14 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_14);
+
+        playNetwork = new QPushButton(start);
+        playNetwork->setObjectName(QString::fromUtf8("playNetwork"));
+        playNetwork->setMinimumSize(QSize(220, 60));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Purisa"));
+        font.setPointSize(33);
+        font.setBold(false);
+        font.setItalic(false);
+        font.setWeight(9);
+        playNetwork->setFont(font);
+        playNetwork->setStyleSheet(QString::fromUtf8(" font: 75 33pt \"Purisa\";"));
+
+        verticalLayout->addWidget(playNetwork);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
 
         verticalLayout->addItem(verticalSpacer);
 
         playB = new QPushButton(start);
         playB->setObjectName(QString::fromUtf8("playB"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(playB->sizePolicy().hasHeightForWidth());
         playB->setSizePolicy(sizePolicy);
-        playB->setMinimumSize(QSize(60, 45));
+        playB->setMinimumSize(QSize(220, 60));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Purisa"));
+        font1.setPointSize(33);
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(9);
+        font1.setKerning(true);
+        playB->setFont(font1);
         playB->setStyleSheet(QString::fromUtf8(" font: 75 33pt \"Purisa\";"));
 
         verticalLayout->addWidget(playB);
@@ -230,7 +287,7 @@ public:
 
         help = new QPushButton(start);
         help->setObjectName(QString::fromUtf8("help"));
-        help->setMinimumSize(QSize(60, 45));
+        help->setMinimumSize(QSize(220, 60));
         help->setStyleSheet(QString::fromUtf8(" font: 75 33pt \"Purisa\";"));
 
         verticalLayout->addWidget(help);
@@ -241,7 +298,7 @@ public:
 
         leave_menu = new QPushButton(start);
         leave_menu->setObjectName(QString::fromUtf8("leave_menu"));
-        leave_menu->setMinimumSize(QSize(60, 45));
+        leave_menu->setMinimumSize(QSize(220, 60));
         leave_menu->setStyleSheet(QString::fromUtf8(" font: 75 33pt \"Purisa\";"));
 
         verticalLayout->addWidget(leave_menu);
@@ -252,6 +309,10 @@ public:
 
 
         gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 0, 2, 1, 1);
 
         menu->addWidget(start);
         options = new QWidget();
@@ -302,6 +363,10 @@ public:
 
         verticalLayout_3->addWidget(back);
 
+        verticalSpacer_15 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+
+        verticalLayout_3->addItem(verticalSpacer_15);
+
         verticalLayout_15 = new QVBoxLayout();
         verticalLayout_15->setSpacing(6);
         verticalLayout_15->setObjectName(QString::fromUtf8("verticalLayout_15"));
@@ -318,11 +383,11 @@ public:
         label_3 = new QLabel(options);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setMinimumSize(QSize(200, 40));
-        QFont font;
-        font.setPointSize(12);
-        font.setBold(true);
-        font.setWeight(75);
-        label_3->setFont(font);
+        QFont font2;
+        font2.setPointSize(12);
+        font2.setBold(true);
+        font2.setWeight(75);
+        label_3->setFont(font2);
         label_3->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.8); color: snow; border-radius: 8px; margin-right: 1em;"));
         label_3->setAlignment(Qt::AlignCenter);
         label_3->setMargin(0);
@@ -405,10 +470,10 @@ public:
         go = new QPushButton(options);
         go->setObjectName(QString::fromUtf8("go"));
         go->setMinimumSize(QSize(202, 40));
-        QFont font1;
-        font1.setBold(true);
-        font1.setWeight(75);
-        go->setFont(font1);
+        QFont font3;
+        font3.setBold(true);
+        font3.setWeight(75);
+        go->setFont(font3);
         go->setStyleSheet(QString::fromUtf8("min-width: 200px;"));
 
         horizontalLayout_6->addWidget(go);
@@ -425,6 +490,256 @@ public:
         verticalLayout_3->addItem(verticalSpacer_7);
 
         menu->addWidget(options);
+        networkMenu = new QWidget();
+        networkMenu->setObjectName(QString::fromUtf8("networkMenu"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(networkMenu->sizePolicy().hasHeightForWidth());
+        networkMenu->setSizePolicy(sizePolicy1);
+        networkMenu->setMaximumSize(QSize(1029, 16777215));
+        networkMenu->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	min-width: 100px;\n"
+"	height: 30px;\n"
+"	border: 1px solid snow;\n"
+"	border-radius: 10px 10px 10px 10px;\n"
+"	background-color:DodgerBlue ;\n"
+"	color:snow;\n"
+"	font-size:20px;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"	background-color:DarkSlateBlue ;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"height: 30px;\n"
+"padding: 6px 10px;\n"
+"background-color: rgba(80,80,80,0.9);\n"
+"border-radius: 6px;\n"
+"color: snow;\n"
+"}"));
+        verticalLayout_18 = new QVBoxLayout(networkMenu);
+        verticalLayout_18->setSpacing(6);
+        verticalLayout_18->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_18->setObjectName(QString::fromUtf8("verticalLayout_18"));
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setSpacing(6);
+        verticalLayout_14->setObjectName(QString::fromUtf8("verticalLayout_14"));
+        networkMenuBack = new QPushButton(networkMenu);
+        networkMenuBack->setObjectName(QString::fromUtf8("networkMenuBack"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(networkMenuBack->sizePolicy().hasHeightForWidth());
+        networkMenuBack->setSizePolicy(sizePolicy2);
+        networkMenuBack->setMinimumSize(QSize(150, 40));
+        QFont font4;
+        font4.setBold(false);
+        font4.setWeight(50);
+        networkMenuBack->setFont(font4);
+        networkMenuBack->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"margin-right: 2em;\n"
+"background-color: snow;\n"
+"color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: #DDDDDD;\n"
+"}"));
+
+        verticalLayout_14->addWidget(networkMenuBack);
+
+        verticalSpacer_16 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_14->addItem(verticalSpacer_16);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(40);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer_23 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_23);
+
+        verticalLayout_16 = new QVBoxLayout();
+        verticalLayout_16->setSpacing(6);
+        verticalLayout_16->setObjectName(QString::fromUtf8("verticalLayout_16"));
+        label_4 = new QLabel(networkMenu);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(label_4->sizePolicy().hasHeightForWidth());
+        label_4->setSizePolicy(sizePolicy3);
+        label_4->setMinimumSize(QSize(0, 40));
+        label_4->setFont(font2);
+        label_4->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.8); border-radius: 6px; color: snow;"));
+        label_4->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_16->addWidget(label_4);
+
+        verticalSpacer_24 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_16->addItem(verticalSpacer_24);
+
+        lineEdit = new QLineEdit(networkMenu);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
+        lineEdit->setSizePolicy(sizePolicy4);
+        lineEdit->setMinimumSize(QSize(240, 40));
+        lineEdit->setMaximumSize(QSize(200, 30));
+        QFont font5;
+        font5.setPointSize(12);
+        lineEdit->setFont(font5);
+
+        verticalLayout_16->addWidget(lineEdit);
+
+        lineEdit_4 = new QLineEdit(networkMenu);
+        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        sizePolicy4.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
+        lineEdit_4->setSizePolicy(sizePolicy4);
+        lineEdit_4->setMinimumSize(QSize(240, 40));
+        lineEdit_4->setMaximumSize(QSize(200, 30));
+        lineEdit_4->setFont(font5);
+
+        verticalLayout_16->addWidget(lineEdit_4);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setSpacing(6);
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        label_6 = new QLabel(networkMenu);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setMinimumSize(QSize(170, 0));
+        label_6->setMaximumSize(QSize(170, 16777215));
+        label_6->setFont(font5);
+        label_6->setStyleSheet(QString::fromUtf8("color: snow;"));
+
+        horizontalLayout_8->addWidget(label_6);
+
+        spinBox = new QSpinBox(networkMenu);
+        spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        sizePolicy4.setHeightForWidth(spinBox->sizePolicy().hasHeightForWidth());
+        spinBox->setSizePolicy(sizePolicy4);
+        spinBox->setMinimumSize(QSize(60, 40));
+        spinBox->setMaximumSize(QSize(100, 30));
+        QFont font6;
+        font6.setPointSize(12);
+        font6.setBold(false);
+        font6.setWeight(50);
+        spinBox->setFont(font6);
+        spinBox->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color: snow;"));
+        spinBox->setAlignment(Qt::AlignCenter);
+        spinBox->setMinimum(4);
+        spinBox->setMaximum(8);
+
+        horizontalLayout_8->addWidget(spinBox);
+
+        horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_17);
+
+
+        verticalLayout_16->addLayout(horizontalLayout_8);
+
+        verticalSpacer_22 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_16->addItem(verticalSpacer_22);
+
+        networkHostGo = new QPushButton(networkMenu);
+        networkHostGo->setObjectName(QString::fromUtf8("networkHostGo"));
+        networkHostGo->setMinimumSize(QSize(102, 40));
+        networkHostGo->setFont(font4);
+
+        verticalLayout_16->addWidget(networkHostGo);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_16);
+
+        horizontalSpacer_22 = new QSpacerItem(40, 20, QSizePolicy::Ignored, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_22);
+
+        verticalLayout_17 = new QVBoxLayout();
+        verticalLayout_17->setSpacing(6);
+        verticalLayout_17->setObjectName(QString::fromUtf8("verticalLayout_17"));
+        label_5 = new QLabel(networkMenu);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        sizePolicy3.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
+        label_5->setSizePolicy(sizePolicy3);
+        label_5->setMinimumSize(QSize(0, 40));
+        label_5->setFont(font2);
+        label_5->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.8); border-radius: 6px; color: snow;"));
+        label_5->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_17->addWidget(label_5);
+
+        verticalSpacer_25 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_17->addItem(verticalSpacer_25);
+
+        lineEdit_2 = new QLineEdit(networkMenu);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        sizePolicy4.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
+        lineEdit_2->setSizePolicy(sizePolicy4);
+        lineEdit_2->setMinimumSize(QSize(240, 40));
+        lineEdit_2->setMaximumSize(QSize(200, 30));
+        lineEdit_2->setFont(font5);
+
+        verticalLayout_17->addWidget(lineEdit_2);
+
+        lineEdit_3 = new QLineEdit(networkMenu);
+        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        sizePolicy4.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
+        lineEdit_3->setSizePolicy(sizePolicy4);
+        lineEdit_3->setMinimumSize(QSize(240, 40));
+        lineEdit_3->setMaximumSize(QSize(200, 30));
+        lineEdit_3->setFont(font5);
+
+        verticalLayout_17->addWidget(lineEdit_3);
+
+        lineEdit_5 = new QLineEdit(networkMenu);
+        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        sizePolicy4.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
+        lineEdit_5->setSizePolicy(sizePolicy4);
+        lineEdit_5->setMinimumSize(QSize(240, 40));
+        lineEdit_5->setMaximumSize(QSize(200, 30));
+        lineEdit_5->setFont(font5);
+
+        verticalLayout_17->addWidget(lineEdit_5);
+
+        verticalSpacer_23 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_17->addItem(verticalSpacer_23);
+
+        networkJoinGo = new QPushButton(networkMenu);
+        networkJoinGo->setObjectName(QString::fromUtf8("networkJoinGo"));
+        networkJoinGo->setMinimumSize(QSize(102, 40));
+        networkJoinGo->setFont(font4);
+
+        verticalLayout_17->addWidget(networkJoinGo);
+
+
+        horizontalLayout_2->addLayout(verticalLayout_17);
+
+        horizontalSpacer_24 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_24);
+
+
+        verticalLayout_14->addLayout(horizontalLayout_2);
+
+        verticalSpacer_18 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_14->addItem(verticalSpacer_18);
+
+
+        verticalLayout_18->addLayout(verticalLayout_14);
+
+        menu->addWidget(networkMenu);
         board = new QWidget();
         board->setObjectName(QString::fromUtf8("board"));
         verticalLayout_5 = new QVBoxLayout(board);
@@ -571,17 +886,17 @@ public:
 
         name = new QLabel(board);
         name->setObjectName(QString::fromUtf8("name"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(name->sizePolicy().hasHeightForWidth());
-        name->setSizePolicy(sizePolicy1);
-        QFont font2;
-        font2.setPointSize(12);
-        font2.setBold(true);
-        font2.setItalic(true);
-        font2.setWeight(75);
-        name->setFont(font2);
+        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(name->sizePolicy().hasHeightForWidth());
+        name->setSizePolicy(sizePolicy5);
+        QFont font7;
+        font7.setPointSize(12);
+        font7.setBold(true);
+        font7.setItalic(true);
+        font7.setWeight(75);
+        name->setFont(font7);
         name->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color: snow; border-radius: 4px;"));
         name->setScaledContents(false);
         name->setAlignment(Qt::AlignCenter);
@@ -653,14 +968,14 @@ public:
 
         status = new QLabel(board);
         status->setObjectName(QString::fromUtf8("status"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Noto Sans Lao"));
-        font3.setPointSize(14);
-        font3.setBold(true);
-        font3.setItalic(false);
-        font3.setWeight(75);
-        font3.setKerning(true);
-        status->setFont(font3);
+        QFont font8;
+        font8.setFamily(QString::fromUtf8("Noto Sans Lao"));
+        font8.setPointSize(14);
+        font8.setBold(true);
+        font8.setItalic(false);
+        font8.setWeight(75);
+        font8.setKerning(true);
+        status->setFont(font8);
         status->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color:orange;\n"
 "padding-left: 6px;\n"
 ""));
@@ -693,8 +1008,8 @@ public:
 
         player1 = new QPushButton(board);
         player1->setObjectName(QString::fromUtf8("player1"));
-        sizePolicy.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
-        player1->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player1->sizePolicy().hasHeightForWidth());
+        player1->setSizePolicy(sizePolicy2);
         player1->setMinimumSize(QSize(100, 170));
         player1->setCursor(QCursor(Qt::ArrowCursor));
         player1->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -714,8 +1029,8 @@ public:
 
         player2 = new QPushButton(board);
         player2->setObjectName(QString::fromUtf8("player2"));
-        sizePolicy.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
-        player2->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player2->sizePolicy().hasHeightForWidth());
+        player2->setSizePolicy(sizePolicy2);
         player2->setMinimumSize(QSize(100, 170));
         player2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -734,8 +1049,8 @@ public:
 
         player3 = new QPushButton(board);
         player3->setObjectName(QString::fromUtf8("player3"));
-        sizePolicy.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
-        player3->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player3->sizePolicy().hasHeightForWidth());
+        player3->setSizePolicy(sizePolicy2);
         player3->setMinimumSize(QSize(100, 170));
         player3->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -754,8 +1069,8 @@ public:
 
         player4 = new QPushButton(board);
         player4->setObjectName(QString::fromUtf8("player4"));
-        sizePolicy.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
-        player4->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player4->sizePolicy().hasHeightForWidth());
+        player4->setSizePolicy(sizePolicy2);
         player4->setMinimumSize(QSize(100, 170));
         player4->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -774,8 +1089,8 @@ public:
 
         player5 = new QPushButton(board);
         player5->setObjectName(QString::fromUtf8("player5"));
-        sizePolicy.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
-        player5->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player5->sizePolicy().hasHeightForWidth());
+        player5->setSizePolicy(sizePolicy2);
         player5->setMinimumSize(QSize(100, 170));
         player5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -794,8 +1109,8 @@ public:
 
         player6 = new QPushButton(board);
         player6->setObjectName(QString::fromUtf8("player6"));
-        sizePolicy.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
-        player6->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player6->sizePolicy().hasHeightForWidth());
+        player6->setSizePolicy(sizePolicy2);
         player6->setMinimumSize(QSize(100, 170));
         player6->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -814,8 +1129,8 @@ public:
 
         player7 = new QPushButton(board);
         player7->setObjectName(QString::fromUtf8("player7"));
-        sizePolicy.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
-        player7->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player7->sizePolicy().hasHeightForWidth());
+        player7->setSizePolicy(sizePolicy2);
         player7->setMinimumSize(QSize(100, 170));
         player7->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -834,8 +1149,8 @@ public:
 
         player8 = new QPushButton(board);
         player8->setObjectName(QString::fromUtf8("player8"));
-        sizePolicy.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
-        player8->setSizePolicy(sizePolicy);
+        sizePolicy2.setHeightForWidth(player8->sizePolicy().hasHeightForWidth());
+        player8->setSizePolicy(sizePolicy2);
         player8->setMinimumSize(QSize(100, 170));
         player8->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "color: rgb(238, 238, 236);\n"
@@ -851,6 +1166,32 @@ public:
 "}"));
 
         game_players->addWidget(player8);
+
+        roundNext = new QPushButton(board);
+        roundNext->setObjectName(QString::fromUtf8("roundNext"));
+        roundNext->setEnabled(true);
+        QSizePolicy sizePolicy6(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(roundNext->sizePolicy().hasHeightForWidth());
+        roundNext->setSizePolicy(sizePolicy6);
+        roundNext->setMinimumSize(QSize(120, 50));
+        roundNext->setMaximumSize(QSize(200, 16777215));
+        QFont font9;
+        font9.setPointSize(14);
+        font9.setBold(true);
+        font9.setWeight(75);
+        roundNext->setFont(font9);
+        roundNext->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"background-color: rgba(40,80,200,0.8); border-radius:8px; color: snow;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(40,80,200,1);\n"
+"}"));
+        roundNext->setFlat(false);
+
+        game_players->addWidget(roundNext);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setSpacing(6);
@@ -907,18 +1248,11 @@ public:
 
         winner = new QLabel(fin);
         winner->setObjectName(QString::fromUtf8("winner"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(winner->sizePolicy().hasHeightForWidth());
-        winner->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(winner->sizePolicy().hasHeightForWidth());
+        winner->setSizePolicy(sizePolicy3);
         winner->setMinimumSize(QSize(0, 50));
         winner->setMaximumSize(QSize(16777215, 50));
-        QFont font4;
-        font4.setPointSize(14);
-        font4.setBold(true);
-        font4.setWeight(75);
-        winner->setFont(font4);
+        winner->setFont(font9);
         winner->setStyleSheet(QString::fromUtf8("color: snow;"));
         winner->setAlignment(Qt::AlignCenter);
 
@@ -930,14 +1264,14 @@ public:
         replay = new QPushButton(fin);
         replay->setObjectName(QString::fromUtf8("replay"));
         replay->setMinimumSize(QSize(80, 30));
-        replay->setFont(font1);
+        replay->setFont(font3);
 
         horizontalLayout_15->addWidget(replay);
 
         leave = new QPushButton(fin);
         leave->setObjectName(QString::fromUtf8("leave"));
         leave->setMinimumSize(QSize(80, 30));
-        leave->setFont(font1);
+        leave->setFont(font3);
 
         horizontalLayout_15->addWidget(leave);
 
@@ -975,7 +1309,7 @@ public:
         backfromhelp->setObjectName(QString::fromUtf8("backfromhelp"));
         backfromhelp->setMinimumSize(QSize(100, 40));
         backfromhelp->setMaximumSize(QSize(80, 40));
-        backfromhelp->setFont(font);
+        backfromhelp->setFont(font2);
         backfromhelp->setStyleSheet(QString::fromUtf8("QPushButton  {\n"
 "border-radius: 6px;\n"
 "background-color: rgba(240,240,240,0.8);\n"
@@ -997,11 +1331,11 @@ public:
 
         Previous = new QPushButton(aide);
         Previous->setObjectName(QString::fromUtf8("Previous"));
-        QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(Previous->sizePolicy().hasHeightForWidth());
-        Previous->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy7(QSizePolicy::Minimum, QSizePolicy::Expanding);
+        sizePolicy7.setHorizontalStretch(0);
+        sizePolicy7.setVerticalStretch(0);
+        sizePolicy7.setHeightForWidth(Previous->sizePolicy().hasHeightForWidth());
+        Previous->setSizePolicy(sizePolicy7);
         Previous->setMinimumSize(QSize(80, 0));
         Previous->setMaximumSize(QSize(80, 16777215));
         Previous->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -1033,8 +1367,8 @@ public:
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         labelPic = new QLabel(aide);
         labelPic->setObjectName(QString::fromUtf8("labelPic"));
-        sizePolicy1.setHeightForWidth(labelPic->sizePolicy().hasHeightForWidth());
-        labelPic->setSizePolicy(sizePolicy1);
+        sizePolicy5.setHeightForWidth(labelPic->sizePolicy().hasHeightForWidth());
+        labelPic->setSizePolicy(sizePolicy5);
 
         verticalLayout_10->addWidget(labelPic);
 
@@ -1053,8 +1387,8 @@ public:
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
         next = new QPushButton(aide);
         next->setObjectName(QString::fromUtf8("next"));
-        sizePolicy3.setHeightForWidth(next->sizePolicy().hasHeightForWidth());
-        next->setSizePolicy(sizePolicy3);
+        sizePolicy7.setHeightForWidth(next->sizePolicy().hasHeightForWidth());
+        next->setSizePolicy(sizePolicy7);
         next->setMinimumSize(QSize(80, 0));
         next->setMaximumSize(QSize(80, 16777215));
         next->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -1097,7 +1431,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(2);
+        menu->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1106,7 +1440,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        playB->setText(QCoreApplication::translate("MainWindow", "Jouer", nullptr));
+        playNetwork->setText(QCoreApplication::translate("MainWindow", "R\303\251seau", nullptr));
+        playB->setText(QCoreApplication::translate("MainWindow", "Local", nullptr));
         help->setText(QCoreApplication::translate("MainWindow", "Aide", nullptr));
         leave_menu->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
         back->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
@@ -1117,6 +1452,17 @@ public:
         nb7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
         nb8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
         go->setText(QCoreApplication::translate("MainWindow", "COMMENCER !", nullptr));
+        networkMenuBack->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
+        lineEdit_4->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "Nb Joueurs", nullptr));
+        networkHostGo->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
+        lineEdit_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
+        lineEdit_3->setPlaceholderText(QCoreApplication::translate("MainWindow", "Adresse IP", nullptr));
+        lineEdit_5->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
+        networkJoinGo->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Round", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Defusings", nullptr));
         role->setText(QString());
@@ -1135,6 +1481,7 @@ public:
         player6->setText(QString());
         player7->setText(QString());
         player8->setText(QString());
+        roundNext->setText(QCoreApplication::translate("MainWindow", "Continuer", nullptr));
         fin_img->setText(QString());
         winner->setText(QString());
         replay->setText(QCoreApplication::translate("MainWindow", "Rejouer", nullptr));

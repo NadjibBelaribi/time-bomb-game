@@ -143,6 +143,17 @@ class MainWindow : public QMainWindow
 
         void on_replay_clicked();
 
+        void on_roundNext_clicked ();
+
+        // NETWORK
+
+        void on_playNetwork_clicked ();
+
+        void on_networkMenuBack_clicked ();
+
+        void on_networkHostGo_clicked ();
+
+        void on_networkJoinGo_clicked ();
 
     private:
         Ui::MainWindow *ui;
@@ -153,6 +164,7 @@ class MainWindow : public QMainWindow
         std::vector <bool> reveals;
         QPushButton **players;
         QPushButton **cards;
+        bool waitNextRound = false;
 };
 
 #endif // MAINWINDOW_H

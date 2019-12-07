@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->roundNext->hide();
 
     players = new QPushButton* [8];
     size_t i = 0;
@@ -143,6 +144,8 @@ void MainWindow::on_go_clicked()
         setCpt(0);
         ui->status->setText("Découvrez votre rôle et cartes !");
         ui->role->hide();
+        ui->defusing->display(0);
+        ui->round->display(1);
         showPlayers();
         RemoveLayout(ui->gridPseudo);
     }
@@ -217,6 +220,7 @@ void MainWindow::keep ()
         printCardRevealed(game->next(card));
 
         if (oldRound < game->getRound()) {
+            // nouv round
             // on refait pphase reveals
             setCpt(0);
             for (size_t i = 0; i < reveals.size(); i ++)
@@ -226,6 +230,7 @@ void MainWindow::keep ()
             s.append(" ! Découvrez vos cartes");
             ui->status->setText(s);
             ui->role->hide();
+            ui->name->hide();
             showPlayers();
 
         } else {
@@ -347,7 +352,7 @@ void MainWindow::showCards(size_t nb)
 void MainWindow::afficheCard(size_t j)
 {
     size_t i;
-    Player p = game->getPlayers().at(j);
+    Player &p = game->getPlayers().at(j);
     size_t nbc = p.getCards().size();
     showCards(nbc);
     for (i = 0; i < p.getCards().size(); i++)
@@ -418,19 +423,42 @@ void MainWindow::playerClicked (size_t i)
     enableCards();
     afficheCard(i);
 
-
-
     if (tmp == game->getPlayers().size()) {
         // phase reveals terminée
-        string s ("C'est parti ! Au tour de ");
-        s.append(game->getCurrentPlayer().getPseudo());
-        ui->status->setText(QString::fromStdString(s));
-        showPlayers();
-        blockPlayerCourant(game->getCurrentPlayer());
+        // go nouvelle round quand bouton cliqué seulement
+        hidePlayer(i);
+        ui->roundNext->show();
+        waitNextRound = true;
     } else if (tmp < game->getPlayers().size()) {
         // reveal en cours
         hidePlayer(i);
     }
+}
+
+void MainWindow::on_roundNext_clicked ()
+{
+    for (size_t i = 0; i < reveals.size(); i ++)
+        reveals.at(i) = false;
+    setCpt(getCpt() + 1);
+    string s ("C'est parti ! Au tour de ");
+    s.append(game->getCurrentPlayer().getPseudo());
+    ui->status->setText(QString::fromStdString(s));
+    showPlayers();
+    blockPlayerCourant(game->getCurrentPlayer());
+    ui->roundNext->hide();
+
+    size_t ind = -1;
+    for (size_t i = 0; i < game->getPlayers().size(); i ++) {
+        if (game->getCurrentPlayer().getPseudo() == game->getPlayers().at(i).getPseudo()) {
+            ind = i;
+            break;
+        }
+    }
+
+    showCards(game->getCurrentPlayer().getCards().size());
+    enableCards();
+    afficheCard(ind);
+    waitNextRound = false;
 }
 
 void MainWindow::on_player8_clicked()
@@ -475,7 +503,7 @@ void MainWindow::on_player1_clicked()
 
 void MainWindow::cardClicked (const size_t i)
 {
-    if (getCpt() < game->getPlayers().size())
+    if ((getCpt() < game->getPlayers().size()) || waitNextRound)
         return;
     indc = i;
     disableCards();
@@ -592,4 +620,30 @@ void MainWindow::on_replay_clicked()
 {
     ui->menu->setCurrentWidget(ui->options);
     initPseudoFields(4);
+}
+
+
+
+/* ---------- NETWORK ---------- */
+
+void MainWindow::on_playNetwork_clicked ()
+{
+    ui->menu->setCurrentWidget(ui->networkMenu);
+}
+
+void MainWindow::on_networkMenuBack_clicked ()
+{
+    ui->menu->setCurrentWidget(ui->start);
+}
+
+void MainWindow::on_networkHostGo_clicked ()
+{
+    ui->menu->setCurrentWidget(ui->board);
+    // GO HOST
+}
+
+void MainWindow::on_networkJoinGo_clicked ()
+{
+    ui->menu->setCurrentWidget(ui->board);
+    // GO JOIN
 }
