@@ -30,5 +30,7 @@
         <file>timeBomb12.svg</file>
         <file>previous.png</file>
         <file>next.png</file>
+        <file>fin_mori.png</file>
+        <file>fin_sherlock.png</file>
     </qresource>
 </RCC>

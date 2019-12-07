@@ -53,6 +53,7 @@ class MainWindow : public QMainWindow
         void enableCards() ;
         void disableCards() ;
 
+        void showPlayers();
 
         size_t getCpt();
 
@@ -65,8 +66,6 @@ class MainWindow : public QMainWindow
 
 
         void showCards(size_t i);
-
-        void printBeginMess ();
 
         void printCardRevealed (const Card::typeCard &type);
 
@@ -87,6 +86,12 @@ class MainWindow : public QMainWindow
 
         int i=0;
 
+        void initPseudoFields (const size_t n);
+
+        void playerClicked (const size_t i);
+
+        void cardClicked (const size_t i);
+
         private slots:
 
             void on_playB_clicked();
@@ -104,8 +109,6 @@ class MainWindow : public QMainWindow
         void on_nb8_clicked();
 
         void on_go_clicked();
-
-        void on_backOptions_clicked();
 
         void on_card1_clicked();
 
@@ -129,9 +132,7 @@ class MainWindow : public QMainWindow
         void on_help_clicked();
 
 
-        void on_leave_sherlock_clicked();
-
-        void on_leave_mory_clicked();
+        void on_leave_clicked();
 
         void on_leave_menu_clicked();
 
@@ -141,7 +142,8 @@ class MainWindow : public QMainWindow
 
         void on_backfromhelp_clicked();
 
-        void on_replay_mory_clicked();
+        void on_replay_clicked();
+
 
     private:
         Ui::MainWindow *ui;
@@ -150,6 +152,8 @@ class MainWindow : public QMainWindow
         std::vector <QLineEdit*> hello;
         std::vector <QString> pseudos;
         std::vector <bool> reveals;
+        QPushButton **players;
+        QPushButton **cards;
 };
 
 #endif // MAINWINDOW_H

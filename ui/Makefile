@@ -709,6 +709,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) compiled/qrc_ressources.cpp
 compiled/qrc_ressources.cpp: img/ressources.qrc \
 		/usr/bin/rcc \
+		img/fin_sherlock.png \
 		img/tb1.png \
 		img/tb2.png \
 		img/tb3.png \
@@ -717,6 +718,7 @@ compiled/qrc_ressources.cpp: img/ressources.qrc \
 		img/london.jpg \
 		img/tb6.png \
 		img/tb7.png \
+		img/fin_mori.png \
 		img/tb8.png \
 		img/tb9.png \
 		img/timeBomb1.svg \
