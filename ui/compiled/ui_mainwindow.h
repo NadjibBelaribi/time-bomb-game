@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.2
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -1597,43 +1597,43 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         eng_trad->setText(QString());
         fr_trad->setText(QString());
-        playNetwork->setText(QCoreApplication::translate("MainWindow", "R\303\251seau", nullptr));
-        playB->setText(QCoreApplication::translate("MainWindow", "Local", nullptr));
-        help->setText(QCoreApplication::translate("MainWindow", "Aide", nullptr));
-        leave_menu->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
-        back->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
-        nb4->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
-        nb5->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
-        nb6->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
-        nb7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
-        nb8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
-        go->setText(QCoreApplication::translate("MainWindow", "COMMENCER !", nullptr));
-        networkMenuBack->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        hostPseudo->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
-        hostPort->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
-        label_6->setText(QCoreApplication::translate("MainWindow", "Nb Joueurs", nullptr));
-        networkHostGo->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        hostMess->setText(QCoreApplication::translate("MainWindow", "En attente des joueurs ...", nullptr));
-        label_5->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
-        clientPseudo->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
-        clientIp->setPlaceholderText(QCoreApplication::translate("MainWindow", "Adresse IP", nullptr));
-        clientPort->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
-        networkJoinGo->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
-        clientMess->setText(QCoreApplication::translate("MainWindow", "En attente des autres joueurs ...", nullptr));
-        pseudo->setText(QCoreApplication::translate("MainWindow", "<pseudo>", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Round", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Fils diffuseurs", nullptr));
-        tchatArea->setPlaceholderText(QCoreApplication::translate("MainWindow", "Le tchat est vide", nullptr));
+        playNetwork->setText(QApplication::translate("MainWindow", "R\303\251seau", nullptr));
+        playB->setText(QApplication::translate("MainWindow", "Local", nullptr));
+        help->setText(QApplication::translate("MainWindow", "Aide", nullptr));
+        leave_menu->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
+        back->setText(QApplication::translate("MainWindow", "Retour", nullptr));
+        label_3->setText(QApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
+        nb4->setText(QApplication::translate("MainWindow", "4", nullptr));
+        nb5->setText(QApplication::translate("MainWindow", "5", nullptr));
+        nb6->setText(QApplication::translate("MainWindow", "6", nullptr));
+        nb7->setText(QApplication::translate("MainWindow", "7", nullptr));
+        nb8->setText(QApplication::translate("MainWindow", "8", nullptr));
+        go->setText(QApplication::translate("MainWindow", "COMMENCER !", nullptr));
+        networkMenuBack->setText(QApplication::translate("MainWindow", "Retour", nullptr));
+        label_4->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        hostPseudo->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
+        hostPort->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
+        label_6->setText(QApplication::translate("MainWindow", "Nb Joueurs", nullptr));
+        networkHostGo->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        hostMess->setText(QApplication::translate("MainWindow", "En attente des joueurs ...", nullptr));
+        label_5->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
+        clientPseudo->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
+        clientIp->setPlaceholderText(QApplication::translate("MainWindow", "Adresse IP", nullptr));
+        clientPort->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
+        networkJoinGo->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
+        clientMess->setText(QApplication::translate("MainWindow", "En attente des autres joueurs ...", nullptr));
+        pseudo->setText(QApplication::translate("MainWindow", "<pseudo>", nullptr));
+        label->setText(QApplication::translate("MainWindow", "Round", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "Fils diffuseurs", nullptr));
+        tchatArea->setPlaceholderText(QApplication::translate("MainWindow", "Le tchat est vide", nullptr));
         tchatInput->setText(QString());
-        tchatInput->setPlaceholderText(QCoreApplication::translate("MainWindow", "\303\211crivez ici", nullptr));
-        tchatSend->setText(QCoreApplication::translate("MainWindow", "Envoyer", nullptr));
+        tchatInput->setPlaceholderText(QApplication::translate("MainWindow", "\303\211crivez ici", nullptr));
+        tchatSend->setText(QApplication::translate("MainWindow", "Envoyer", nullptr));
         role->setText(QString());
-        name->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        name->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         card3->setText(QString());
         card1->setText(QString());
         card4->setText(QString());
@@ -1648,13 +1648,13 @@ public:
         player6->setText(QString());
         player7->setText(QString());
         player8->setText(QString());
-        roundNext->setText(QCoreApplication::translate("MainWindow", "Continuer", nullptr));
-        viewCards->setText(QCoreApplication::translate("MainWindow", "Voir mes cartes", nullptr));
+        roundNext->setText(QApplication::translate("MainWindow", "Continuer", nullptr));
+        viewCards->setText(QApplication::translate("MainWindow", "Voir mes cartes", nullptr));
         fin_img->setText(QString());
         winner->setText(QString());
-        replay->setText(QCoreApplication::translate("MainWindow", "Rejouer", nullptr));
-        leave->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
-        backfromhelp->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        replay->setText(QApplication::translate("MainWindow", "Rejouer", nullptr));
+        leave->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
+        backfromhelp->setText(QApplication::translate("MainWindow", "Retour", nullptr));
         Previous->setText(QString());
         labelPic->setText(QString());
         next->setText(QString());

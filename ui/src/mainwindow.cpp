@@ -779,7 +779,6 @@ void MainWindow::on_networkMenuBack_clicked ()
 void MainWindow::on_networkHostGo_clicked ()
 {
     // GO HOST
-    ui->hostMess->show();
     sleep(1);
     networkGO(true);
 }
@@ -787,7 +786,6 @@ void MainWindow::on_networkHostGo_clicked ()
 void MainWindow::on_networkJoinGo_clicked ()
 {
     // GO JOIN
-    ui->clientMess->show();
     networkGO(false);
 }
 
@@ -1050,12 +1048,21 @@ void MainWindow::networkGO (const bool host)
         const QString pseudo (ui->hostPseudo->text());
         const int nbPlayers = ui->hostPlayers->value();
         if (port.isEmpty() || pseudo.isEmpty())
+        {
+            QMessageBox msgBox;
+            if (fr)
+                msgBox.setText("Veuillez rentrer les informations demandées");
+            else
+                msgBox.setText("Please enter asked informations");
+            msgBox.exec();
             return;
+        }
         string pseudoSafe = pseudo.toStdString();
         pseudoSafe.erase(std::remove(pseudoSafe.begin(), pseudoSafe.end(), ':'), pseudoSafe.end());
 
         cout << "[NET] Attente de la connexion de tous les joueurs ..." << endl;
         gsck = new Host(pseudoSafe, nbPlayers - 1, atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
+        ui->hostMess->show();
 
     } else {
         // CLIENT
@@ -1063,11 +1070,20 @@ void MainWindow::networkGO (const bool host)
         const QString port (ui->clientPort->text());
         const QString pseudo (ui->clientPseudo->text());
         if (ip.isEmpty() || port.isEmpty() || pseudo.isEmpty())
+        {
+            QMessageBox msgBox;
+            if (fr)
+                msgBox.setText("Veuillez rentrer les informations demandées");
+            else
+                msgBox.setText("Please enter asked informations");
+            msgBox.exec();
             return;
+        }
         string pseudoSafe = pseudo.toStdString();
         pseudoSafe.erase(std::remove(pseudoSafe.begin(), pseudoSafe.end(), ':'), pseudoSafe.end());
         cout << "[NET] Connexion au serveur et attente de lancement ..." << endl;
         gsck = new Client(pseudoSafe, ip.toStdString().c_str(), atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
+        ui->clientMess->show();
     }
 }
 
