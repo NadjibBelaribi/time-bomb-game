@@ -19,6 +19,9 @@
 #include <QString>
 #include <string>
 #include "../../kernel/headers/Game.h"
+#include <cctype>
+#include <cwctype>
+#include <algorithm>
 
 namespace Ui {
     class MainWindow;
@@ -38,6 +41,11 @@ class MainWindow : public QMainWindow
         void keep ();
 
         void setCardImg(QPushButton *but , Card::typeCard type ,bool cache) ;
+
+        bool caseInsCompare(const string& s1, const string& s2);
+
+        bool caseInsCompare(const wstring& s1, const wstring& s2);
+
 
         bool same(vector <QString> psd);
 

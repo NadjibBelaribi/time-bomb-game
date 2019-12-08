@@ -105,6 +105,24 @@ void MainWindow::initPseudoFields (const size_t n)
     }
 }
 
+inline bool caseInsCharCompareN(char a, char b) {
+   return(toupper(a) == toupper(b));
+ }
+
+inline bool caseInsCharCompareW(wchar_t a, wchar_t b) {
+ return(towupper(a) == towupper(b));
+}
+
+bool MainWindow::caseInsCompare(const string& s1, const string& s2) {
+ return((s1.size() == s2.size()) &&
+        equal(s1.begin(), s1.end(), s2.begin(), caseInsCharCompareN));
+  }
+
+bool MainWindow::caseInsCompare(const wstring& s1, const wstring& s2) {
+    return((s1.size() == s2.size()) &&
+       equal(s1.begin(), s1.end(), s2.begin(), caseInsCharCompareW));
+}
+
 bool MainWindow::same(vector <QString> psd)
 {
     size_t i, j;
@@ -114,7 +132,7 @@ bool MainWindow::same(vector <QString> psd)
         {
             string s1 = psd.at(i).toStdString();
             string s2 = psd.at(j).toStdString();
-            int x = s2.compare(s1);
+            bool x = caseInsCompare(s1,s2);
             if (i != j && (x == 0))
                 return true;
         }
