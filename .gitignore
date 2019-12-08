@@ -20,3 +20,4 @@ vgcore.*
 *-Debug
 .qmake.stash
 ui/Makefile
+ui/compiled
