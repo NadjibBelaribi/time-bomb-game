@@ -19,13 +19,13 @@ Nous avons réalisés ce projet à 6: Ilias Deligiannis, Florent Weber, Nadjib B
 
 Ce projet est divisé en trois modules: le noyau (kernel), le module réseau (network) et la partie graphique (ui). Chaque module est à compiler à part dans le répertoire dédié:
 
-Le répertoire tests/ permet de tester le noyau et le module réseau dans une interface console (très pratique !).
+Le répertoire tests/ permet de tester le noyau et le module réseau dans une interface console (très pratique !). Nous recommandons de compiler tout le projet comme ceci depuis la racine du projet:
 
 ```bash
-# Noyau, réseau et tests
-make
-
-# Interface graphique
+make -C kernel/
+make -C network/
+make -C tests/
+cd ui/
 qmake TIMEBOMB.pro
 make
 ```
@@ -33,6 +33,7 @@ make
 **Programmes de tests**
 
 ```bash
+# Dans tests/
 # Test en local
 ./local <pseudo1> <pseudo2> ...
 
