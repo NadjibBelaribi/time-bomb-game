@@ -133,7 +133,7 @@ bool MainWindow::same(vector <QString> psd)
             string s1 = psd.at(i).toStdString();
             string s2 = psd.at(j).toStdString();
             bool x = caseInsCompare(s1,s2);
-            if (i != j && (x == 0))
+            if (i != j && x)
                 return true;
         }
     }
@@ -183,7 +183,8 @@ void MainWindow::on_go_clicked()
             msgBox.setText("Please enter non null usernames");
         msgBox.exec();
     }
-    else if (same(pseudos))
+
+    if (same(pseudos))
     {
         QMessageBox msgBox;
         if (fr)
