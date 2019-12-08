@@ -156,6 +156,25 @@ void MainWindow::on_go_clicked()
         RemoveLayout(ui->gridPseudo);
     }
 
+    if (compteur != nb_players)
+    {
+        QMessageBox msgBox;
+        if (fr)
+            msgBox.setText("Veuillez rentrer des pseudos non vides");
+        else
+            msgBox.setText("Please enter non null usernames");
+        msgBox.exec();
+    }
+    else if (same(pseudos))
+    {
+        QMessageBox msgBox;
+        if (fr)
+            msgBox.setText("Veuillez rentrer des pseudos différents");
+        else
+            msgBox.setText("Please enter different usernames");
+        msgBox.exec();
+    }
+
     for (i = 0; i < compteur; i++)
     {
         pseudos.pop_back();
