@@ -19,3 +19,4 @@ vgcore.*
 *.pro.user
 *-Debug
 .qmake.stash
+ui/Makefile
