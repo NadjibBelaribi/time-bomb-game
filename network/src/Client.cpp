@@ -7,7 +7,7 @@ Client::Client (const string pseudo, const char * const hostAddr, const in_port_
     this->hostPort = htons(hostPort);
     if (inet_pton(AF_INET6, hostAddr, this->hostAddr) == -1) {
         perror("inet_pton");
-        exit(1);
+        return;
     }
 
     this->state = Waiting;
@@ -23,6 +23,11 @@ Client::Client (const string pseudo, const char * const hostAddr, const in_port_
     this->sckThread = new thread(&Client::thread_wait, this);
 }
 
+Client::~Client ()
+{
+   close (this->sck);
+}
+
 void Client::sckConnect ()
 {
     struct sockaddr_in6 saddr;
@@ -32,7 +37,7 @@ void Client::sckConnect ()
     memcpy(saddr.sin6_addr.s6_addr, this->hostAddr, 16);
     if (connect(this->sck, (struct sockaddr *) &saddr, sizeof(struct sockaddr_in6)) == -1) {
         perror("connect");
-        exit(1);
+        return;
     }
 }
 
@@ -52,14 +57,14 @@ void Client::thread_wait ()
                 this->processSync(gsd->data, gsd->dataLen);
                 break;
             case HreqTchat:
-                this->addTchatMessage(gsd->data, gsd->dataLen);
+                this->addTchatMess(gsd->data, gsd->dataLen);
                 break;
             case HreqEnd:
                 this->end();
                 break;
             default:
                 cerr << "thread_wait: gsd->req non reconnue" << endl;
-                exit(1);
+                return;
         }
     }
 }
@@ -104,7 +109,7 @@ void Client::processSync (const unsigned char *data, const size_t len)
     vector<string> vec = this->split(str, ':');
     if (vec.size() < 5) {
         cerr << "processSync: vec.size() < 5" << endl;
-        exit(1);
+        return;
     }
 
     const uint8_t oldRound = this->gst.round;
@@ -149,14 +154,14 @@ void Client::processSync (const unsigned char *data, const size_t len)
     first = false;
 }
 
-void Client::addTchatMessage (const unsigned char *data, const size_t len)
+void Client::addTchatMess (const unsigned char *data, const size_t len)
 {
     // data = <pseudo>:<message>
     string str ((const char *) data, len);
     vector<string> vec = this->split(str, ':');
     if (vec.size() != 2) {
-        cerr << "addTchatMessage: vec.size() != 2" << endl;
-        exit(1);
+        cerr << "addTchatMess: vec.size() != 2" << endl;
+        return;
     }
 
     gmess mess;
@@ -167,9 +172,10 @@ void Client::addTchatMessage (const unsigned char *data, const size_t len)
     this->tchatCallback(mess);
 }
 
-void Client::sendTchatMess (string mess)
+void Client::sendTchatMess (const Client::gmess &mess)
 {
-    this->sendReq(CreqTchat, mess.c_str(), this->sck);
+    string data (mess.mess);
+    this->sendReq(CreqTchat, data.c_str(), this->sck);
 }
 
 void Client::end ()

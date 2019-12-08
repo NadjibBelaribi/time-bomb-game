@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.4
+** Created by: Qt User Interface Compiler version 5.13.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -21,6 +21,7 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -88,23 +89,25 @@ public:
     QVBoxLayout *verticalLayout_16;
     QLabel *label_4;
     QSpacerItem *verticalSpacer_24;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_4;
+    QLineEdit *hostPseudo;
+    QLineEdit *hostPort;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_6;
-    QSpinBox *spinBox;
+    QSpinBox *hostPlayers;
     QSpacerItem *horizontalSpacer_17;
     QSpacerItem *verticalSpacer_22;
     QPushButton *networkHostGo;
+    QLabel *hostMess;
     QSpacerItem *horizontalSpacer_22;
     QVBoxLayout *verticalLayout_17;
     QLabel *label_5;
     QSpacerItem *verticalSpacer_25;
-    QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_5;
+    QLineEdit *clientPseudo;
+    QLineEdit *clientIp;
+    QLineEdit *clientPort;
     QSpacerItem *verticalSpacer_23;
     QPushButton *networkJoinGo;
+    QLabel *clientMess;
     QSpacerItem *horizontalSpacer_24;
     QSpacerItem *verticalSpacer_18;
     QWidget *board;
@@ -113,6 +116,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_10;
     QSpacerItem *horizontalSpacer_15;
+    QLabel *pseudo;
     QSpacerItem *horizontalSpacer_11;
     QLabel *label;
     QLCDNumber *round;
@@ -128,6 +132,11 @@ public:
     QSpacerItem *horizontalSpacer_14;
     QSpacerItem *verticalSpacer_10;
     QHBoxLayout *game_cards;
+    QVBoxLayout *verticalLayout_19;
+    QTextEdit *tchatArea;
+    QHBoxLayout *horizontalLayout_16;
+    QLineEdit *tchatInput;
+    QPushButton *tchatSend;
     QSpacerItem *horizontalSpacer_19;
     QVBoxLayout *verticalLayout_7;
     QPushButton *role;
@@ -154,6 +163,7 @@ public:
     QPushButton *player7;
     QPushButton *player8;
     QPushButton *roundNext;
+    QPushButton *viewCards;
     QHBoxLayout *horizontalLayout_14;
     QSpacerItem *verticalSpacer_12;
     QWidget *fin;
@@ -628,30 +638,30 @@ public:
 
         verticalLayout_16->addItem(verticalSpacer_24);
 
-        lineEdit = new QLineEdit(networkMenu);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        hostPseudo = new QLineEdit(networkMenu);
+        hostPseudo->setObjectName(QString::fromUtf8("hostPseudo"));
         QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy4);
-        lineEdit->setMinimumSize(QSize(240, 40));
-        lineEdit->setMaximumSize(QSize(200, 30));
+        sizePolicy4.setHeightForWidth(hostPseudo->sizePolicy().hasHeightForWidth());
+        hostPseudo->setSizePolicy(sizePolicy4);
+        hostPseudo->setMinimumSize(QSize(240, 40));
+        hostPseudo->setMaximumSize(QSize(200, 30));
         QFont font5;
         font5.setPointSize(12);
-        lineEdit->setFont(font5);
+        hostPseudo->setFont(font5);
 
-        verticalLayout_16->addWidget(lineEdit);
+        verticalLayout_16->addWidget(hostPseudo);
 
-        lineEdit_4 = new QLineEdit(networkMenu);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        sizePolicy4.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
-        lineEdit_4->setSizePolicy(sizePolicy4);
-        lineEdit_4->setMinimumSize(QSize(240, 40));
-        lineEdit_4->setMaximumSize(QSize(200, 30));
-        lineEdit_4->setFont(font5);
+        hostPort = new QLineEdit(networkMenu);
+        hostPort->setObjectName(QString::fromUtf8("hostPort"));
+        sizePolicy4.setHeightForWidth(hostPort->sizePolicy().hasHeightForWidth());
+        hostPort->setSizePolicy(sizePolicy4);
+        hostPort->setMinimumSize(QSize(240, 40));
+        hostPort->setMaximumSize(QSize(200, 30));
+        hostPort->setFont(font5);
 
-        verticalLayout_16->addWidget(lineEdit_4);
+        verticalLayout_16->addWidget(hostPort);
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(6);
@@ -665,23 +675,23 @@ public:
 
         horizontalLayout_8->addWidget(label_6);
 
-        spinBox = new QSpinBox(networkMenu);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-        sizePolicy4.setHeightForWidth(spinBox->sizePolicy().hasHeightForWidth());
-        spinBox->setSizePolicy(sizePolicy4);
-        spinBox->setMinimumSize(QSize(60, 40));
-        spinBox->setMaximumSize(QSize(100, 30));
+        hostPlayers = new QSpinBox(networkMenu);
+        hostPlayers->setObjectName(QString::fromUtf8("hostPlayers"));
+        sizePolicy4.setHeightForWidth(hostPlayers->sizePolicy().hasHeightForWidth());
+        hostPlayers->setSizePolicy(sizePolicy4);
+        hostPlayers->setMinimumSize(QSize(60, 40));
+        hostPlayers->setMaximumSize(QSize(100, 30));
         QFont font6;
         font6.setPointSize(12);
         font6.setBold(false);
         font6.setWeight(50);
-        spinBox->setFont(font6);
-        spinBox->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color: snow;"));
-        spinBox->setAlignment(Qt::AlignCenter);
-        spinBox->setMinimum(4);
-        spinBox->setMaximum(8);
+        hostPlayers->setFont(font6);
+        hostPlayers->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color: snow;"));
+        hostPlayers->setAlignment(Qt::AlignCenter);
+        hostPlayers->setMinimum(4);
+        hostPlayers->setMaximum(8);
 
-        horizontalLayout_8->addWidget(spinBox);
+        horizontalLayout_8->addWidget(hostPlayers);
 
         horizontalSpacer_17 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -700,6 +710,14 @@ public:
         networkHostGo->setFont(font4);
 
         verticalLayout_16->addWidget(networkHostGo);
+
+        hostMess = new QLabel(networkMenu);
+        hostMess->setObjectName(QString::fromUtf8("hostMess"));
+        hostMess->setFont(font2);
+        hostMess->setStyleSheet(QString::fromUtf8("color: snow;"));
+        hostMess->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_16->addWidget(hostMess);
 
 
         horizontalLayout_2->addLayout(verticalLayout_16);
@@ -726,35 +744,35 @@ public:
 
         verticalLayout_17->addItem(verticalSpacer_25);
 
-        lineEdit_2 = new QLineEdit(networkMenu);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        sizePolicy4.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
-        lineEdit_2->setSizePolicy(sizePolicy4);
-        lineEdit_2->setMinimumSize(QSize(240, 40));
-        lineEdit_2->setMaximumSize(QSize(200, 30));
-        lineEdit_2->setFont(font5);
+        clientPseudo = new QLineEdit(networkMenu);
+        clientPseudo->setObjectName(QString::fromUtf8("clientPseudo"));
+        sizePolicy4.setHeightForWidth(clientPseudo->sizePolicy().hasHeightForWidth());
+        clientPseudo->setSizePolicy(sizePolicy4);
+        clientPseudo->setMinimumSize(QSize(240, 40));
+        clientPseudo->setMaximumSize(QSize(200, 30));
+        clientPseudo->setFont(font5);
 
-        verticalLayout_17->addWidget(lineEdit_2);
+        verticalLayout_17->addWidget(clientPseudo);
 
-        lineEdit_3 = new QLineEdit(networkMenu);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        sizePolicy4.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
-        lineEdit_3->setSizePolicy(sizePolicy4);
-        lineEdit_3->setMinimumSize(QSize(240, 40));
-        lineEdit_3->setMaximumSize(QSize(200, 30));
-        lineEdit_3->setFont(font5);
+        clientIp = new QLineEdit(networkMenu);
+        clientIp->setObjectName(QString::fromUtf8("clientIp"));
+        sizePolicy4.setHeightForWidth(clientIp->sizePolicy().hasHeightForWidth());
+        clientIp->setSizePolicy(sizePolicy4);
+        clientIp->setMinimumSize(QSize(240, 40));
+        clientIp->setMaximumSize(QSize(200, 30));
+        clientIp->setFont(font5);
 
-        verticalLayout_17->addWidget(lineEdit_3);
+        verticalLayout_17->addWidget(clientIp);
 
-        lineEdit_5 = new QLineEdit(networkMenu);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        sizePolicy4.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy4);
-        lineEdit_5->setMinimumSize(QSize(240, 40));
-        lineEdit_5->setMaximumSize(QSize(200, 30));
-        lineEdit_5->setFont(font5);
+        clientPort = new QLineEdit(networkMenu);
+        clientPort->setObjectName(QString::fromUtf8("clientPort"));
+        sizePolicy4.setHeightForWidth(clientPort->sizePolicy().hasHeightForWidth());
+        clientPort->setSizePolicy(sizePolicy4);
+        clientPort->setMinimumSize(QSize(240, 40));
+        clientPort->setMaximumSize(QSize(200, 30));
+        clientPort->setFont(font5);
 
-        verticalLayout_17->addWidget(lineEdit_5);
+        verticalLayout_17->addWidget(clientPort);
 
         verticalSpacer_23 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -766,6 +784,14 @@ public:
         networkJoinGo->setFont(font4);
 
         verticalLayout_17->addWidget(networkJoinGo);
+
+        clientMess = new QLabel(networkMenu);
+        clientMess->setObjectName(QString::fromUtf8("clientMess"));
+        clientMess->setFont(font2);
+        clientMess->setStyleSheet(QString::fromUtf8("color: snow;"));
+        clientMess->setAlignment(Qt::AlignCenter);
+
+        verticalLayout_17->addWidget(clientMess);
 
 
         horizontalLayout_2->addLayout(verticalLayout_17);
@@ -806,13 +832,29 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_15);
 
+        pseudo = new QLabel(board);
+        pseudo->setObjectName(QString::fromUtf8("pseudo"));
+        pseudo->setMinimumSize(QSize(100, 0));
+        pseudo->setFont(font3);
+        pseudo->setStyleSheet(QString::fromUtf8("QLabel\n"
+"{\n"
+"	border: 1px solid snow;\n"
+"	border-radius: 6px;\n"
+"	background-color:rgba(200,80,100,0.9) ;\n"
+"	color:snow;\n"
+"	font-size:20px;\n"
+"}"));
+        pseudo->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_10->addWidget(pseudo);
+
         horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_10->addItem(horizontalSpacer_11);
 
         label = new QLabel(board);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setMinimumSize(QSize(140, 0));
+        label->setMinimumSize(QSize(120, 0));
         label->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "	border: 1px solid snow;\n"
@@ -847,7 +889,7 @@ public:
 
         label_2 = new QLabel(board);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setMinimumSize(QSize(140, 0));
+        label_2->setMinimumSize(QSize(150, 0));
         label_2->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "	border: 1px solid snow;\n"
@@ -917,6 +959,58 @@ public:
         game_cards = new QHBoxLayout();
         game_cards->setSpacing(6);
         game_cards->setObjectName(QString::fromUtf8("game_cards"));
+        verticalLayout_19 = new QVBoxLayout();
+        verticalLayout_19->setSpacing(6);
+        verticalLayout_19->setObjectName(QString::fromUtf8("verticalLayout_19"));
+        tchatArea = new QTextEdit(board);
+        tchatArea->setObjectName(QString::fromUtf8("tchatArea"));
+        tchatArea->setMinimumSize(QSize(200, 200));
+        tchatArea->setMaximumSize(QSize(400, 400));
+        QFont font7;
+        font7.setPointSize(11);
+        tchatArea->setFont(font7);
+        tchatArea->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.8); color:snow; border-radius: 4px; padding: 3px 5px;"));
+        tchatArea->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        tchatArea->setUndoRedoEnabled(false);
+        tchatArea->setReadOnly(true);
+
+        verticalLayout_19->addWidget(tchatArea);
+
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setSpacing(12);
+        horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
+        tchatInput = new QLineEdit(board);
+        tchatInput->setObjectName(QString::fromUtf8("tchatInput"));
+        tchatInput->setMinimumSize(QSize(120, 30));
+        tchatInput->setMaximumSize(QSize(200, 30));
+        tchatInput->setFont(font7);
+        tchatInput->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.8); border-radius: 4px; padding-left: 4px; color:snow;"));
+
+        horizontalLayout_16->addWidget(tchatInput);
+
+        tchatSend = new QPushButton(board);
+        tchatSend->setObjectName(QString::fromUtf8("tchatSend"));
+        tchatSend->setMinimumSize(QSize(80, 30));
+        tchatSend->setMaximumSize(QSize(100, 30));
+        QFont font8;
+        font8.setPointSize(11);
+        font8.setBold(false);
+        font8.setWeight(50);
+        tchatSend->setFont(font8);
+        tchatSend->setStyleSheet(QString::fromUtf8("QPushButton {background-color: rgba(50, 150, 240, 0.8); border-radius:4px; padding: 2px 3px; color:snow;\n"
+"}\n"
+"\n"
+"QPushButton:hover {background-color :rgba(50,160,240,1); }\n"
+""));
+
+        horizontalLayout_16->addWidget(tchatSend);
+
+
+        verticalLayout_19->addLayout(horizontalLayout_16);
+
+
+        game_cards->addLayout(verticalLayout_19);
+
         horizontalSpacer_19 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         game_cards->addItem(horizontalSpacer_19);
@@ -938,12 +1032,12 @@ public:
         sizePolicy5.setVerticalStretch(0);
         sizePolicy5.setHeightForWidth(name->sizePolicy().hasHeightForWidth());
         name->setSizePolicy(sizePolicy5);
-        QFont font7;
-        font7.setPointSize(12);
-        font7.setBold(true);
-        font7.setItalic(true);
-        font7.setWeight(75);
-        name->setFont(font7);
+        QFont font9;
+        font9.setPointSize(12);
+        font9.setBold(true);
+        font9.setItalic(true);
+        font9.setWeight(75);
+        name->setFont(font9);
         name->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color: snow; border-radius: 4px;"));
         name->setScaledContents(false);
         name->setAlignment(Qt::AlignCenter);
@@ -1017,14 +1111,14 @@ public:
         status->setObjectName(QString::fromUtf8("status"));
         status->setMinimumSize(QSize(0, 50));
         status->setMaximumSize(QSize(16777215, 50));
-        QFont font8;
-        font8.setFamily(QString::fromUtf8("Noto Sans Lao"));
-        font8.setPointSize(14);
-        font8.setBold(true);
-        font8.setItalic(false);
-        font8.setWeight(75);
-        font8.setKerning(true);
-        status->setFont(font8);
+        QFont font10;
+        font10.setFamily(QString::fromUtf8("Noto Sans Lao"));
+        font10.setPointSize(14);
+        font10.setBold(true);
+        font10.setItalic(false);
+        font10.setWeight(75);
+        font10.setKerning(true);
+        status->setFont(font10);
         status->setStyleSheet(QString::fromUtf8("background-color: rgba(20,20,20,0.6); color:orange;\n"
 "padding-left: 6px;\n"
 ""));
@@ -1226,11 +1320,11 @@ public:
         roundNext->setSizePolicy(sizePolicy6);
         roundNext->setMinimumSize(QSize(120, 50));
         roundNext->setMaximumSize(QSize(200, 16777215));
-        QFont font9;
-        font9.setPointSize(14);
-        font9.setBold(true);
-        font9.setWeight(75);
-        roundNext->setFont(font9);
+        QFont font11;
+        font11.setPointSize(14);
+        font11.setBold(true);
+        font11.setWeight(75);
+        roundNext->setFont(font11);
         roundNext->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "background-color: rgba(40,80,200,0.8); border-radius:8px; color: snow;\n"
 "}\n"
@@ -1241,6 +1335,21 @@ public:
         roundNext->setFlat(false);
 
         game_players->addWidget(roundNext);
+
+        viewCards = new QPushButton(board);
+        viewCards->setObjectName(QString::fromUtf8("viewCards"));
+        viewCards->setMinimumSize(QSize(200, 50));
+        viewCards->setMaximumSize(QSize(200, 16777215));
+        viewCards->setFont(font11);
+        viewCards->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"background-color: rgba(40,180,200,0.8); border-radius:8px; color: snow;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"background-color: rgba(40,180,200,1);\n"
+"}"));
+
+        game_players->addWidget(viewCards);
 
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setSpacing(6);
@@ -1301,7 +1410,7 @@ public:
         winner->setSizePolicy(sizePolicy3);
         winner->setMinimumSize(QSize(0, 50));
         winner->setMaximumSize(QSize(16777215, 50));
-        winner->setFont(font9);
+        winner->setFont(font11);
         winner->setStyleSheet(QString::fromUtf8("color: snow;"));
         winner->setAlignment(Qt::AlignCenter);
 
@@ -1480,7 +1589,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        menu->setCurrentIndex(3);
+        menu->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -1488,36 +1597,43 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         eng_trad->setText(QString());
         fr_trad->setText(QString());
-        playNetwork->setText(QApplication::translate("MainWindow", "R\303\251seau", nullptr));
-        playB->setText(QApplication::translate("MainWindow", "Local", nullptr));
-        help->setText(QApplication::translate("MainWindow", "Aide", nullptr));
-        leave_menu->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
-        back->setText(QApplication::translate("MainWindow", "Retour", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
-        nb4->setText(QApplication::translate("MainWindow", "4", nullptr));
-        nb5->setText(QApplication::translate("MainWindow", "5", nullptr));
-        nb6->setText(QApplication::translate("MainWindow", "6", nullptr));
-        nb7->setText(QApplication::translate("MainWindow", "7", nullptr));
-        nb8->setText(QApplication::translate("MainWindow", "8", nullptr));
-        go->setText(QApplication::translate("MainWindow", "COMMENCER !", nullptr));
-        networkMenuBack->setText(QApplication::translate("MainWindow", "Retour", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        lineEdit->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
-        lineEdit_4->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
-        label_6->setText(QApplication::translate("MainWindow", "Nb Joueurs", nullptr));
-        networkHostGo->setText(QApplication::translate("MainWindow", "H\303\251berger", nullptr));
-        label_5->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
-        lineEdit_2->setPlaceholderText(QApplication::translate("MainWindow", "Pseudo", nullptr));
-        lineEdit_3->setPlaceholderText(QApplication::translate("MainWindow", "Adresse IP", nullptr));
-        lineEdit_5->setPlaceholderText(QApplication::translate("MainWindow", "Port", nullptr));
-        networkJoinGo->setText(QApplication::translate("MainWindow", "Rejoindre", nullptr));
-        label->setText(QApplication::translate("MainWindow", "Round", nullptr));
-        label_2->setText(QApplication::translate("MainWindow", "Fils diffusers", nullptr));
+        playNetwork->setText(QCoreApplication::translate("MainWindow", "R\303\251seau", nullptr));
+        playB->setText(QCoreApplication::translate("MainWindow", "Local", nullptr));
+        help->setText(QCoreApplication::translate("MainWindow", "Aide", nullptr));
+        leave_menu->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
+        back->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Nombre de joueurs", nullptr));
+        nb4->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
+        nb5->setText(QCoreApplication::translate("MainWindow", "5", nullptr));
+        nb6->setText(QCoreApplication::translate("MainWindow", "6", nullptr));
+        nb7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
+        nb8->setText(QCoreApplication::translate("MainWindow", "8", nullptr));
+        go->setText(QCoreApplication::translate("MainWindow", "COMMENCER !", nullptr));
+        networkMenuBack->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
+        label_4->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        hostPseudo->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
+        hostPort->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
+        label_6->setText(QCoreApplication::translate("MainWindow", "Nb Joueurs", nullptr));
+        networkHostGo->setText(QCoreApplication::translate("MainWindow", "H\303\251berger", nullptr));
+        hostMess->setText(QCoreApplication::translate("MainWindow", "En attente des joueurs ...", nullptr));
+        label_5->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
+        clientPseudo->setPlaceholderText(QCoreApplication::translate("MainWindow", "Pseudo", nullptr));
+        clientIp->setPlaceholderText(QCoreApplication::translate("MainWindow", "Adresse IP", nullptr));
+        clientPort->setPlaceholderText(QCoreApplication::translate("MainWindow", "Port", nullptr));
+        networkJoinGo->setText(QCoreApplication::translate("MainWindow", "Rejoindre", nullptr));
+        clientMess->setText(QCoreApplication::translate("MainWindow", "En attente des autres joueurs ...", nullptr));
+        pseudo->setText(QCoreApplication::translate("MainWindow", "<pseudo>", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Round", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Fils diffuseurs", nullptr));
+        tchatArea->setPlaceholderText(QCoreApplication::translate("MainWindow", "Le tchat est vide", nullptr));
+        tchatInput->setText(QString());
+        tchatInput->setPlaceholderText(QCoreApplication::translate("MainWindow", "\303\211crivez ici", nullptr));
+        tchatSend->setText(QCoreApplication::translate("MainWindow", "Envoyer", nullptr));
         role->setText(QString());
-        name->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        name->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         card3->setText(QString());
         card1->setText(QString());
         card4->setText(QString());
@@ -1532,12 +1648,13 @@ public:
         player6->setText(QString());
         player7->setText(QString());
         player8->setText(QString());
-        roundNext->setText(QApplication::translate("MainWindow", "Continuer", nullptr));
+        roundNext->setText(QCoreApplication::translate("MainWindow", "Continuer", nullptr));
+        viewCards->setText(QCoreApplication::translate("MainWindow", "Voir mes cartes", nullptr));
         fin_img->setText(QString());
         winner->setText(QString());
-        replay->setText(QApplication::translate("MainWindow", "Rejouer", nullptr));
-        leave->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
-        backfromhelp->setText(QApplication::translate("MainWindow", "Retour", nullptr));
+        replay->setText(QCoreApplication::translate("MainWindow", "Rejouer", nullptr));
+        leave->setText(QCoreApplication::translate("MainWindow", "Quitter", nullptr));
+        backfromhelp->setText(QCoreApplication::translate("MainWindow", "Retour", nullptr));
         Previous->setText(QString());
         labelPic->setText(QString());
         next->setText(QString());

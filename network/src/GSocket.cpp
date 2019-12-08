@@ -19,7 +19,7 @@ void GSocket::sckCreate ()
     this->sck = socket(AF_INET6, SOCK_STREAM, 0);
     if (this->sck == -1) {
         perror("socket");
-        exit(1);
+        return;
     }
 }
 
@@ -82,7 +82,7 @@ void GSocket::sendReq (const gsdataReq req, const char *str, const int sck)
 
     if (this->sckSend(sck, buf, strLen + 1) == -1) {
         perror("this");
-        exit(1);
+        return;
     }
     free(buf);
 }

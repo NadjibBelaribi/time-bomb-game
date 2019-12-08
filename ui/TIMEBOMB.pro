@@ -28,7 +28,8 @@ SOURCES += src/main.cpp src/mainwindow.cpp
 
 HEADERS += headers/mainwindow.h
 
-LIBS += -L ../kernel/obj -lkernel
+LIBS += -L../kernel/obj -lkernel \
+        -L../network/obj -lnetwork
 
 FORMS += ui/mainwindow.ui
 

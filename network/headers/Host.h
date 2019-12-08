@@ -9,6 +9,7 @@ public:
     Host (const string pseudo, const size_t nbClients, const in_port_t port, void (*gameCallback) (gstate &gst), void (*tchatCallback) (const gmess &mess));
     ~Host ();
     void gameNext (const string &cardPlayer, const uint8_t &cardNum);
+    void sendTchatMess (const gmess &mess);
 
 private:
     typedef struct {
@@ -30,7 +31,6 @@ private:
 
     client &findClient (int sck) const;
     void thread_wait (const int sck);
-    void addTchatMess (const gmess &mess);
     void sync ();
     void startGame ();
     bool pseudoExists (const string &pseudo);

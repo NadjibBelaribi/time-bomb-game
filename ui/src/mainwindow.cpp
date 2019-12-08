@@ -8,6 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->roundNext->hide();
+    ui->viewCards->hide();
+    ui->pseudo->hide();
+    ui->tchatArea->hide();
+    ui->tchatInput->hide();
+    ui->tchatSend->hide();
+    srand (time(NULL));
 
     players = new QPushButton* [8];
     size_t i = 0;
@@ -124,6 +130,11 @@ bool MainWindow::same(vector <QString> psd)
 
 void MainWindow::on_go_clicked()
 {
+    net = false;
+    ui->pseudo->hide();
+    ui->tchatArea->hide();
+    ui->tchatInput->hide();
+    ui->tchatSend->hide();
     size_t nb_players = hello.size();
     size_t i, compteur = 0;
     if (nb_players < 4) return;
@@ -183,7 +194,9 @@ void MainWindow::setTable( std::vector <QString> psds ) {
         players[i]->hide();
 
     hideCards();
-    game = new Game(nbPlayers, pd) ;
+
+    if (!net)
+        game = new Game(nbPlayers, pd) ;
 
     for (size_t i = 0; i < nbPlayers; i ++)
         reveals.push_back(false);
@@ -218,7 +231,7 @@ void MainWindow::keep ()
         Player &pepe = game->getPlayers().at(indp);
         //hideWithoutI(static_cast<size_t>(indc));
         Card &card = pepe.getCards().at(indc);
-        string typ (typec2str(card));
+        string typ (typec2str(card.getType()));
         QString txt (QString::fromStdString(typ));
         if (fr)
             txt.append(" ! Au tour de ");
@@ -274,22 +287,15 @@ void MainWindow::keep ()
                     ui->winner->setText("BOOOOOM !! Moriarty a gagné !");
                 else
                     ui->winner->setText("BOOOOOM !! Moriarty has won !");
-                game->~Game();
-                indp = -1;
-                indc = -1;
-                setCpt(0);
-                size_t i;
-                for (i = 0; i < reveals.size(); i++)
-                    reveals.at(i) = false;
                 break;
             case  Game::SherlockWin:
                 //msg.setText("Sherlock is the boss");
                 ui->menu->setCurrentWidget(ui->fin);
+                ui->fin_img->setPixmap(pixs.scaled(w,h,Qt::KeepAspectRatio));
                 if (fr)
                     ui->winner->setText("Oui !! Sherlock a gagné !");
                 else
                     ui->winner->setText("Yeaah !! Sherlock has won !");
-                ui->fin_img->setPixmap(pixs.scaled(w,h,Qt::KeepAspectRatio));
                 break;
             case Game::Active:
                 break;
@@ -320,11 +326,11 @@ void MainWindow::setCpt(size_t cpt)
     this->cpt = cpt;
 }
 
-string MainWindow::typec2str(const Card &c)
+string MainWindow::typec2str(Card::typeCard tc)
 {
     string mm;
 
-    switch(c.getType()){
+    switch(tc){
         case Card::Safe:
             mm = "Safe";
             break;
@@ -388,21 +394,25 @@ void MainWindow::afficheCard(size_t j)
 
 void MainWindow::setCardImg(QPushButton *but , Card::typeCard type ,bool cache)
 {
-    bool firstpart = (getCpt() <= game->getPlayers().size()) ;
+    bool firstpar;
+    if (net)
+        firstpar = netReveal;
+    else
+        firstpar = (getCpt() <= game->getPlayers().size()) ;
     switch(type)
     {
         case Card::Safe:
-            if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            if (!firstpar && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
 
             else but->setStyleSheet("background-image: url(:tb11.png); border-image: url(:tb11.png) 0 0 0 0 stretch; background-image:no-repeat;");
             break;
 
         case Card::Defusing:
-            if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            if (!firstpar && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
             else but->setStyleSheet("background-image: url(:tb12.png); border-image: url(:tb12.png) 0 0 0 0 stretch; background-image:no-repeat;");
             break;
         case Card::Bomb:
-            if (!firstpart && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            if (!firstpar && cache) but->setStyleSheet("background-image: url(:tb14.png); border-image: url(:tb14.png) 0 0 0 0 stretch; background-image:no-repeat;");
             else but->setStyleSheet("background-image: url(:tb10.png); border-image: url(:tb10.png) 0 0 0 0 stretch; background-image:no-repeat;");
             break;
     }
@@ -425,64 +435,105 @@ void MainWindow::printCardRevealed (const Card::typeCard &type)
 
 void MainWindow::playerClicked (size_t i)
 {
-    Player p = game->getPlayers().at(i) ;
-    if (reveals.at(i) && getCpt() < game->getPlayers().size()){
-        indp = -1;
-        return;
-    }
+    if (net) {
+        if (netIsCur && !netReveal) {
+            netSelectPlayer = players[i]->text().toStdString();
+            netShowPlayerCards(players[i]->text().toStdString());
+        }
+    } else {
+        Player p = game->getPlayers().at(i) ;
+        if (reveals.at(i) && getCpt() < game->getPlayers().size()){
+            indp = -1;
+            return;
+        }
 
-    reveals.at(i) = true;
-    indp = i;
+        reveals.at(i) = true;
+        indp = i;
 
-    size_t tmp = getCpt();
-    tmp++;
-    setCpt(tmp);
+        size_t tmp = getCpt();
+        tmp++;
+        setCpt(tmp);
 
-    size_t bjr = p.getCards().size();
-    showCards(bjr) ;
-    enableCards();
-    afficheCard(i);
+        size_t bjr = p.getCards().size();
+        showCards(bjr) ;
+        enableCards();
+        afficheCard(i);
 
-    if (tmp == game->getPlayers().size()) {
-        // phase reveals terminée
-        // go nouvelle round quand bouton cliqué seulement
-        hidePlayer(i);
-        ui->roundNext->show();
-        waitNextRound = true;
-    } else if (tmp < game->getPlayers().size()) {
-        // reveal en cours
-        hidePlayer(i);
+        if (tmp == game->getPlayers().size()) {
+            // phase reveals terminée
+            // go nouvelle round quand bouton cliqué seulement
+            hidePlayer(i);
+            ui->roundNext->show();
+            waitNextRound = true;
+        } else if (tmp < game->getPlayers().size()) {
+            // reveal en cours
+            hidePlayer(i);
+        }
     }
 }
 
 void MainWindow::on_roundNext_clicked ()
 {
-    for (size_t i = 0; i < reveals.size(); i ++)
-        reveals.at(i) = false;
-    setCpt(getCpt() + 1);
-    if (fr)
-    {
-         QString s ("C'est parti ! Au tour de ");
-         s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
-         ui->status->setText(s);
-    }
-    else
-    {
-        QString s ("Let's go ! it's turn of ");
-        s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
-        ui->status->setText(s);
-    }
+    if (net) {
+        string typ (typec2str(netGst.lastCardRevealed));
+        QString txt (QString::fromStdString(typ));
+        if (fr)
+            txt.append(" ! Au tour de ");
+        else
+            txt.append(" ! Turn of ");
+        txt.append(QString::fromStdString(netGst.currentPlayer).toUpper());
+        ui->status->setText(txt);
 
-    showPlayers();
-    blockPlayerCourant(game->getCurrentPlayer());
-    ui->roundNext->hide();
+        netReveal = false;
+        ui->roundNext->hide();
+        netCb(netGst);
 
-    showCards(game->getCurrentPlayer().getCards().size());
-    hideCards();
-    ui->role->show();
-    ui->name->show();
-    waitNextRound = false;
+    } else {
+        for (size_t i = 0; i < reveals.size(); i ++)
+            reveals.at(i) = false;
+        setCpt(getCpt() + 1);
+        if (fr)
+        {
+            QString s ("C'est parti ! Au tour de ");
+            s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
+            ui->status->setText(s);
+        }
+        else
+        {
+            QString s ("Let's go ! it's turn of ");
+            s.append(QString(QString::fromStdString(game->getCurrentPlayer().getPseudo())).toUpper());
+            ui->status->setText(s);
+        }
+
+        showPlayers();
+        blockPlayerCourant(game->getCurrentPlayer());
+        ui->roundNext->hide();
+
+        showCards(game->getCurrentPlayer().getCards().size());
+        hideCards();
+        ui->role->show();
+        ui->name->show();
+        waitNextRound = false;
+    }
 }
+
+void MainWindow::on_viewCards_clicked ()
+{
+    QString s ("ROUND ");
+    s.append(QString::number(netGst.round));
+    if (fr)
+        s.append(" ! Découvrez vos cartes");
+    else
+        s.append(" ! Discover your cards!");
+    ui->status->setText(s);
+    netReveal = true;
+    netShowMyCards();
+    netSetMyRole();
+    netHidePlayers();
+    ui->viewCards->hide();
+    ui->roundNext->show();
+}
+
 
 void MainWindow::on_player8_clicked()
 {
@@ -526,13 +577,35 @@ void MainWindow::on_player1_clicked()
 
 void MainWindow::cardClicked (const size_t i)
 {
-    if ((getCpt() < game->getPlayers().size()) || waitNextRound)
-        return;
-    indc = i;
-    disableCards();
-    Card::typeCard type = game->getPlayers().at(indp).getCards().at(indc).getType() ;
-    setCardImg(cards[i],type,false);
-    keep() ;
+    if (net) {
+        if (!netIsCur || netReveal)
+            return;
+
+        if (netIsCur) {
+
+            size_t nbc = 0;
+            for (size_t j = 0; j < netGst.oPlayers.size(); j ++) {
+                if (netGst.oPlayers[j] == netSelectPlayer) {
+                    nbc = netGst.oNbCards[j];
+                    break;
+                }
+            }
+            netLastRevealNbCards = nbc;
+            netLastRevealIndCard = i;
+            if (netHost)
+                (static_cast<Host *>(gsck))->gameNext(netSelectPlayer, i);
+            else
+                (static_cast<Client *>(gsck))->gameNext(netSelectPlayer, i);
+        }
+    } else {
+        if ((getCpt() < game->getPlayers().size()) || waitNextRound)
+            return;
+        indc = i;
+        disableCards();
+        Card::typeCard type = game->getPlayers().at(indp).getCards().at(indc).getType() ;
+        setCardImg(cards[i],type,false);
+        keep() ;
+    }
 }
 
 
@@ -641,8 +714,12 @@ void MainWindow::on_backfromhelp_clicked()
 
 void MainWindow::on_replay_clicked()
 {
-    ui->menu->setCurrentWidget(ui->options);
-    initPseudoFields(4);
+    if (net)
+        ui->menu->setCurrentWidget(ui->networkMenu);
+    else {
+        ui->menu->setCurrentWidget(ui->options);
+        initPseudoFields(4);
+    }
 }
 
 
@@ -652,6 +729,8 @@ void MainWindow::on_replay_clicked()
 void MainWindow::on_playNetwork_clicked ()
 {
     ui->menu->setCurrentWidget(ui->networkMenu);
+    ui->hostMess->hide();
+    ui->clientMess->hide();
 }
 
 void MainWindow::on_networkMenuBack_clicked ()
@@ -661,15 +740,317 @@ void MainWindow::on_networkMenuBack_clicked ()
 
 void MainWindow::on_networkHostGo_clicked ()
 {
-    ui->menu->setCurrentWidget(ui->board);
     // GO HOST
+    ui->hostMess->show();
+    sleep(1);
+    networkGO(true);
 }
 
 void MainWindow::on_networkJoinGo_clicked ()
 {
-    ui->menu->setCurrentWidget(ui->board);
     // GO JOIN
+    ui->clientMess->show();
+    networkGO(false);
 }
+
+/* void MainWindow::signalHelper (GSocket::gstate &gst) { */
+/*     emit net */
+
+/* } */
+
+MainWindow *mw = nullptr;
+
+void tchatCallback (const GSocket::gmess &mess)
+{
+    emit mw->signalTchatCb(mess);
+}
+
+void gameCallback (GSocket::gstate &gst)
+{
+    emit mw->signalCb(gst);
+}
+
+void MainWindow::netTchatCb (GSocket::gmess gm)
+{
+    QString html ("\n<b>");
+    html += QString::fromStdString(gm.player);
+    html += "</b>: ";
+    html += QString::fromStdString(gm.mess);
+    ui->tchatArea->setHtml(ui->tchatArea->toHtml() + html);
+}
+
+void MainWindow::netCb (GSocket::gstate gst)
+{
+    netGst = gst;
+    if (ui->menu->currentWidget() != ui->board) {
+        // first time
+        ui->menu->setCurrentWidget(ui->board);
+
+        std::vector<QString> psds;
+        for (size_t i = 0; i < gst.oPlayers.size(); i ++)
+            psds.push_back(QString::fromStdString(gst.oPlayers.at(i)));
+        setTable(psds);
+        ui->pseudo->setText(QString::fromStdString(gst.pseudo).toUpper());
+        ui->pseudo->show();
+        ui->tchatArea->show();
+        ui->tchatInput->show();
+        ui->tchatSend->show();
+        ui->hostMess->hide();
+        ui->clientMess->hide();
+    }
+
+    if (netReveal)
+        return;
+
+    QPixmap pixm(":fin_mori.png");
+    QPixmap pixs(":fin_sherlock.png");
+    int w = pixm.width();
+    int h = pixm.height();
+
+    switch (gst.gameState) {
+        case Game::MoriartyWin:
+            ui->menu->setCurrentWidget(ui->fin);
+            ui->fin_img->setPixmap(pixm.scaled(w,h,Qt::KeepAspectRatio));
+            if (fr)
+                ui->winner->setText("BOOOOOM !! Moriarty a gagné !");
+            else
+                ui->winner->setText("BOOOOOM !! Moriarty has won !");
+
+            if (netHost)
+                (static_cast<Host *>(gsck))->~Host();
+            else
+                (static_cast<Client *>(gsck))->~Client();
+            return;
+
+        case Game::SherlockWin:
+            ui->menu->setCurrentWidget(ui->fin);
+            ui->fin_img->setPixmap(pixs.scaled(w,h,Qt::KeepAspectRatio));
+            if (fr)
+                ui->winner->setText("Oui !! Sherlock a gagné !");
+            else
+                ui->winner->setText("Yeaah !! Sherlock has won !");
+
+            if (netHost)
+                (static_cast<Host *>(gsck))->~Host();
+            else
+                (static_cast<Client *>(gsck))->~Client();
+            return;
+
+        case Game::Active:
+            break;
+    }
+
+    netIsCur = false;
+    ui->defusing->display(gst.nbDefusingFound);
+    ui->round->display(gst.round);
+
+    // game active
+
+    // normal
+
+    if (netOldRound > 0) {
+        if (gst.currentPlayer == gst.pseudo)
+            netIsCur = true;
+        netShowPlayers();
+        netSetCurRole();
+        if (netFirstReveal) {
+            netHideCards();
+            netFirstReveal = false;
+            QString txt ("");
+            if (fr)
+                txt.append("Au tour de ");
+            else
+                txt.append("Turn of ");
+            txt.append(QString::fromStdString(gst.currentPlayer).toUpper());
+            ui->status->setText(txt);
+
+        } else {
+            netShowCardsWithRevealed();
+            string typ (typec2str(gst.lastCardRevealed));
+            QString txt (QString::fromStdString(typ));
+            if (fr)
+                txt.append(" ! Au tour de ");
+            else
+                txt.append(" ! Turn of ");
+            txt.append(QString::fromStdString(gst.currentPlayer).toUpper());
+            ui->status->setText(txt);
+        }
+    }
+
+    if (netOldRound < gst.round) {
+        if (netOldRound == 0)
+            on_viewCards_clicked();
+        else
+            ui->viewCards->show();
+        netOldRound = gst.round;
+        netHidePlayers();
+    }
+
+    netLastCurrentPlayer = gst.currentPlayer;
+}
+
+void MainWindow::netHideCards ()
+{
+    for  (size_t i = 0; i < 5; i ++)
+        cards[i]->hide();
+}
+
+void MainWindow::netShowPlayerCards (string pseudo)
+{
+    size_t nbc = 0;
+    for (size_t i = 0; i < netGst.oPlayers.size(); i ++) {
+        if (pseudo == netGst.oPlayers[i]) {
+            nbc = netGst.oNbCards[i];
+            break;
+        }
+   }
+
+   for (size_t i = 0; i < nbc; i ++) {
+       setCardImg(cards[i], Card::Safe, true);
+       cards[i]->show();
+   }
+   for (size_t i = nbc; i < 5; i ++)
+       cards[i]->hide();
+
+}
+
+void MainWindow::netShowMyCards ()
+{
+    netReveal = true;
+    for (size_t i = 0; i < netGst.nbCards; i ++) {
+        setCardImg(cards[i], netGst.cards[i], false);
+        cards[i]->show();
+    }
+    for (size_t i = netGst.nbCards; i < 5; i ++)
+        cards[i]->hide();
+}
+
+void MainWindow::netSetCurRole ()
+{
+        ui->role->setStyleSheet("background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;");
+        ui->name->setText(QString::fromStdString(netGst.currentPlayer).toUpper());
+        ui->role->show();
+        ui->name->show();
+}
+
+void MainWindow::netShowPlayers ()
+{
+    for (size_t i = 0; i < netGst.oPlayers.size(); i ++)
+        players[i]->show();
+}
+
+void MainWindow::netSetMyRole ()
+{
+    switch(netGst.role)
+    {
+        case Player::Moriarty:
+            ui->role->setStyleSheet("background-image: url(:tb6.png); border-image: url(:tb6.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
+
+        case Player::Sherlock:
+            ui->role->setStyleSheet("background-image: url(:tb1.png); border-image: url(:tb1.png) 0 0 0 0 stretch; background-image:no-repeat;");
+            break;
+    }
+    ui->name->setText(QString::fromStdString(netGst.pseudo).toUpper());
+    ui->role->show();
+    ui->name->show();
+}
+
+void MainWindow::netHidePlayers ()
+{
+    for (size_t i = 0; i < netGst.oPlayers.size(); i ++)
+        players[i]->hide();
+}
+
+void MainWindow::netShowCardsWithRevealed ()
+{
+    size_t nbc = netGst.oNbCards[0]; // tmp
+    if (netLastCurrentPlayer == netGst.pseudo)
+        nbc = netLastRevealNbCards;
+    int r = rand() % nbc;
+    if (netLastCurrentPlayer == netGst.pseudo)
+        r = netLastRevealIndCard;
+    for (size_t i = 0; i < nbc; i ++) {
+        if (i == static_cast<size_t>(r))
+            setCardImg(cards[i], netGst.lastCardRevealed, false);
+        else
+            setCardImg(cards[i], Card::Safe, true);
+        cards[i]->show();
+    }
+
+    for (size_t i = nbc; i < 5; i ++)
+        cards[i]->hide();
+}
+
+void MainWindow::networkGO (const bool host)
+{
+    netLastRevealNbCards = 0;
+    netLastRevealIndCard = 0;
+    netLastCurrentPlayer = "";
+    netSelectPlayer = "";
+    netOldRound = 0;
+    netReveal = false;
+    netFirstReveal = true;
+    netIsCur = false;
+    net = true;
+    netHost = host;
+    mw = this;
+
+    for (size_t i = 0; i < 5; i ++)
+        cards[i]->setEnabled(true);
+    for (size_t i = 0; i < 8; i ++)
+        players[i]->setEnabled(true);
+
+    qRegisterMetaType<GSocket::gstate>();
+    qRegisterMetaType<GSocket::gmess>();
+    connect(this, SIGNAL(signalCb(GSocket::gstate)), this, SLOT(netCb(GSocket::gstate)));
+    connect(this, SIGNAL(signalTchatCb(GSocket::gmess)), this, SLOT(netTchatCb(GSocket::gmess)));
+
+    if (netHost) {
+        // HOST
+        const QString port (ui->hostPort->text());
+        const QString pseudo (ui->hostPseudo->text());
+        const int nbPlayers = ui->hostPlayers->value();
+        if (port.isEmpty() || pseudo.isEmpty())
+            return;
+        string pseudoSafe = pseudo.toStdString();
+        pseudoSafe.erase(std::remove(pseudoSafe.begin(), pseudoSafe.end(), ':'), pseudoSafe.end());
+
+        cout << "[NET] Attente de la connexion de tous les joueurs ..." << endl;
+        gsck = new Host(pseudoSafe, nbPlayers - 1, atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
+
+    } else {
+        // CLIENT
+        const QString ip (ui->clientIp->text());
+        const QString port (ui->clientPort->text());
+        const QString pseudo (ui->clientPseudo->text());
+        if (ip.isEmpty() || port.isEmpty() || pseudo.isEmpty())
+            return;
+        string pseudoSafe = pseudo.toStdString();
+        pseudoSafe.erase(std::remove(pseudoSafe.begin(), pseudoSafe.end(), ':'), pseudoSafe.end());
+        cout << "[NET] Connexion au serveur et attente de lancement ..." << endl;
+        gsck = new Client(pseudoSafe, ip.toStdString().c_str(), atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
+    }
+}
+
+void MainWindow::on_tchatSend_clicked ()
+{
+    string str = ui->tchatInput->text().toStdString();
+    ui->tchatInput->clear();
+    str.erase(std::remove(str.begin(), str.end(), ':'), str.end());
+
+    GSocket::gmess mess;
+    mess.player = netGst.pseudo;
+    mess.mess = str;
+    mess.time = time(NULL);
+
+    if (netHost)
+        (static_cast<Host *>(gsck))->sendTchatMess(mess);
+    else
+        (static_cast<Client *>(gsck))->sendTchatMess(mess);
+}
+
+/* ---------- TRADUCTIONS ---------- */
 
 void MainWindow::english()
 {

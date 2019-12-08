@@ -11,7 +11,7 @@ Host::Host (const string pseudo, const size_t nbClients, const in_port_t port, v
 
     if (sem_init(&this->sem, 0, 1) == -1) {
         perror("sem_init");
-        exit(1);
+        return;
     }
 
     this->sckCreate();
@@ -20,7 +20,7 @@ Host::Host (const string pseudo, const size_t nbClients, const in_port_t port, v
 
     if (fcntl(this->sck, F_SETFL, O_NONBLOCK) == -1) {
         perror("fcntl");
-        exit(1);
+        return;
     }
 
     while (this->clients.size() < this->nbClients) {
@@ -31,13 +31,20 @@ Host::Host (const string pseudo, const size_t nbClients, const in_port_t port, v
 
     if (sem_wait(&this->sem) == -1) {
         perror("sem_wait");
-        exit(1);
+        return;
     }
     this->startGame();
     if (sem_post(&this->sem) == -1) {
         perror("sem_post");
-        exit(1);
+        return;
     }
+}
+
+Host::~Host ()
+{
+    close(this->sck);
+    for (size_t i = 0; i < this->clients.size(); i ++)
+        close(this->clients[i].sck);
 }
 
 void Host::sckBind ()
@@ -50,7 +57,7 @@ void Host::sckBind ()
 
     if (bind(this->sck, (struct sockaddr *) &saddr, sizeof(struct sockaddr_in6)) == -1) {
         perror("bind");
-        exit(1);
+        return;
     }
 }
 
@@ -58,7 +65,7 @@ void Host::sckListen ()
 {
     if (listen(this->sck, 10) == -1) {
         perror("listen");
-        exit(1);
+        return;
     }
 }
 
@@ -71,7 +78,7 @@ void Host::sckAccept ()
         if ((errno == EAGAIN) || (errno == EWOULDBLOCK))
             return;
         perror("newSck");
-        exit(1);
+        return;
     }
     this->sockets.push_back(newSck);
 
@@ -93,7 +100,7 @@ void Host::thread_wait (const int sck)
 
         if (sem_wait(&this->sem) == -1) {
             perror("sem_wait");
-            exit(1);
+            return;
         }
         if ((pseudo == nullptr) && (gsd->req == CreqJoin)) {
             // data <= pseudo
@@ -102,7 +109,7 @@ void Host::thread_wait (const int sck)
                 cerr << "Pseudo already exists: " << *pseudo << ", skipping it" << endl;
                 if (sem_post(&this->sem) == -1) {
                     perror("sem_post");
-                    exit(1);
+                    return;
                 }
                 close(sck);
                 return;
@@ -118,7 +125,7 @@ void Host::thread_wait (const int sck)
             mess.player = *pseudo;
             mess.mess = string((const char *) gsd->data, gsd->dataLen);
             mess.time = time(nullptr);
-            this->addTchatMess(mess);
+            this->sendTchatMess(mess);
         } else if (gsd->req == CresPlay) {
             // data <= <playerPseudo>:<cardNum>
             const string data((const char *) gsd->data, gsd->dataLen);
@@ -130,12 +137,12 @@ void Host::thread_wait (const int sck)
 
         if (sem_post(&this->sem) == -1) {
             perror("sem_post");
-            exit(1);
+            return;
         }
     }
 }
 
-void Host::addTchatMess (const Host::gmess &mess)
+void Host::sendTchatMess (const Host::gmess &mess)
 {
     this->tchat.push_back(mess);
     this->tchatCallback(mess);

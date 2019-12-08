@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QSpinBox>
+#include <QMetaType>
 #include <QLineEdit>
 #include <QString>
 #include <QGridLayout>
@@ -13,16 +14,25 @@
 #include <unistd.h>
 #include <QPixmap>
 #include <QVector>
+#include <time.h>
 #include <vector>
+#include <stdlib.h>
+#include <stdio.h>
 #include <QLabel>
 #include <QLineEdit>
 #include <QString>
 #include <string>
 #include "../../kernel/headers/Game.h"
+#include "../../network/headers/GSocket.h"
+#include "../../network/headers/Host.h"
+#include "../../network/headers/Client.h"
 
 namespace Ui {
     class MainWindow;
 }
+
+Q_DECLARE_METATYPE(GSocket::gstate);
+Q_DECLARE_METATYPE(GSocket::gmess);
 
 class MainWindow : public QMainWindow
 {
@@ -43,7 +53,7 @@ class MainWindow : public QMainWindow
 
         void setCpt(size_t cpt);
 
-        string typec2str(const Card &c);
+        string typec2str(Card::typeCard tc);
 
         void hideWithoutI(size_t i);
 
@@ -97,9 +107,9 @@ class MainWindow : public QMainWindow
 
         bool fr = true;
 
-        private slots:
+private slots:
 
-            void on_playB_clicked();
+        void on_playB_clicked();
 
         void on_back_clicked();
 
@@ -161,9 +171,25 @@ class MainWindow : public QMainWindow
 
         void on_networkJoinGo_clicked ();
 
+        void on_viewCards_clicked ();
+
+        void networkGO (const bool host);
+
+        void on_tchatSend_clicked ();
+
+        // TRADUCTIONS
+
         void on_eng_trad_clicked();
 
         void on_fr_trad_clicked();
+
+public slots:
+        void netCb (GSocket::gstate gst);
+        void netTchatCb (GSocket::gmess gm);
+
+signals:
+        Q_SIGNAL void signalCb (GSocket::gstate);
+        Q_SIGNAL void signalTchatCb (GSocket::gmess);
 
 private:
         Ui::MainWindow *ui;
@@ -175,6 +201,29 @@ private:
         QPushButton **players;
         QPushButton **cards;
         bool waitNextRound = false;
+
+        // only for netw
+        bool net = false;
+        bool netHost = false;
+        GSocket *gsck = nullptr;
+        GSocket::gstate netGst;
+        bool netReveal = false;
+        size_t netOldRound = 0;
+        bool netIsCur = false;
+        string netSelectPlayer = "";
+        bool netFirstReveal = true;
+        size_t netLastRevealNbCards = 0;
+        size_t netLastRevealIndCard = 0;
+        string netLastCurrentPlayer = "";
+
+        void netShowPlayerCards (string pseudo);
+        void netShowMyCards ();
+        void netShowPlayers ();
+        void netSetCurRole ();
+        void netSetMyRole ();
+        void netHidePlayers ();
+        void netShowCardsWithRevealed ();
+        void netHideCards ();
 };
 
 #endif // MAINWINDOW_H
