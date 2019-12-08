@@ -1110,6 +1110,9 @@ void MainWindow::english()
     ui->roundNext->setText("Continue");
     ui->label_2->setText("Defuse Wires");
     ui->leave->setText("Leave");
+    ui->viewCards->setText("View Cards");
+    ui->roundNext->setText("Continue");
+    ui->tchatSend->setText("Send");
 }
 
 void MainWindow::french()
@@ -1132,6 +1135,9 @@ void MainWindow::french()
     ui->roundNext->setText("Continuer");
     ui->label_2->setText("Fils diffuseurs");
     ui->leave->setText("Quitter");
+    ui->viewCards->setText("Voir mes cartes");
+    ui->roundNext->setText("Continuer");
+    ui->tchatSend->setText("Envoyer");
 }
 
 void MainWindow::on_eng_trad_clicked()
