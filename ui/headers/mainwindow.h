@@ -22,6 +22,9 @@
 #include <QLineEdit>
 #include <QString>
 #include <string>
+#include <cctype>
+#include <cwctype>
+#include <algorithm>
 #include "../../kernel/headers/Game.h"
 #include "../../network/headers/GSocket.h"
 #include "../../network/headers/Host.h"
@@ -48,6 +51,11 @@ class MainWindow : public QMainWindow
         void keep ();
 
         void setCardImg(QPushButton *but , Card::typeCard type ,bool cache) ;
+
+        bool caseInsCompare(const string& s1, const string& s2);
+
+        bool caseInsCompare(const wstring& s1, const wstring& s2);
+
 
         bool same(vector <QString> psd);
 
