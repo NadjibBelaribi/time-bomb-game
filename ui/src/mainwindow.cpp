@@ -1153,6 +1153,7 @@ void MainWindow::english()
     ui->help->setText("Help");
     ui->playNetwork->setText("Network");
     ui->leave_menu->setText("Leave");
+    ui->boardQuit->setText("Leave");
     ui->back->setText("Back");
     ui->label_3->setText("Number of players");
     ui->go->setText("Start!");
@@ -1178,6 +1179,7 @@ void MainWindow::french()
     ui->help->setText("Aide");
     ui->playNetwork->setText("Réseau");
     ui->leave_menu->setText("Quitter");
+    ui->boardQuit->setText("Quitter");
     ui->back->setText("Retour");
     ui->label_3->setText("Nombre de joueurs");
     ui->go->setText("Commencer!");
