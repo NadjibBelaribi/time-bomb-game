@@ -27,18 +27,18 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow
-{
-background-image: url(:london.jpg);
-background-image:no-repeat;
-border-image:url(:london.jpg) 0 0 0 0 stretch ;
-}
+                {
+                background-image: url(:london.jpg);
+                background-image:no-repeat;
+                border-image:url(:london.jpg) 0 0 0 0 stretch ;
+                }
 
-QPushButton
-{
-	background-color:white;
-}
+                QPushButton
+                {
+                background-color:white;
+                }
 
-</string>
+        </string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
@@ -51,23 +51,23 @@ QPushButton
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="start">
        <property name="styleSheet">
         <string notr="true">QPushButton
-{
-	width: 200px;
-	border: 1px solid snow;
-	border-radius: 10px 10px 10px 10px;
-	background-color:DodgerBlue ;
-	color:snow;
-	font-size:20px;
-}
-QPushButton:hover
-{
-	background-color:DarkSlateBlue ;
-}</string>
+                                {
+                                width: 200px;
+                                border: 1px solid snow;
+                                border-radius: 10px 10px 10px 10px;
+                                background-color:DodgerBlue ;
+                                color:snow;
+                                font-size:20px;
+                                }
+                                QPushButton:hover
+                                {
+                                background-color:DarkSlateBlue ;
+                                }</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="1" column="0">
@@ -124,10 +124,10 @@ QPushButton:hover
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:20px;
-background-image: url(:/drapeau-anglais.png);
-background-image:no-repeat;
-border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;
-</string>
+                                            background-image: url(:/drapeau-anglais.png);
+                                            background-image:no-repeat;
+                                            border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;
+                                    </string>
           </property>
           <property name="text">
            <string/>
@@ -172,9 +172,9 @@ border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;
           </property>
           <property name="styleSheet">
            <string notr="true">border-radius:20px;
-background-image: url(:/drapeau-fr.jpg);
-background-image:no-repeat;
-border-image: url(:/drapeau-fr.jpg) 0 0 0 0 stretch;</string>
+                                        background-image: url(:/drapeau-fr.jpg);
+                                        background-image:no-repeat;
+                                        border-image: url(:/drapeau-fr.jpg) 0 0 0 0 stretch;</string>
           </property>
           <property name="text">
            <string/>
@@ -381,27 +381,27 @@ border-image: url(:/drapeau-fr.jpg) 0 0 0 0 stretch;</string>
       <widget class="QWidget" name="options">
        <property name="styleSheet">
         <string notr="true">QPushButton
-{
-	min-width: 100px;
-	height: 30px;
-	border: 1px solid snow;
-	border-radius: 10px 10px 10px 10px;
-	background-color:DodgerBlue ;
-	color:snow;
-	font-size:20px;
-}
-QPushButton:hover
-{
-	background-color:DarkSlateBlue ;
-}
+                            {
+                            min-width: 100px;
+                            height: 30px;
+                            border: 1px solid snow;
+                            border-radius: 10px 10px 10px 10px;
+                            background-color:DodgerBlue ;
+                            color:snow;
+                            font-size:20px;
+                            }
+                            QPushButton:hover
+                            {
+                            background-color:DarkSlateBlue ;
+                            }
 
-QLineEdit {
-height: 30px;
-padding: 6px 10px;
-background-color: rgba(80,80,80,0.9);
-border-radius: 6px;
-color: snow;
-}</string>
+                            QLineEdit {
+                            height: 30px;
+                            padding: 6px 10px;
+                            background-color: rgba(80,80,80,0.9);
+                            border-radius: 6px;
+                            color: snow;
+                            }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
@@ -421,7 +421,7 @@ color: snow;
          <widget class="QPushButton" name="back">
           <property name="minimumSize">
            <size>
-            <width>148</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -433,14 +433,14 @@ color: snow;
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
-margin-right: 2em;
-background-color: snow;
-color: black;
-}
+                                        margin-right: 2em;
+                                        background-color: snow;
+                                        color: black;
+                                        }
 
-QPushButton:hover {
-background-color: #DDDDDD;
-}</string>
+                                        QPushButton:hover {
+                                        background-color: #DDDDDD;
+                                        }</string>
           </property>
           <property name="text">
            <string>Retour</string>
@@ -725,27 +725,27 @@ background-color: #DDDDDD;
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton
-{
-	min-width: 100px;
-	height: 30px;
-	border: 1px solid snow;
-	border-radius: 10px 10px 10px 10px;
-	background-color:DodgerBlue ;
-	color:snow;
-	font-size:20px;
-}
-QPushButton:hover
-{
-	background-color:DarkSlateBlue ;
-}
+                            {
+                            min-width: 100px;
+                            height: 30px;
+                            border: 1px solid snow;
+                            border-radius: 10px 10px 10px 10px;
+                            background-color:DodgerBlue ;
+                            color:snow;
+                            font-size:20px;
+                            }
+                            QPushButton:hover
+                            {
+                            background-color:DarkSlateBlue ;
+                            }
 
-QLineEdit {
-height: 30px;
-padding: 6px 10px;
-background-color: rgba(80,80,80,0.9);
-border-radius: 6px;
-color: snow;
-}</string>
+                            QLineEdit {
+                            height: 30px;
+                            padding: 6px 10px;
+                            background-color: rgba(80,80,80,0.9);
+                            border-radius: 6px;
+                            color: snow;
+                            }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_18">
         <item>
@@ -760,7 +760,7 @@ color: snow;
             </property>
             <property name="minimumSize">
              <size>
-              <width>148</width>
+              <width>150</width>
               <height>40</height>
              </size>
             </property>
@@ -771,14 +771,14 @@ color: snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-margin-right: 2em;
-background-color: snow;
-color: black;
-}
+                                                margin-right: 2em;
+                                                background-color: snow;
+                                                color: black;
+                                                }
 
-QPushButton:hover {
-background-color: #DDDDDD;
-}</string>
+                                                QPushButton:hover {
+                                                background-color: #DDDDDD;
+                                                }</string>
             </property>
             <property name="text">
              <string>Retour</string>
@@ -1335,6 +1335,44 @@ background-color: #DDDDDD;
              </spacer>
             </item>
             <item>
+             <widget class="QPushButton" name="boardQuit">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>12</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {background-color: rgba(40,40,40,0.8); color:snow; border-radius: 6px;}
+
+QPushButton:hover {background-color: rgba(40,40,40,1)}</string>
+              </property>
+              <property name="text">
+               <string>Quitter</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_45">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
              <widget class="QLabel" name="pseudo">
               <property name="minimumSize">
                <size>
@@ -1349,13 +1387,13 @@ background-color: #DDDDDD;
               </property>
               <property name="styleSheet">
                <string notr="true">QLabel
-{
-	border: 1px solid snow;
-	border-radius: 6px;
-	background-color:rgba(200,80,100,0.9) ;
-	color:snow;
-	font-size:20px;
-}</string>
+                                                        {
+                                                        border: 1px solid snow;
+                                                        border-radius: 6px;
+                                                        background-color:rgba(200,80,100,0.9) ;
+                                                        color:snow;
+                                                        font-size:20px;
+                                                        }</string>
               </property>
               <property name="text">
                <string>&lt;pseudo&gt;</string>
@@ -1388,13 +1426,13 @@ background-color: #DDDDDD;
               </property>
               <property name="styleSheet">
                <string notr="true">QLabel
-{
-	border: 1px solid snow;
-	border-radius: 6px;
-	background-color:DodgerBlue ;
-	color:snow;
-	font-size:20px;
-}</string>
+                                                        {
+                                                        border: 1px solid snow;
+                                                        border-radius: 6px;
+                                                        background-color:DodgerBlue ;
+                                                        color:snow;
+                                                        font-size:20px;
+                                                        }</string>
               </property>
               <property name="text">
                <string>Round</string>
@@ -1417,7 +1455,7 @@ background-color: #DDDDDD;
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(200,200,200,0.6);
-border-radius: 8px</string>
+                                                        border-radius: 8px</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::Box</enum>
@@ -1468,13 +1506,13 @@ border-radius: 8px</string>
               </property>
               <property name="styleSheet">
                <string notr="true">QLabel
-{
-	border: 1px solid snow;
-	border-radius: 6px;
-	background-color:DodgerBlue ;
-	color:snow;
-	font-size:20px;
-}</string>
+                                                        {
+                                                        border: 1px solid snow;
+                                                        border-radius: 6px;
+                                                        background-color:DodgerBlue ;
+                                                        color:snow;
+                                                        font-size:20px;
+                                                        }</string>
               </property>
               <property name="text">
                <string>Fils diffuseurs</string>
@@ -1494,7 +1532,7 @@ border-radius: 8px</string>
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(200,200,200,0.6);
-border-radius: 8px</string>
+                                                        border-radius: 8px</string>
               </property>
               <property name="lineWidth">
                <number>0</number>
@@ -1713,10 +1751,10 @@ border-radius: 8px</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QPushButton {background-color: rgba(50, 150, 240, 0.8); border-radius:4px; padding: 2px 3px; color:snow;
-}
+                                                                }
 
-QPushButton:hover {background-color :rgba(50,160,240,1); }
-</string>
+                                                                QPushButton:hover {background-color :rgba(50,160,240,1); }
+                                                        </string>
                 </property>
                 <property name="text">
                  <string>Envoyer</string>
@@ -1966,8 +2004,8 @@ QPushButton:hover {background-color :rgba(50,160,240,1); }
               </property>
               <property name="styleSheet">
                <string notr="true">background-color: rgba(20,20,20,0.6); color:orange;
-padding-left: 6px;
-</string>
+                                                    padding-left: 6px;
+                                            </string>
               </property>
               <property name="text">
                <string/>
@@ -2031,17 +2069,17 @@ padding-left: 6px;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2064,17 +2102,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2097,17 +2135,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2130,17 +2168,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2163,17 +2201,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2196,17 +2234,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2229,17 +2267,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2262,17 +2300,17 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-color: rgb(238, 238, 236);
-font: 75 italic 15pt &quot;Utopia&quot;;
-padding-top :120px ;
- text-transform: uppercase;
-background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
-}
+                                        color: rgb(238, 238, 236);
+                                        font: 75 italic 15pt &quot;Utopia&quot;;
+                                        padding-top :120px ;
+                                        text-transform: uppercase;
+                                        background-image: url(:tb9.png); border-image: url(:tb9.png) 0 0 0 0 stretch; background-image:no-repeat;
+                                        }
 
-QPushButton:hover {
-border-width: 2px;
-border-color:  snow;
-}</string>
+                                        QPushButton:hover {
+                                        border-width: 2px;
+                                        border-color:  snow;
+                                        }</string>
             </property>
             <property name="text">
              <string/>
@@ -2311,12 +2349,12 @@ border-color:  snow;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-background-color: rgba(40,80,200,0.8); border-radius:8px; color: snow;
-}
+                                        background-color: rgba(40,80,200,0.8); border-radius:8px; color: snow;
+                                        }
 
-QPushButton:hover {
-background-color: rgba(40,80,200,1);
-}</string>
+                                        QPushButton:hover {
+                                        background-color: rgba(40,80,200,1);
+                                        }</string>
             </property>
             <property name="text">
              <string>Continuer</string>
@@ -2349,12 +2387,12 @@ background-color: rgba(40,80,200,1);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-background-color: rgba(40,180,200,0.8); border-radius:8px; color: snow;
-}
+                                        background-color: rgba(40,180,200,0.8); border-radius:8px; color: snow;
+                                        }
 
-QPushButton:hover {
-background-color: rgba(40,180,200,1);
-}</string>
+                                        QPushButton:hover {
+                                        background-color: rgba(40,180,200,1);
+                                        }</string>
             </property>
             <property name="text">
              <string>Voir mes cartes</string>
@@ -2388,13 +2426,13 @@ background-color: rgba(40,180,200,1);
       <widget class="QWidget" name="fin">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-border-radius: 6px;
-background-color: rgba(240,240,240,0.8);
-}
+                    border-radius: 6px;
+                    background-color: rgba(240,240,240,0.8);
+                    }
 
-QPushButton:hover {
-background-color: rgba(240,240,240,1);
-}</string>
+                    QPushButton:hover {
+                    background-color: rgba(240,240,240,1);
+                    }</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
@@ -2595,14 +2633,14 @@ background-color: rgba(240,240,240,1);
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton  {
-border-radius: 6px;
-background-color: rgba(240,240,240,0.8);
-}
+                                        border-radius: 6px;
+                                        background-color: rgba(240,240,240,0.8);
+                                        }
 
-QPushButton:hover {
-background-color: rgba(240,240,240,1);
+                                        QPushButton:hover {
+                                        background-color: rgba(240,240,240,1);
 
-}</string>
+                                        }</string>
             </property>
             <property name="text">
              <string>Retour</string>
@@ -2649,16 +2687,16 @@ background-color: rgba(240,240,240,1);
               </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {
-border-radius:3px;
-background-color: rgba(20,20,20,0.8);
-background-image: url(:previous.png);
-background-repeat: no-repeat;
-background-position: center;
-}
+                                                border-radius:3px;
+                                                background-color: rgba(20,20,20,0.8);
+                                                background-image: url(:previous.png);
+                                                background-repeat: no-repeat;
+                                                background-position: center;
+                                                }
 
-QPushButton:hover {
-background-color: rgba(20,20,20,1);
-}</string>
+                                                QPushButton:hover {
+                                                background-color: rgba(20,20,20,1);
+                                                }</string>
               </property>
               <property name="text">
                <string/>
@@ -2744,16 +2782,16 @@ background-color: rgba(20,20,20,1);
               </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {
-border-radius:3px;
-background-color: rgba(20,20,20,0.8);
-background-image: url(:next.png);
-background-repeat: no-repeat;
-background-position: center;
-}
+                                                border-radius:3px;
+                                                background-color: rgba(20,20,20,0.8);
+                                                background-image: url(:next.png);
+                                                background-repeat: no-repeat;
+                                                background-position: center;
+                                                }
 
-QPushButton:hover {
-background-color: rgba(20,20,20,1);
-}</string>
+                                                QPushButton:hover {
+                                                background-color: rgba(20,20,20,1);
+                                                }</string>
               </property>
               <property name="text">
                <string/>

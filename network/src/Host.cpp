@@ -11,33 +11,17 @@ Host::Host (const string pseudo, const size_t nbClients, const in_port_t port, v
 
     if (sem_init(&this->sem, 0, 1) == -1) {
         perror("sem_init");
-        return;
+        exit(1);
     }
 
     this->sckCreate();
     this->sckBind();
     this->sckListen();
-
     if (fcntl(this->sck, F_SETFL, O_NONBLOCK) == -1) {
         perror("fcntl");
-        return;
+        exit(1);
     }
-
-    while (this->clients.size() < this->nbClients) {
-        sleep(0.1);
-        this->sckAccept();
-    }
-
-
-    if (sem_wait(&this->sem) == -1) {
-        perror("sem_wait");
-        return;
-    }
-    this->startGame();
-    if (sem_post(&this->sem) == -1) {
-        perror("sem_post");
-        return;
-    }
+    this->acceptThread = new thread(&Host::thread_accept, this);
 }
 
 Host::~Host ()
@@ -45,6 +29,25 @@ Host::~Host ()
     close(this->sck);
     for (size_t i = 0; i < this->clients.size(); i ++)
         close(this->clients[i].sck);
+}
+
+void Host::thread_accept ()
+{
+
+    while (this->gst.oPlayers.size() < this->nbClients) {
+        sleep(0.1);
+        this->sckAccept();
+    }
+
+    if (sem_wait(&this->sem) == -1) {
+        perror("sem_wait");
+        exit(1);
+    }
+    this->startGame();
+    if (sem_post(&this->sem) == -1) {
+        perror("sem_post");
+        exit(1);
+    }
 }
 
 void Host::sckBind ()
@@ -57,7 +60,7 @@ void Host::sckBind ()
 
     if (bind(this->sck, (struct sockaddr *) &saddr, sizeof(struct sockaddr_in6)) == -1) {
         perror("bind");
-        return;
+        exit(1);
     }
 }
 
@@ -65,7 +68,7 @@ void Host::sckListen ()
 {
     if (listen(this->sck, 10) == -1) {
         perror("listen");
-        return;
+        exit(1);
     }
 }
 
@@ -78,7 +81,7 @@ void Host::sckAccept ()
         if ((errno == EAGAIN) || (errno == EWOULDBLOCK))
             return;
         perror("newSck");
-        return;
+        exit(1);
     }
     this->sockets.push_back(newSck);
 
@@ -93,14 +96,14 @@ void Host::thread_wait (const int sck)
     string *pseudo = nullptr;
     while (1) {
         while ((gsd = this->sckWait(sck)) == nullptr);
-        if ((pseudo == nullptr) && (this->clients.size() >= this->nbClients)) {
+        if ((pseudo == nullptr) && (this->gst.oPlayers.size() >= this->nbClients)) {
             close(sck);
-            return;
+            exit(1);
         }
 
         if (sem_wait(&this->sem) == -1) {
             perror("sem_wait");
-            return;
+            exit(1);
         }
         if ((pseudo == nullptr) && (gsd->req == CreqJoin)) {
             // data <= pseudo
@@ -109,10 +112,10 @@ void Host::thread_wait (const int sck)
                 cerr << "Pseudo already exists: " << *pseudo << ", skipping it" << endl;
                 if (sem_post(&this->sem) == -1) {
                     perror("sem_post");
-                    return;
+                    exit(1);
                 }
                 close(sck);
-                return;
+                exit(1);
             }
             client cl;
             cl.pseudo = *pseudo;
@@ -137,7 +140,7 @@ void Host::thread_wait (const int sck)
 
         if (sem_post(&this->sem) == -1) {
             perror("sem_post");
-            return;
+            exit(1);
         }
     }
 }
@@ -168,12 +171,12 @@ void Host::gameNext (const string &cardPlayer, const uint8_t &cardNum)
 
     if (player == nullptr) {
         cerr << "gameNext: player == nullptr" << endl;
-        return;
+        exit(1);
     }
 
     if (cardNum >= player->getCards().size()) {
         cerr << "gameNext: cardNum >= player->getCards().size()" << endl;
-        return;
+        exit(1);
     }
 
     Card &card = player->getCards().at(cardNum);
@@ -229,6 +232,7 @@ void Host::sync ()
 
 void Host::startGame ()
 {
+    cout << "Starting game !" << endl;
     string *pseudosArr = new string[this->gst.oPlayers.size() + 1];
     string pseudos = ""; // <pseudo1>:<pseudo2>:...:<pseudoN>
     size_t i = 0;

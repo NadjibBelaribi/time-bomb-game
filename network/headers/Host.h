@@ -17,6 +17,7 @@ private:
         string pseudo;
     } client;
 
+    thread *acceptThread;
     vector<thread *> threads;
     vector<int> sockets; // sockets connected via TCP (pas forcément CLIENT !)
     vector<client> clients;
@@ -31,6 +32,7 @@ private:
 
     client &findClient (int sck) const;
     void thread_wait (const int sck);
+    void thread_accept ();
     void sync ();
     void startGame ();
     bool pseudoExists (const string &pseudo);

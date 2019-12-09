@@ -19,7 +19,7 @@ void GSocket::sckCreate ()
     this->sck = socket(AF_INET6, SOCK_STREAM, 0);
     if (this->sck == -1) {
         perror("socket");
-        return;
+        exit(1);
     }
 }
 
@@ -27,7 +27,7 @@ ssize_t GSocket::sckSend (const int sck, const void *data, const size_t len)
 {
     ssize_t bytes = send(sck, data, len, 0);
     if (bytes == -1) {
-        perror("bytes");
+        perror("send");
         exit(1);
     }
 
@@ -38,7 +38,7 @@ ssize_t GSocket::sckRecv (const int sck, void * const data, const size_t size)
 {
     ssize_t bytes = recv(sck, data, size, 0);
     if (bytes == -1) {
-        perror("bytes");
+        perror("recv");
         exit(1);
     }
 
@@ -81,8 +81,8 @@ void GSocket::sendReq (const gsdataReq req, const char *str, const int sck)
     memcpy(&((char *) buf)[1], str, strLen);
 
     if (this->sckSend(sck, buf, strLen + 1) == -1) {
-        perror("this");
-        return;
+        perror("sendReq");
+        exit(1);
     }
     free(buf);
 }

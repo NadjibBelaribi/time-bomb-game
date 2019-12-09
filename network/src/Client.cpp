@@ -7,7 +7,7 @@ Client::Client (const string pseudo, const char * const hostAddr, const in_port_
     this->hostPort = htons(hostPort);
     if (inet_pton(AF_INET6, hostAddr, this->hostAddr) == -1) {
         perror("inet_pton");
-        return;
+        exit(1);
     }
 
     this->state = Waiting;
@@ -37,7 +37,7 @@ void Client::sckConnect ()
     memcpy(saddr.sin6_addr.s6_addr, this->hostAddr, 16);
     if (connect(this->sck, (struct sockaddr *) &saddr, sizeof(struct sockaddr_in6)) == -1) {
         perror("connect");
-        return;
+        exit(1);
     }
 }
 
@@ -64,7 +64,7 @@ void Client::thread_wait ()
                 break;
             default:
                 cerr << "thread_wait: gsd->req non reconnue" << endl;
-                return;
+                exit(1);
         }
     }
 }
@@ -107,9 +107,9 @@ void Client::processSync (const unsigned char *data, const size_t len)
     static bool first = true;
     string str ((const char *) data, len);
     vector<string> vec = this->split(str, ':');
-    if (vec.size() < 5) {
-        cerr << "processSync: vec.size() < 5" << endl;
-        return;
+    if (vec.size() < 4) {
+        cerr << "processSync: vec.size() < 4" << endl;
+        exit(1);
     }
 
     const uint8_t oldRound = this->gst.round;
@@ -161,7 +161,7 @@ void Client::addTchatMess (const unsigned char *data, const size_t len)
     vector<string> vec = this->split(str, ':');
     if (vec.size() != 2) {
         cerr << "addTchatMess: vec.size() != 2" << endl;
-        return;
+        exit(1);
     }
 
     gmess mess;

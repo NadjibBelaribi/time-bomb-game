@@ -143,6 +143,8 @@ private slots:
 
         void on_card5_clicked();
 
+        void on_boardQuit_clicked();
+
         void on_player1_clicked();
         void on_player2_clicked();
         void on_player3_clicked();
@@ -232,6 +234,8 @@ private:
         void netHidePlayers ();
         void netShowCardsWithRevealed ();
         void netHideCards ();
+        void netEnableCards ();
+        void netDisableCards ();
 };
 
 #endif // MAINWINDOW_H

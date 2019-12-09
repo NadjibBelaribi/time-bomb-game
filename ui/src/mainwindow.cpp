@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tchatArea->hide();
     ui->tchatInput->hide();
     ui->tchatSend->hide();
+    ui->boardQuit->hide();
     srand (time(NULL));
 
     players = new QPushButton* [8];
@@ -153,6 +154,7 @@ void MainWindow::on_go_clicked()
     ui->tchatArea->hide();
     ui->tchatInput->hide();
     ui->tchatSend->hide();
+    ui->boardQuit->show();
     size_t nb_players = hello.size();
     size_t i, compteur = 0;
     if (nb_players < 4) return;
@@ -483,6 +485,7 @@ void MainWindow::playerClicked (size_t i)
         if (netIsCur && !netReveal) {
             netSelectPlayer = players[i]->text().toStdString();
             netShowPlayerCards(players[i]->text().toStdString());
+            netEnableCards();
         }
     } else {
         Player p = game->getPlayers().at(i) ;
@@ -679,6 +682,11 @@ void MainWindow::on_card1_clicked()
     cardClicked(0);
 }
 
+void MainWindow::on_boardQuit_clicked()
+{
+    ui->menu->setCurrentWidget(ui->start);
+}
+
 void MainWindow::showPlayers ()
 {
     size_t nbp = game->getPlayers().size();
@@ -758,12 +766,12 @@ void MainWindow::on_backfromhelp_clicked()
 
 void MainWindow::on_replay_clicked()
 {
-    if (net)
-        ui->menu->setCurrentWidget(ui->networkMenu);
-    else {
-        ui->menu->setCurrentWidget(ui->options);
-        initPseudoFields(4);
-    }
+    if (net) {
+        ui->hostPort->setText(QString::fromStdString(to_string(atoi(ui->hostPort->text().toStdString().c_str()) + 1)));
+        ui->clientPort->setText(QString::fromStdString(to_string(atoi(ui->clientPort->text().toStdString().c_str()) + 1)));
+        on_playNetwork_clicked();
+    } else
+        on_playB_clicked();
 }
 
 
@@ -775,6 +783,8 @@ void MainWindow::on_playNetwork_clicked ()
     ui->menu->setCurrentWidget(ui->networkMenu);
     ui->hostMess->hide();
     ui->clientMess->hide();
+    ui->networkHostGo->setEnabled(true);
+    ui->networkJoinGo->setEnabled(true);
 }
 
 void MainWindow::on_networkMenuBack_clicked ()
@@ -785,7 +795,6 @@ void MainWindow::on_networkMenuBack_clicked ()
 void MainWindow::on_networkHostGo_clicked ()
 {
     // GO HOST
-    sleep(1);
     networkGO(true);
 }
 
@@ -908,6 +917,7 @@ void MainWindow::netCb (GSocket::gstate gst)
 
         } else {
             netShowCardsWithRevealed();
+            netDisableCards();
             string typ (typec2str(gst.lastCardRevealed));
             QString txt (QString::fromStdString(typ));
             if (fr)
@@ -935,6 +945,18 @@ void MainWindow::netHideCards ()
 {
     for  (size_t i = 0; i < 5; i ++)
         cards[i]->hide();
+}
+
+void MainWindow::netDisableCards ()
+{
+    for (size_t i = 0; i < 5; i ++)
+        cards[i]->setEnabled(false);
+}
+
+void MainWindow::netEnableCards ()
+{
+    for (size_t i = 0; i < 5; i ++)
+        cards[i]->setEnabled(true);
 }
 
 void MainWindow::netShowPlayerCards (string pseudo)
@@ -1014,6 +1036,8 @@ void MainWindow::netShowCardsWithRevealed ()
     size_t nbc = netGst.oNbCards[0];
     if (netLastCurrentPlayer == netGst.pseudo)
         nbc = netLastRevealNbCards;
+    if (nbc < 1)
+        nbc = 1;
     int r = rand() % nbc;
     if (netLastCurrentPlayer ==  netGst.pseudo)
         r = netLastRevealIndCard;
@@ -1040,8 +1064,10 @@ void MainWindow::networkGO (const bool host)
     netFirstReveal = true;
     netIsCur = false;
     net = true;
+    waitNextRound = false;
     netHost = host;
     mw = this;
+    ui->boardQuit->hide();
 
     for (size_t i = 0; i < 5; i ++)
         cards[i]->setEnabled(true);
@@ -1072,8 +1098,10 @@ void MainWindow::networkGO (const bool host)
         pseudoSafe.erase(std::remove(pseudoSafe.begin(), pseudoSafe.end(), ':'), pseudoSafe.end());
 
         cout << "[NET] Attente de la connexion de tous les joueurs ..." << endl;
-        gsck = new Host(pseudoSafe, nbPlayers - 1, atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
         ui->hostMess->show();
+        ui->networkHostGo->setEnabled(false);
+        ui->networkJoinGo->setEnabled(false);
+        gsck = new Host(pseudoSafe, nbPlayers - 1, atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
 
     } else {
         // CLIENT
@@ -1093,8 +1121,10 @@ void MainWindow::networkGO (const bool host)
         string pseudoSafe = pseudo.toStdString();
         pseudoSafe.erase(std::remove(pseudoSafe.begin(), pseudoSafe.end(), ':'), pseudoSafe.end());
         cout << "[NET] Connexion au serveur et attente de lancement ..." << endl;
-        gsck = new Client(pseudoSafe, ip.toStdString().c_str(), atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
         ui->clientMess->show();
+        ui->networkHostGo->setEnabled(false);
+        ui->networkJoinGo->setEnabled(false);
+        gsck = new Client(pseudoSafe, ip.toStdString().c_str(), atoi(port.toStdString().c_str()), gameCallback, tchatCallback);
     }
 }
 
