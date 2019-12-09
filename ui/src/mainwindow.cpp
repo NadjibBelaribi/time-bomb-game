@@ -417,12 +417,18 @@ void MainWindow::afficheCard(size_t j)
 {
     size_t i;
     Player &p = game->getPlayers().at(j);
-    size_t nbc = p.getCards().size();
+    vector<Card> temp = p.getCards() ;
+    size_t nbc = temp.size();
+    if (getCpt() <= game->getPlayers().size())
+    {
+        unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+            shuffle(temp.begin(), temp.end(), default_random_engine(seed));
+    }
     showCards(nbc);
-    for (i = 0; i < p.getCards().size(); i++)
+    for (i = 0; i < nbc; i++)
     {
         cards[i]->show();
-        setCardImg(cards[i],p.getCards().at(i).getType(),true);
+        setCardImg(cards[i],temp.at(i).getType(),true);
     }
 
     for (; i < 5; i ++)
@@ -953,11 +959,16 @@ void MainWindow::netShowPlayerCards (string pseudo)
 void MainWindow::netShowMyCards ()
 {
     netReveal = true;
-    for (size_t i = 0; i < netGst.nbCards; i ++) {
-        setCardImg(cards[i], netGst.cards[i], false);
+    vector<Card::typeCard> temp = netGst.cards ;
+    size_t nbc = temp.size();
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    shuffle(temp.begin(), temp.end(), default_random_engine(seed));
+
+    for (size_t i = 0; i < nbc; i ++) {
+        setCardImg(cards[i], temp[i], false);
         cards[i]->show();
     }
-    for (size_t i = netGst.nbCards; i < 5; i ++)
+    for (size_t i = nbc; i < 5; i ++)
         cards[i]->hide();
 }
 
@@ -1000,11 +1011,11 @@ void MainWindow::netHidePlayers ()
 
 void MainWindow::netShowCardsWithRevealed ()
 {
-    size_t nbc = netGst.oNbCards[0]; // tmp
+    size_t nbc = netGst.oNbCards[0];
     if (netLastCurrentPlayer == netGst.pseudo)
         nbc = netLastRevealNbCards;
     int r = rand() % nbc;
-    if (netLastCurrentPlayer == netGst.pseudo)
+    if (netLastCurrentPlayer ==  netGst.pseudo)
         r = netLastRevealIndCard;
     for (size_t i = 0; i < nbc; i ++) {
         if (i == static_cast<size_t>(r))

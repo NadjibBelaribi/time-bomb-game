@@ -126,7 +126,8 @@ QPushButton:hover
            <string notr="true">border-radius:20px;
 background-image: url(:/drapeau-anglais.png);
 background-image:no-repeat;
-border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;</string>
+border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;
+</string>
           </property>
           <property name="text">
            <string/>
@@ -170,10 +171,10 @@ border-image: url(:/drapeau-anglais.png) 0 0 0 0 stretch;</string>
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-image: url(:/drapeau_fr.webp);
+           <string notr="true">border-radius:20px;
+background-image: url(:/drapeau-fr.jpg);
 background-image:no-repeat;
-border-image: url(:/drapeau_fr.webp) 0 0 0 0 stretch;
-border-radius:20px;</string>
+border-image: url(:/drapeau-fr.jpg) 0 0 0 0 stretch;</string>
           </property>
           <property name="text">
            <string/>
@@ -260,7 +261,6 @@ border-radius:20px;</string>
               <weight>9</weight>
               <italic>false</italic>
               <bold>false</bold>
-              <kerning>true</kerning>
              </font>
             </property>
             <property name="styleSheet">
@@ -421,7 +421,7 @@ color: snow;
          <widget class="QPushButton" name="back">
           <property name="minimumSize">
            <size>
-            <width>150</width>
+            <width>148</width>
             <height>40</height>
            </size>
           </property>
@@ -670,8 +670,6 @@ background-color: #DDDDDD;
             <property name="font">
              <font>
               <pointsize>-1</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
              </font>
             </property>
             <property name="styleSheet">
@@ -762,15 +760,13 @@ color: snow;
             </property>
             <property name="minimumSize">
              <size>
-              <width>150</width>
+              <width>148</width>
               <height>40</height>
              </size>
             </property>
             <property name="font">
              <font>
               <pointsize>-1</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
              </font>
             </property>
             <property name="styleSheet">
@@ -1036,8 +1032,6 @@ background-color: #DDDDDD;
                 <property name="font">
                  <font>
                   <pointsize>-1</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="text">
@@ -1244,8 +1238,6 @@ background-color: #DDDDDD;
                 <property name="font">
                  <font>
                   <pointsize>-1</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="text">
@@ -1353,8 +1345,6 @@ background-color: #DDDDDD;
               <property name="font">
                <font>
                 <pointsize>-1</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
                </font>
               </property>
               <property name="styleSheet">
